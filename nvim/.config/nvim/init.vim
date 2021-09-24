@@ -25,7 +25,8 @@ set number
 
 let mapleader = " "
 set showcmd
-set timeoutlen 2000
+set notimeout
+set ttimeout
 
 
 " Mappings
