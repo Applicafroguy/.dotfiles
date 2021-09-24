@@ -8,7 +8,6 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'godlygeek/tabular'
 call plug#end()
 
-
 set background=dark
 
 set clipboard+=unnamedplus
@@ -25,6 +24,9 @@ let g:nord_bold = 1
 set number
 
 let mapleader = " "
+set showcmd
+set timeoutlen 2000
+
 
 " Mappings
 " Coc
@@ -112,7 +114,7 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
-" Formatting selected code.
+" normatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
