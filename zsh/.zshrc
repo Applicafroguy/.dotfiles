@@ -16,13 +16,13 @@ bindkey -e
 
 source $HOME/.alias
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOME/.pathrc
 
 ## from bashrc
 # enable color support of ls and also add handy aliases
 test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 
-source "$HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
 
 source ~/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
