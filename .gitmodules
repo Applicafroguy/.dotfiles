@@ -1,6 +1,6 @@
-[submodule "theme/.theme/Nordic"]
-	path = theme/.theme/Nordic
-	url = git@github.com:EliverLara/Nordic.git
 [submodule "personal"]
 	path = personal
 	url = git@github.com:jmbuhr/personal.git
+[submodule "theme/.themes/Nordic"]
+	path = theme/.themes/Nordic
+	url = git@github.com:EliverLara/Nordic.git
