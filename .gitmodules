@@ -13,3 +13,9 @@
 [submodule "theme/.themes/Nordic-dark"]
 	path = theme/.themes/Nordic-dark
 	url = git@github.com:EliverLara/Nordic.git
+[submodule "theme/clones/WhiteSur-gtk-theme"]
+	path = theme/clones/WhiteSur-gtk-theme
+	url = git@github.com:vinceliuice/WhiteSur-gtk-theme.git
+[submodule "_software/WhiteSur-gtk-theme"]
+	path = _software/WhiteSur-gtk-theme
+	url = git@github.com:vinceliuice/WhiteSur-gtk-theme.git
