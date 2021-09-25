@@ -1,9 +1,6 @@
 [submodule "personal"]
 	path = personal
 	url = git@github.com:jmbuhr/personal.git
-[submodule "theme/.themes/Nordic"]
-	path = theme/.themes/Nordic
-	url = git@github.com:EliverLara/Nordic.git
 [submodule "zsh/.zsh/zsh-syntax-highlighting"]
 	path = zsh/.zsh/zsh-syntax-highlighting
 	url = git@github.com:zsh-users/zsh-syntax-highlighting.git
@@ -13,3 +10,6 @@
 [submodule "zsh/powerlevel10k"]
 	path = zsh/powerlevel10k
 	url = git@github.com:romkatv/powerlevel10k.git
+[submodule "theme/.themes/Nordic-dark"]
+	path = theme/.themes/Nordic-dark
+	url = git@github.com:EliverLara/Nordic.git
