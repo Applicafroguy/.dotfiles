@@ -10,10 +10,12 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-commentary'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 call plug#end()
 
 " theme
@@ -128,9 +130,6 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
-" formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
@@ -224,6 +223,38 @@ au FocusGained,BufEnter * checktime
 nmap <leader>w :w!<cr>
 map <leader>xx :x! <cr>
 map <leader>qqq :q! <cr>
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => mappings
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Telescope
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>/ <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+lua << EOF
+require('telescope').setup{
+  defaults = {},
+  extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+    }
+  } 
+}
+require('telescope').load_extension('fzf')
+EOF
+
+
+" formatting selected code.
+xmap <leader>fi  <Plug>(coc-format-selected)
+nmap <leader>fi  <Plug>(coc-format-selected)
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
