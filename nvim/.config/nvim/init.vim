@@ -16,6 +16,8 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+Plug 'camgraff/telescope-tmux.nvim'
+Plug 'norcalli/nvim-terminal.lua'
 call plug#end()
 
 " theme
@@ -251,6 +253,7 @@ require('telescope').setup{
   } 
 }
 require('telescope').load_extension('fzf')
+require('telescope').load_extension('tmux')
 EOF
 
 
@@ -437,6 +440,10 @@ set statusline=\ %{coc#status()}\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd(
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" map jk to escape
+inoremap jk <Esc>
+
 " Remap VIM 0 to first non-blank character
 map 0 ^
 
