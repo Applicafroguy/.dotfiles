@@ -26,3 +26,14 @@ $jobs\
 $status\
 $shell\
 $character"""
+
+[conda]
+ignore_base = false
+
+[shell]
+disabled = false
+
+[git_metrics]
+disabled = false
+
+

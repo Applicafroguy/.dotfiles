@@ -7,4 +7,3 @@ sh -c "$(curl -fsSL https://starship.rs/install.sh)"
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/FiraMono.zip
 
 
-
