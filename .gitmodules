@@ -7,9 +7,6 @@
 [submodule "zsh/.zsh/zsh-autosuggestions"]
 	path = zsh/.zsh/zsh-autosuggestions
 	url = git@github.com:zsh-users/zsh-autosuggestions.git
-[submodule "zsh/powerlevel10k"]
-	path = zsh/powerlevel10k
-	url = git@github.com:romkatv/powerlevel10k.git
 [submodule "theme/.themes/Nordic-dark"]
 	path = theme/.themes/Nordic-dark
 	url = git@github.com:EliverLara/Nordic.git

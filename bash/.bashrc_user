@@ -81,10 +81,10 @@ if [ -d /etc/profile.d ]; then
   done
 fi
 
-
 ignoreeof=10
 export PATH DISPLAY LESS TERM PS1 PS2 ignoreeof
 
 eval "$($HOME/miniconda3/bin/conda shell.bash hook)"
 
+eval "$(starship init bash)"
 
