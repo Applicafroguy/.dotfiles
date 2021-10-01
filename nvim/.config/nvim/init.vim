@@ -21,82 +21,17 @@ Plug 'camgraff/telescope-tmux.nvim'
 Plug 'norcalli/nvim-terminal.lua'
 call plug#end()
 
-" Theme
-set background=dark
-colorscheme nord
-let g:nord_cursor_line_number_background = 1
-let g:nord_bold_vertical_split_line = 1
-let g:nord_italic = 1
-let g:nord_bold = 1
-
-" Settings
-set number
-set clipboard+=unnamedplus
-set showcmd
-set notimeout
-set ttimeout
-set mouse=a
-set mousefocus
-set cursorline
-set hidden
-set nobackup
-set nowritebackup
-set cmdheight=2
-set updatetime=300
-set shortmess+=c
-set signcolumn=number
-set history=500
-set autoread
-set so=7
-set wildignore=*.o,*~,*.pyc
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-set ruler
-set cmdheight=1
-set hid
-set backspace=eol,start,indent
-set whichwrap+=<,>,h,l
-set ignorecase
-set smartcase
-set hlsearch
-set incsearch 
-set lazyredraw 
-set magic
-set showmatch 
-set noerrorbells
-set novisualbell
-set t_vb=
-set tm=500
-set foldcolumn=1
-set encoding=utf8
-set ffs=unix,dos,mac
-set nobackup
-set nowb
-set noswapfile
-set expandtab
-set smarttab
-set shiftwidth=2
-set tabstop=2
-set wrap
-set lbr
-set tw=120
-set ai
-set si
-" set statusline=\ %{coc#status()}\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c 
-
-filetype plugin on
-filetype indent on
-au FocusGained,BufEnter * checktime
-syntax enable
+" Globals
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
 
 " Mappings
 let mapleader = " "
-
 vnoremap <leader>p "_dP
-
 nmap <leader>w :w!<cr>
 map <leader>xx :x! <cr>
 map <leader>qqq :q! <cr>
-
 inoremap jk <Esc>
 map 0 ^
 nnoremap Y y$
@@ -115,9 +50,6 @@ nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 nnoremap <leader>ve :edit $HOME/.config/nvim/init.vim<CR>
 nnoremap <leader>vr :source $HOME/.config/nvim/init.vim<CR>
-
-vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
-vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 map <silent> <leader><cr> :noh<cr>
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -147,57 +79,4 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
-
-
-" Helper functions
-" Returns true if paste mode is enabled
-function! HasPaste()
-    if &paste
-        return 'PASTE MODE  '
-    endif
-    return ''
-endfunction
-
-" Don't close window, when deleting a buffer
-command! Bclose call <SID>BufcloseCloseIt()
-function! <SID>BufcloseCloseIt()
-    let l:currentBufNum = bufnr("%")
-    let l:alternateBufNum = bufnr("#")
-
-    if buflisted(l:alternateBufNum)
-        buffer #
-    else
-        bnext
-    endif
-
-    if bufnr("%") == l:currentBufNum
-        new
-    endif
-
-    if buflisted(l:currentBufNum)
-        execute("bdelete! ".l:currentBufNum)
-    endif
-endfunction
-
-function! CmdLine(str)
-    call feedkeys(":" . a:str)
-endfunction 
-
-function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
-    execute "normal! vgvy"
-
-    let l:pattern = escape(@", "\\/.*'$^~[]")
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-    if a:direction == 'gv'
-        call CmdLine("Ack '" . l:pattern . "' " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    endif
-
-    let @/ = l:pattern
-    let @" = l:saved_reg
-endfunction
-
 
