@@ -8,20 +8,20 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'arcticicestudio/nord-vim' 
 Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-commentary'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'camgraff/telescope-tmux.nvim'
+Plug 'kyazdani42/nvim-web-devicons'
 Plug 'norcalli/nvim-terminal.lua'
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/nvim-compe'
 call plug#end()
 
 " Globals
+:cd $HOME
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
