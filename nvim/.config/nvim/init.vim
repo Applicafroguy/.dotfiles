@@ -10,18 +10,21 @@ Plug 'arcticicestudio/nord-vim'  " theme
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular' " for markdown display
 Plug 'tpope/vim-commentary' " toggle comment
-" find things
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'camgraff/telescope-tmux.nvim'
+Plug 'camgraff/telescope-tmux.nvim' " will need a newer tmux version for popup displays
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'norcalli/nvim-terminal.lua'
-Plug 'neovim/nvim-lspconfig' " lsp
-Plug 'hrsh7th/nvim-compe' " autocomplete 
 Plug 'vim-airline/vim-airline' "  status line
 Plug 'tpope/vim-fugitive' " git
-Plug 'jpalardy/vim-slime' " send code to command line
+Plug 'jpalardy/vim-slime' " send code to a tmux window
+Plug 'neovim/nvim-lspconfig' " lsp
+Plug 'hrsh7th/nvim-cmp' " autocomplete, with lsp
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'jc-doyle/cmp-pandoc-references'
 call plug#end()
 
 " Globals
