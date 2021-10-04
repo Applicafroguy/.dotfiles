@@ -8,8 +8,9 @@ endif
 call plug#begin('~/.vim/plugged')
 Plug 'arcticicestudio/nord-vim'  " theme
 Plug 'tpope/vim-surround'
-Plug 'godlygeek/tabular'
-Plug 'tpope/vim-commentary'
+Plug 'godlygeek/tabular' " for markdown display
+Plug 'tpope/vim-commentary' " toggle comment
+" find things
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
@@ -20,6 +21,7 @@ Plug 'neovim/nvim-lspconfig' " lsp
 Plug 'hrsh7th/nvim-compe' " autocomplete 
 Plug 'vim-airline/vim-airline' "  status line
 Plug 'tpope/vim-fugitive' " git
+Plug 'jpalardy/vim-slime' " send code to command line
 call plug#end()
 
 " Globals
@@ -79,3 +81,5 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
+nnoremap gl <c-]>
+
