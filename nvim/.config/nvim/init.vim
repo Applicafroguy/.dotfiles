@@ -6,7 +6,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'arcticicestudio/nord-vim' 
+Plug 'arcticicestudio/nord-vim'  " theme
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-commentary'
@@ -16,12 +16,13 @@ Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'camgraff/telescope-tmux.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'norcalli/nvim-terminal.lua'
-Plug 'neovim/nvim-lspconfig'
-Plug 'hrsh7th/nvim-compe'
+Plug 'neovim/nvim-lspconfig' " lsp
+Plug 'hrsh7th/nvim-compe' " autocomplete 
+Plug 'vim-airline/vim-airline' "  status line
+Plug 'tpope/vim-fugitive' " git
 call plug#end()
 
 " Globals
-:cd $HOME
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
@@ -35,7 +36,7 @@ map <leader>qqq :q! <cr>
 inoremap jk <Esc>
 map 0 ^
 nnoremap Y y$
-" vmap <cr> y
+vmap <cr> y
 nnoremap n nzzzv
 nnoremap N Nzzzv
 nmap <M-j> mz:m+<cr>`z
@@ -55,12 +56,11 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
 map <leader>ba :bufdo bd<cr>
 map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
-map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
+map <leader>tn :tabnew<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
 map <leader>t<leader> :tabnext
@@ -79,4 +79,3 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
-
