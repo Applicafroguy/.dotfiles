@@ -1,2 +1,6 @@
 pkgs_dirs:
   - /sw/mbm/conda
+channels:
+  - conda-forge
+  - defaults
+channel_priority: strict
