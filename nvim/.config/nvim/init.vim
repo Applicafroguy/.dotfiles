@@ -25,6 +25,7 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'jc-doyle/cmp-pandoc-references'
+Plug 'tmux-plugins/vim-tmux'
 call plug#end()
 
 " Globals
