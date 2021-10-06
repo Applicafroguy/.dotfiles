@@ -33,6 +33,7 @@ alias remotedisplay='export DISPLAY=":10"'
 alias buhrjkmods='module use /hits/fast/mbm/buhrjk/software/eb/modules/all'
 alias ta='tmux attach-session'
 alias dot="cd $HOME/.dotfiles"
+vman () {nvim man://$1}
 
 # groumacs 2020
 alias gmx2020='module use /sw/mbm/app/easybuild/modules/all; module load CUDA/10.1.243-GCC-8.3.0; source /sw/mbm/app/gromacs/2020.3/bin/GMXRC'

@@ -1,4 +1,14 @@
+" Globals
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+let g:vim_markdown_math = 1
+let g:vim_markdown_frontmatter = 1
 
+filetype plugin on
+filetype indent on
+au FocusGained,BufEnter * checktime
+syntax enable
+
+" Set
 set number
 set clipboard+=unnamedplus
 set showcmd
@@ -45,14 +55,10 @@ set expandtab
 set smarttab
 set shiftwidth=2
 set tabstop=2
-set wrap
+set nowrap
 set lbr
 set tw=120
 set ai
 set si
 
-filetype plugin on
-filetype indent on
-au FocusGained,BufEnter * checktime
-syntax enable
 

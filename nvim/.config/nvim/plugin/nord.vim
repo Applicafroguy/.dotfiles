@@ -14,4 +14,3 @@ let g:nord_bold = 1
 let g:nord_underline = 1
 
 
-
