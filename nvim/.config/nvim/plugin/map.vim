@@ -54,7 +54,6 @@ nnoremap gl <c-]>
 
 nnoremap <silent>gD :lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent>gd :lua vim.lsp.buf.definition()<CR>
-" nnoremap <silent>K :lua vim.lsp.buf.hover()<CR>
 nnoremap <silent>gh :lua vim.lsp.buf.hover()<CR>
 nnoremap <silent>gi :lua vim.lsp.buf.implementation()<CR>
 nnoremap <silent><C-k> :lua vim.lsp.buf.signature_help()<CR>
@@ -74,4 +73,5 @@ nnoremap <silent><leader>f :lua vim.lsp.buf.formatting()<CR>
 " insert chode chunks
 map <leader>ir i```{R}```O
 map <leader>ip i```{python}```O
+
 

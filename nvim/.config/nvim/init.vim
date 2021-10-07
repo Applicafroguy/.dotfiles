@@ -7,6 +7,8 @@ endif
 
 call plug#begin('~/.vim/plugged')
 Plug 'arcticicestudio/nord-vim'  " theme
+
+
 Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular' " for markdown display
@@ -17,6 +19,7 @@ Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'camgraff/telescope-tmux.nvim' " will need a newer tmux version for popup displays
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
 Plug 'norcalli/nvim-terminal.lua'
@@ -47,3 +50,5 @@ Plug 'onsails/lspkind-nvim'
 Plug 'tmux-plugins/vim-tmux'
 call plug#end()
 
+
+ 
