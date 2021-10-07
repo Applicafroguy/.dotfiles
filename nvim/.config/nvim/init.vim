@@ -26,8 +26,10 @@ Plug 'jpalardy/vim-slime' " send code to a tmux window
 
 Plug 'neovim/nvim-lspconfig' " lsp
 
-Plug 'hrsh7th/nvim-cmp' " autocomplete, with lsp
 Plug 'hrsh7th/vim-vsnip'
+Plug 'rafamadriz/friendly-snippets'
+
+Plug 'hrsh7th/nvim-cmp' " autocomplete, with lsp
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -35,7 +37,6 @@ Plug 'hrsh7th/cmp-calc'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'f3fora/cmp-spell'
-Plug 'fiorematteo/cmp-katex'
 Plug 'ray-x/cmp-treesitter'
 Plug 'tamago324/cmp-zsh'
 Plug 'andersevenrud/compe-tmux', { 'branch': 'cmp' }

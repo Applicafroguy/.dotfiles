@@ -20,6 +20,7 @@ nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 nnoremap <leader>ve :edit $HOME/.config/nvim/init.vim<CR>
 nnoremap <leader>vr :source $HOME/.config/nvim/init.vim<CR>
+nnoremap <leader>so :source %<CR>
 map <silent> <leader><cr> :noh<cr>
 map <C-j> <C-W>j
 map <C-k> <C-W>k
@@ -69,4 +70,8 @@ nnoremap <silent>[d :lua vim.lsp.diagnostic.goto_prev()<CR>
 nnoremap <silent>]d :lua vim.lsp.diagnostic.goto_next()<CR>
 nnoremap <silent><leader>q :lua vim.lsp.diagnostic.set_loclist()<CR>
 nnoremap <silent><leader>f :lua vim.lsp.buf.formatting()<CR>
+
+" insert chode chunks
+map <leader>ir i```{R}```O
+map <leader>ip i```{python}```O
 

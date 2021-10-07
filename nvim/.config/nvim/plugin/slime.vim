@@ -8,6 +8,7 @@ xmap <c-c><c-c> <Plug>SlimeRegionSend
 map <c-c><c-c> <Plug>SlimeParagraphSend
 map <c-c>v     <Plug>SlimeConfig
 
-xmap <leader><space> <Plug>SlimeRegionSend
-nmap <leader><space> <Plug>SlimeParagraphSend
+let g:slime_cell_delimiter = "```"
+nmap <leader><space> <Plug>SlimeSendCell
+vmap <leader><space> <Plug>SlimeRegionSend
 
