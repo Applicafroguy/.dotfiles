@@ -26,7 +26,7 @@ cmp.setup({
     end
   },
   completion = {
-    keyword_lenght = 2
+    keyword_lenght = 1
   },
   sources = {
     { name = 'vsnip' },
@@ -36,7 +36,7 @@ cmp.setup({
     { name = 'path' },
     { name = 'pandoc_references' },
     { name = 'nvim_lua' },
-    { name = 'tmux' },
+    -- { name = 'tmux' },
     { name = 'tags' },
     { name = 'treesitter' },
     { name = 'zsh' },
