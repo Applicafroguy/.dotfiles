@@ -22,7 +22,8 @@ unsetopt beep
 disable r
 bindkey -e
 
-eval "$($HOME/miniconda3/bin/conda shell.zsh hook)"
+
+eval "$($CONDA_PREFIX/bin/conda shell.zsh hook)"
 
 eval "$(starship init zsh)"
 

@@ -3,7 +3,6 @@ let mapleader = " "
 vnoremap <leader>p "_dP
 nmap <leader>w :w!<cr>
 map <leader>xx :x! <cr>
-inoremap jk <Esc>
 nnoremap Y y$
 vmap <cr> y
 nnoremap n nzzzv
