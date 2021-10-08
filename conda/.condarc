@@ -1,6 +1,9 @@
 pkgs_dirs:
   - /sw/mbm/conda
+envs_dirs:
+  - /hits/fast/mbm/buhrjk/software/conda/envs
 channels:
   - conda-forge
   - defaults
 channel_priority: strict
+
