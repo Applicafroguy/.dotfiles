@@ -34,7 +34,7 @@ alias buhrjkmods='module use /hits/fast/mbm/buhrjk/software/eb/modules/all'
 alias ta='tmux attach-session'
 alias dot="cd $HOME/.dotfiles"
 alias r="radian"
-
+alias wiki="cd /hits/fast/mbm/share/mbm-wiki"
 vman () {
   nvim man://$1
 }
@@ -42,5 +42,4 @@ vman () {
 # groumacs 2020
 alias gmx2020='module use /sw/mbm/app/easybuild/modules/all; module load CUDA/10.1.243-GCC-8.3.0; source /sw/mbm/app/gromacs/2020.3/bin/GMXRC'
 alias rmback='rm \#*\#'
-
 
