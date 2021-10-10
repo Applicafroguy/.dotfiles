@@ -13,9 +13,9 @@ PATH=$PATH:/usr/local/go/bin
 PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
 if [[ "$HOSTNAME" == *"villa-bosch.de" ]]; then
-  CONDA_PREFIX='/hits/fast/mbm/buhrjk/software/conda'
+  CONDA_PREFIX="/hits/fast/mbm/buhrjk/software/conda"
 else
-  CONDA_PREFIX='$HOME/miniconda3'
+  CONDA_PREFIX="$HOME/miniconda3"
 fi
 
 export CONDA_PREFIX

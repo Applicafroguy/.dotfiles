@@ -9,7 +9,6 @@ source $HOME/.pathrc
 # enable color support of ls and also add handy aliases
 test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 
-
 export EDITOR="nvim"
 autoload -z edit-command-line
 zle -N edit-command-line

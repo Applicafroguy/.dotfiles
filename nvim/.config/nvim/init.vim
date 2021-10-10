@@ -6,35 +6,53 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+
+" themes
 Plug 'arcticicestudio/nord-vim'  " theme
-
-
 Plug 'morhetz/gruvbox'
-Plug 'tpope/vim-surround'
-Plug 'godlygeek/tabular' " for markdown display
-Plug 'tpope/vim-commentary' " toggle comment
 
+" editing
+Plug 'tpope/vim-surround'
+
+
+" toggle comment
+Plug 'tpope/vim-commentary'
+
+" find keybindings easier with suggestions
 Plug 'folke/which-key.nvim'
 
 Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/popup.nvim'
+
+" find everything
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 Plug 'camgraff/telescope-tmux.nvim' " will need a newer tmux version for popup displays
-Plug 'kyazdani42/nvim-web-devicons'
+
+" file tree
 Plug 'kyazdani42/nvim-tree.lua'
 
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
+" icons
+Plug 'kyazdani42/nvim-web-devicons'
+
 Plug 'norcalli/nvim-terminal.lua'
 Plug 'vim-airline/vim-airline' "  status line
-Plug 'tpope/vim-fugitive' " git
-Plug 'jpalardy/vim-slime' " send code to a tmux window
 
+" send code to a tmux window (or anywhere)
+Plug 'jpalardy/vim-slime'
+
+" git
+Plug 'tpope/vim-fugitive'
+
+" language server
 Plug 'neovim/nvim-lspconfig' " lsp
+Plug 'williamboman/nvim-lsp-installer' " lsp
 
-Plug 'hrsh7th/vim-vsnip'
-Plug 'rafamadriz/friendly-snippets'
+" syntax trees for  better highliting
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
 
-Plug 'hrsh7th/nvim-cmp' " autocomplete, with lsp
+" autocompletion
+Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
@@ -49,8 +67,14 @@ Plug 'quangnguyen30192/cmp-nvim-tags'
 Plug 'jc-doyle/cmp-pandoc-references'
 Plug 'onsails/lspkind-nvim'
 
-Plug 'tmux-plugins/vim-tmux'
+Plug 'windwp/nvim-autopairs'
+
+" snippets
+Plug 'hrsh7th/vim-vsnip'
+Plug 'rafamadriz/friendly-snippets'
+
+
+Plug 'godlygeek/tabular' " for markdown display
+
 call plug#end()
 
-
- 
