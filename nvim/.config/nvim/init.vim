@@ -11,9 +11,21 @@ call plug#begin('~/.vim/plugged')
 Plug 'arcticicestudio/nord-vim'  " theme
 Plug 'morhetz/gruvbox'
 
+" layout
+Plug 'norcalli/nvim-terminal.lua'
+Plug 'hoob3rt/lualine.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-lua/popup.nvim'
+
+" file tree
+Plug 'kyazdani42/nvim-tree.lua'
+
+" icons
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ryanoasis/vim-devicons'
+
 " editing
 Plug 'tpope/vim-surround'
-
 
 " toggle comment
 Plug 'tpope/vim-commentary'
@@ -21,22 +33,12 @@ Plug 'tpope/vim-commentary'
 " find keybindings easier with suggestions
 Plug 'folke/which-key.nvim'
 
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-lua/popup.nvim'
 
 " find everything
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-Plug 'camgraff/telescope-tmux.nvim' " will need a newer tmux version for popup displays
-
-" file tree
-Plug 'kyazdani42/nvim-tree.lua'
-
-" icons
-Plug 'kyazdani42/nvim-web-devicons'
-
-Plug 'norcalli/nvim-terminal.lua'
-Plug 'vim-airline/vim-airline' "  status line
+Plug 'camgraff/telescope-tmux.nvim'
+Plug 'ahmedkhalf/project.nvim'
 
 " send code to a tmux window (or anywhere)
 Plug 'jpalardy/vim-slime'

@@ -20,5 +20,6 @@ require('telescope').setup{
 }
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('tmux')
+require('telescope').load_extension('projects')
 EOF
 
