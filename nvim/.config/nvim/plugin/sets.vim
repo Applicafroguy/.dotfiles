@@ -12,7 +12,8 @@ syntax enable
 set number
 set clipboard+=unnamedplus
 set showcmd
-set notimeout
+set timeout
+set timeoutlen=500
 set ttimeout
 set mouse=a
 set mousefocus

@@ -14,6 +14,8 @@ Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular' " for markdown display
 Plug 'tpope/vim-commentary' " toggle comment
 
+Plug 'folke/which-key.nvim'
+
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
