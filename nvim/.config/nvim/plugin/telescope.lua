@@ -1,14 +1,12 @@
-
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>/ <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <leader>fm <cmd>Telescope man_pages<cr>
-nnoremap <leader>fc <cmd>Telescope git_commits<cr>
-
-lua << EOF
 require('telescope').setup{
-  defaults = {},
+  defaults = {
+    mappings = {
+      i = {
+        ['<C-u>'] = false,
+        ['<C-d>'] = false,
+      }
+    }
+  },
   extensions = {
     fzf = {
       fuzzy = true,                    -- false will only do exact matching
@@ -21,5 +19,4 @@ require('telescope').setup{
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('tmux')
 require('telescope').load_extension('projects')
-EOF
 

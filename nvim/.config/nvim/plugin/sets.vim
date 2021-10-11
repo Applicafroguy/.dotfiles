@@ -8,7 +8,6 @@ filetype indent on
 au FocusGained,BufEnter * checktime
 syntax enable
 
-
 augroup filetypedetect
   au! BufRead,BufNewFile *.qmd		setfiletype markdown
 augroup END
@@ -17,17 +16,19 @@ augroup END
 set number
 set clipboard+=unnamedplus
 set showcmd
-set timeout
-set timeoutlen=500
+set notimeout
+" set timeoutlen=500
 set ttimeout
 set mouse=a
 set mousefocus
 set cursorline
+set inccommand=nosplit
 set hidden
+set undofile
 set nobackup
 set nowritebackup
 set cmdheight=2
-set updatetime=300
+set updatetime=250
 set shortmess+=c
 set signcolumn=number
 set history=500
@@ -66,5 +67,12 @@ set lbr
 set tw=120
 set ai
 set si
+set laststatus=2
+set switchbuf=useopen,usetab,newtab
+set stal=2
+
+let g:lasttab = 1
+au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+au TabLeave * let g:lasttab = tabpagenr()
 
 

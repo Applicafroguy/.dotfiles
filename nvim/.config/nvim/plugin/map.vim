@@ -1,8 +1,9 @@
 let mapleader = " "
+let mapleader = " "
+let maplocalleader = " "
 
 vnoremap <leader>p "_dP
-nmap <leader>w :w!<cr>
-map <leader>xx :x! <cr>
+nmap <leader>ww :w!<cr>
 nnoremap Y y$
 vmap <cr> y
 nnoremap n nzzzv
@@ -19,30 +20,19 @@ nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
 nnoremap <leader>ve :edit $HOME/.config/nvim/init.vim<CR>
 nnoremap <leader>vr :source $HOME/.config/nvim/init.vim<CR>
-nnoremap <leader>so :source %<CR>
-map <silent> <leader><cr> :noh<cr>
+nnoremap <leader>vso :source %<CR>
+map <silent><leader><cr> :noh<cr>
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-map <leader>ba :bufdo bd<cr>
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
-map <leader>to :tabonly<cr>
 map <leader>tn :tabnew<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext
-let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
+map <leader>tl :tabnext<cr>
+map <leader>th :tabprevious<cr>
 map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
-set switchbuf=useopen,usetab,newtab
-set stal=2
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-set laststatus=2
 
+" spellcheck
 map <leader>ss :setlocal spell!<cr>
 map <leader>sn ]s
 map <leader>sp [s
@@ -50,27 +40,28 @@ map <leader>sa zg
 map <leader>s? z=
 nnoremap gl <c-]>
 
-
-nnoremap <silent>gD :lua vim.lsp.buf.declaration()<CR>
-nnoremap <silent>gd :lua vim.lsp.buf.definition()<CR>
-nnoremap <silent>gh :lua vim.lsp.buf.hover()<CR>
-nnoremap <silent>gi :lua vim.lsp.buf.implementation()<CR>
-nnoremap <silent><C-k> :lua vim.lsp.buf.signature_help()<CR>
-" nnoremap <silent><leader>wa :lua vim.lsp.buf.add_workspace_folder()<CR>
-" nnoremap <silent><leader>wr :lua vim.lsp.buf.remove_workspace_folder()<CR>
-" nnoremap <silent><leader>wl :lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>
-nnoremap <silent><leader>D :lua vim.lsp.buf.type_definition()<CR>
-nnoremap <silent><leader>rn :lua vim.lsp.buf.rename()<CR>
-nnoremap <silent><leader>ca :lua vim.lsp.buf.code_action()<CR>
-nnoremap <silent>gr :lua vim.lsp.buf.references()<CR>
-nnoremap <silent><leader>e :lua vim.lsp.diagnostic.show_line_diagnostics()<CR>
-nnoremap <silent>[d :lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap <silent>]d :lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <silent><leader>q :lua vim.lsp.diagnostic.set_loclist()<CR>
-nnoremap <silent><leader>f :lua vim.lsp.buf.formatting()<CR>
-
 " insert chode chunks
-map <leader>ir i```{R}```O
+map <leader>ir i```{r}```O
 map <leader>ip i```{python}```O
 
+"  nvim-tree
+nnoremap <C-n> :NvimTreeToggle<CR>
+
+tnoremap <Esc> <C-\><C-n>
+
+" telescope
+nnoremap <leader>ff <cmd>Telescope git_files<cr>
+nnoremap <leader>fa <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope current_buffer_fuzzy_find<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>fm <cmd>Telescope man_pages<cr>
+nnoremap <leader>fc <cmd>Telescope git_commits<cr>
+
+" slime
+xmap <c-c><c-c> <Plug>SlimeRegionSend
+map <c-c><c-c> <Plug>SlimeParagraphSend
+map <c-c>v     <Plug>SlimeConfig
+vmap <leader><space> <Plug>SlimeRegionSend
+nmap <leader><space> <Plug>SlimeSendCell
 

@@ -17,6 +17,9 @@ Plug 'hoob3rt/lualine.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-lua/popup.nvim'
 
+" Zen mode
+Plug 'junegunn/goyo.vim'
+
 " file tree
 Plug 'kyazdani42/nvim-tree.lua'
 
@@ -31,8 +34,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 
 " find keybindings easier with suggestions
-Plug 'folke/which-key.nvim'
-
+" Plug 'folke/which-key.nvim'
 
 " find everything
 Plug 'nvim-telescope/telescope.nvim'
@@ -52,6 +54,7 @@ Plug 'williamboman/nvim-lsp-installer' " lsp
 
 " syntax trees for  better highliting
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'} 
+Plug 'nvim-treesitter/nvim-treesitter-textobjects'
 
 " autocompletion
 Plug 'hrsh7th/nvim-cmp'
@@ -59,7 +62,8 @@ Plug 'hrsh7th/cmp-nvim-lsp'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-calc'
-Plug 'hrsh7th/cmp-vsnip'
+" Plug 'hrsh7th/cmp-vsnip'
+Plug 'saadparwaiz1/cmp_luasnip'
 Plug 'hrsh7th/cmp-nvim-lua'
 Plug 'f3fora/cmp-spell'
 Plug 'ray-x/cmp-treesitter'
@@ -72,8 +76,9 @@ Plug 'onsails/lspkind-nvim'
 Plug 'windwp/nvim-autopairs'
 
 " snippets
-Plug 'hrsh7th/vim-vsnip'
-Plug 'rafamadriz/friendly-snippets'
+" Plug 'hrsh7th/vim-vsnip'
+Plug 'L3MON4D3/LuaSnip'
+" Plug 'rafamadriz/friendly-snippes'
 
 
 Plug 'godlygeek/tabular' " for markdown display
