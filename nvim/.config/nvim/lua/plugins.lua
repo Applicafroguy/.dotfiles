@@ -13,11 +13,11 @@ return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
   use { 'arcticicestudio/nord-vim' }
-  use { 'morhetz/gruvbox' }
+  use { 'gruvbox-community/gruvbox' }
   use { 'norcalli/nvim-terminal.lua' }
   use { 'hoob3rt/lualine.nvim' }
   use { 'nvim-lua/plenary.nvim' }
-  use { 'nvim-lua/popup.nvim' }
+  -- use { 'nvim-lua/popup.nvim' }
   use { 'junegunn/goyo.vim' }
   use { 'kyazdani42/nvim-tree.lua' }
   use { 'kyazdani42/nvim-web-devicons' }

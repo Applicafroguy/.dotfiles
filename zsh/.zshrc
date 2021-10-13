@@ -1,5 +1,4 @@
 # zshhrc
-
 source $HOME/.alias
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -20,6 +19,12 @@ setopt autocd extendedglob nomatch notify
 unsetopt beep
 disable r
 bindkey -e
+
+if [[ "$HOSTNAME" == *"villa-bosch.de" ]]; then
+  CONDA_PREFIX="/hits/fast/mbm/buhrjk/software/conda"
+else
+  CONDA_PREFIX="$HOME/miniconda3"
+fi
 
 eval "$($CONDA_PREFIX/bin/conda shell.zsh hook)"
 

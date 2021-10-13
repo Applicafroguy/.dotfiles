@@ -46,7 +46,7 @@ set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 set ignorecase
 set smartcase
-set hlsearch
+" set hlsearch
 set incsearch 
 set lazyredraw 
 set magic
@@ -65,7 +65,7 @@ set expandtab
 set smarttab
 set shiftwidth=2
 set tabstop=2
-set nowrap
+set wrap
 set lbr
 set tw=120
 set ai
@@ -147,5 +147,16 @@ map <c-c><c-c> <Plug>SlimeParagraphSend
 map <c-c>v     <Plug>SlimeConfig
 vmap <leader><space> <Plug>SlimeRegionSend
 nmap <leader><space> <Plug>SlimeSendCell
+
+
+fun! Rmdocs()
+  let l:topic = expand("<cword>")
+  echo l:topic
+  let l:command = "R --vanilla -q --no-echo -e 'rmdocs::rmd_help(\"" . l:topic . "\", lspmode = TRUE)'"
+  let l:path = system(command)
+  :execute 'tabnew' l:path
+endfun
+
+map <leader>hr :call Rmdocs()<cr>
 
 

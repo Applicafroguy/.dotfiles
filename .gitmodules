@@ -16,3 +16,6 @@
 [submodule "_software/WhiteSur-gtk-theme"]
 	path = _software/WhiteSur-gtk-theme
 	url = git@github.com:vinceliuice/WhiteSur-gtk-theme.git
+[submodule "_software/nord-gnome-terminal"]
+	path = _software/nord-gnome-terminal
+	url = https://github.com/arcticicestudio/nord-gnome-terminal.git
