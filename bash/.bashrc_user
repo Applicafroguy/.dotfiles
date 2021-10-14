@@ -17,6 +17,7 @@ fi
 
 ignoreeof=10
 
+HOSTNAME=$(hostname)
 if [[ "$HOSTNAME" == *"villa-bosch.de" ]]; then
   CONDA_PREFIX="/hits/fast/mbm/buhrjk/software/conda"
 else
@@ -27,5 +28,5 @@ export PATH DISPLAY LESS TERM PS1 PS2 ignoreeof CONDA_PREFIX
 
 eval "$($CONDA_PREFIX/bin/conda shell.bash hook)"
 
-eval "$(starship init bash)"
+# eval "$(starship init bash)"
 

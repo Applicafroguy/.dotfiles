@@ -20,6 +20,7 @@ unsetopt beep
 disable r
 bindkey -e
 
+HOSTNAME=$(hostname)
 if [[ "$HOSTNAME" == *"villa-bosch.de" ]]; then
   CONDA_PREFIX="/hits/fast/mbm/buhrjk/software/conda"
 else
