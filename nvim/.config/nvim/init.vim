@@ -19,8 +19,8 @@ augroup END
 set number
 set clipboard+=unnamedplus
 set showcmd
-set notimeout
-" set timeoutlen=500
+set timeout
+set timeoutlen=500
 set ttimeout
 set mouse=a
 set mousefocus
@@ -46,7 +46,7 @@ set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
 set ignorecase
 set smartcase
-" set hlsearch
+set hlsearch
 set incsearch 
 set lazyredraw 
 set magic
@@ -78,9 +78,7 @@ let g:lasttab = 1
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 au TabLeave * let g:lasttab = tabpagenr()
 
-
 " Mappings
-let mapleader = " "
 let mapleader = " "
 let maplocalleader = " "
 
@@ -100,53 +98,41 @@ inoremap ? ?<c-g>u
 inoremap ! !<c-g>u
 nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
 nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
-nnoremap <leader>ve :edit $HOME/.config/nvim/init.vim<CR>
-nnoremap <leader>vr :source $HOME/.config/nvim/init.vim<CR>
-nnoremap <leader>vso :source %<CR>
+
 map <silent><leader><cr> :noh<cr>
+
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-map <leader>tn :tabnew<cr>
-map <leader>tl :tabnext<cr>
-map <leader>th :tabprevious<cr>
-map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " spellcheck
 map <leader>ss :setlocal spell!<cr>
 map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
+map <leader>sa zg
+map <leader>sb zb
 map <leader>s? z=
+map <leader>s/ z=
+map z= <cmd>Telescope spell_suggest<cr>
+
 nnoremap gl <c-]>
 
-" insert chode chunks
-map <leader>ip i```{python}```O
-
-map <leader>ir i```{r}```xO
+" insert code chunks
+noremap <leader>ip i```{python}```O
+noremap <leader>ir i```{r}```xO
 
 "  nvim-tree
 nnoremap <C-n> :NvimTreeToggle<CR>
 
 tnoremap <Esc> <C-\><C-n>
 
-" telescope
-nnoremap <leader>ff <cmd>Telescope git_files<cr>
-nnoremap <leader>fa <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope current_buffer_fuzzy_find<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <leader>fm <cmd>Telescope man_pages<cr>
-nnoremap <leader>fc <cmd>Telescope git_commits<cr>
 
 " slime
-xmap <c-c><c-c> <Plug>SlimeRegionSend
-map <c-c><c-c> <Plug>SlimeParagraphSend
 map <c-c>v     <Plug>SlimeConfig
-vmap <leader><space> <Plug>SlimeRegionSend
 nmap <leader><space> <Plug>SlimeSendCell
+vmap <leader><space> <Plug>SlimeRegionSend
 
 
 fun! Rmdocs()

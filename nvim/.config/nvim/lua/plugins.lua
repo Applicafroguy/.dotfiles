@@ -17,6 +17,7 @@ return require('packer').startup(function()
   use { 'norcalli/nvim-terminal.lua' }
   use { 'hoob3rt/lualine.nvim' }
   use { 'nvim-lua/plenary.nvim' }
+  use { 'folke/which-key.nvim' }
   -- use { 'nvim-lua/popup.nvim' }
   use { 'junegunn/goyo.vim' }
   use { 'kyazdani42/nvim-tree.lua' }
