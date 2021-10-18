@@ -15,6 +15,8 @@ wk.register({
     c = { "<cmd>Telescope git_commits<cr>", "git commits" },
     k = { "<cmd>Telescope keymaps<cr>", "keymaps" },
     s = { "<cmd>Telescope spell_suggest<cr>", "spelling" },
+    t = { "<cmd>Telescope tmux sessions<cr>", "tmux session" },
+    w = { "<cmd>Telescope tmux windows<cr>", "tmux window" },
   },
   v = {
     name = "VIM",
