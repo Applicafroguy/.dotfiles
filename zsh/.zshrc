@@ -2,7 +2,7 @@
 source $HOME/.alias
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOME/.pathrc
+source $HOME/.env
 
 ## from bashrc
 # enable color support of ls and also add handy aliases
@@ -20,12 +20,6 @@ unsetopt beep
 disable r
 bindkey -e
 
-HOSTNAME=$(hostname)
-if [[ "$HOSTNAME" == *"villa-bosch.de" ]]; then
-  CONDA_PREFIX="/hits/fast/mbm/buhrjk/software/conda"
-else
-  CONDA_PREFIX="$HOME/miniconda3"
-fi
 
 eval "$($CONDA_PREFIX/bin/conda shell.zsh hook)"
 

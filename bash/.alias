@@ -35,6 +35,7 @@ alias ta='tmux attach-session'
 alias dot="cd $HOME/.dotfiles"
 alias r="radian"
 alias wiki="cd /hits/fast/mbm/share/mbm-wiki"
+alias srunlong="srun -t 1400:00 --mem=16000 -n20 --pty /bin/bash"
 vman () {
   nvim man://$1
 }
