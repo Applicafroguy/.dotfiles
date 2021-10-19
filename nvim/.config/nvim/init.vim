@@ -82,8 +82,8 @@ au TabLeave * let g:lasttab = tabpagenr()
 let mapleader = " "
 let maplocalleader = " "
 
-vnoremap <leader>p "_dP
 nmap <leader>ww :w!<cr>
+vnoremap <leader>p "_dP
 nnoremap Y y$
 vmap <cr> y
 nnoremap n nzzzv
@@ -124,10 +124,9 @@ noremap <leader>ip i```{python}```O
 noremap <leader>ir i```{r}```xO
 
 "  nvim-tree
-nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <C-n> :lua require'barbar-tree'.toggle()<CR>
 
 tnoremap <Esc> <C-\><C-n>
-
 
 " slime
 map <c-c>v     <Plug>SlimeConfig

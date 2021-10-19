@@ -29,8 +29,14 @@ wk.register({
     t = { ":tabnew<cr>", "new tab" },
     c = { "<cmd>cd %:p:h<cr>:pwd<cr>", "cd" },
     e = { ":tabedit <C-r>=expand('%:p:h')<cr>", "edit in new tab" },
-    n =  { ":tabnext<cr>", "next tab" },
+    n = { ":tabnext<cr>", "next tab" },
     p = { ":tabprevious<cr>", "previous tab" },
+    o = {
+      name = "order",
+      n = { ":BufferOrderByBufferNumber<CR>", "number" },
+      d = { ":BufferOrderByDirectory<CR>", "directory" },
+      l = { ":BufferOrderByLanguage<CR>", "language" },
+    },
   },
 }, { prefix = "<leader>"})
 
