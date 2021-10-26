@@ -1,6 +1,9 @@
 -- Setup nvim-cmp.
 local cmp = require'cmp'
 local luasnip = require'luasnip'
+local lspkind = require "lspkind"
+
+lspkind.init()
 
 vim.o.completeopt = 'menu,menuone,noselect'
 
@@ -18,6 +21,7 @@ cmp.setup({
     ['<c-a>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({
+      behavior = cmp.ConfirmBehavior.Insert,
       select = true
     }),
     ['<Tab>'] = function(fallback)
@@ -40,27 +44,41 @@ cmp.setup({
     end,
   },
   formatting = {
-    format = function(entry, vim_item)
-      vim_item.kind = require('lspkind').presets.default[vim_item.kind]
-      return vim_item
-    end
-  },
-  completion = {
-    keyword_lenght = 2
+    format = lspkind.cmp_format {
+      with_text = true,
+      menu = {
+        luasnip = "[snip]",
+        nvim_lsp = "[LSP]",
+        buffer = "[buf]",
+        nvim_lua = "[api]",
+        path = "[path]",
+        spell = "[spell]",
+        pandoc_references = "[ref]",
+        tags = "[tag]",
+        treesitter = "[ts]",
+        -- zsh = "[zsh]",
+        calc = "[calc]",
+        -- gh_issues = "[issues]",
+      },
+    },
   },
   sources = {
     -- { name = 'vsnip' },
     { name = 'luasnip' },
     { name = 'nvim_lsp' },
     { name = 'buffer' },
-    { name = 'spell' },
+    { name = "nvim_lua" },
     { name = 'path' },
+    { name = 'spell' },
     { name = 'pandoc_references' },
-    { name = 'nvim_lua' },
     -- { name = 'tmux' },
     { name = 'tags' },
     { name = 'treesitter' },
-    { name = 'zsh' },
+    -- { name = 'zsh' },
     { name = 'calc' },
-  }
+  },
+  experimental = {
+    native_menu = false,
+    ghost_text = true,
+  },
 })

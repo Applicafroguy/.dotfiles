@@ -28,20 +28,6 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
-
-local servers = { 'r_language_server', 'bashls', 'pyright' }
-for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    flags = {
-      debounce_text_changes = 250,
-    }
-  }
-end
-
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   virtual_text = false,
   signs = true,
@@ -49,7 +35,76 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagn
   update_in_insert = false,
 })
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+
+nvim_lsp.vimls.setup{}
+
+nvim_lsp.r_language_server.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 250,
+  }
+}
+
+nvim_lsp.bashls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 250,
+  }
+}
+
+nvim_lsp.pyright.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 250,
+  }
+}
+
+-- nvim_lsp.diagnosticls.setup {
+--   filetypes = {"python"},
+--   init_options = {
+--     formatters = {
+--       black = {
+--         command = "black",
+--         args = {"--quiet", "-"},
+--         rootPatterns = {".git", "pyproject.toml", "setup.py", "tox."},
+--       },
+--       formatFiletypes = {
+--         python = {"black"}
+--       }
+--     }
+--   }
+-- }
+
+
 -- You will likely want to reduce updatetime which affects CursorHold
 -- note: this setting is global and should be set only once
 -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]]
+
+function PrintDiagnostics(opts, bufnr, line_nr, client_id)
+  opts = opts or {}
+
+  bufnr = bufnr or 0
+  line_nr = line_nr or (vim.api.nvim_win_get_cursor(0)[1] - 1)
+
+  local line_diagnostics = vim.lsp.diagnostic.get_line_diagnostics(bufnr, line_nr, opts, client_id)
+  if vim.tbl_isempty(line_diagnostics) then return end
+
+  local diagnostic_message = ""
+  for i, diagnostic in ipairs(line_diagnostics) do
+    diagnostic_message = diagnostic_message .. string.format("%d: %s", i, diagnostic.message or "")
+    print(diagnostic_message)
+    if i ~= #line_diagnostics then
+      diagnostic_message = diagnostic_message .. "\n"
+    end
+  end
+  vim.api.nvim_echo({{diagnostic_message, "Normal"}}, false, {})
+end
+
+vim.cmd [[ autocmd CursorHold * lua PrintDiagnostics() ]]
+
 

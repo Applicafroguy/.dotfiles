@@ -18,9 +18,10 @@ return require('packer').startup(function()
   use { 'hoob3rt/lualine.nvim' }
   use { 'nvim-lua/plenary.nvim' }
   use { 'folke/which-key.nvim' }
-  use { 'romgrk/barbar.nvim',
-    requires = {'kyazdani42/nvim-web-devicons'}
-  }
+  use { 'kdheepak/tabline.nvim'}
+  -- use { 'romgrk/barbar.nvim' }
+  use { 'akinsho/bufferline.nvim' } 
+  use {'kyazdani42/nvim-web-devicons'}
   use { 'junegunn/goyo.vim' }
   use { 'kyazdani42/nvim-tree.lua' }
   use { 'ryanoasis/vim-devicons' }

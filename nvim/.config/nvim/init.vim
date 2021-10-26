@@ -123,13 +123,18 @@ nnoremap gl <c-]>
 noremap <leader>ip i```{python}```O
 noremap <leader>ir i```{r}```xO
 
+" keep visual selection after indent
+vnoremap > >gv
+vnoremap < <gv
+
 "  nvim-tree
-nnoremap <C-n> :lua require'barbar-tree'.toggle()<CR>
+" nnoremap <C-n> :lua require'tree'.toggle()<CR>
+nnoremap <C-n> :NvimTreeToggle<CR>
 
 tnoremap <Esc> <C-\><C-n>
 
 " slime
-map <c-c>v     <Plug>SlimeConfig
+map <c-c>v <Plug>SlimeConfig
 nmap <leader><space> <Plug>SlimeSendCell
 vmap <leader><space> <Plug>SlimeRegionSend
 
