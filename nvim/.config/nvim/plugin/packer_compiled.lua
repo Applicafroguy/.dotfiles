@@ -165,6 +165,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/buhrjk/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
+  ["nvim-scrollview"] = {
+    loaded = true,
+    path = "/home/buhrjk/.local/share/nvim/site/pack/packer/start/nvim-scrollview"
+  },
   ["nvim-terminal.lua"] = {
     loaded = true,
     path = "/home/buhrjk/.local/share/nvim/site/pack/packer/start/nvim-terminal.lua"
@@ -197,10 +201,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/buhrjk/.local/share/nvim/site/pack/packer/start/project.nvim"
   },
-  ["tabline.nvim"] = {
-    loaded = true,
-    path = "/home/buhrjk/.local/share/nvim/site/pack/packer/start/tabline.nvim"
-  },
   tabular = {
     loaded = true,
     path = "/home/buhrjk/.local/share/nvim/site/pack/packer/start/tabular"
@@ -216,6 +216,11 @@ _G.packer_plugins = {
   ["telescope.nvim"] = {
     loaded = true,
     path = "/home/buhrjk/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+  },
+  ["trouble.nvim"] = {
+    config = { "\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0" },
+    loaded = true,
+    path = "/home/buhrjk/.local/share/nvim/site/pack/packer/start/trouble.nvim"
   },
   ["vim-commentary"] = {
     loaded = true,
@@ -244,6 +249,10 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
+-- Config for: trouble.nvim
+time([[Config for trouble.nvim]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\ftrouble\frequire\0", "config", "trouble.nvim")
+time([[Config for trouble.nvim]], false)
 if should_profile then save_profiles() end
 
 end)

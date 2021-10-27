@@ -12,14 +12,22 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
+  use {
+  "folke/trouble.nvim",
+  requires = "kyazdani42/nvim-web-devicons",
+  config = function()
+    require("trouble").setup {
+    }
+  end
+}
+
   use { 'arcticicestudio/nord-vim' }
   use { 'gruvbox-community/gruvbox' }
   use { 'norcalli/nvim-terminal.lua' }
   use { 'hoob3rt/lualine.nvim' }
   use { 'nvim-lua/plenary.nvim' }
   use { 'folke/which-key.nvim' }
-  use { 'kdheepak/tabline.nvim'}
-  -- use { 'romgrk/barbar.nvim' }
+  use 'dstein64/nvim-scrollview'
   use { 'akinsho/bufferline.nvim' } 
   use {'kyazdani42/nvim-web-devicons'}
   use { 'junegunn/goyo.vim' }

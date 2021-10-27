@@ -17,12 +17,19 @@ wk.register({
     s = { "<cmd>Telescope spell_suggest<cr>", "spelling" },
     t = { "<cmd>Telescope tmux sessions<cr>", "tmux session" },
     w = { "<cmd>Telescope tmux windows<cr>", "tmux window" },
+    p = { "<cmd>Telescope projects<cr>", "projects" },
   },
   v = {
     name = "VIM",
     e = { ":edit $HOME/.config/nvim/init.vim<CR>", "edit config" },
     r = { ":source $HOME/.config/nvim/init.vim<CR>", "source config" },
     s = { ":source %<CR>", "source %" },
+    p = { 
+      name = "Packer",
+      i = { ":PackerInstall<CR>", "PackerInstall" },
+      c = { ":PackerCompile<CR>", "PackerCompile" },
+      d = { ":PackerClean<CR>", "PackerClean" }
+    },
   },
   t = {
     name = "Tabs",
@@ -38,7 +45,10 @@ wk.register({
       l = { ":BufferOrderByLanguage<CR>", "language" },
     },
   },
+  g = {
+    s = {":G <cr>", "git status"},
+    c = {":G commit<cr>", "git commit"}
+  }
 }, { prefix = "<leader>"})
-
 
 
