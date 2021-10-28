@@ -5,6 +5,8 @@ lua require('plugins')
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
 let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
+let g:netrw_browsex_viewer = 'firefox'
+
 
 filetype plugin on
 filetype indent on
@@ -24,7 +26,7 @@ set timeoutlen=500
 set ttimeout
 set mouse=a
 set mousefocus
-set cursorline
+" set cursorline
 set inccommand=nosplit
 set hidden
 set undofile
@@ -81,6 +83,9 @@ au TabLeave * let g:lasttab = tabpagenr()
 " Mappings
 let mapleader = " "
 let maplocalleader = " "
+
+" open link in browser
+nmap gx :!xdg-open <c-r><c-a>
 
 " easier surround
 vmap s S
