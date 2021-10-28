@@ -82,6 +82,12 @@ au TabLeave * let g:lasttab = tabpagenr()
 let mapleader = " "
 let maplocalleader = " "
 
+" easier surround
+vmap s S
+nmap s ys
+
+nnoremap <c-q> :q<cr>
+
 nmap <leader>ww :w!<cr>
 vnoremap <leader>p "_dP
 nnoremap Y y$
