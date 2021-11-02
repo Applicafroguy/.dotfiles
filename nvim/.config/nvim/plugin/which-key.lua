@@ -21,7 +21,7 @@ wk.register({
   },
   v = {
     name = "VIM",
-    e = { ":edit $HOME/.config/nvim/init.vim<CR>", "edit config" },
+    e = { ":edit $HOME/.config/nvim/init.vim<CR>:cd $HOME/.dotfiles<cr>", "edit config" },
     r = { ":source $HOME/.config/nvim/init.vim<CR>", "source config" },
     s = { ":source %<CR>", "source %" },
     p = { 
