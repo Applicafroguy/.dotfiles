@@ -21,6 +21,8 @@ return require('packer').startup(function()
   end
 }
 
+  use { 'nvim-telescope/telescope-packer.nvim' }
+
   -- use { 'glepnir/lspsaga.nvim' }
 
   use { 'arcticicestudio/nord-vim' }

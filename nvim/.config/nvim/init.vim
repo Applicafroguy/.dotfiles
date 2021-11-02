@@ -18,6 +18,8 @@ augroup filetypedetect
 augroup END
 
 " Set
+set list
+set listchars=nbsp:.
 set number
 set clipboard+=unnamedplus
 set showcmd

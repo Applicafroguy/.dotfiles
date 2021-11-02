@@ -20,11 +20,18 @@ telescope.setup{
       override_generic_sorter = true,
       override_file_sorter = true,
       case_mode = "smart_case",
-    }
+    },
+    packer = {
+      theme = "ivy",
+    },
   } 
 }
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('tmux')
 require('telescope').load_extension('projects')
+require("telescope").load_extension('packer')
+
+-- require('telescope').extensions.packer.(opts)
+
 
 
