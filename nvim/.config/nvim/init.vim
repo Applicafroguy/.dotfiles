@@ -2,11 +2,15 @@
 lua require('plugins')
 
 " Global settings
-let g:markdown_fenced_languages = ['html', 'python', 'bash=sh']
+let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'R=r']
 let g:vim_markdown_math = 1
 let g:vim_markdown_frontmatter = 1
 let g:netrw_browsex_viewer = 'firefox'
-
+let g:taboo_tab_format = '%f %m %x|' 
+let g:taboo_modified_tab_flag = '◌'
+let g:taboo_close_tab_label = '✖'
+let mapleader = " "
+let maplocalleader = " "
 
 filetype plugin on
 filetype indent on
@@ -14,10 +18,10 @@ au FocusGained,BufEnter * checktime
 syntax enable
 
 augroup filetypedetect
-  au! BufRead,BufNewFile *.qmd		setfiletype markdown
+  au! BufRead,BufNewFile *.qmd setfiletype markdown
 augroup END
 
-" Set
+"" Set
 set list
 set listchars=nbsp:.
 set number
@@ -28,7 +32,7 @@ set timeoutlen=500
 set ttimeout
 set mouse=a
 set mousefocus
-" set cursorline
+set nocursorline
 set inccommand=nosplit
 set hidden
 set undofile
@@ -75,32 +79,9 @@ set tw=120
 set ai
 set si
 set laststatus=2
-set switchbuf=useopen,usetab,newtab
-set stal=2
+set switchbuf=useopen,usetab
+set showtabline=2
 
-let g:lasttab = 1
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-au TabLeave * let g:lasttab = tabpagenr()
-
-" Mappings
-let mapleader = " "
-let maplocalleader = " "
-
-" open link in browser
-nmap gx :!xdg-open <c-r><c-a>
-
-" easier surround
-vmap s S
-nmap s ys
-
-nnoremap <c-q> :q<cr>
-
-nmap <leader>ww :w!<cr>
-vnoremap <leader>p "_dP
-nnoremap Y y$
-vmap <cr> y
-nnoremap n nzzzv
-nnoremap N Nzzzv
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
@@ -109,40 +90,15 @@ inoremap , ,<c-g>u
 inoremap . .<c-g>u
 inoremap ? ?<c-g>u
 inoremap ! !<c-g>u
-nnoremap <expr> k (v:count > 5 ? "m'" . v:count : "") . 'k'
-nnoremap <expr> j (v:count > 5 ? "m'" . v:count : "") . 'j'
-
-map <silent><leader><cr> :noh<cr>
 
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" spellcheck
-map <leader>ss :setlocal spell!<cr>
-map <leader>sn ]s
-map <leader>sp [s
-map <leader>sa zg
-map <leader>sa zg
-map <leader>sb zb
-map <leader>s? z=
-map <leader>s/ z=
-map z= <cmd>Telescope spell_suggest<cr>
-
-nnoremap gl <c-]>
-
 " insert code chunks
 noremap <leader>ip i```{python}```O
 noremap <leader>ir i```{r}```xO
-
-" keep visual selection after indent
-vnoremap > >gv
-vnoremap < <gv
-
-"  nvim-tree
-" nnoremap <C-n> :lua require'tree'.toggle()<CR>
-nnoremap <C-n> :NvimTreeToggle<CR>
 
 tnoremap <Esc> <C-\><C-n>
 
@@ -151,15 +107,7 @@ map <c-c>v <Plug>SlimeConfig
 nmap <leader><space> <Plug>SlimeSendCell
 vmap <leader><space> <Plug>SlimeRegionSend
 
+map <c-l> :noh<cr>
 
-fun! Rmdocs()
-  let l:topic = expand("<cword>")
-  echo l:topic
-  let l:command = "R --vanilla -q --no-echo -e 'rmdocs::rmd_help(\"" . l:topic . "\", lspmode = TRUE)'"
-  let l:path = system(command)
-  :execute 'tabnew' l:path
-endfun
-
-map <leader>hr :call Rmdocs()<cr>
 
 

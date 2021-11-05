@@ -25,14 +25,16 @@ return require('packer').startup(function()
 
   -- use { 'glepnir/lspsaga.nvim' }
 
+  use { 'tpope/vim-repeat' }
+  use { 'gcmt/taboo.vim' }
   use { 'arcticicestudio/nord-vim' }
   use { 'gruvbox-community/gruvbox' }
   use { 'norcalli/nvim-terminal.lua' }
   use { 'hoob3rt/lualine.nvim' }
   use { 'nvim-lua/plenary.nvim' }
   use { 'folke/which-key.nvim' }
-  use 'dstein64/nvim-scrollview'
-  use { 'akinsho/bufferline.nvim' } 
+  use { 'dstein64/nvim-scrollview' }
+  use { 'kdheepak/tabline.nvim' }
   use {'kyazdani42/nvim-web-devicons'}
   use { 'junegunn/goyo.vim' }
   use { 'kyazdani42/nvim-tree.lua' }

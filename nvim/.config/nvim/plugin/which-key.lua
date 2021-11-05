@@ -1,7 +1,6 @@
 local wk = require("which-key")
 
-wk.setup {
-}
+wk.setup{}
 
 wk.register({
   f = {
@@ -18,6 +17,7 @@ wk.register({
     t = { "<cmd>Telescope tmux sessions<cr>", "tmux session" },
     w = { "<cmd>Telescope tmux windows<cr>", "tmux window" },
     p = { "<cmd>Telescope projects<cr>", "projects" },
+    d = { "<cmd>Telescope buffers<cr>", "buffers" },
   },
   v = {
     name = "VIM",
@@ -43,13 +43,57 @@ wk.register({
     name = "git",
     G = {":G ", "git"},
     s = {":G <cr>", "git status"},
-    c = {":G commit<cr>", "git commit"}
+    c = {":G commit<cr>", "git commit"},
+    p = {":G push<cr>", "git push"}
   },
-  q = {
-    name = "close",
-    q = { ":q<cr>", "close" },
-    Q = { ":q!<cr>", "close!" }
-  }
+  Q = {
+    Q = { ":q!<cr>", "close!" },
+  },
+  l = {
+    name = "lsp",
+    wa = { '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', 'add workspace folder' },
+    wr = { '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', 'remove workspace folder' },
+    wl = { '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', 'list workspace folders' },
+    D = { '<cmd>lua vim.lsp.buf.type_definition()<CR>', 'type definition' },
+    rn = { '<cmd>lua vim.lsp.buf.rename()<CR>', 'rename' },
+    ca = { '<cmd>lua vim.lsp.buf.code_action()<CR>', 'code action' },
+    q = { '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', 'set loclist' },
+    e = { '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', 'show line diagnostic' },
+    ff = { '<cmd>lua vim.lsp.buf.formatting()<CR>', 'formatting' },
+    fp = { ':w<cr><cmd>! black %<CR>', 'format python with black' },
+  },
+  s = {
+    name = "spell", 
+    s = ':setlocal spell!<cr>',
+    n = ']s',
+    p = '[s',
+    a = 'zg',
+    a = 'zg',
+    b = 'zb',
+    ['?'] = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
+    ['/'] = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
+},
+  ww = {':w!<cr>', 'safe'},
 }, { prefix = "<leader>"})
+
+wk.register({
+  ['gx'] = { ':!xdg-open <c-r><c-a><cr>', 'open file' },
+  ['s'] = {'ys', 'surround', noremap = false},
+  ["<c-q>"] = {'<cmd>q<cr>', 'close buffer'},
+  Y = {'y$', 'yank to end'},
+  n = {'nzzzv', 'center search'},
+  gN = {'Nzzzv', 'center search'},
+  gl = {'<c-]>', 'open help link'},
+  ['<C-n>'] = { '<cmd>NvimTreeToggle<CR>', 'open file tree' },
+}, { mode = 'n' })
+
+wk.register({
+  s = {'S', 'surround'},
+  ['>'] = {'>gv', 'indent'},
+  ['<'] = {'<gv', 'dedent'},
+  ['<leader>p'] = {'"_dP', 'yank without overwriting reg'},
+  ['<cr>'] = {'y', 'yank'},
+}, { mode = 'v'})
+
 
 
