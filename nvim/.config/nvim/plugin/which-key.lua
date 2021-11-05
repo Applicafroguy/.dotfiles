@@ -73,6 +73,7 @@ wk.register({
     ['?'] = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
     ['/'] = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
 },
+  d = {'"_d', 'delete without overwriting reg'},
   ww = {':w!<cr>', 'safe'},
 }, { prefix = "<leader>"})
 
@@ -91,7 +92,7 @@ wk.register({
   s = {'S', 'surround'},
   ['>'] = {'>gv', 'indent'},
   ['<'] = {'<gv', 'dedent'},
-  ['<leader>p'] = {'"_dP', 'yank without overwriting reg'},
+  ['<leader>p'] = {'"_dP', 'replace without overwriting reg'},
   ['<cr>'] = {'y', 'yank'},
 }, { mode = 'v'})
 
