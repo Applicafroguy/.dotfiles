@@ -107,7 +107,4 @@ map <c-c>v <Plug>SlimeConfig
 nmap <leader><space> <Plug>SlimeSendCell
 vmap <leader><space> <Plug>SlimeRegionSend
 
-map <c-l> :noh<cr>
-
-
 

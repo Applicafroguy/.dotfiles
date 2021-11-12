@@ -8,7 +8,6 @@ source $HOME/.env
 # enable color support of ls and also add handy aliases
 test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 
-export EDITOR="nvim"
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line

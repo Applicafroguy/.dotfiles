@@ -17,7 +17,6 @@ fi
 
 ignoreeof=10
 
-export PATH DISPLAY LESS TERM PS1 PS2 ignoreeof CONDA_PREFIX
 
 eval "$($CONDA_PREFIX/bin/conda shell.bash hook)"
 

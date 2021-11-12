@@ -86,6 +86,7 @@ wk.register({
   gN = {'Nzzzv', 'center search'},
   gl = {'<c-]>', 'open help link'},
   ['<C-n>'] = { '<cmd>NvimTreeToggle<CR>', 'open file tree' },
+  ['<C-i>'] = { '<cmd>noh<cr>', 'remove search highlight' },
 }, { mode = 'n' })
 
 wk.register({
