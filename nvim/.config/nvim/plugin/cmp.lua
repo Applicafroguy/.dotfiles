@@ -14,17 +14,19 @@ cmp.setup({
     end,
   },
   mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-p>'] = cmp.mapping.select_prev_item(),
+    ['<C-n>'] = cmp.mapping.select_next_item(),
+    -- ['<c-tab>'] = cmp.mapping.select_prev_item(),
+    -- ['<tab>'] = cmp.mapping.select_next_item(),
     ['<c-a>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
+    ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({
-      behavior = cmp.ConfirmBehavior.Insert,
+      behavior = cmp.ConfirmBehavior.Replace,
       select = true
     }),
-    ['<Tab>'] = function(fallback)
+        ['<Tab>'] = function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
       elseif luasnip.expand_or_jumpable() then
@@ -63,7 +65,6 @@ cmp.setup({
     },
   },
   sources = {
-    -- { name = 'vsnip' },
     { name = 'luasnip' },
     { name = 'nvim_lsp' },
     { name = 'buffer' },
@@ -78,7 +79,7 @@ cmp.setup({
     { name = 'calc' },
   },
   experimental = {
-    native_menu = false,
+    native_menu = true,
     ghost_text = true,
   },
 })

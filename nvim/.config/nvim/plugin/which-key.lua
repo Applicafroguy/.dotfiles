@@ -75,6 +75,7 @@ wk.register({
 },
   d = {'"_d', 'delete without overwriting reg'},
   ww = {':w!<cr>', 'safe'},
+  ['<cr>'] = {':!%<cr>', 'execute current buffer'},
 }, { prefix = "<leader>"})
 
 wk.register({
