@@ -19,7 +19,7 @@ local on_attach = function(client, bufnr)
 end
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  virtual_text = false,
+  virtual_text = true,
   signs = true,
   underline = true,
   update_in_insert = false,
@@ -60,6 +60,14 @@ nvim_lsp.pyright.setup {
   }
 }
 
+nvim_lsp.hls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 250,
+  }
+}
+
 nvim_lsp.diagnosticls.setup {
   filetypes = {"python"},
   init_options = {
@@ -79,7 +87,8 @@ nvim_lsp.diagnosticls.setup {
 
 -- You will likely want to reduce updatetime which affects CursorHold
 -- note: this setting is global and should be set only once
-vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]]
+-- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]]
+
 
 -- -- lspsaga
 -- local saga = require 'lspsaga'
