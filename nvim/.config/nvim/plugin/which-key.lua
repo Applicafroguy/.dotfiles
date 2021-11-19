@@ -76,6 +76,7 @@ wk.register({
   d = {'"_d', 'delete without overwriting reg'},
   ww = {':w!<cr>', 'safe'},
   ['<cr>'] = {':!%<cr>', 'execute current buffer'},
+  n = { '<cmd>noh<cr>', 'remove search highlight' },
 }, { prefix = "<leader>"})
 
 wk.register({
@@ -87,7 +88,6 @@ wk.register({
   gN = {'Nzzzv', 'center search'},
   gl = {'<c-]>', 'open help link'},
   ['<C-n>'] = { '<cmd>NvimTreeToggle<CR>', 'open file tree' },
-  ['<C-i>'] = { '<cmd>noh<cr>', 'remove search highlight' },
 }, { mode = 'n' })
 
 wk.register({
@@ -99,4 +99,7 @@ wk.register({
 }, { mode = 'v'})
 
 
+wk.register({
+  s = {'S', 'surround'},
+}, { mode = 'v', noremap=false})
 

@@ -1,11 +1,9 @@
-# zshhrc
-source $HOME/.alias
+
+test -e ~/.env && source ~/.env
+test -e ~/.alias && source ~/.alias
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source $HOME/.env
 
-## from bashrc
-# enable color support of ls and also add handy aliases
 test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 
 autoload -z edit-command-line
@@ -28,7 +26,6 @@ if [ -d /etc/profile.d ]; then
   done
   setopt nomatch
 fi
-
 
 eval "$($CONDA_PREFIX/bin/conda shell.zsh hook)"
 

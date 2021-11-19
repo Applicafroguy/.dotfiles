@@ -4,8 +4,8 @@
 
 HOST="`uname -n`"
 
-test -e ~/.alias && . ~/.alias
-source ~/.env
+test -e ~/.env && source ~/.env
+test -e ~/.alias && source ~/.alias
 
 if [ -d /etc/profile.d ]; then
   for i in /etc/profile.d/*.sh; do
@@ -14,9 +14,6 @@ if [ -d /etc/profile.d ]; then
     fi
   done
 fi
-
-ignoreeof=10
-
 
 eval "$($CONDA_PREFIX/bin/conda shell.bash hook)"
 

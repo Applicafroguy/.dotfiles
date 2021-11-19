@@ -25,7 +25,8 @@ return require('packer').startup(function()
 
   -- use { 'glepnir/lspsaga.nvim' }
 
-  use { 'mattn/emmet-vim' }
+  use { 'aca/emmet-ls' }
+  -- use { 'mattn/emmet-vim' }
   use { 'tpope/vim-repeat' }
   use { 'gcmt/taboo.vim' }
   use { 'arcticicestudio/nord-vim' }

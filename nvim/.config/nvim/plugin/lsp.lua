@@ -1,5 +1,6 @@
-local nvim_lsp = require('lspconfig')
-local cmp_nvim_lsp = require('cmp_nvim_lsp')
+local lspconfig = require('lspconfig')
+local cmp = require('cmp_nvim_lsp')
+local configs = require'lspconfig/configs'
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -26,7 +27,8 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagn
 })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
+capabilities = cmp.update_capabilities(capabilities)
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 -- nvim_lsp.vimls.setup{
 --   on_attach = on_attach,
@@ -36,7 +38,7 @@ capabilities = cmp_nvim_lsp.update_capabilities(capabilities)
 --   }
 -- }
 
-nvim_lsp.r_language_server.setup {
+lspconfig.r_language_server.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   flags = {
@@ -44,7 +46,7 @@ nvim_lsp.r_language_server.setup {
   }
 }
 
-nvim_lsp.bashls.setup {
+lspconfig.bashls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   flags = {
@@ -52,7 +54,7 @@ nvim_lsp.bashls.setup {
   }
 }
 
-nvim_lsp.pyright.setup {
+lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   flags = {
@@ -60,7 +62,7 @@ nvim_lsp.pyright.setup {
   }
 }
 
-nvim_lsp.hls.setup {
+lspconfig.hls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   flags = {
@@ -68,7 +70,9 @@ nvim_lsp.hls.setup {
   }
 }
 
-nvim_lsp.diagnosticls.setup {
+lspconfig.diagnosticls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
   filetypes = {"python"},
   init_options = {
     formatters = {
@@ -84,15 +88,37 @@ nvim_lsp.diagnosticls.setup {
   }
 }
 
+lspconfig.sumneko_lua.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "lua-language-server" },
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = {'vim'},
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+    },
+  },
+}
 
--- You will likely want to reduce updatetime which affects CursorHold
--- note: this setting is global and should be set only once
+if not lspconfig.emmet_ls then
+  configs.emmet_ls = {
+    default_config = {
+      cmd = {'emmet-ls', '--stdio'};
+      filetypes = {'html', 'css', 'blade', 'jsx', 'xml', 'scss'};
+      root_dir = function(fname)
+        return vim.loop.cwd()
+      end;
+      settings = {};
+    };
+  }
+end
+lspconfig.emmet_ls.setup{ capabilities = capabilities; }
+
+
 -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]]
-
-
--- -- lspsaga
--- local saga = require 'lspsaga'
--- saga.init_lsp_saga()
-
 
 
