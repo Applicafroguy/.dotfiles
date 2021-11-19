@@ -81,7 +81,7 @@ wk.register({
 
 wk.register({
   ['gx'] = { ':!xdg-open <c-r><c-a><cr>', 'open file' },
-  ['s'] = {'ys', 'surround', noremap = false},
+  S = {'ys', 'surround', noremap = false},
   ["<c-q>"] = {'<cmd>q<cr>', 'close buffer'},
   Y = {'y$', 'yank to end'},
   n = {'nzzzv', 'center search'},
@@ -91,15 +91,10 @@ wk.register({
 }, { mode = 'n' })
 
 wk.register({
-  s = {'S', 'surround'},
   ['>'] = {'>gv', 'indent'},
   ['<'] = {'<gv', 'dedent'},
   ['<leader>p'] = {'"_dP', 'replace without overwriting reg'},
   ['<cr>'] = {'y', 'yank'},
 }, { mode = 'v'})
 
-
-wk.register({
-  s = {'S', 'surround'},
-}, { mode = 'v', noremap=false})
 
