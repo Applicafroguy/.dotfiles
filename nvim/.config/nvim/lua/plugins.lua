@@ -1,4 +1,3 @@
-
 -- bootstrap packer
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
@@ -8,26 +7,23 @@ end
 
 vim.cmd [[packadd packer.nvim]]
 
--- plugin list
 return require('packer').startup(function()
   use 'wbthomason/packer.nvim'
 
-  use {
-  "folke/trouble.nvim",
-  requires = "kyazdani42/nvim-web-devicons",
-  config = function()
-    require("trouble").setup {
-    }
-  end
-}
+  use { "folke/trouble.nvim",
+        config = function()
+          require("trouble").setup{}
+        end
+  }
 
   use { 'nvim-telescope/telescope-packer.nvim' }
 
-  -- use { 'glepnir/lspsaga.nvim' }
+  use { 'tpope/vim-repeat' }
+  use { 'tpope/vim-surround' }
+  use { 'tpope/vim-commentary' }
+  use { 'tpope/vim-fugitive' }
 
   use { 'aca/emmet-ls' }
-  -- use { 'mattn/emmet-vim' }
-  use { 'tpope/vim-repeat' }
   use { 'gcmt/taboo.vim' }
   use { 'arcticicestudio/nord-vim' }
   use { 'gruvbox-community/gruvbox' }
@@ -41,14 +37,11 @@ return require('packer').startup(function()
   use { 'junegunn/goyo.vim' }
   use { 'kyazdani42/nvim-tree.lua' }
   use { 'ryanoasis/vim-devicons' }
-  use { 'tpope/vim-surround' }
-  use { 'tpope/vim-commentary' }
   use { 'nvim-telescope/telescope.nvim' }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use { 'camgraff/telescope-tmux.nvim' }
   use { 'ahmedkhalf/project.nvim' }
   use { 'jpalardy/vim-slime' }
-  use { 'tpope/vim-fugitive' }
   use { 'neovim/nvim-lspconfig' }
   use { 'williamboman/nvim-lsp-installer'  }
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }

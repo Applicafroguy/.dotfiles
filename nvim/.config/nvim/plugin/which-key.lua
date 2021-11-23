@@ -1,6 +1,10 @@
 local wk = require("which-key")
 
-wk.setup{}
+wk.setup{
+  spelling = {
+      enabled = true
+    }
+}
 
 wk.register({
   f = {
@@ -64,30 +68,29 @@ wk.register({
   },
   s = {
     name = "spell", 
-    s = ':setlocal spell!<cr>',
-    n = ']s',
-    p = '[s',
-    a = 'zg',
-    a = 'zg',
-    b = 'zb',
+    s = { '<cmd>setlocal spell!<cr>', 'spellcheck' },
+    n = { ']s', 'next' },
+    p = {'[s', 'previous'},
+    g = {'zg', 'good'},
+    a = {'zg', 'accept'},
+    b = {'zb', 'bad'},
     ['?'] = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
     ['/'] = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
 },
   d = {'"_d', 'delete without overwriting reg'},
   ww = {':w!<cr>', 'safe'},
   ['<cr>'] = {':!%<cr>', 'execute current buffer'},
-  n = { '<cmd>noh<cr>', 'remove search highlight' },
 }, { prefix = "<leader>"})
 
 wk.register({
   ['gx'] = { ':!xdg-open <c-r><c-a><cr>', 'open file' },
-  S = {'ys', 'surround', noremap = false},
   ["<c-q>"] = {'<cmd>q<cr>', 'close buffer'},
   Y = {'y$', 'yank to end'},
   n = {'nzzzv', 'center search'},
   gN = {'Nzzzv', 'center search'},
   gl = {'<c-]>', 'open help link'},
   ['<C-n>'] = { '<cmd>NvimTreeToggle<CR>', 'open file tree' },
+  ['<esc>'] = { '<cmd>noh<cr>', 'remove search highlight' },
 }, { mode = 'n' })
 
 wk.register({
@@ -96,5 +99,4 @@ wk.register({
   ['<leader>p'] = {'"_dP', 'replace without overwriting reg'},
   ['<cr>'] = {'y', 'yank'},
 }, { mode = 'v'})
-
 
