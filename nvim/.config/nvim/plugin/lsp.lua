@@ -30,13 +30,13 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp.update_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
--- nvim_lsp.vimls.setup{
---   on_attach = on_attach,
---   capabilities = capabilities,
---   flags = {
---     debounce_text_changes = 250,
---   }
--- }
+lspconfig.vimls.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 250,
+  }
+}
 
 lspconfig.r_language_server.setup {
   on_attach = on_attach,

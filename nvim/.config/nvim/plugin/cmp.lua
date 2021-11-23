@@ -33,7 +33,7 @@ cmp.setup({
       else
         fallback()
       end
-    end, { 'i', 's', 'c'}),
+    end, { 'i', 's'}),
     ['<S-tab>'] = cmp.mapping(function (fallback)
       if cmp.visible() then
         cmp.select_prev_item()
@@ -42,7 +42,7 @@ cmp.setup({
       else
         fallback()
       end
-    end, { 'i', 's', 'c' })
+    end, { 'i', 's'})
   },
   autocomplete = false,
   formatting = {
