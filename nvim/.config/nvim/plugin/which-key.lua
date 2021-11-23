@@ -94,6 +94,7 @@ wk.register({
 }, { mode = 'n' })
 
 wk.register({
+  ['gx'] = { '"ty:!xdg-open t<cr>', 'open file' },
   ['>'] = {'>gv', 'indent'},
   ['<'] = {'<gv', 'dedent'},
   ['<leader>p'] = {'"_dP', 'replace without overwriting reg'},
