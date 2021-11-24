@@ -85,12 +85,13 @@ wk.register({
 wk.register({
   ['gx'] = { ':!xdg-open <c-r><c-a><cr>', 'open file' },
   ["<c-q>"] = {'<cmd>q<cr>', 'close buffer'},
+  ['<C-n>'] = { '<cmd>NvimTreeToggle<CR>', 'open file tree' },
+  ['<esc>'] = { '<cmd>noh<cr>', 'remove search highlight' },
   Y = {'y$', 'yank to end'},
   n = {'nzzzv', 'center search'},
   gN = {'Nzzzv', 'center search'},
   gl = {'<c-]>', 'open help link'},
-  ['<C-n>'] = { '<cmd>NvimTreeToggle<CR>', 'open file tree' },
-  ['<esc>'] = { '<cmd>noh<cr>', 'remove search highlight' },
+  gf = { ':e <cfile><CR>', 'edit file' }
 }, { mode = 'n' })
 
 wk.register({
