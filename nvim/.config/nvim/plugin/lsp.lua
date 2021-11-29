@@ -17,6 +17,7 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+  client.resolved_capabilities.document_formatting = true
 end
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -88,21 +89,34 @@ lspconfig.diagnosticls.setup {
   }
 }
 
-lspconfig.sumneko_lua.setup {
+lspconfig.yamlls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  cmd = { "lua-language-server" },
+  flags = {
+    debounce_text_changes = 250,
+  },
   settings = {
-    Lua = {
-      diagnostics = {
-        globals = {'vim'},
-      },
-      workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
-      },
+    yaml = {
+      format = {enable = true},
     },
   },
 }
+
+-- lspconfig.sumneko_lua.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   cmd = { "lua-language-server" },
+--   settings = {
+--     Lua = {
+--       diagnostics = {
+--         globals = {'vim'},
+--       },
+--       workspace = {
+--         library = vim.api.nvim_get_runtime_file("", true),
+--       },
+--     },
+--   },
+-- }
 
 if not lspconfig.emmet_ls then
   configs.emmet_ls = {

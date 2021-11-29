@@ -103,8 +103,8 @@ noremap <leader>ir i```{r}```xO
 tnoremap <Esc> <C-\><C-n>
 
 " slime
-map <c-c>v <Plug>SlimeConfig
-nmap <leader><space> <Plug>SlimeSendCell
-vmap <leader><space> <Plug>SlimeRegionSend
+" map <c-c>v <Plug>SlimeConfig
+" nmap <leader><space> <Plug>SlimeSendCell
+" vmap <leader><space> <Plug>SlimeRegionSend
 
 

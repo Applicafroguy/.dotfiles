@@ -77,9 +77,17 @@ wk.register({
     ['?'] = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
     ['/'] = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
 },
+  c = {
+    name = "code",
+    c = {'<Plug>SlimeConfig', 'config'},
+    s = {':!%<cr>', 'source bash buffer'},
+  },
+  ['<cr>'] = {'<Plug>SlimeSendCell', 'run code section'},
   d = {'"_d', 'delete without overwriting reg'},
-  ww = {':w!<cr>', 'safe'},
-  ['<cr>'] = {':!%<cr>', 'execute current buffer'},
+  w = {
+    name = 'save',
+    w = {':w!<cr>', 'save file'},
+  },
 }, { prefix = "<leader>"})
 
 wk.register({
@@ -95,10 +103,12 @@ wk.register({
 }, { mode = 'n' })
 
 wk.register({
+  ['<cr>'] = {'<Plug>SlimeRegionSend', 'run code region'},
   ['gx'] = { '"ty:!xdg-open t<cr>', 'open file' },
   ['>'] = {'>gv', 'indent'},
   ['<'] = {'<gv', 'dedent'},
   ['<leader>p'] = {'"_dP', 'replace without overwriting reg'},
-  ['<cr>'] = {'y', 'yank'},
 }, { mode = 'v'})
+
+
 
