@@ -1,5 +1,7 @@
 " Plugins
+lua require('impatient')
 lua require('plugins')
+lua require('packer_compiled')
 
 " Global settings
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'R=r']
@@ -25,6 +27,7 @@ augroup END
 set list
 set listchars=nbsp:.
 set number
+set signcolumn=yes
 set clipboard+=unnamedplus
 set showcmd
 set timeout
@@ -41,7 +44,6 @@ set nowritebackup
 set cmdheight=2
 set updatetime=250
 set shortmess+=c
-set signcolumn=number
 set history=500
 set autoread
 set so=7
@@ -96,9 +98,6 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-" insert code chunks
-noremap <leader>ip i```{python}```O
-noremap <leader>ir i```{r}```xO
 
 tnoremap <Esc> <C-\><C-n>
 

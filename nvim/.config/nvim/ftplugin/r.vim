@@ -1,3 +1,3 @@
 
-let b:slime_cell_delimiter = "```"
+" let b:slime_cell_delimiter = "```"
 

@@ -7,22 +7,32 @@ end
 
 vim.cmd [[packadd packer.nvim]]
 
-return require('packer').startup(function()
+return require('packer').startup{
+  function(use)
   use 'wbthomason/packer.nvim'
-
   use { "folke/trouble.nvim",
         config = function()
           require("trouble").setup{}
         end
   }
-
   use { 'nvim-telescope/telescope-packer.nvim' }
-
+  use { 'lewis6991/impatient.nvim' }
   use { 'tpope/vim-repeat' }
   use { 'tpope/vim-surround' }
-  use { 'tpope/vim-commentary' }
   use { 'tpope/vim-fugitive' }
-
+  use {
+      'lewis6991/gitsigns.nvim',
+      config = function()
+        require('gitsigns').setup {
+        }
+      end
+  }
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+        require('Comment').setup()
+    end
+  }
   use { 'aca/emmet-ls' }
   use { 'gcmt/taboo.vim' }
   use { 'arcticicestudio/nord-vim' }
@@ -33,7 +43,7 @@ return require('packer').startup(function()
   use { 'folke/which-key.nvim' }
   use { 'dstein64/nvim-scrollview' }
   use { 'kdheepak/tabline.nvim' }
-  use {'kyazdani42/nvim-web-devicons'}
+  use { 'kyazdani42/nvim-web-devicons' }
   use { 'junegunn/goyo.vim' }
   use { 'kyazdani42/nvim-tree.lua' }
   use { 'ryanoasis/vim-devicons' }
@@ -56,7 +66,7 @@ return require('packer').startup(function()
   use { 'f3fora/cmp-spell' }
   use { 'ray-x/cmp-treesitter' }
   use { 'tamago324/cmp-zsh' }
-  use { 'andersevenrud/compe-tmux', branch = 'cmp' }
+  use { 'andersevenrud/cmp-tmux' }
   use { 'quangnguyen30192/cmp-nvim-tags' }
   use { 'jc-doyle/cmp-pandoc-references' }
   use { 'onsails/lspkind-nvim' }
@@ -64,5 +74,9 @@ return require('packer').startup(function()
   use { 'L3MON4D3/LuaSnip' }
   use { 'rafamadriz/friendly-snippets' }
   use { 'godlygeek/tabular' }
-end)
-
+  -- use { 'tpope/vim-commentary' }
+  end,
+  config = {
+    compile_path = vim.fn.stdpath('config')..'/lua/packer_compiled.lua'
+  },
+}

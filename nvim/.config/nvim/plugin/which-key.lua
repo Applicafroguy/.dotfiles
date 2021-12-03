@@ -22,6 +22,7 @@ wk.register({
     w = { "<cmd>Telescope tmux windows<cr>", "tmux window" },
     p = { "<cmd>Telescope projects<cr>", "projects" },
     d = { "<cmd>Telescope buffers<cr>", "buffers" },
+    ['<space>'] = { ':Telescope', 'Telescope' },
   },
   v = {
     name = "VIM",
@@ -31,8 +32,9 @@ wk.register({
     p = { 
       name = "Packer",
       i = { ":PackerInstall<CR>", "PackerInstall" },
+      u = { ":PackerUpdate<CR>", "PackerUpdate" },
       c = { ":PackerCompile<CR>", "PackerCompile" },
-      d = { ":PackerClean<CR>", "PackerClean" }
+      d = { ":PackerClean<CR>", "PackerClean" },
     },
   },
   t = {
@@ -55,16 +57,27 @@ wk.register({
   },
   l = {
     name = "lsp",
-    wa = { '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', 'add workspace folder' },
-    wr = { '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', 'remove workspace folder' },
-    wl = { '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', 'list workspace folders' },
+    w = {
+      name = "workspace",
+      a = { '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', 'add workspace folder' },
+      r = { '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', 'remove workspace folder' },
+      l = { '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', 'list workspace folders' },
+    },
     D = { '<cmd>lua vim.lsp.buf.type_definition()<CR>', 'type definition' },
     rn = { '<cmd>lua vim.lsp.buf.rename()<CR>', 'rename' },
-    ca = { '<cmd>lua vim.lsp.buf.code_action()<CR>', 'code action' },
+    ca = { '<cmd>Telescope lsp_code_actions<CR>', 'code action' },
     q = { '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', 'set loclist' },
     e = { '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', 'show line diagnostic' },
-    ff = { '<cmd>lua vim.lsp.buf.formatting()<CR>', 'formatting' },
-    fp = { ':w<cr><cmd>! black %<CR>', 'format python with black' },
+    d = {
+      name = 'diagnostic',
+      d = {'<cmd>lua vim.lsp.diagnostic.disable()<CR>', 'disable'},
+      s = {'<cmd>lua vim.lsp.diagnostic.enable()<CR>', 'show'},
+    },
+    f = {
+      name = "format",
+      f = { '<cmd>lua vim.lsp.buf.formatting()<CR>', 'formatting' },
+      p = { ':w<cr><cmd>! black %<CR>', 'format python with black' },
+    },
   },
   s = {
     name = "spell", 
