@@ -15,6 +15,7 @@ return require('packer').startup{
           require("trouble").setup{}
         end
   }
+  use { 'mfussenegger/nvim-dap' }
   use { 'nvim-telescope/telescope-packer.nvim' }
   use { 'lewis6991/impatient.nvim' }
   use { 'tpope/vim-repeat' }

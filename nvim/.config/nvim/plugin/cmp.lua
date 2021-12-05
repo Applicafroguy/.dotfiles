@@ -7,6 +7,11 @@ lspkind.init()
 
 vim.o.completeopt = 'menuone,noinsert'
 
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -16,8 +21,8 @@ cmp.setup({
   mapping = {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<s-tab>'] = cmp.mapping.select_prev_item(),
-    ['<tab>'] = cmp.mapping.select_next_item(),
+    -- ['<s-tab>'] = cmp.mapping.select_prev_item(),
+    -- ['<tab>'] = cmp.mapping.select_next_item(),
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<c-a>'] = cmp.mapping.complete(),
@@ -25,24 +30,28 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({
       select = true
     }),
-    -- ['<tab>'] = cmp.mapping(function (fallback)
-    --   if cmp.visible() then
-    --     cmp.select_next_item()
-    --   elseif luasnip and luasnip.expand_or_jumpable() then
-    --     luasnip.expand_or_jump()
-    --   else
-    --     fallback()
-    --   end
-    -- end, { 'i', 's'}),
-    -- ['<S-tab>'] = cmp.mapping(function (fallback)
-    --   if cmp.visible() then
-    --     cmp.select_prev_item()
-    --   elseif luasnip and luasnip.jumpable(-1) then
-    --     luasnip.jump(-1)
-    --   else
-    --     fallback()
-    --   end
-    -- end, { 'i', 's'})
+
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
   },
   autocomplete = false,
   formatting = {
@@ -83,3 +92,27 @@ cmp.setup({
     ghost_text = true,
   },
 })
+
+local ls = require("luasnip")
+local s = ls.snippet
+local sn = ls.snippet_node
+local t = ls.text_node
+local i = ls.insert_node
+local f = ls.function_node
+local c = ls.choice_node
+local d = ls.dynamic_node
+local r = ls.restore_node
+
+ls.snippets = {
+  all = {
+    s("lorem ipsum", {
+      t("Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit"),
+    })
+  },
+  r = {
+    s("p", {
+      t("%>%")
+    })
+  }
+}
+
