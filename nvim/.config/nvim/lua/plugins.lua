@@ -10,24 +10,24 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup{
   function(use)
   use 'wbthomason/packer.nvim'
-  use { "folke/trouble.nvim",
-        config = function()
-          require("trouble").setup{}
-        end
-  }
+  -- use { "folke/trouble.nvim",
+        -- config = function()
+        --   require("trouble").setup{}
+        -- end
+  -- }
   use { 'mfussenegger/nvim-dap' }
   use { 'nvim-telescope/telescope-packer.nvim' }
-  use { 'lewis6991/impatient.nvim' }
+  -- use { 'lewis6991/impatient.nvim' }
   use { 'tpope/vim-repeat' }
   use { 'tpope/vim-surround' }
   use { 'tpope/vim-fugitive' }
   use {
       'lewis6991/gitsigns.nvim',
       config = function()
-        require('gitsigns').setup {
-        }
+        require('gitsigns').setup()
       end
   }
+  use { 'lambdalisue/suda.vim' }
   use {
     'numToStr/Comment.nvim',
     config = function()

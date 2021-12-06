@@ -1,7 +1,5 @@
 " Plugins
-lua require('impatient')
 lua require('plugins')
-lua require('packer_compiled')
 
 " Global settings
 let g:markdown_fenced_languages = ['html', 'python', 'bash=sh', 'R=r']

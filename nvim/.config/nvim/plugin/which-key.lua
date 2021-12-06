@@ -26,7 +26,7 @@ wk.register({
   },
   v = {
     name = "VIM",
-    e = { ":edit $HOME/.config/nvim/init.vim<CR>:cd $HOME/.dotfiles<cr>", "edit config" },
+    e = { ":cd $HOME/.dotfiles<cr>:edit $HOME/.config/nvim/init.vim<CR>", "edit config" },
     r = { ":source $HOME/.config/nvim/init.vim<CR>", "source config" },
     s = { ":source %<CR>", "source %" },
     p = { 
@@ -35,6 +35,7 @@ wk.register({
       u = { ":PackerUpdate<CR>", "PackerUpdate" },
       c = { ":PackerCompile<CR>", "PackerCompile" },
       d = { ":PackerClean<CR>", "PackerClean" },
+      s = { ":PackerSync<CR>", "PackerSync" },
     },
   },
   t = {
