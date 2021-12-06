@@ -1,4 +1,4 @@
-" Plugins
+"Plugins
 lua require('plugins')
 
 " Global settings
