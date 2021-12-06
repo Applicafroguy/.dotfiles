@@ -1,6 +1,7 @@
 local lspconfig = require('lspconfig')
 local cmp = require('cmp_nvim_lsp')
 local configs = require'lspconfig/configs'
+local util = require("lspconfig/util")
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -55,12 +56,17 @@ lspconfig.bashls.setup {
   }
 }
 
+
 lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   flags = {
     debounce_text_changes = 250,
-  }
+  },
+  root_dir = function(fname)
+    return util.root_pattern(".git", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
+    util.path.dirname(fname)
+  end
 }
 
 lspconfig.hls.setup {
