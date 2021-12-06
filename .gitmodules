@@ -7,18 +7,12 @@
 [submodule "zsh/.zsh/zsh-autosuggestions"]
 	path = zsh/.zsh/zsh-autosuggestions
 	url = git@github.com:zsh-users/zsh-autosuggestions.git
-[submodule "theme/.themes/Nordic-dark"]
-	path = theme/.themes/Nordic-dark
-	url = git@github.com:EliverLara/Nordic.git
-[submodule "theme/clones/WhiteSur-gtk-theme"]
-	path = theme/clones/WhiteSur-gtk-theme
-	url = git@github.com:vinceliuice/WhiteSur-gtk-theme.git
-[submodule "_software/WhiteSur-gtk-theme"]
-	path = _software/WhiteSur-gtk-theme
-	url = git@github.com:vinceliuice/WhiteSur-gtk-theme.git
 [submodule "_software/nord-gnome-terminal"]
 	path = _software/nord-gnome-terminal
 	url = https://github.com/arcticicestudio/nord-gnome-terminal.git
 [submodule "_dev/deps/stow"]
 	path = _dev/deps/stow
 	url = https://git.savannah.gnu.org/git/stow.git
+[submodule "theme/.themes/Nordic-Dark"]
+	path = theme/.themes/Nordic-Dark
+	url = git@github.com:EliverLara/Nordic.git

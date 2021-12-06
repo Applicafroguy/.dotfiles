@@ -84,6 +84,7 @@ set laststatus=2
 set switchbuf=useopen,usetab
 set showtabline=2
 
+
 nmap <M-j> mz:m+<cr>`z
 nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
