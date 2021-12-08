@@ -45,11 +45,16 @@ return require('packer').startup{
   use { 'kyazdani42/nvim-tree.lua' }
   use { 'junegunn/goyo.vim' } -- zen-mode
   use { 'gruvbox-community/gruvbox' }
+  -- use { 'arcticicestudio/nord-vim',
+  --     config = function()
+  --     vim.cmd [[colorscheme nord]]
+  --     end
+  --   }
   use { 'shaunsingh/nord.nvim',
     config = function()
       vim.g.nord_contrast = true
       vim.g.nord_borders = true
-      vim.g.nord_disable_background = false
+      vim.g.nord_disable_background = true
       vim.g.nord_italic = true
       vim.g.nord_enable_sidebar_background = false
       require('nord').set()
