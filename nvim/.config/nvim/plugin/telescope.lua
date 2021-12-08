@@ -4,7 +4,11 @@ local actions = require('telescope.actions')
 
 telescope.setup{
   defaults = {
-    theme = "dropdown",
+    layout_strategy = "flex",
+    sorting_strategy = "ascending",
+    layout_config = {
+        prompt_position = "top",
+    },
     vimgrep_arguments = {
       "rg",
       "--color=never",
@@ -14,7 +18,7 @@ telescope.setup{
       "--column",
       "--smart-case",
       "--hidden",
-      "--trim" -- add this value
+      "--trim",
     },
     mappings = {
       i = {

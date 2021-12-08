@@ -44,6 +44,7 @@ return require('packer').startup{
   use { 'norcalli/nvim-terminal.lua' }
   use { 'kyazdani42/nvim-tree.lua' }
   use { 'junegunn/goyo.vim' } -- zen-mode
+  use { 'tjdevries/colorbuddy.nvim' }
   use { 'gruvbox-community/gruvbox' }
   -- use { 'arcticicestudio/nord-vim',
   --     config = function()
@@ -57,7 +58,7 @@ return require('packer').startup{
       vim.g.nord_disable_background = true
       vim.g.nord_italic = true
       vim.g.nord_enable_sidebar_background = false
-      require('nord').set()
+      -- require('nord').set()
     end
  }
   use { "catppuccin/nvim", as = "catppuccin",
