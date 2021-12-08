@@ -108,21 +108,21 @@ lspconfig.yamlls.setup {
   },
 }
 
--- lspconfig.sumneko_lua.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   cmd = { "lua-language-server" },
---   settings = {
---     Lua = {
---       diagnostics = {
---         globals = {'vim'},
---       },
---       workspace = {
---         library = vim.api.nvim_get_runtime_file("", true),
---       },
---     },
---   },
--- }
+lspconfig.sumneko_lua.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "lua-language-server" },
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = {'vim'},
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+    },
+  },
+}
 
 if not lspconfig.emmet_ls then
   configs.emmet_ls = {
