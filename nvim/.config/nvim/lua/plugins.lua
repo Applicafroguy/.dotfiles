@@ -74,7 +74,6 @@ return require('packer').startup{
   use { 'nvim-telescope/telescope.nvim' }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use { 'camgraff/telescope-tmux.nvim' }
-  use { 'nvim-telescope/telescope-packer.nvim' }
   use { 'nvim-telescope/telescope-dap.nvim' }
   use { 'dhruvmanila/telescope-bookmarks.nvim' }
   use { 'ahmedkhalf/project.nvim' }

@@ -46,11 +46,9 @@ telescope.setup{
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('tmux')
 require('telescope').load_extension('projects')
-require("telescope").load_extension('packer')
+-- require("telescope").load_extension('packer')
 require("telescope").load_extension('dap')
 require("telescope").load_extension('bookmarks')
 require("telescope").load_extension('neoclip')
-
-
 
 
