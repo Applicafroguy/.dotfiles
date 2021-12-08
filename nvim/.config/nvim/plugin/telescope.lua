@@ -1,9 +1,21 @@
 local telescope = require('telescope')
-
 local actions = require('telescope.actions')
+
 
 telescope.setup{
   defaults = {
+    theme = "dropdown",
+    vimgrep_arguments = {
+      "rg",
+      "--color=never",
+      "--no-heading",
+      "--with-filename",
+      "--line-number",
+      "--column",
+      "--smart-case",
+      "--hidden",
+      "--trim" -- add this value
+    },
     mappings = {
       i = {
         ['<C-u>'] = false,
@@ -21,8 +33,9 @@ telescope.setup{
       override_file_sorter = true,
       case_mode = "smart_case",
     },
-    packer = {
-      theme = "ivy",
+    bookmarks = {
+      selected_browser = 'firefox',
+      url_open_command = 'xdg-open',
     },
   } 
 }
@@ -30,8 +43,10 @@ require('telescope').load_extension('fzf')
 require('telescope').load_extension('tmux')
 require('telescope').load_extension('projects')
 require("telescope").load_extension('packer')
+require("telescope").load_extension('dap')
+require("telescope").load_extension('bookmarks')
+require("telescope").load_extension('neoclip')
 
--- require('telescope').extensions.packer.(opts)
 
 
 

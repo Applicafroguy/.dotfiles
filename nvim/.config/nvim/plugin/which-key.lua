@@ -6,6 +6,7 @@ wk.setup{
     }
 }
 
+
 wk.register({
   f = {
     name = "Telescope",
@@ -14,15 +15,20 @@ wk.register({
     g = { "<cmd>Telescope live_grep<cr>", "grep" },
     b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "fuzzy" },
     h = { "<cmd>Telescope help_tags<cr>", "help tags" },
-    m = { "<cmd>Telescope man_pages<cr>", "man pages" },
+    m = { "<cmd>Terescope man_pages<cr>", "man pages" },
     c = { "<cmd>Telescope git_commits<cr>", "git commits" },
     k = { "<cmd>Telescope keymaps<cr>", "keymaps" },
-    s = { "<cmd>Telescope spell_suggest<cr>", "spelling" },
+    s = { "<cmd>Telescope builtin<cr>", "spelling" },
+    ['<space>'] = { "<cmd>Telescope builtin<cr>", "spelling" },
     t = { "<cmd>Telescope tmux sessions<cr>", "tmux session" },
     w = { "<cmd>Telescope tmux windows<cr>", "tmux window" },
     p = { "<cmd>Telescope projects<cr>", "projects" },
     d = { "<cmd>Telescope buffers<cr>", "buffers" },
-    ['<space>'] = { ':Telescope', 'Telescope' },
+    i = { "<cmd>Telescope bookmarks<cr>", "bookmarks" },
+    q = { "<cmd>Telescope quickfix<cr>", "quickfix" },
+    l = { "<cmd>Telescope loclist<cr>", "loclist" },
+    r = { "<cmd>Telescope registers<cr>", "register" },
+    y = { "<cmd>Telescope neoclip<cr>", "register" },
   },
   v = {
     name = "VIM",
@@ -64,8 +70,9 @@ wk.register({
       r = { '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', 'remove workspace folder' },
       l = { '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', 'list workspace folders' },
     },
+    r = { "<cmd>Telescope lsp_references<cr>", "register" },
     D = { '<cmd>lua vim.lsp.buf.type_definition()<CR>', 'type definition' },
-    rn = { '<cmd>lua vim.lsp.buf.rename()<CR>', 'rename' },
+    n = { '<cmd>lua vim.lsp.buf.rename()<CR>', 'rename' },
     ca = { '<cmd>Telescope lsp_code_actions<CR>', 'code action' },
     q = { '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', 'set loclist' },
     e = { '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', 'show line diagnostic' },
@@ -82,14 +89,14 @@ wk.register({
   },
   s = {
     name = "spell", 
-    s = { '<cmd>setlocal spell!<cr>', 'spellcheck' },
+    s = { "<cmd>Telescope spell_suggest<cr>", "spelling" },
+    ['/'] = { '<cmd>setlocal spell!<cr>', 'spellcheck' },
     n = { ']s', 'next' },
     p = {'[s', 'previous'},
     g = {'zg', 'good'},
     a = {'zg', 'accept'},
     b = {'zb', 'bad'},
     ['?'] = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
-    ['/'] = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
 },
   c = {
     name = "code",
@@ -109,11 +116,32 @@ wk.register({
   ["<c-q>"] = {'<cmd>q<cr>', 'close buffer'},
   ['<C-n>'] = { '<cmd>NvimTreeToggle<CR>', 'open file tree' },
   ['<esc>'] = { '<cmd>noh<cr>', 'remove search highlight' },
-  Y = {'y$', 'yank to end'},
   n = {'nzzzv', 'center search'},
   gN = {'Nzzzv', 'center search'},
   gl = {'<c-]>', 'open help link'},
-  gf = { ':e <cfile><CR>', 'edit file' }
+  gf = { ':e <cfile><CR>', 'edit file' },
+  ['<M-j>'] = { 'mz:m+<cr>`z', 'move line down' },
+  ['<M-k>'] = { 'mz:m-2<cr>`z', 'move line up' },
+}, { mode = 'n' })
+
+-- buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+-- buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
+-- buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+-- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
+-- buf_set_keymap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+-- buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
+-- buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+-- buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+
+wk.register({
+  [','] = {',<c-g>u', ','},
+  ['.'] = {'.<c-g>u', '.'},
+  ['?'] = {'?<c-g>u', '?'},
+  ['!'] = {'!<c-g>u', '!'},
+  ['<C-j>']  = {'<C-W>j', 'move to window'},
+  ['<C-k>']  = {'<C-W>k', 'move to window'},
+  ['<C-h>']  = {'<C-W>h', 'move to window'},
+  ['<C-l>']  = {'<C-W>l', 'move to window'},
 }, { mode = 'n' })
 
 wk.register({
@@ -122,7 +150,12 @@ wk.register({
   ['>'] = {'>gv', 'indent'},
   ['<'] = {'<gv', 'dedent'},
   ['<leader>p'] = {'"_dP', 'replace without overwriting reg'},
+  ['<M-j>'] =  { ":m'>+<cr>`<my`>mzgv`yo`z", 'move line down' },
+  ['<M-k>'] = { ":m'<-2<cr>`>my`<mzgv`yo`z", 'move line up' },
 }, { mode = 'v'})
 
 
+wk.register({
+  ['<esc>'] = {'<C-\\><C-n>', 'escape'},
+}, { mode = 't'})
 

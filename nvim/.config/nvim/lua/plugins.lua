@@ -1,4 +1,4 @@
--- bootstrap packer
+--  bootstrap packer
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
@@ -10,13 +10,11 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup{
   function(use)
   use 'wbthomason/packer.nvim'
-  -- use { "folke/trouble.nvim",
-  --        config = function()
-  --          require("trouble").setup{}
-  --        end
-  -- }
-  use { 'mfussenegger/nvim-dap' }
-  use { 'nvim-telescope/telescope-packer.nvim' }
+  use { "folke/trouble.nvim",
+         config = function()
+           require("trouble").setup{}
+         end
+  }
   use { 'tpope/vim-repeat' }
   use { 'tpope/vim-surround' }
   use { 'tpope/vim-fugitive' }
@@ -32,29 +30,73 @@ return require('packer').startup{
         require('Comment').setup {}
     end
   }
-  use { 'aca/emmet-ls' }
-  use { 'gcmt/taboo.vim' }
-  use { 'arcticicestudio/nord-vim' }
-  use { 'gruvbox-community/gruvbox' }
-  use { 'norcalli/nvim-terminal.lua' }
-  use { 'hoob3rt/lualine.nvim' }
-  use { 'nvim-lua/plenary.nvim' }
-  use { 'folke/which-key.nvim' }
-  use { 'dstein64/nvim-scrollview' }
-  use { 'kdheepak/tabline.nvim' }
-  use { 'kyazdani42/nvim-web-devicons' }
-  use { 'junegunn/goyo.vim' }
-  use { 'kyazdani42/nvim-tree.lua' }
+
+  -- common dependencies
   use { 'ryanoasis/vim-devicons' }
+  use { 'kyazdani42/nvim-web-devicons' }
+  use { 'nvim-lua/plenary.nvim' }
+  use { 'godlygeek/tabular' }
+
+  -- look and feel
+  use { 'hoob3rt/lualine.nvim' }
+  use { 'dstein64/nvim-scrollview' }
+  use { 'gcmt/taboo.vim' }
+  use { 'norcalli/nvim-terminal.lua' }
+  use { 'kyazdani42/nvim-tree.lua' }
+  use { 'junegunn/goyo.vim' } -- zen-mode
+  use { 'gruvbox-community/gruvbox' }
+  use { 'shaunsingh/nord.nvim',
+    config = function()
+      vim.g.nord_contrast = true
+      vim.g.nord_borders = true
+      vim.g.nord_disable_background = false
+      vim.g.nord_italic = true
+      vim.g.nord_enable_sidebar_background = false
+      require('nord').set()
+    end
+ }
+  use { "catppuccin/nvim", as = "catppuccin",
+    config = function()
+      require('catppuccin').setup {}
+    end
+  }
+
+  -- keymaps
+  use { 'folke/which-key.nvim' }
+
+  -- telescope
   use { 'nvim-telescope/telescope.nvim' }
   use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
   use { 'camgraff/telescope-tmux.nvim' }
+  use { 'nvim-telescope/telescope-packer.nvim' }
+  use { 'nvim-telescope/telescope-dap.nvim' }
+  use { 'dhruvmanila/telescope-bookmarks.nvim' }
   use { 'ahmedkhalf/project.nvim' }
+  use {'pwntester/octo.nvim',
+      config = function()
+        require"octo".setup {}
+      end
+  }
+  use { "AckslD/nvim-neoclip.lua",
+      config = function()
+        require('neoclip').setup {
+          default_register = {'"', '+', '*'}
+        }
+      end,
+  }
+
+  -- run code
   use { 'jpalardy/vim-slime' }
+
+  -- lsp and other built-in anhancers
   use { 'neovim/nvim-lspconfig' }
-  use { 'williamboman/nvim-lsp-installer'  }
+  use { 'mfussenegger/nvim-dap' }
+  use { 'onsails/lspkind-nvim' }
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use { 'nvim-treesitter/nvim-treesitter-textobjects' }
+  use { 'aca/emmet-ls' }
+
+  -- completion
   use { 'hrsh7th/nvim-cmp' }
   use { 'hrsh7th/cmp-nvim-lsp' }
   use { 'hrsh7th/cmp-buffer' }
@@ -68,14 +110,17 @@ return require('packer').startup{
   use { 'andersevenrud/cmp-tmux' }
   use { 'quangnguyen30192/cmp-nvim-tags' }
   use { 'jc-doyle/cmp-pandoc-references' }
-  use { 'onsails/lspkind-nvim' }
-  use { 'windwp/nvim-autopairs' }
   use { 'L3MON4D3/LuaSnip' }
   use { 'rafamadriz/friendly-snippets' }
-  use { 'godlygeek/tabular' }
-  -- use { 'tpope/vim-commentary' }
+  use { 'windwp/nvim-autopairs',
+    config = function()
+      require('nvim-autopairs').setup{}
+    end
+  }
+
   if packer_bootstrap then
     require('packer').sync()
   end
+
   end
 }
