@@ -52,10 +52,10 @@ wk.register({
     n = { ":tabnext<cr>", "next tab" },
     p = { ":tabprevious<cr>", "previous tab" },
   },
-  G = {
+  g = {
     name = "git",
-    G = {":G ", "git"},
-    s = {":G <cr>", "git status"},
+    g = {":Neogit<cr>", "neogit"},
+    h = {":Octo<cr>", "github"},
     c = {":G commit<cr>", "git commit"},
     p = {":G push<cr>", "git push"}
   },

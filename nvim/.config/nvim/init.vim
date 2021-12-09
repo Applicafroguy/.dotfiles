@@ -3,9 +3,9 @@ lua require('plugins')
 lua require('globals')
 lua require('autocmd')
 
-colorscheme nord
+lua vim.cmd [[colorscheme nord]]
 
 " modify colors
-lua require('color')
+lua require('colors')
 
 

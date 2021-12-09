@@ -41,14 +41,15 @@ telescope.setup{
       selected_browser = 'firefox',
       url_open_command = 'xdg-open',
     },
-  } 
+  }
 }
 require('telescope').load_extension('fzf')
 require('telescope').load_extension('tmux')
 require('telescope').load_extension('projects')
--- require("telescope").load_extension('packer')
-require("telescope").load_extension('dap')
 require("telescope").load_extension('bookmarks')
 require("telescope").load_extension('neoclip')
+require("telescope").load_extension("git_worktree")
+require("telescope").load_extension('dap')
+-- require("telescope").load_extension('packer')
 
 

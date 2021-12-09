@@ -2,7 +2,7 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  Packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
 end
 
 vim.cmd [[packadd packer.nvim]]
@@ -15,20 +15,37 @@ return require('packer').startup{
            require("trouble").setup{}
          end
   }
+
+  -- actions and bindings
   use { 'tpope/vim-repeat' }
   use { 'tpope/vim-surround' }
-  use { 'tpope/vim-fugitive' }
-  use {
-      'lewis6991/gitsigns.nvim',
-      config = function()
-        require('gitsigns').setup {}
-      end
-  }
   use { 'lambdalisue/suda.vim' }
   use { 'numToStr/Comment.nvim',
     config = function()
         require('Comment').setup {}
     end
+  }
+
+  -- keymaps
+  use { 'folke/which-key.nvim' }
+
+  -- git and projects
+  use { 'tpope/vim-fugitive' }
+  use { 'TimUntersberger/neogit',
+    config = function()
+      require('neogit').setup()
+    end
+  }
+  use { 'ThePrimeagen/git-worktree.nvim' }
+  use { 'lewis6991/gitsigns.nvim',
+      config = function()
+        require('gitsigns').setup {}
+      end
+  }
+  use {'pwntester/octo.nvim',
+      config = function()
+        require"octo".setup {}
+      end
   }
 
   -- common dependencies
@@ -58,7 +75,6 @@ return require('packer').startup{
       vim.g.nord_disable_background = true
       vim.g.nord_italic = true
       vim.g.nord_enable_sidebar_background = false
-      -- require('nord').set()
     end
  }
   use { "catppuccin/nvim", as = "catppuccin",
@@ -67,8 +83,6 @@ return require('packer').startup{
     end
   }
 
-  -- keymaps
-  use { 'folke/which-key.nvim' }
 
   -- telescope
   use { 'nvim-telescope/telescope.nvim' }
@@ -77,11 +91,6 @@ return require('packer').startup{
   use { 'nvim-telescope/telescope-dap.nvim' }
   use { 'dhruvmanila/telescope-bookmarks.nvim' }
   use { 'ahmedkhalf/project.nvim' }
-  use {'pwntester/octo.nvim',
-      config = function()
-        require"octo".setup {}
-      end
-  }
   use { "AckslD/nvim-neoclip.lua",
       config = function()
         require('neoclip').setup {
@@ -123,7 +132,8 @@ return require('packer').startup{
     end
   }
 
-  if packer_bootstrap then
+  -- sync after fresh install
+  if Packer_bootstrap then
     require('packer').sync()
   end
 

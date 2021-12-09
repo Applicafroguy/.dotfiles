@@ -2,7 +2,7 @@ vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh', 'R=r' }
 vim.g.vim_markdown_math = 1
 vim.g.vim_markdown_frontmatter = 1
 vim.g.netrw_browsex_viewer = 'firefox'
-vim.g.taboo_tab_format = '%f %m %x|' 
+vim.g.taboo_tab_format = '%f %m %x|'
 vim.g.taboo_modified_tab_flag = '◌'
 vim.g.taboo_close_tab_label = '✖'
 vim.g.mapleader = " "
@@ -12,7 +12,7 @@ vim.g.vimsyn_embed = 'l'
 local tabsize = 2
 
 vim.opt.list = true
--- vim.opt.listchars = 'eol:⏎,tab:|·,trail:␠,nbsp:⎵'
+vim.opt.showmode = false
 vim.opt.listchars = 'tab:|·,trail:␠,nbsp:⎵'
 vim.opt.signcolumn = "yes:1"
 vim.opt.number = true
