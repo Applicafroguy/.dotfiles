@@ -1,5 +1,13 @@
 local wk = require("which-key")
 
+local nmap = function(key, effect)
+  vim.api.nvim_set_keymap('n', key, effect, {silent = true})
+end
+
+nmap('<c-b>', ':NvimTreeToggle<CR>')
+
+
+
 wk.setup{
   spelling = {
       enabled = true
@@ -35,7 +43,7 @@ wk.register({
     e = { ":cd $HOME/.dotfiles<cr>:edit $HOME/.config/nvim/init.vim<CR>", "edit config" },
     r = { ":source $HOME/.config/nvim/init.vim<CR>", "source config" },
     s = { ":source %<CR>", "source %" },
-    p = { 
+    p = {
       name = "Packer",
       i = { ":PackerInstall<CR>", "PackerInstall" },
       u = { ":PackerUpdate<CR>", "PackerUpdate" },
@@ -88,7 +96,7 @@ wk.register({
     },
   },
   s = {
-    name = "spell", 
+    name = "spell",
     s = { "<cmd>Telescope spell_suggest<cr>", "spelling" },
     ['/'] = { '<cmd>setlocal spell!<cr>', 'spellcheck' },
     n = { ']s', 'next' },
@@ -97,7 +105,7 @@ wk.register({
     a = {'zg', 'accept'},
     b = {'zb', 'bad'},
     ['?'] = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
-},
+  },
   c = {
     name = "code",
     c = {'<Plug>SlimeConfig', 'config'},
@@ -111,19 +119,6 @@ wk.register({
   },
 }, { prefix = "<leader>"})
 
-wk.register({
-  ['gx'] = { ':!xdg-open <c-r><c-a><cr>', 'open file' },
-  ["<c-q>"] = {'<cmd>q<cr>', 'close buffer'},
-  ['<C-n>'] = { '<cmd>NvimTreeToggle<CR>', 'open file tree' },
-  ['<esc>'] = { '<cmd>noh<cr>', 'remove search highlight' },
-  n = {'nzzzv', 'center search'},
-  gN = {'Nzzzv', 'center search'},
-  gl = {'<c-]>', 'open help link'},
-  gf = { ':e <cfile><CR>', 'edit file' },
-  ['<M-j>'] = { 'mz:m+<cr>`z', 'move line down' },
-  ['<M-k>'] = { 'mz:m-2<cr>`z', 'move line up' },
-}, { mode = 'n' })
-
 -- buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
 -- buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
 -- buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
@@ -134,6 +129,18 @@ wk.register({
 -- buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 
 wk.register({
+  ['gx'] = { ':!xdg-open <c-r><c-a><cr>', 'open file' },
+  ["<c-q>"] = {'<cmd>q<cr>', 'close buffer'},
+  -- ['<C-b'] = { ':NvimTreeToggle<CR>', 'open file tree' },
+  ['<C-n>'] = { ':cnext<cr>', 'quickfix next' },
+  ['<C-p>'] = { ':cprev<CR>', 'quickfix prev' },
+  ['<esc>'] = { '<cmd>noh<cr>', 'remove search highlight' },
+  n = {'nzzzv', 'center search'},
+  gN = {'Nzzzv', 'center search'},
+  gl = {'<c-]>', 'open help link'},
+  gf = { ':e <cfile><CR>', 'edit file' },
+  ['<M-j>'] = { 'mz:m+<cr>`z', 'move line down' },
+  ['<M-k>'] = { 'mz:m-2<cr>`z', 'move line up' },
   [','] = {',<c-g>u', ','},
   ['.'] = {'.<c-g>u', '.'},
   ['?'] = {'?<c-g>u', '?'},

@@ -90,7 +90,11 @@ return require('packer').startup{
   use { 'camgraff/telescope-tmux.nvim' }
   use { 'nvim-telescope/telescope-dap.nvim' }
   use { 'dhruvmanila/telescope-bookmarks.nvim' }
-  use { 'ahmedkhalf/project.nvim' }
+  use { 'ahmedkhalf/project.nvim',
+    config = function()
+      require("project_nvim").setup{}
+    end
+  }
   use { "AckslD/nvim-neoclip.lua",
       config = function()
         require('neoclip').setup {
@@ -100,7 +104,14 @@ return require('packer').startup{
   }
 
   -- run code
-  use { 'jpalardy/vim-slime' }
+  use { 'jpalardy/vim-slime',
+    config = function()
+      vim.g.slime_target = "tmux"
+      vim.g.slime_python_ipython = 1
+      vim.g.slime_default_config = {socket_name = "default", target_pane = ":.2"}
+      vim.b.slime_cell_delimiter = "#%%"
+    end
+    }
 
   -- lsp and other built-in anhancers
   use { 'neovim/nvim-lspconfig' }
