@@ -41,6 +41,8 @@ vim.opt.breakindent = true
 -- vim.opt.textwidth = 120
 vim.opt.smartindent = true
 vim.opt.laststatus = 2
+vim.opt.splitright = true
+vim.opt.splitbelow = true
 vim.opt.switchbuf = 'useopen,usetab'
 vim.opt.showtabline=1
 vim.opt.path:append '**'
