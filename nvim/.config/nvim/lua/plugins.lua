@@ -33,7 +33,9 @@ return require('packer').startup{
   use { 'tpope/vim-fugitive' }
   use { 'TimUntersberger/neogit',
     config = function()
-      require('neogit').setup()
+      require('neogit').setup {
+        disable_commit_confirmation = true,
+        }
     end
   }
   use { 'ThePrimeagen/git-worktree.nvim' }

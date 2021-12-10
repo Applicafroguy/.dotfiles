@@ -41,6 +41,7 @@ alias luamake=/home/jannik/software/lua-language-server/3rd/luamake/luamake
 alias gmx2020='module use /sw/mbm/app/easybuild/modules/all; module load CUDA/10.1.243-GCC-8.3.0; source /sw/mbm/app/gromacs/2020.3/bin/GMXRC'
 alias gmx2021='source /hits/fast/mbm/hartmaec/sw/gromacs-2021/run/bin/GMXRC'
 alias rmback='rm \#*\#'
+alias tn='tmux new-session -s '
 
 vman () {
   nvim man://$1
