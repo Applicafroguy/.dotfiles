@@ -6,14 +6,28 @@ end
 
 nmap('<c-b>', ':NvimTreeToggle<CR>')
 
+nmap('<F5>',  ':lua require"dap".continue()<CR>')
+nmap('<F10>', ':lua require"dap".step_over()<CR>')
+nmap('<F11>', ':lua require"dap".step_into()<CR>')
+nmap('<F12>', ':lua require"dap".step_out()<CR>')
+
+
+
 wk.setup{
   spelling = {
       enabled = true
     }
 }
 
-
 wk.register({
+  d = {
+    name = "DAP",
+    b = { ":lua require'dap'.toggle_breakpoint()<CR>", "breakpoint" },
+    B = { ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", "breakpoint condition" },
+    l = { ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", "log point" },
+    r = { ":lua require'dap'.repl.open()<cr>", "repl" },
+    u = { ":lua require'dapui'toggle()<cr>", "ui" },
+  },
   f = {
     name = "Telescope",
     f = { "<cmd>Telescope git_files<cr>", "files (git)" },
@@ -110,7 +124,6 @@ wk.register({
     s = {':!%<cr>', 'source bash buffer'},
   },
   ['<cr>'] = {'<Plug>SlimeSendCell', 'run code section'},
-  d = {'"_d', 'delete without overwriting reg'},
   w = {
     name = 'save',
     w = {':w!<cr>', 'save file'},
