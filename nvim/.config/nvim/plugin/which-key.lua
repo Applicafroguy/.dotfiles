@@ -6,8 +6,6 @@ end
 
 nmap('<c-b>', ':NvimTreeToggle<CR>')
 
-
-
 wk.setup{
   spelling = {
       enabled = true
@@ -131,7 +129,6 @@ wk.register({
 wk.register({
   ['gx'] = { ':!xdg-open <c-r><c-a><cr>', 'open file' },
   ["<c-q>"] = {'<cmd>q<cr>', 'close buffer'},
-  -- ['<C-b'] = { ':NvimTreeToggle<CR>', 'open file tree' },
   ['<C-n>'] = { ':cnext<cr>', 'quickfix next' },
   ['<C-p>'] = { ':cprev<CR>', 'quickfix prev' },
   ['<esc>'] = { '<cmd>noh<cr>', 'remove search highlight' },
@@ -141,10 +138,6 @@ wk.register({
   gf = { ':e <cfile><CR>', 'edit file' },
   ['<M-j>'] = { 'mz:m+<cr>`z', 'move line down' },
   ['<M-k>'] = { 'mz:m-2<cr>`z', 'move line up' },
-  [','] = {',<c-g>u', ','},
-  ['.'] = {'.<c-g>u', '.'},
-  ['?'] = {'?<c-g>u', '?'},
-  ['!'] = {'!<c-g>u', '!'},
   ['<C-j>']  = {'<C-W>j', 'move to window'},
   ['<C-k>']  = {'<C-W>k', 'move to window'},
   ['<C-h>']  = {'<C-W>h', 'move to window'},

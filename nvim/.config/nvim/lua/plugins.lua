@@ -31,10 +31,18 @@ return require('packer').startup{
 
   -- git and projects
   use { 'tpope/vim-fugitive' }
+  use { 'sindrets/diffview.nvim',
+    config = function()
+      require'diffview'.setup()
+    end
+  }
   use { 'TimUntersberger/neogit',
     config = function()
       require('neogit').setup {
         disable_commit_confirmation = true,
+        integrations = {
+            diffview = true
+          }
         }
     end
   }
