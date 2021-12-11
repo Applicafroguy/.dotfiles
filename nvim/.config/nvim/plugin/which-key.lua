@@ -5,12 +5,15 @@ local nmap = function(key, effect)
 end
 
 nmap('<c-b>', ':NvimTreeToggle<CR>')
+nmap('<c-f>', ':Telescope builtin<CR>')
+nmap('<m-=>', ':!echo hi<cr>')
+nmap('<m-->', ':!echo hi<cr>')
+
 
 nmap('<F5>',  ':lua require"dap".continue()<CR>')
 nmap('<F10>', ':lua require"dap".step_over()<CR>')
 nmap('<F11>', ':lua require"dap".step_into()<CR>')
 nmap('<F12>', ':lua require"dap".step_out()<CR>')
-
 
 
 wk.setup{
@@ -26,7 +29,7 @@ wk.register({
     B = { ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", "breakpoint condition" },
     l = { ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", "log point" },
     r = { ":lua require'dap'.repl.open()<cr>", "repl" },
-    u = { ":lua require'dapui'toggle()<cr>", "ui" },
+    u = { ":lua require'dapui'.toggle()<cr>", "ui" },
   },
   f = {
     name = "Telescope",
@@ -39,7 +42,7 @@ wk.register({
     c = { "<cmd>Telescope git_commits<cr>", "git commits" },
     k = { "<cmd>Telescope keymaps<cr>", "keymaps" },
     s = { "<cmd>Telescope builtin<cr>", "spelling" },
-    ['<space>'] = { "<cmd>Telescope builtin<cr>", "spelling" },
+    ['<space>'] = { "<cmd>Telescope builtin<cr>", "builtin" },
     t = { "<cmd>Telescope tmux sessions<cr>", "tmux session" },
     w = { "<cmd>Telescope tmux windows<cr>", "tmux window" },
     p = { "<cmd>Telescope projects<cr>", "projects" },
@@ -52,7 +55,7 @@ wk.register({
   },
   v = {
     name = "VIM",
-    e = { ":cd $HOME/.dotfiles<cr>:edit $HOME/.config/nvim/init.vim<CR>", "edit config" },
+    e = { ":cd $HOME/.dotfiles/<cr>:edit nvim/.config/nvim/init.vim<CR>", "edit config" },
     r = { ":source $HOME/.config/nvim/init.vim<CR>", "source config" },
     s = { ":source %<CR>", "source %" },
     p = {

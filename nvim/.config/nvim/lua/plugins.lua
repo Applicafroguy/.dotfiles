@@ -31,6 +31,11 @@ return require('packer').startup{
 
     -- git and projects
     use { 'tpope/vim-fugitive' }
+    use { 'folke/todo-comments.nvim',
+      config = function()
+        require'todo-comments'.setup {}
+      end
+    }
     use { 'sindrets/diffview.nvim',
       config = function()
         require'diffview'.setup()
@@ -72,12 +77,8 @@ return require('packer').startup{
     use { 'kyazdani42/nvim-tree.lua' }
     use { 'junegunn/goyo.vim' } -- zen-mode
     use { 'tjdevries/colorbuddy.nvim' }
+    use { 'folke/tokyonight.nvim' }
     use { 'gruvbox-community/gruvbox' }
-    -- use { 'arcticicestudio/nord-vim',
-    --     config = function()
-    --     vim.cmd [[colorscheme nord]]
-    --     end
-    --   }
     use { 'shaunsingh/nord.nvim',
       config = function()
         vim.g.nord_contrast = true
@@ -92,7 +93,6 @@ return require('packer').startup{
         require('catppuccin').setup {}
       end
     }
-
 
     -- telescope
     use { 'nvim-telescope/telescope.nvim' }
@@ -134,6 +134,11 @@ return require('packer').startup{
     }
     use { 'onsails/lspkind-nvim' }
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use { 'nvim-treesitter/playground',
+      config = function()
+        require "nvim-treesitter.configs".setup{}
+      end
+    }
     use { 'nvim-treesitter/nvim-treesitter-textobjects' }
     use { 'aca/emmet-ls' }
 
