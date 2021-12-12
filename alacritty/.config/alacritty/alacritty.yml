@@ -19,7 +19,7 @@ window:
   # Values for `decorations`:
   #     - full: Borders and title bar
   #     - none: Neither borders nor title bar
-  decorations: none
+  decorations: full
   startup_mode: Windowed
   #title: Alacritty
   #class: Alacritty
