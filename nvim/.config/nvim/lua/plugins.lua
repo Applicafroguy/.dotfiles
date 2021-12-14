@@ -71,6 +71,11 @@ return require('packer').startup{
 
     -- look and feel
     use { 'hoob3rt/lualine.nvim' }
+    use { 'lukas-reineke/indent-blankline.nvim',
+      config = function()
+        require("indent_blankline").setup {}
+      end
+    }
     use { 'dstein64/nvim-scrollview' }
     use { 'gcmt/taboo.vim' }
     use { 'norcalli/nvim-terminal.lua' }
