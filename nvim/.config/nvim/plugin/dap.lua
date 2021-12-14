@@ -9,13 +9,12 @@ dap.adapters.python = {
   args = { '-m', 'debugpy.adapter' };
 }
 
-require('dap.ext.vscode').load_launchjs()
+
 vim.fn.sign_define('DapBreakpoint', {text='🦆', texthl='', linehl='', numhl=''})
 
 -- vim.cmd [[
 -- au FileType dap-repl lua require('dap.ext.autocompl').attach()
 -- ]]
-
 
 dap.configurations.python = {
   {
@@ -43,4 +42,6 @@ dap.configurations.python = {
     end;
   },
 }
+
+require('dap.ext.vscode').load_launchjs("launch.json")
 
