@@ -6,9 +6,8 @@ source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 
-autoload -z edit-command-line
-zle -N edit-command-line
-bindkey "^X^E" edit-command-line
+
+
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
@@ -16,6 +15,10 @@ setopt autocd extendedglob nomatch notify
 unsetopt beep
 disable r
 bindkey -e
+
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
 
 if [ -d /etc/profile.d ]; then
   setopt no_nomatch
