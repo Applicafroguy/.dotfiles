@@ -7,6 +7,14 @@ end
 
 vim.cmd [[packadd packer.nvim]]
 
+vim.cmd [[
+  augroup Packer
+    autocmd!
+    autocmd BufWritePost init.lua PackerCompile
+    autocmd BufWritePost plugins.lua PackerCompile
+  augroup end
+]]
+
 return require('packer').startup{
   function(use)
     use 'wbthomason/packer.nvim'
@@ -153,6 +161,7 @@ return require('packer').startup{
     use { 'hrsh7th/cmp-buffer' }
     use { 'hrsh7th/cmp-path' }
     use { 'hrsh7th/cmp-calc' }
+    use { 'hrsh7th/cmp-emoji' }
     use { 'saadparwaiz1/cmp_luasnip' }
     use { 'hrsh7th/cmp-nvim-lua' }
     use { 'f3fora/cmp-spell' }
@@ -160,6 +169,7 @@ return require('packer').startup{
     use { 'tamago324/cmp-zsh' }
     use { 'andersevenrud/cmp-tmux' }
     use { 'quangnguyen30192/cmp-nvim-tags' }
+    use { 'kdheepak/cmp-latex-symbols' }
     use { 'jc-doyle/cmp-pandoc-references' }
     use { 'L3MON4D3/LuaSnip' }
     use { 'rafamadriz/friendly-snippets' }

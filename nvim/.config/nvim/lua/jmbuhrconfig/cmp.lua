@@ -21,8 +21,6 @@ cmp.setup({
   mapping = {
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    -- ['<s-tab>'] = cmp.mapping.select_prev_item(),
-    -- ['<tab>'] = cmp.mapping.select_next_item(),
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<c-a>'] = cmp.mapping.complete(),
@@ -30,7 +28,6 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({
       select = true
     }),
-
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -66,8 +63,10 @@ cmp.setup({
         spell = "[spell]",
         pandoc_references = "[ref]",
         tags = "[tag]",
-        treesitter = "[ts]",
+        treesitter = "[TS]",
         calc = "[calc]",
+        latex_symbols = "[tex]",
+        emoji = "[emoji]",
         -- zsh = "[zsh]",
         -- gh_issues = "[issues]",
       },
@@ -84,6 +83,8 @@ cmp.setup({
     { name = 'tags' },
     { name = 'treesitter' },
     { name = 'calc' },
+    { name = 'latex_symbols' },
+    { name = 'emoji' },
     -- { name = 'tmux' },
     -- { name = 'zsh' },
   },
