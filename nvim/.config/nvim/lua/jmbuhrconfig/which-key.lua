@@ -107,7 +107,7 @@ wk.register({
     f = {
       name = "format",
       f = { '<cmd>lua vim.lsp.buf.formatting()<CR>', 'formatting' },
-      p = { ':w<cr><cmd>! black %<CR>', 'format python with black' },
+      p = { ':w<cr><cmd>! black %<CR>:e<cr>', 'format python with black' },
     },
   },
   s = {
