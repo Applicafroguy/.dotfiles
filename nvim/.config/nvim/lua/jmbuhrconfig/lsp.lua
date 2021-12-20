@@ -1,7 +1,7 @@
 local lspconfig = require('lspconfig')
 local cmp = require('cmp_nvim_lsp')
-local configs = require'lspconfig/configs'
-local util = require("lspconfig/util")
+local configs = require'lspconfig.configs'
+local util = require("lspconfig.util")
 
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -108,21 +108,40 @@ lspconfig.yamlls.setup {
   },
 }
 
-lspconfig.sumneko_lua.setup {
+-- Make runtime files discoverable to the server
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, 'lua/?.lua')
+table.insert(runtime_path, 'lua/?/init.lua')
+
+require('lspconfig').sumneko_lua.setup {
   on_attach = on_attach,
-  capabilities = capabilities,
-  cmd = { "lua-language-server" },
+  handlers = handlers,
   settings = {
     Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = runtime_path,
+      },
       diagnostics = {
-        globals = {'vim'},
+        -- Get the language server to recognize the `vim` global
+        globals = { 'vim' },
       },
       workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file('', true),
+        maxPreload = 2000,
+        preloadFileSize = 1000,
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
       },
     },
   },
 }
+
 
 if not lspconfig.emmet_ls then
   configs.emmet_ls = {

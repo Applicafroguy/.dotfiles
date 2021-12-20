@@ -14,6 +14,7 @@ nmap('<F5>',  ':lua require"dap".continue()<CR>')
 nmap('<F10>', ':lua require"dap".step_over()<CR>')
 nmap('<F11>', ':lua require"dap".step_into()<CR>')
 nmap('<F12>', ':lua require"dap".step_out()<CR>')
+nmap('Q', '<Nop>')
 
 
 wk.setup{
@@ -38,11 +39,10 @@ wk.register({
     g = { "<cmd>Telescope live_grep<cr>", "grep" },
     b = { "<cmd>Telescope current_buffer_fuzzy_find<cr>", "fuzzy" },
     h = { "<cmd>Telescope help_tags<cr>", "help tags" },
-    m = { "<cmd>Terescope man_pages<cr>", "man pages" },
+    m = { "<cmd>Telescope man_pages<cr>", "man pages" },
     c = { "<cmd>Telescope git_commits<cr>", "git commits" },
     k = { "<cmd>Telescope keymaps<cr>", "keymaps" },
     s = { "<cmd>Telescope builtin<cr>", "spelling" },
-    ['<space>'] = { "<cmd>Telescope builtin<cr>", "builtin" },
     t = { "<cmd>Telescope tmux sessions<cr>", "tmux session" },
     w = { "<cmd>Telescope tmux windows<cr>", "tmux window" },
     p = { "<cmd>Telescope projects<cr>", "projects" },
@@ -52,6 +52,7 @@ wk.register({
     l = { "<cmd>Telescope loclist<cr>", "loclist" },
     r = { "<cmd>Telescope registers<cr>", "register" },
     y = { "<cmd>Telescope neoclip<cr>", "register" },
+    ['<space>'] = { "<cmd>Telescope builtin<cr>", "builtin" },
   },
   v = {
     name = "VIM",
@@ -66,6 +67,13 @@ wk.register({
       d = { ":PackerClean<CR>", "PackerClean" },
       s = { ":PackerSync<CR>", "PackerSync" },
     },
+    l = {
+      name = "lsp",
+      r = {':LspRestart<CR>', 'restart'},
+      i = {':LspInfo<CR>', 'info'},
+      s = {':LspStart<CR>', 'start'},
+      t = {':LspStop<CR>', 'stop'},
+    }
   },
   t = {
     name = "Tabs",
@@ -82,8 +90,15 @@ wk.register({
     c = {":G commit<cr>", "git commit"},
     p = {":G push<cr>", "git push"}
   },
+  q = {
+    name = "quickfix",
+    o = {':copen<cr>', 'open'},
+    q = {':cclose<cr>', 'close'},
+  },
   Q = {
-    Q = { ":q!<cr>", "close!" },
+    name = "loclist",
+    o = {':lopen<cr>', 'open'},
+    q = {':lclose<cr>', 'close'},
   },
   l = {
     name = "lsp",
@@ -131,6 +146,9 @@ wk.register({
     name = 'save',
     w = {':w!<cr>', 'save file'},
   },
+  -- misc
+  [';'] = {':', 'command'},
+  ['<space>'] = {':', 'command'}
 }, { prefix = "<leader>"})
 
 -- buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -174,4 +192,8 @@ wk.register({
 wk.register({
   ['<esc>'] = {'<C-\\><C-n>', 'escape'},
 }, { mode = 't'})
+
+
+vim.cmd [[ command! W  execute ':w' ]]
+
 

@@ -9,4 +9,10 @@ syntax enable
 augroup filetypedetect
   au! BufRead,BufNewFile *.qmd setfiletype markdown
 augroup END
+
+augroup Terminal
+  autocmd!
+  au TermOpen * set nonu
+augroup end
 ]]
+

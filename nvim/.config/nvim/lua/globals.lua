@@ -11,6 +11,7 @@ vim.g.vimsyn_embed = 'l'
 
 local tabsize = 2
 
+vim.opt.termguicolors = true
 vim.opt.list = true
 vim.opt.showmode = false
 vim.opt.listchars = 'tab:|·,trail:␠,nbsp:⎵'

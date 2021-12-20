@@ -12,6 +12,8 @@ require('lualine').setup({
     lualine_y = {'progress'},
     lualine_z = {'location'},
     },
-  extenstions = {'fugitive', 'nvim-tree', 'quickfix'}
+  extensions = {'fugitive', 'nvim-tree', 'quickfix'}
 })
+
+
 

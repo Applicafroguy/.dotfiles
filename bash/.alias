@@ -29,7 +29,7 @@ alias phd='cd /hits/fast/mbm/buhrjk/phd'
 alias playg="$HOME/playground/"
 alias cascade='ssh cascade-login.h-its.org'
 alias localdisplay='export DISPLAY=":0"'
-alias remotedisplay='export DISPLAY=":10"'
+alias remotedisplay='export DISPLAY=":11"'
 alias buhrjkmods='module use /hits/fast/mbm/buhrjk/software/eb/modules/all'
 alias ta='tmux attach-session'
 alias dot="cd $HOME/.dotfiles"
