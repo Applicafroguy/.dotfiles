@@ -7,7 +7,7 @@ require('lualine').setup({
   sections = {
     lualine_a = {'filename'},
     lualine_b = {'branch'},
-    lualine_c = {'filetype' },
+    lualine_c = {'filetype', 'lsp_progress' },
     lualine_x = {'quickfix', 'fugitive', 'nvim-tree'},
     lualine_y = {'progress'},
     lualine_z = {'location'},

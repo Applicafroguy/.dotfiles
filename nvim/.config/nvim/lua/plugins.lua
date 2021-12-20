@@ -78,7 +78,8 @@ return require('packer').startup{
     use { 'godlygeek/tabular' }
 
     -- look and feel
-    use { 'hoob3rt/lualine.nvim' }
+    use { 'nvim-lualine/lualine.nvim' }
+    use { 'arkav/lualine-lsp-progress'}
     use { 'lukas-reineke/indent-blankline.nvim',
       config = function()
         require("indent_blankline").setup {}
