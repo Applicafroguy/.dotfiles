@@ -80,11 +80,6 @@ return require('packer').startup{
     -- look and feel
     use { 'nvim-lualine/lualine.nvim' }
     use { 'arkav/lualine-lsp-progress'}
-    use { 'lukas-reineke/indent-blankline.nvim',
-      config = function()
-        require("indent_blankline").setup {}
-      end
-    }
     use { 'dstein64/nvim-scrollview' }
     use { 'gcmt/taboo.vim' }
     use { 'norcalli/nvim-terminal.lua' }
