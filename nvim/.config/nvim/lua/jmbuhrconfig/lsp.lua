@@ -158,6 +158,9 @@ end
 lspconfig.emmet_ls.setup{ capabilities = capabilities; }
 
 
+lspconfig.rust_analyzer.setup { }
+
+
 -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]]
 
 

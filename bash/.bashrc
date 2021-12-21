@@ -4,3 +4,4 @@
 test -s ~/.bashrc_user && . ~/.bashrc_user
 
 
+. "$HOME/.cargo/env"

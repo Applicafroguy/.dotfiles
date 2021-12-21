@@ -18,3 +18,4 @@ if [ -f ~/.bashrc ]; then
 fi
 
 
+. "$HOME/.cargo/env"
