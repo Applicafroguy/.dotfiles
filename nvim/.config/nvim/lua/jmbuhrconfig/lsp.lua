@@ -115,7 +115,7 @@ table.insert(runtime_path, 'lua/?/init.lua')
 
 require('lspconfig').sumneko_lua.setup {
   on_attach = on_attach,
-  handlers = handlers,
+  capabilities = capabilities,
   settings = {
     Lua = {
       runtime = {
@@ -158,7 +158,12 @@ end
 lspconfig.emmet_ls.setup{ capabilities = capabilities; }
 
 
-lspconfig.rust_analyzer.setup { }
+lspconfig.rust_analyzer.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = { "rustup", "run", "nightly", "rust-analyzer"},
+}
+
 
 
 -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]]
