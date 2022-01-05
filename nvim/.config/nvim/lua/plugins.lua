@@ -181,4 +181,15 @@ return require('packer').startup{
     end
 
   end,
+  config = {
+    profile = {
+      enable = true,
+      threshold = 1
+    },
+    display = {
+      open_fn = require('packer.util').float,
+    }
+  }
 }
+
+

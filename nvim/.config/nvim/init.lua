@@ -1,7 +1,7 @@
 
 require('plugins')
-require('globals')
 require('autocmd')
+require('globals')
 require('jmbuhrconfig')
 
 vim.cmd[[ colorscheme nord ]]

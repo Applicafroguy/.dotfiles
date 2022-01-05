@@ -56,9 +56,10 @@ wk.register({
   },
   v = {
     name = "VIM",
-    e = { ":cd $HOME/.dotfiles/<cr>:edit nvim/.config/nvim/init.vim<CR>", "edit config" },
-    r = { ":source $HOME/.config/nvim/init.vim<CR>", "source config" },
+    e = { ":cd $HOME/.dotfiles/<cr>:edit nvim/.config/nvim/init.lua<CR>", "edit config" },
+    r = { ":source $HOME/.config/nvim/init.lua<CR>", "source config" },
     s = { ":source %<CR>", "source %" },
+    c = { ":Telescope colorscheme<cr>", "colorscheme" },
     p = {
       name = "Packer",
       i = { ":PackerInstall<CR>", "PackerInstall" },
@@ -145,6 +146,7 @@ wk.register({
   w = {
     name = 'save',
     w = {':w!<cr>', 'save file'},
+    W = {':SudaWrite<cr>', 'save file with sudo'},
   },
   -- misc
   [';'] = {':', 'command'},
