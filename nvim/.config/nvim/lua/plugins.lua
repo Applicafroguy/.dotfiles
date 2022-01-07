@@ -86,6 +86,19 @@ return require('packer').startup{
     use { 'kyazdani42/nvim-tree.lua' }
     use { 'junegunn/goyo.vim' } -- zen-mode
     use { 'tjdevries/colorbuddy.nvim' }
+    use { 'norcalli/nvim-colorizer.lua',
+        config = function ()
+          require'colorizer'.setup {
+            css = {css_fn = true, css = true},
+            'javascript',
+            'html',
+            'r',
+            'rmd',
+            -- 'markdown',
+            'python'
+        }
+        end
+    }
     use { 'folke/tokyonight.nvim' }
     use { 'gruvbox-community/gruvbox' }
     use { 'shaunsingh/nord.nvim',
@@ -150,6 +163,13 @@ return require('packer').startup{
     }
     use { 'nvim-treesitter/nvim-treesitter-textobjects' }
     use { 'aca/emmet-ls' }
+
+    -- language specific
+    use { 'simrat39/rust-tools.nvim',
+      config = function ()
+        require('rust-tools').setup{}
+      end
+    }
 
     -- completion
     use { 'hrsh7th/nvim-cmp' }

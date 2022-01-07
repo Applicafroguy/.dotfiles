@@ -140,8 +140,9 @@ wk.register({
   c = {
     name = "code",
     c = {'<Plug>SlimeConfig', 'config'},
-    s = {':!%<cr>', 'source bash buffer'},
+    e = {':! chmod +x ./%<cr>', 'make executable'},
   },
+  r = {':!./%<cr>', 'run file'},
   ['<cr>'] = {'<Plug>SlimeSendCell', 'run code section'},
   w = {
     name = 'save',

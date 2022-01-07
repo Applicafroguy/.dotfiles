@@ -8,4 +8,7 @@ require('jmbuhrconfig.nerdtree')
 require('jmbuhrconfig.treesitter')
 require('jmbuhrconfig.which-key')
 
+vim.cmd [[
+  command! Jdev lua require'jmbuhrconfig.dev'.hello()
+]]
 
