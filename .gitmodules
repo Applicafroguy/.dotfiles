@@ -10,6 +10,6 @@
 [submodule "_dev/deps/stow"]
 	path = _dev/deps/stow
 	url = https://git.savannah.gnu.org/git/stow.git
-[submodule "theme/.themes/Nordic-Dark"]
-	path = theme/.themes/Nordic-Dark
+[submodule "theme/.themes/Nordic-dark"]
+	path = theme/.themes/Nordic-dark
 	url = git@github.com:EliverLara/Nordic.git

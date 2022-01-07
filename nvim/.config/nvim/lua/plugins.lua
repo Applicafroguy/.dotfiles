@@ -100,6 +100,7 @@ return require('packer').startup{
         end
     }
     use { 'folke/tokyonight.nvim' }
+    use 'EdenEast/nightfox.nvim'
     use { 'gruvbox-community/gruvbox' }
     use { 'shaunsingh/nord.nvim',
       config = function()
