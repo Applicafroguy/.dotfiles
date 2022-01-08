@@ -189,6 +189,8 @@ wk.register({
   ['<leader>p'] = {'"_dP', 'replace without overwriting reg'},
   ['<M-j>'] =  { ":m'>+<cr>`<my`>mzgv`yo`z", 'move line down' },
   ['<M-k>'] = { ":m'<-2<cr>`>my`<mzgv`yo`z", 'move line up' },
+  ['.'] = { ':norm .<cr>', 'repat last normal mode command' },
+  ['q'] = { ':norm @q<cr>', 'repat q macro' },
 }, { mode = 'v'})
 
 
