@@ -13,3 +13,6 @@
 [submodule "theme/.themes/Nordic-dark"]
 	path = theme/.themes/Nordic-dark
 	url = git@github.com:EliverLara/Nordic.git
+[submodule "_software/tela"]
+	path = _software/tela
+	url = git@github.com:vinceliuice/Tela-icon-theme.git
