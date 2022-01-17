@@ -6,8 +6,6 @@ source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 
-
-
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000

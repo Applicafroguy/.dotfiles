@@ -28,8 +28,8 @@ after idle {
     # <menus>
     # state : active
     if { 1 } {
-      menu main on ; menu main move 241 282
-      menu graphics off ; menu graphics move 358 401
+      menu main on ; menu main move 2046 198
+      menu graphics on ; menu graphics move 1610 470
       menu tkcon off
       menu files off ; menu files move 125 325
       menu alascan off
@@ -43,12 +43,12 @@ after idle {
       menu cispeptide_gui off
       menu cliptool off
       menu clonerep off
-      menu color off ; menu color move 474 205
+      menu color off ; menu color move 1572 384
       menu colorscalebar off
       menu contactmap off
       menu dataimport off
       menu dipwatch off
-      menu display off ; menu display move 546 282
+      menu display off ; menu display move 1391 430
       menu dowser_gui off
       menu forcefieldtoolkit off
       menu gofrgui off
@@ -86,7 +86,7 @@ after idle {
       menu qwikmd off
       menu ramaplot off
       menu remote off
-      menu render off ; menu render move 125 525
+      menu render on ; menu render move 2082 523
       menu rmsd off
       menu rmsdtt off
       menu rmsdvt off
@@ -97,13 +97,13 @@ after idle {
       menu solvate off
       menu symmetrytool off
       menu timeline off
-      menu tool off
+      menu tool off ; menu tool move 1970 192
       menu torsionplot off
       menu vdna off
       menu viewchangerender_gui off
       menu viewmaster off
       menu vmdmovie off
-      menu vmdprefs off
+      menu vmdprefs on ; menu vmdprefs move 596 222
       menu volmap off
     }
     # </menus>
@@ -111,14 +111,14 @@ after idle {
     # <display>
     # state : active
     if { 1 } {
-      display reposition 100 600
-      display resize 1252 1170
-      display projection Perspective
+      display reposition 50 700
+      display resize 1920 1080
+      display projection Orthographic
       display depthcue off
       display cuemode Exp2
       display cuestart 0.50
       display cueend 10.00
-      display cuedensity 0.32
+      display cuedensity 0.22
       display eyesep 0.07
       display focalLength 2.00
       display height 6.00
@@ -133,10 +133,10 @@ after idle {
       display aoambient 0.80
       display aodirect 0.30
       display stereo "Off"
-      display nearclip set 0.50
-      display farclip set 10.00
+      display nearclip set 0.00
+      display farclip set 13.40
       display backgroundgradient off
-      axes location LowerLeft
+      axes location Off
       light 0 on
       light 1 on
       light 2 off
@@ -235,8 +235,8 @@ after idle {
       color Element Bk ochre
       color add item Element Br ochre
       color Element Br ochre
-      color add item Element C cyan
-      color Element C cyan
+      color add item Element C gray
+      color Element C gray
       color add item Element Ca ochre
       color Element Ca ochre
       color add item Element Cd ochre
@@ -343,8 +343,8 @@ after idle {
       color Element O red
       color add item Element Os ochre
       color Element Os ochre
-      color add item Element P tan
-      color Element P tan
+      color add item Element P orange
+      color Element P orange
       color add item Element Pa ochre
       color Element Pa ochre
       color add item Element Pb ochre
@@ -503,6 +503,10 @@ after idle {
       color Resname HSP cyan
       color add item Resname CYX yellow
       color Resname CYX yellow
+      color add item Resname POPI silver
+      color Resname POPI silver
+      color add item Resname POPC green
+      color Resname POPC green
       color add item Resname ACE silver
       color Resname ACE silver
       color add item Resname HYP green
@@ -533,6 +537,8 @@ after idle {
       color Conformation all blue
       color add item Molecule 0 blue
       color Molecule 0 blue
+      color add item Molecule tln1_mod1_memb_system_align1.pdb blue
+      color Molecule tln1_mod1_memb_system_align1.pdb blue
       color add item Highlight Proback blue
       color Highlight Proback blue
       color add item Highlight Nucback yellow
@@ -573,16 +579,16 @@ after idle {
     # state (define) : active
     if { 1 } {
       color change rgb blue 0.250 0.240 0.710
-      color change rgb red 1.000 0.000 0.000
-      color change rgb gray 0.200 0.210 0.250
-      color change rgb orange 1.000 0.500 0.000
+      color change rgb red 1.000 0.110 0.130
+      color change rgb gray 0.290 0.280 0.300
+      color change rgb orange 1.000 0.550 0.050
       color change rgb yellow 1.000 1.000 0.000
       color change rgb tan 0.500 0.500 0.200
       color change rgb silver 0.600 0.600 0.600
       color change rgb green 0.540 0.540 0.640
       color change rgb white 1.000 1.000 1.000
       color change rgb pink 1.000 0.600 0.600
-      color change rgb cyan 0.250 0.750 0.750
+      color change rgb cyan 0.600 0.660 0.710
       color change rgb purple 0.650 0.000 0.650
       color change rgb lime 0.500 0.900 0.400
       color change rgb mauve 0.900 0.400 0.700
@@ -595,7 +601,7 @@ after idle {
       color change rgb green3 0.000 0.900 0.500
       color change rgb cyan2 0.000 0.880 1.000
       color change rgb cyan3 0.000 0.760 1.000
-      color change rgb blue2 0.020 0.380 0.670
+      color change rgb blue2 0.100 0.370 0.720
       color change rgb blue3 0.010 0.040 0.930
       color change rgb violet 0.270 0.000 0.980
       color change rgb violet2 0.450 0.000 0.900

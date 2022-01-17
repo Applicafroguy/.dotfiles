@@ -147,7 +147,8 @@ wk.register({
   r = {':!./%<cr>', 'run file'},
   ['<cr>'] = {'<Plug>SlimeSendCell', 'run code section'},
   w = {
-    name = 'save',
+    name = 'workspace',
+    t = {'TodoTelescope', 'todo'},
     w = {':w!<cr>', 'save file'},
     W = {':SudaWrite<cr>', 'save file with sudo'},
   },
