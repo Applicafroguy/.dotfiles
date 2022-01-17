@@ -1,6 +1,6 @@
 # some more ls aliases
 alias grep='grep --color'
-alias ls='ls --color'
+alias ls='ls --color --hyperlink=always'
 alias ll='ls -alFh'
 alias la='ls -A'
 alias l='ls --color'
