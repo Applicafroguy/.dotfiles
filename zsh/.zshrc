@@ -4,6 +4,11 @@ test -e ~/.alias && source ~/.alias
 source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+# prompt
+autoload -U colors && colors
+PS1="%{$fg[blue]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%(5~|%-1~/.../%3~|%4~) %{$reset_color%}%% "
+
+
 test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
 
 HISTFILE=~/.histfile
@@ -30,5 +35,5 @@ fi
 
 eval "$($CONDA_PREFIX/bin/conda shell.zsh hook)"
 
-eval "$(starship init zsh)"
+# eval "$(starship init zsh)"
 

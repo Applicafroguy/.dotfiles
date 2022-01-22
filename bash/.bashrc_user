@@ -17,5 +17,6 @@ fi
 
 eval "$($CONDA_PREFIX/bin/conda shell.bash hook)"
 
-eval "$(starship init bash)"
+# set prompt
+export PS1="\e[0;34m[\u@\h \W]\$ \e[0m"
 
