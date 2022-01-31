@@ -28,8 +28,8 @@ after idle {
     # <menus>
     # state : active
     if { 1 } {
-      menu main on ; menu main move 2046 198
-      menu graphics on ; menu graphics move 1610 470
+      menu main on ; menu main move 1213 164
+      menu graphics off ; menu graphics move 1158 165
       menu tkcon off
       menu files off ; menu files move 125 325
       menu alascan off
@@ -43,7 +43,7 @@ after idle {
       menu cispeptide_gui off
       menu cliptool off
       menu clonerep off
-      menu color off ; menu color move 1572 384
+      menu color off ; menu color move 661 230
       menu colorscalebar off
       menu contactmap off
       menu dataimport off
@@ -86,7 +86,7 @@ after idle {
       menu qwikmd off
       menu ramaplot off
       menu remote off
-      menu render on ; menu render move 2082 523
+      menu render off ; menu render move 1114 494
       menu rmsd off
       menu rmsdtt off
       menu rmsdvt off
@@ -103,7 +103,7 @@ after idle {
       menu viewchangerender_gui off
       menu viewmaster off
       menu vmdmovie off
-      menu vmdprefs on ; menu vmdprefs move 596 222
+      menu vmdprefs on ; menu vmdprefs move 505 195
       menu volmap off
     }
     # </menus>
@@ -112,7 +112,7 @@ after idle {
     # state : active
     if { 1 } {
       display reposition 50 700
-      display resize 1920 1080
+      display resize 1920 1027
       display projection Orthographic
       display depthcue off
       display cuemode Exp2
@@ -157,10 +157,10 @@ after idle {
       color Display Foreground white
       color add item Display FPS white
       color Display FPS white
-      color add item Axes Y green
-      color Axes Y green
       color add item Axes X red
       color Axes X red
+      color add item Axes Y green
+      color Axes Y green
       color add item Axes Z blue
       color Axes Z blue
       color add item Axes Origin cyan
@@ -537,6 +537,8 @@ after idle {
       color Conformation all blue
       color add item Molecule 0 blue
       color Molecule 0 blue
+      color add item Molecule tln1_mod1_memb_system_align1.pdb blue
+      color Molecule tln1_mod1_memb_system_align1.pdb blue
       color add item Highlight Proback blue
       color Highlight Proback blue
       color add item Highlight Nucback yellow
@@ -604,7 +606,7 @@ after idle {
       color change rgb violet 0.270 0.000 0.980
       color change rgb violet2 0.450 0.000 0.900
       color change rgb magenta 0.765 0.000 0.420
-      color change rgb magenta2  0.855 0.490 0.651
+      color change rgb magenta2 0.855 0.490 0.651
       color change rgb red2 0.980 0.000 0.230
       color change rgb red3 0.810 0.000 0.000
       color change rgb orange2 0.890 0.350 0.000
