@@ -185,6 +185,9 @@ lspconfig.rust_analyzer.setup {
   cmd = { "rustup", "run", "nightly", "rust-analyzer"},
 }
 
+lspconfig.cssls.setup {
+  capabilities = capabilities,
+}
 
 
 -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]]
