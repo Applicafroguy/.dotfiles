@@ -105,12 +105,6 @@ wk.register({
   },
   l = {
     name = "lsp",
-    w = {
-      name = "workspace",
-      a = { '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', 'add workspace folder' },
-      r = { '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', 'remove workspace folder' },
-      l = { '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', 'list workspace folders' },
-    },
     r = { "<cmd>Telescope lsp_references<cr>", "register" },
     D = { '<cmd>lua vim.lsp.buf.type_definition()<CR>', 'type definition' },
     n = { '<cmd>lua vim.lsp.buf.rename()<CR>', 'rename' },
@@ -147,10 +141,14 @@ wk.register({
   r = {':!./%<cr>', 'run file'},
   ['<cr>'] = {'<Plug>SlimeSendCell', 'run code section'},
   w = {
-    name = 'workspace',
+    name = "workspace",
+    a = { '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', 'add workspace folder' },
+    r = { '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', 'remove workspace folder' },
+    l = { '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', 'list workspace folders' },
     t = {'TodoTelescope', 'todo'},
     w = {':w!<cr>', 'save file'},
     W = {':SudaWrite<cr>', 'save file with sudo'},
+    cc = { '<cmd>cd %:p:h<CR>', 'cd to current file' },
   },
   -- misc
   [';'] = {':', 'command'},

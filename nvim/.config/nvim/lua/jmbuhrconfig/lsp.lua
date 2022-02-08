@@ -186,6 +186,12 @@ lspconfig.rust_analyzer.setup {
 }
 
 lspconfig.cssls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
+
+lspconfig.denols.setup {
+  on_attach = on_attach,
   capabilities = capabilities,
 }
 
