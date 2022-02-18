@@ -5,9 +5,6 @@ source $HOME/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $HOME/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # prompt
-NEWLINE=$'\n'
-autoload -U colors && colors
-PS1="%{$fg[blue]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%(5~|%-1~/.../%3~|%4~) %{$reset_color%}${NEWLINE}$ "
 
 
 test -r ~/.dir_colors && eval $(dircolors ~/.dir_colors)
@@ -20,6 +17,7 @@ unsetopt beep
 disable r
 bindkey -e
 
+autoload -U colors && colors
 autoload -z edit-command-line
 zle -N edit-command-line
 bindkey "^X^E" edit-command-line
@@ -37,4 +35,8 @@ fi
 eval "$($CONDA_PREFIX/bin/conda shell.zsh hook)"
 
 # eval "$(starship init zsh)"
+
+NEWLINE=$'\n'
+PS1="%{$fg[blue]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%(5~|%-1~/.../%3~|%4~) %{$reset_color%}${NEWLINE}$ "
+
 
