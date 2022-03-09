@@ -1,0 +1,24 @@
+require('io')
+require('os')
+
+require('plugins')
+require('autocmd')
+require('globals')
+require('jmbuhrconfig')
+
+vim.cmd[[ colorscheme nord ]]
+
+
+local quartoFile = function()
+  local path = vim.api.nvim_buf_get_name(0)
+  -- os.execute("echo hello")
+  local id = vim.fn.jobstart("quarto preview" .. path)
+  print(id)
+  return id
+end
+
+vim.api.nvim_set_keymap('n', '<leader>cp', 'lua quartoFile()', {})
+
+require('colors')
+
+quartoFile()
