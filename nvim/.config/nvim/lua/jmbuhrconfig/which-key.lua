@@ -60,7 +60,7 @@ wk.register({
     name = "VIM",
     e = { ":cd $HOME/.dotfiles/<cr>:edit nvim/.config/nvim/init.lua<CR>", "edit config" },
     r = { ":source $HOME/.config/nvim/init.lua<CR>", "source config" },
-    s = { ":source %<CR>", "source %" },
+    s = { ":w<cr>:source %<CR>", "source %" },
     c = { ":Telescope colorscheme<cr>", "colorscheme" },
     p = {
       name = "Packer",
