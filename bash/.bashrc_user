@@ -15,7 +15,7 @@ if [ -d /etc/profile.d ]; then
   done
 fi
 
-eval "$($CONDA_PREFIX/bin/conda shell.bash hook)"
+# eval "$($CONDA_PREFIX/bin/conda shell.bash hook)"
 
 # set prompt
 export PS1="\n\e[0;34m[\u@\h \W]\$ \e[0m"

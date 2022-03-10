@@ -44,7 +44,7 @@ wk.register({
     j = { "<cmd>Telescope jumplist<cr>", "marks" },
     c = { "<cmd>Telescope git_commits<cr>", "git commits" },
     k = { "<cmd>Telescope keymaps<cr>", "keymaps" },
-    s = { "<cmd>Telescope builtin<cr>", "spelling" },
+    s = { "<cmd>Telescope lsp_document_symbols<cr>", "symbols" },
     t = { "<cmd>Telescope tmux sessions<cr>", "tmux session" },
     w = { "<cmd>Telescope tmux windows<cr>", "tmux window" },
     p = { "<cmd>Telescope projects<cr>", "projects" },
@@ -53,7 +53,7 @@ wk.register({
     q = { "<cmd>Telescope quickfix<cr>", "quickfix" },
     l = { "<cmd>Telescope loclist<cr>", "loclist" },
     r = { "<cmd>Telescope registers<cr>", "register" },
-    y = { "<cmd>Telescope neoclip<cr>", "register" },
+    y = { "<cmd>Telescope neoclip<cr>", "neoclip" },
     ['<space>'] = { "<cmd>Telescope builtin<cr>", "builtin" },
   },
   v = {
@@ -105,16 +105,16 @@ wk.register({
   },
   l = {
     name = "lsp",
-    r = { "<cmd>Telescope lsp_references<cr>", "register" },
+    r = { "<cmd>Telescope lsp_references<cr>", "references" },
     D = { '<cmd>lua vim.lsp.buf.type_definition()<CR>', 'type definition' },
     n = { '<cmd>lua vim.lsp.buf.rename()<CR>', 'rename' },
     ca = { '<cmd>Telescope lsp_code_actions<CR>', 'code action' },
-    q = { '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', 'set loclist' },
-    e = { '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', 'show line diagnostic' },
+    q = { '<cmd>lua vim.diagnostic.set_loclist()<CR>', 'set loclist' },
+    e = { '<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>', 'show line diagnostic' },
     d = {
       name = 'diagnostic',
-      d = {'<cmd>lua vim.lsp.diagnostic.disable()<CR>', 'disable'},
-      s = {'<cmd>lua vim.lsp.diagnostic.enable()<CR>', 'show'},
+      d = {'<cmd>lua vim.diagnostic.disable()<CR>', 'disable'},
+      s = {'<cmd>lua vim.diagnostic.enable()<CR>', 'show'},
     },
     f = {
       name = "format",
@@ -154,15 +154,6 @@ wk.register({
   [';'] = {':', 'command'},
   ['<space>'] = {':', 'command'}
 }, { prefix = "<leader>"})
-
--- buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
--- buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
--- buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
--- buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
--- buf_set_keymap('n', 'gh', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
--- buf_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', opts)
--- buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
--- buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 
 wk.register({
   ['gx'] = { ':!xdg-open <c-r><c-a><cr>', 'open file' },
