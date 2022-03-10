@@ -32,7 +32,7 @@ if [ -d /etc/profile.d ]; then
   setopt nomatch
 fi
 
-# eval "$($CONDA_PREFIX/bin/conda shell.zsh hook)"
+eval "$($CONDA_PREFIX/bin/conda shell.zsh hook)"
 
 # eval "$(starship init zsh)"
 
