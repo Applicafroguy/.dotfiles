@@ -1,2 +1,5 @@
 tmux-client-*
 nvim/.config/nvim/plugin/packer_compiled.lua
+ipython/.ipython/profile_default/db/
+ipython/.ipython/profile_default/history.sqlite
+
