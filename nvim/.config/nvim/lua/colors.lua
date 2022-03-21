@@ -32,11 +32,6 @@ Color.new('purple',    '#B48EAD')
 Color.new('violet',    '#B48EAD')
 Color.new('orange',    '#D08770')
 
-Group.new('TabLineSel', colors.nord_0,  colors.nord_9, styles.italic )
-Group.new('TabLineSelSeparator', colors.nord_9, colors.nord_0)
-Group.new('TabLine', colors.fg, colors.nord_2)
-Group.new('TabLineSeparator', colors.nord_2, colors.fg)
-Group.new('TabLineFill', colors.none, colors.none)
 Group.new("Visual",colors.nord_4, colors.nord_9)
 -- Group.new("VisualNOS",colors.nord_2, colors.nord_1)
 Group.new('Conceal', colors.nord_3_light, colors.none)
@@ -59,7 +54,11 @@ Group.new("CmpItemAbbr", colors.nord_4, colors.none)
 Group.new("CmpItemKind", colors.nord_13, colors.none)
 Group.new("CmpItemMenu", colors.nord_7, colors.none)
 
-
-
+Group.new('TabLineSel', colors.nord_0,  colors.nord_9, styles.italic )
+Group.new('TabLineSelSeparator', colors.nord_9, colors.nord_0)
+Group.new('TabLine', colors.fg, colors.nord_2)
+Group.new('TabLineSeparator', colors.nord_2, colors.fg)
+Group.new('TabLineFill', colors.none, colors.none)
+Group.new("WinSeparator", colors.nord_3, colors.none)
 
 

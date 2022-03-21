@@ -1,15 +1,15 @@
-vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh', 'R=r' }
+local tabsize = 2
+
+vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh', 'R=r', '"=html"=html' }
 vim.g.vim_markdown_math = 1
 vim.g.vim_markdown_frontmatter = 1
-vim.g.netrw_browsex_viewer = 'firefox'
+vim.g.netrw_browsex_viewer = 'brave-browser'
 vim.g.taboo_tab_format = '%f %m %x|'
 vim.g.taboo_modified_tab_flag = '◌'
 vim.g.taboo_close_tab_label = '✖'
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 vim.g.vimsyn_embed = 'l'
-
-local tabsize = 2
 
 vim.opt.termguicolors = true
 vim.opt.list = true
@@ -41,11 +41,11 @@ vim.opt.linebreak = true
 vim.opt.breakindent = true
 -- vim.opt.textwidth = 120
 vim.opt.smartindent = true
-vim.opt.laststatus = 2
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 vim.opt.switchbuf = 'useopen,usetab'
-vim.opt.showtabline=1
+vim.opt.showtabline = 1
 vim.opt.path:append '**'
+vim.opt.laststatus = 3
 
 

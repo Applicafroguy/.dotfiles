@@ -144,10 +144,11 @@ require('lspconfig').sumneko_lua.setup {
         path = runtime_path,
       },
       diagnostics = {
-        globals = { 'vim' },
+        globals = { 'vim', 'table' },
       },
       workspace = {
         library = vim.api.nvim_get_runtime_file('', true),
+        checkThirdParty = false,
       },
       telemetry = {
         enable = false,
@@ -156,6 +157,7 @@ require('lspconfig').sumneko_lua.setup {
   },
 }
 
+require'lspconfig'.svelte.setup{}
 
 if not lspconfig.emmet_ls then
   configs.emmet_ls = {

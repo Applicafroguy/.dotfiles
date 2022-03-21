@@ -16,4 +16,3 @@ require('lualine').setup({
 })
 
 
-
