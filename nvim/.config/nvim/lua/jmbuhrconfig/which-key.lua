@@ -97,6 +97,7 @@ wk.register({
     name = "quickfix",
     o = {':copen<cr>', 'open'},
     q = {':cclose<cr>', 'close'},
+    r = {'<cmd>lua require"jmbuhrconfig.dev".render()<cr>', 'quarto render'}
   },
   Q = {
     name = "loclist",
@@ -192,5 +193,4 @@ wk.register({
 
 
 vim.cmd [[ command! W  execute ':w' ]]
-
 

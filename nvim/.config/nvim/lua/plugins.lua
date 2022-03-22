@@ -145,15 +145,15 @@ return require('packer').startup{
         vim.g.slime_default_config = {socket_name = "default", target_pane = ":.2"}
         vim.b.slime_cell_delimiter = "#%%"
       end
-      }
+    }
 
     -- lsp and other built-in anhancers
     use { 'neovim/nvim-lspconfig' }
     use { 'mfussenegger/nvim-dap' }
     use { 'rcarriga/nvim-dap-ui',
-      config = function()
-        require("dapui").setup()
-      end
+      -- config = function()
+      --   require("dapui").setup()
+      -- end
     }
     use { 'onsails/lspkind-nvim' }
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
@@ -193,6 +193,12 @@ return require('packer').startup{
     use { 'windwp/nvim-autopairs',
       config = function()
         require('nvim-autopairs').setup{}
+      end
+    }
+
+    use { 'jmbuhr/quarto-nvim',
+      config = function()
+        require'quarto'
       end
     }
 
