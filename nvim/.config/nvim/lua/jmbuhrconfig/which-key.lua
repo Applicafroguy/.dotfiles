@@ -97,7 +97,8 @@ wk.register({
     name = "quickfix",
     o = {':copen<cr>', 'open'},
     q = {':cclose<cr>', 'close'},
-    r = {'<cmd>lua require"jmbuhrconfig.dev".render()<cr>', 'quarto render'}
+    p = {'<cmd>lua require"quarto".previewFile()<cr>', 'quarto preview'},
+    r = {'<cmd>lua require"quarto".renderFile()<cr>', 'quarto render'},
   },
   Q = {
     name = "loclist",

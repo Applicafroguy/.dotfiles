@@ -198,7 +198,7 @@ return require('packer').startup{
 
     use { 'jmbuhr/quarto-nvim',
       config = function()
-        require'quarto'
+        require'quarto'.setup({})
       end
     }
 
@@ -210,7 +210,7 @@ return require('packer').startup{
   end,
   config = {
     profile = {
-      enable = true,
+      enable = false,
       threshold = 1
     },
     display = {
@@ -218,5 +218,4 @@ return require('packer').startup{
     }
   }
 }
-
 
