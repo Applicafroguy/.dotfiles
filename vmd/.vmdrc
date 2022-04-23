@@ -28,10 +28,10 @@ after idle {
     # <menus>
     # state : active
     if { 1 } {
-      menu main on ; menu main move 1213 164
-      menu graphics off ; menu graphics move 1158 165
+      menu main on
+      menu graphics on
       menu tkcon off
-      menu files off ; menu files move 125 325
+      menu files off
       menu alascan off
       menu apbsrun off
       menu autoimd off
@@ -43,12 +43,12 @@ after idle {
       menu cispeptide_gui off
       menu cliptool off
       menu clonerep off
-      menu color off ; menu color move 661 230
+      menu color off
       menu colorscalebar off
       menu contactmap off
       menu dataimport off
       menu dipwatch off
-      menu display off ; menu display move 1391 430
+      menu display off
       menu dowser_gui off
       menu forcefieldtoolkit off
       menu gofrgui off
@@ -58,7 +58,7 @@ after idle {
       menu imd off
       menu inorganicbuilder off
       menu irspecgui off
-      menu labels off ; menu labels move 125 525
+      menu labels off
       menu material off
       menu mdff_gui off
       menu membrane off
@@ -86,7 +86,7 @@ after idle {
       menu qwikmd off
       menu ramaplot off
       menu remote off
-      menu render off ; menu render move 1114 494
+      menu render off
       menu rmsd off
       menu rmsdtt off
       menu rmsdvt off
@@ -97,13 +97,13 @@ after idle {
       menu solvate off
       menu symmetrytool off
       menu timeline off
-      menu tool off ; menu tool move 1970 192
+      menu tool off
       menu torsionplot off
       menu vdna off
       menu viewchangerender_gui off
       menu viewmaster off
       menu vmdmovie off
-      menu vmdprefs on ; menu vmdprefs move 505 195
+      menu vmdprefs off
       menu volmap off
     }
     # </menus>

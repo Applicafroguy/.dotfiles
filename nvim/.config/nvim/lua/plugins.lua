@@ -49,6 +49,7 @@ return require('packer').startup{
         require'diffview'.setup()
       end
     }
+    use {'kdheepak/lazygit.nvim'}
     use { 'TimUntersberger/neogit',
       config = function()
         require('neogit').setup {

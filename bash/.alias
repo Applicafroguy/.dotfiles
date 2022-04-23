@@ -42,6 +42,7 @@ alias gmx2020='module use /sw/mbm/app/easybuild/modules/all; module load CUDA/10
 alias gmx2021='source /hits/fast/mbm/hartmaec/sw/gromacs-2021/run/bin/GMXRC'
 alias rmback='rm \#*\#'
 alias lf='less +F'
+alias lg='lazygit'
 
 # kittens
 alias icat="kitty +kitten icat"
