@@ -119,6 +119,6 @@ ls.snippets = {
     })
   }
 }
-
-require("luasnip.loaders.from_vscode").load({ paths = { "~/.config/nvim/snips" } })
+require("luasnip.loaders.from_vscode").lazy_load() -- for friendly snippets
+require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snips" } })
 

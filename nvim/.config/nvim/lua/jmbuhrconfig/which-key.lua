@@ -17,6 +17,13 @@ nmap('<F12>', ':lua require"dap".step_out()<CR>')
 nmap('Q', '<Nop>')
 
 
+nmap('<c-cr>', '<Plug>SlimeSendCell')
+nmap('<s-cr>', '<Plug>SlimeSendCell')
+-- needs kitty config:
+-- map shift+enter send_text all \x1b[13;2u
+-- map ctrl+enter send_text all \x1b[13;5u
+--
+
 wk.setup{
   spelling = {
       enabled = true
@@ -86,6 +93,7 @@ wk.register({
     n = { ":tabnext<cr>", "next tab" },
     p = { ":tabprevious<cr>", "previous tab" },
   },
+  G = {'<cmd>LazyGit<cr>', 'lazygit'},
   g = {
     name = "git",
     g = {":Neogit<cr>", "neogit"},
