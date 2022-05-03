@@ -12,7 +12,7 @@ alias e='exit'
 alias q='exit'
 alias p='cd ~/Documents/projects'
 alias phd='cd /hits/fast/phd'
-alias ice='ssh -Y buhrjk@iceland.h-its.org'
+alias ice='ssh -J buhrjk@zeus.h-its.org -Y buhrjk@iceland.h-its.org'
 alias zeus='ssh buhrjk@zeus.h-its.org'
 alias ga='git add'
 alias gaa='git add -A'
@@ -43,12 +43,13 @@ alias gmx2021='source /hits/fast/mbm/hartmaec/sw/gromacs-2021/run/bin/GMXRC'
 alias rmback='rm \#*\#'
 alias lf='less +F'
 alias lg='lazygit'
+alias gpurun='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia'
 
 # kittens
 alias icat="kitty +kitten icat"
 
 sshp () {
-  ssh buhrjk@iceland.h-its.org -NL ${1}:localhost:${1}
+  ssh -J buhrjk@zeus.h-its.org buhrjk@iceland.h-its.org -NL ${1}:localhost:${1}
 }
 
 

@@ -72,6 +72,17 @@ return require('packer').startup{
         end
     }
 
+    -- markdown notes
+    use({'jakewvincent/mkdnflow.nvim',
+         config = function()
+            require('mkdnflow').setup({
+                -- Config goes here; leave blank for defaults
+            })
+         end
+    })
+    use 'ekickx/clipboard-image.nvim'
+
+
     -- common dependencies
     use { 'ryanoasis/vim-devicons' }
     use { 'kyazdani42/nvim-web-devicons' }

@@ -111,8 +111,8 @@ after idle {
     # <display>
     # state : active
     if { 1 } {
-      display reposition 50 700
-      display resize 1920 1027
+      # display reposition 500 700
+      # display resize 500 500
       display projection Orthographic
       display depthcue off
       display cuemode Exp2
@@ -129,12 +129,12 @@ after idle {
       display cachemode Off
       display rendermode Normal
       display shadows off
-      display ambientocclusion off
+      display ambientocclusion on
       display aoambient 0.80
       display aodirect 0.30
       display stereo "Off"
       display nearclip set 0.00
-      display farclip set 13.40
+      display farclip set 90.00
       display backgroundgradient off
       axes location Off
       light 0 on
