@@ -30,6 +30,7 @@ wk.setup{
     }
 }
 
+-- normal mode <leader>
 wk.register({
   d = {
     name = "DAP",
@@ -150,6 +151,7 @@ wk.register({
   },
   r = {':!./%<cr>', 'run file'},
   ['<cr>'] = {'<Plug>SlimeSendCell', 'run code section'},
+  ['<leader>'] = {'<Plug>SlimeSendCell', 'run code section'},
   w = {
     name = "workspace",
     a = { '<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>', 'add workspace folder' },
@@ -165,6 +167,7 @@ wk.register({
   ['<space>'] = {':', 'command'}
 }, { prefix = "<leader>"})
 
+-- normal mode
 wk.register({
   ['gx'] = { ':!xdg-open <c-r><c-a><cr>', 'open file' },
   ["<c-q>"] = {'<cmd>q<cr>', 'close buffer'},
@@ -183,19 +186,25 @@ wk.register({
   ['<C-l>']  = {'<C-W>l', 'move to window'},
 }, { mode = 'n' })
 
+-- visual mode
 wk.register({
   ['<cr>'] = {'<Plug>SlimeRegionSend', 'run code region'},
   ['gx'] = { '"ty:!xdg-open t<cr>', 'open file' },
   ['>'] = {'>gv', 'indent'},
   ['<'] = {'<gv', 'dedent'},
-  ['<leader>p'] = {'"_dP', 'replace without overwriting reg'},
   ['<M-j>'] =  { ":m'>+<cr>`<my`>mzgv`yo`z", 'move line down' },
   ['<M-k>'] = { ":m'<-2<cr>`>my`<mzgv`yo`z", 'move line up' },
   ['.'] = { ':norm .<cr>', 'repat last normal mode command' },
   ['q'] = { ':norm @q<cr>', 'repat q macro' },
 }, { mode = 'v'})
 
+wk.register({
+  ['<leader>'] = {'<Plug>SlimeRegionSend', 'run code region'},
+  ['<cr>'] = {'<cmd>MkdnFollowLink<cr>', 'follow / create link'},
+  ['p'] = {'"_dP', 'replace without overwriting reg'},
+} , { mode = 'v', prefix = "<leader>"})
 
+-- terminal mode
 wk.register({
   ['<esc>'] = {'<C-\\><C-n>', 'escape'},
 }, { mode = 't'})
