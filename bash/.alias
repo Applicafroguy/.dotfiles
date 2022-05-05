@@ -11,8 +11,8 @@ alias d='cd ~/Desktop'
 alias e='exit'
 alias q='exit'
 alias p='cd ~/Documents/projects'
-alias phd='cd /hits/fast/phd'
-alias ice='ssh -J buhrjk@zeus.h-its.org -Y buhrjk@iceland.h-its.org'
+# alias ice='ssh -J buhrjk@zeus.h-its.org -Y buhrjk@iceland.h-its.org'
+alias ice='ssh buhrjk@iceland.h-its.org'
 alias zeus='ssh buhrjk@zeus.h-its.org'
 alias ga='git add'
 alias gaa='git add -A'
@@ -27,12 +27,12 @@ alias base='cd /hits/basement/mbm/buhrjk/'
 alias fast='cd /hits/fast/mbm/buhrjk/'
 alias phd='cd /hits/fast/mbm/buhrjk/phd'
 alias playg="$HOME/playground/"
+alias dot="cd $HOME/.dotfiles"
 alias cascade='ssh cascade-login.h-its.org'
 alias buhrjkmods='module use /hits/fast/mbm/buhrjk/software/eb/modules/all'
 alias ta='tmux attach-session'
 alias tn='tmux new-session -s'
 alias td='export DISPLAY="`tmux show-env | sed -n '"'"'s/^DISPLAY=//p'"'"'`"'
-alias dot="cd $HOME/.dotfiles"
 alias r="radian"
 alias wiki="cd /hits/fast/mbm/share/mbm-wiki"
 alias ansib="cd /hits/fast/mbm/share/buhrjk/ansible-playbook"
@@ -48,8 +48,12 @@ alias gpurun='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia'
 # kittens
 alias icat="kitty +kitten icat"
 
+# sshp () {
+#   ssh -J buhrjk@zeus.h-its.org buhrjk@iceland.h-its.org -NL ${1}:localhost:${1}
+# }
+
 sshp () {
-  ssh -J buhrjk@zeus.h-its.org buhrjk@iceland.h-its.org -NL ${1}:localhost:${1}
+  ssh buhrjk@iceland.h-its.org -NL ${1}:localhost:${1}
 }
 
 

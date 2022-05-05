@@ -19,8 +19,8 @@ cmp.setup({
     end,
   },
   mapping = {
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-d>'] = cmp.mapping.scroll_docs(4),
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
     ['<c-a>'] = cmp.mapping.complete(),
@@ -121,4 +121,5 @@ ls.snippets = {
 }
 require("luasnip.loaders.from_vscode").lazy_load() -- for friendly snippets
 require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snips" } })
+
 

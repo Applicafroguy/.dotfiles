@@ -19,6 +19,12 @@
       },
       {
         "language": [
+          "markdown"
+        ],
+        "path": "./snippets/markdown.json"
+      },
+      {
+        "language": [
           "plaintext",
           "markdown",
           "tex",
