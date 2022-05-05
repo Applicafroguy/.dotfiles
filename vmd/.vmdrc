@@ -26,10 +26,10 @@ after idle {
     menu main on
 
     # <menus>
-    # state : active
-    if { 1 } {
-      menu main on
-      menu graphics on
+    # state : inactive
+    if { 0 } {
+      menu main on ; menu main move 96 104
+      menu graphics off ; menu graphics move 0 61
       menu tkcon off
       menu files off
       menu alascan off
@@ -43,7 +43,7 @@ after idle {
       menu cispeptide_gui off
       menu cliptool off
       menu clonerep off
-      menu color off
+      menu color off ; menu color move 0 61
       menu colorscalebar off
       menu contactmap off
       menu dataimport off
@@ -58,7 +58,7 @@ after idle {
       menu imd off
       menu inorganicbuilder off
       menu irspecgui off
-      menu labels off
+      menu labels off ; menu labels move 341 220
       menu material off
       menu mdff_gui off
       menu membrane off
@@ -86,7 +86,7 @@ after idle {
       menu qwikmd off
       menu ramaplot off
       menu remote off
-      menu render off
+      menu render off ; menu render move 275 386
       menu rmsd off
       menu rmsdtt off
       menu rmsdvt off
@@ -103,7 +103,7 @@ after idle {
       menu viewchangerender_gui off
       menu viewmaster off
       menu vmdmovie off
-      menu vmdprefs off
+      menu vmdprefs on ; menu vmdprefs move 571 281
       menu volmap off
     }
     # </menus>
@@ -111,8 +111,8 @@ after idle {
     # <display>
     # state : active
     if { 1 } {
-      # display reposition 500 700
-      # display resize 500 500
+      display reposition 100 600
+      display resize 669 834
       display projection Orthographic
       display depthcue off
       display cuemode Exp2
@@ -503,14 +503,14 @@ after idle {
       color Resname HSP cyan
       color add item Resname CYX yellow
       color Resname CYX yellow
+      color add item Resname HYP green
+      color Resname HYP green
       color add item Resname POPI silver
       color Resname POPI silver
       color add item Resname POPC green
       color Resname POPC green
       color add item Resname ACE silver
       color Resname ACE silver
-      color add item Resname HYP green
-      color Resname HYP green
       color add item Resname NME white
       color Resname NME white
       color add item Restype Unassigned cyan
@@ -537,6 +537,8 @@ after idle {
       color Conformation all blue
       color add item Molecule 0 blue
       color Molecule 0 blue
+      color add item Molecule qm-mm-pull-f1000-custom-addpull-run1-center.gro blue
+      color Molecule qm-mm-pull-f1000-custom-addpull-run1-center.gro blue
       color add item Molecule tln1_mod1_memb_system_align1.pdb blue
       color Molecule tln1_mod1_memb_system_align1.pdb blue
       color add item Highlight Proback blue
@@ -561,10 +563,10 @@ after idle {
       color Structure Coil white
       color add item Surface Grasp gray
       color Surface Grasp gray
-      color add item Labels Atoms green
-      color Labels Atoms green
-      color add item Labels Bonds white
-      color Labels Bonds white
+      color add item Labels Atoms black
+      color Labels Atoms black
+      color add item Labels Bonds black
+      color Labels Bonds black
       color add item Labels Angles yellow
       color Labels Angles yellow
       color add item Labels Dihedrals cyan
