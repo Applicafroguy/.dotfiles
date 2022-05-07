@@ -56,6 +56,9 @@ sshp () {
   ssh buhrjk@iceland.h-its.org -NL ${1}:localhost:${1}
 }
 
+hoo () {
+  xdg-open $(hoogle --count 1 --json $1 | jq -r '.[0].url')
+}
 
 vman () {
   nvim man://$1

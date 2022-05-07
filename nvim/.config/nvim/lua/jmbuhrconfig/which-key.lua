@@ -1,7 +1,11 @@
 local wk = require("which-key")
 
 local nmap = function(key, effect)
-  vim.api.nvim_set_keymap('n', key, effect, {silent = true})
+  vim.keymap.set('n', key, effect, {silent = true, noremap = true})
+end
+
+local vmap = function(key, effect)
+  vim.keymap.set('v', key, effect, {silent = true, noremap = true})
 end
 
 nmap('<c-b>', ':NvimTreeToggle<CR>')
@@ -9,26 +13,24 @@ nmap('<c-f>', ':Telescope builtin<CR>')
 nmap('<m-=>', ':!echo hi<cr>')
 nmap('<m-->', ':!echo hi<cr>')
 
-
-nmap('<F5>',  ':lua require"dap".continue()<CR>')
-nmap('<F10>', ':lua require"dap".step_over()<CR>')
-nmap('<F11>', ':lua require"dap".step_into()<CR>')
-nmap('<F12>', ':lua require"dap".step_out()<CR>')
+nmap('<F5>', require"dap".continue)
+nmap('<F10>', require"dap".step_over)
+nmap('<F11>', require"dap".step_into)
+nmap('<F12>', require"dap".step_out)
 nmap('Q', '<Nop>')
-
 
 nmap('<c-cr>', '<Plug>SlimeSendCell')
 nmap('<s-cr>', '<Plug>SlimeSendCell')
 -- needs kitty config:
 -- map shift+enter send_text all \x1b[13;2u
 -- map ctrl+enter send_text all \x1b[13;5u
---
 
-wk.setup{
-  spelling = {
-      enabled = true
-    }
-}
+vmap('>', '>gv')
+vmap('<', '<gv')
+
+
+vim.api.nvim_create_user_command('Hoogle', '!hoogle <q-args>', { nargs = 1 })
+vim.api.nvim_create_user_command('HoogleOpen', [[!xdg-open $(hoogle --count 1 --json  <q-args> | jq -r '.[0].url')]], { nargs = 1 })
 
 -- normal mode <leader>
 wk.register({
@@ -84,7 +86,7 @@ wk.register({
       i = {':LspInfo<CR>', 'info'},
       s = {':LspStart<CR>', 'start'},
       t = {':LspStop<CR>', 'stop'},
-    }
+    },
   },
   t = {
     name = "Tabs",
@@ -100,7 +102,7 @@ wk.register({
     g = {":Neogit<cr>", "neogit"},
     h = {":Octo<cr>", "github"},
     c = {":G commit<cr>", "git commit"},
-    p = {":G push<cr>", "git push"}
+    p = {":G push<cr>", "git push"},
   },
   q = {
     name = "quickfix",
@@ -119,9 +121,9 @@ wk.register({
     r = { "<cmd>Telescope lsp_references<cr>", "references" },
     D = { '<cmd>lua vim.lsp.buf.type_definition()<CR>', 'type definition' },
     n = { '<cmd>lua vim.lsp.buf.rename()<CR>', 'rename' },
-    ca = { '<cmd>Telescope lsp_code_actions<CR>', 'code action' },
+    ca = { '<cmd>lua vim.lsp.buf.code_action()<cr>', 'code action' },
     q = { '<cmd>lua vim.diagnostic.set_loclist()<CR>', 'set loclist' },
-    e = { '<cmd>lua vim.diagnostic.show_line_diagnostics()<CR>', 'show line diagnostic' },
+    e = { '<cmd>lua vim.diagnostic.open_float()<CR>', 'show line diagnostic' },
     d = {
       name = 'diagnostic',
       d = {'<cmd>lua vim.diagnostic.disable()<CR>', 'disable'},
@@ -131,6 +133,11 @@ wk.register({
       name = "format",
       f = { '<cmd>lua vim.lsp.buf.formatting()<CR>', 'formatting' },
       p = { ':w<cr><cmd>! black %<CR>:e<cr>', 'format python with black' },
+    },
+    h = {
+      name = 'hoogle',
+      h = { "<cmd>!hoogle <cword><cr>", "hoogle" },
+      o = { ":!xdg-open $(hoogle --count 1 --json <cword> | jq -r '.[0].url')<CR>", 'hoogle open' },
     },
   },
   s = {
@@ -164,7 +171,6 @@ wk.register({
   },
   -- misc
   [';'] = {':', 'command'},
-  ['<space>'] = {':', 'command'}
 }, { prefix = "<leader>"})
 
 -- normal mode
@@ -174,10 +180,10 @@ wk.register({
   ['<C-n>'] = { ':cnext<cr>', 'quickfix next' },
   ['<C-p>'] = { ':cprev<CR>', 'quickfix prev' },
   ['<esc>'] = { '<cmd>noh<cr>', 'remove search highlight' },
-  n = {'nzzzv', 'center search'},
-  gN = {'Nzzzv', 'center search'},
-  gl = {'<c-]>', 'open help link'},
-  gf = { ':e <cfile><CR>', 'edit file' },
+  ['n'] = {'nzzzv', 'center search'},
+  ['gN'] = {'Nzzzv', 'center search'},
+  ['gl'] = {'<c-]>', 'open help link'},
+  ['gf'] = { ':e <cfile><CR>', 'edit file' },
   ['<M-j>'] = { 'mz:m+<cr>`z', 'move line down' },
   ['<M-k>'] = { 'mz:m-2<cr>`z', 'move line up' },
   ['<C-j>']  = {'<C-W>j', 'move to window'},
@@ -190,8 +196,6 @@ wk.register({
 wk.register({
   ['<cr>'] = {'<Plug>SlimeRegionSend', 'run code region'},
   ['gx'] = { '"ty:!xdg-open t<cr>', 'open file' },
-  ['>'] = {'>gv', 'indent'},
-  ['<'] = {'<gv', 'dedent'},
   ['<M-j>'] =  { ":m'>+<cr>`<my`>mzgv`yo`z", 'move line down' },
   ['<M-k>'] = { ":m'<-2<cr>`>my`<mzgv`yo`z", 'move line up' },
   ['.'] = { ':norm .<cr>', 'repat last normal mode command' },
@@ -209,6 +213,4 @@ wk.register({
   ['<esc>'] = {'<C-\\><C-n>', 'escape'},
 }, { mode = 't'})
 
-
-vim.cmd [[ command! W  execute ':w' ]]
 

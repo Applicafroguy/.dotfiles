@@ -8,4 +8,3 @@ require('jmbuhrconfig.treesitter')
 require('jmbuhrconfig.mkdnflow')
 require('jmbuhrconfig.which-key')
 
-

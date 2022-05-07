@@ -41,15 +41,23 @@ telescope.setup{
       selected_browser = 'firefox',
       url_open_command = 'xdg-open',
     },
+    ["ui-select"] = {
+      require("telescope.themes").get_dropdown {
+        -- even more opts
+      },
+    },
   }
 }
-require('telescope').load_extension('fzf')
-require('telescope').load_extension('tmux')
-require('telescope').load_extension('projects')
-require("telescope").load_extension('bookmarks')
-require("telescope").load_extension('neoclip')
-require("telescope").load_extension("git_worktree")
-require("telescope").load_extension('dap')
--- require("telescope").load_extension('packer')
+
+
+telescope.load_extension('fzf')
+telescope.load_extension('tmux')
+telescope.load_extension('projects')
+telescope.load_extension('bookmarks')
+telescope.load_extension('neoclip')
+telescope.load_extension("git_worktree")
+telescope.load_extension('dap')
+telescope.load_extension("ui-select")
+-- telescope.load_extension('hoogle')
 
 

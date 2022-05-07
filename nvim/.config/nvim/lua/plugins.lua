@@ -73,7 +73,7 @@ return require('packer').startup{
     }
 
     -- markdown notes
-    use {'jakewvincent/mkdnflow.nvim' }
+    use { 'jakewvincent/mkdnflow.nvim' }
     use 'ekickx/clipboard-image.nvim'
 
     -- common dependencies
@@ -124,11 +124,13 @@ return require('packer').startup{
 
     -- telescope
     use { 'nvim-telescope/telescope.nvim' }
+    use {'nvim-telescope/telescope-ui-select.nvim' }
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use { 'camgraff/telescope-tmux.nvim' }
     use { 'nvim-telescope/telescope-dap.nvim' }
     use { 'nvim-telescope/telescope-packer.nvim' }
     use { 'dhruvmanila/telescope-bookmarks.nvim' }
+    use {'luc-tielen/telescope_hoogle'}
     use { 'ahmedkhalf/project.nvim',
       config = function()
         require("project_nvim").setup{}

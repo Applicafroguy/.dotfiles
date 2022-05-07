@@ -3,7 +3,7 @@ require('mkdnflow').setup({
     filetypes = {md = true, rmd = true, markdown = true},
     create_dirs = true,
     perspective = {
-        priority = 'current',
+        priority = 'first',
         fallback = 'current',
         root_tell = false
     },
@@ -12,7 +12,7 @@ require('mkdnflow').setup({
         string = [[os.date('%Y-%m-%d_')]]
     },
     wrap = false,
-    default_bib_path = './references.bib',
+    default_bib_path = '',
     silent = false,
     use_mappings_table = true,
     mappings = {
@@ -22,14 +22,14 @@ require('mkdnflow').setup({
         MkdnPrevHeading = {'n', '<leader>['},
         MkdnGoBack = {'n', '<BS>'},
         MkdnGoForward = {'n', '<Del>'},
-        MkdnFollowLink = {'n', '<CR>'},
+        MkdnFollowLink = {{'n'}, '<CR>'},
         MkdnDestroyLink = {'n', '<M-CR>'},
         -- MkdnYankAnchorLink = {'n', 'ya'},
         -- MkdnYankFileAnchorLink = {'n', 'yfa'},
         -- MkdnIncreaseHeading = {'n', '+'},
         -- MkdnDecreaseHeading = {'n', '-'},
-        MkdnToggleToDo = {'n', '<C-t>'},
-        MkdnNewListItem = {'i', '<CR>'}
+        -- MkdnToggleToDo = {'n', '<C-Space>'},
+        MkdnNewListItem = false
     },
     link_style = 'markdown',
     to_do = {
