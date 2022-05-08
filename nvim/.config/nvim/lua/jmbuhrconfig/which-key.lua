@@ -29,6 +29,10 @@ vmap('>', '>gv')
 vmap('<', '<gv')
 
 
+-- terminal mode
+vim.keymap.set('t', '<esc>', [[<c-\><c-n>]], {silent = true, noremap = true})
+
+
 vim.api.nvim_create_user_command('Hoogle', '!hoogle <q-args>', { nargs = 1 })
 vim.api.nvim_create_user_command('HoogleOpen', [[!xdg-open $(hoogle --count 1 --json  <q-args> | jq -r '.[0].url')]], { nargs = 1 })
 
@@ -207,10 +211,5 @@ wk.register({
   ['<cr>'] = {'<cmd>MkdnFollowLink<cr>', 'follow / create link'},
   ['p'] = {'"_dP', 'replace without overwriting reg'},
 } , { mode = 'v', prefix = "<leader>"})
-
--- terminal mode
-wk.register({
-  ['<esc>'] = {'<C-\\><C-n>', 'escape'},
-}, { mode = 't'})
 
 

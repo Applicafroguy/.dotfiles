@@ -57,7 +57,7 @@ sshp () {
 }
 
 hoo () {
-  xdg-open $(hoogle --count 1 --json $1 | jq -r '.[0].url')
+  xdg-open $(hoogle --count 1 --json "$1" | jq -r '.[0].url')
 }
 
 vman () {

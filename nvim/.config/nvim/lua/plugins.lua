@@ -87,7 +87,14 @@ return require('packer').startup{
     use { 'arkav/lualine-lsp-progress'}
     use { 'dstein64/nvim-scrollview' }
     use { 'gcmt/taboo.vim' }
-    use { 'norcalli/nvim-terminal.lua' }
+    -- use { 'norcalli/nvim-terminal.lua' }
+    use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
+      require("toggleterm").setup{
+         open_mapping = [[<c-\>]],
+         shade_terminals = false,
+         direction = 'float',
+      }
+    end}
     use { 'kyazdani42/nvim-tree.lua' }
     use { 'junegunn/goyo.vim' } -- zen-mode
     use { 'tjdevries/colorbuddy.nvim' }
