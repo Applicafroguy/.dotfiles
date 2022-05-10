@@ -3,8 +3,8 @@ require('mkdnflow').setup({
     filetypes = {md = true, rmd = true, markdown = true},
     create_dirs = true,
     perspective = {
-        priority = 'first',
-        fallback = 'current',
+        priority = 'current',
+        fallback = 'first',
         root_tell = false
     },
     prefix = {
@@ -12,7 +12,7 @@ require('mkdnflow').setup({
         string = [[os.date('%Y-%m-%d_')]]
     },
     wrap = false,
-    default_bib_path = '',
+    default_bib_path = '~/notes/references.bib',
     silent = false,
     use_mappings_table = true,
     mappings = {
@@ -29,9 +29,9 @@ require('mkdnflow').setup({
         -- MkdnIncreaseHeading = {'n', '+'},
         -- MkdnDecreaseHeading = {'n', '-'},
         -- MkdnToggleToDo = {'n', '<C-Space>'},
-        MkdnNewListItem = false
+        MkdnNewListItem = {'i', '<c-cr>'}
     },
-    link_style = 'markdown',
+    link_style = 'wiki',
     to_do = {
         symbols = {' ', '-', 'X'},
         update_parents = true,
