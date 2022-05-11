@@ -1,15 +1,14 @@
-
-require('mkdnflow').setup({
+require("mkdnflow").setup({
     filetypes = {md = true, rmd = true, markdown = true},
     create_dirs = true,
     perspective = {
-        priority = 'current',
-        fallback = 'first',
-        root_tell = false
+        priority = 'root',
+        fallback = 'current',
+        root_tell = ".git"
     },
     prefix = {
-        evaluate = true,
-        string = [[os.date('%Y-%m-%d_')]]
+        evaluate = false,
+        string = "./"
     },
     wrap = false,
     default_bib_path = '~/notes/references.bib',
@@ -29,9 +28,19 @@ require('mkdnflow').setup({
         -- MkdnIncreaseHeading = {'n', '+'},
         -- MkdnDecreaseHeading = {'n', '-'},
         -- MkdnToggleToDo = {'n', '<C-Space>'},
-        MkdnNewListItem = {'i', '<c-cr>'}
+        MkdnNewListItem = {'i', '<CR>'}
     },
-    link_style = 'wiki',
+    links = {
+        style = 'wiki',
+        implicit_extension = nil,
+        transform = function(input)
+            if input:match('%d%d%d%d%-%d%d%-%d%d') then
+                return('journals/'..input:gsub("-","_"))
+            else
+                return('pages/'..input)
+            end
+        end
+    },
     to_do = {
         symbols = {' ', '-', 'X'},
         update_parents = true,

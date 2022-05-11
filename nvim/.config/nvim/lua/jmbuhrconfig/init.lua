@@ -5,6 +5,6 @@ require('jmbuhrconfig.lsp')
 require('jmbuhrconfig.telescope')
 require('jmbuhrconfig.nerdtree')
 require('jmbuhrconfig.treesitter')
-require('jmbuhrconfig.mkdnflow')
+require('jmbuhrconfig.mkdnflow-config')
 require('jmbuhrconfig.which-key')
 
