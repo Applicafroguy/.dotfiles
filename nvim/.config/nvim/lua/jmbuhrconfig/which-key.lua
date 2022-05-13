@@ -29,6 +29,16 @@ vmap('>', '>gv')
 vmap('<', '<gv')
 
 
+local dailyNotes = function ()
+  local today = os.date("%Y_%m_%d")
+  local path = "~/notes/journals/"..today..".md"
+  local cmd = [[:edit ]]..path
+  vim.cmd(cmd)
+  vim.cmd[[:Mkdnflow]]
+end
+
+vim.api.nvim_create_user_command('DailyNotes', dailyNotes, {})
+
 -- terminal mode
 vim.keymap.set('t', '<esc>', [[<c-\><c-n>]], {silent = true, noremap = true})
 
@@ -45,6 +55,7 @@ wk.register({
     l = { ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", "log point" },
     r = { ":lua require'dap'.repl.open()<cr>", "repl" },
     u = { ":lua require'dapui'.toggle()<cr>", "ui" },
+    n = { ":DailyNotes<cr>", "daily notes"},
   },
   f = {
     name = "Telescope",
@@ -194,6 +205,8 @@ wk.register({
   ['<C-k>']  = {'<C-W>k', 'move to window'},
   ['<C-h>']  = {'<C-W>h', 'move to window'},
   ['<C-l>']  = {'<C-W>l', 'move to window'},
+  ['<tab>']  = {'<cmd>MkdnNextLink<cr>', 'next link'},
+  ['<c-tab>']  = {'<cmd>MkdnPrevLink<cr>', 'next link'},
 }, { mode = 'n' })
 
 -- visual mode

@@ -12,11 +12,11 @@ require("mkdnflow").setup({
     },
     wrap = false,
     default_bib_path = '~/notes/references.bib',
-    silent = false,
+    silent = true,
     use_mappings_table = true,
     mappings = {
-        MkdnNextLink = {'n', '<Tab>'},
-        MkdnPrevLink = {'n', '<S-Tab>'},
+        MkdnNextLink = {'n', '<tab>'},
+        MkdnPrevLink = {'n', '<s-tab>'},
         MkdnNextHeading = {'n', '<leader>]'},
         MkdnPrevHeading = {'n', '<leader>['},
         MkdnGoBack = {'n', '<BS>'},
@@ -33,13 +33,14 @@ require("mkdnflow").setup({
     links = {
         style = 'wiki',
         implicit_extension = nil,
+        -- transform = false
         transform = function(input)
             if input:match('%d%d%d%d%-%d%d%-%d%d') then
                 return('journals/'..input:gsub("-","_"))
             else
                 return('pages/'..input)
             end
-        end
+        end,
     },
     to_do = {
         symbols = {' ', '-', 'X'},

@@ -73,8 +73,8 @@ return require('packer').startup{
     }
 
     -- markdown notes
-    -- use { 'jakewvincent/mkdnflow.nvim', branch = 'dev' }
-    use { '~/sw/mkdnflow.nvim/', }
+    use { 'jakewvincent/mkdnflow.nvim', branch = 'dev' }
+    -- use { '~/sw/mkdnflow.nvim/', }
     use 'ekickx/clipboard-image.nvim'
 
     -- common dependencies
