@@ -21,26 +21,7 @@ local on_attach = function(client, bufnr)
   client.resolved_capabilities.document_formatting = true
 end
 
--- vim.cmd [[autocmd ColorScheme * highlight NormalFloat guibg=#1f2335]]
--- vim.cmd [[autocmd ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
-
--- local border = {
---       {"🭽", "FloatBorder"},
---       {"▔", "FloatBorder"},
---       {"🭾", "FloatBorder"},
---       {"▕", "FloatBorder"},
---       {"🭿", "FloatBorder"},
---       {"▁", "FloatBorder"},
---       {"🭼", "FloatBorder"},
---       {"▏", "FloatBorder"},
--- }
---
--- local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
--- function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
---   opts = opts or {}
---   opts.border = opts.border or border
---   return orig_util_open_floating_preview(contents, syntax, opts, ...)
--- end
+local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
   virtual_text = true,
@@ -48,6 +29,9 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagn
   underline = true,
   update_in_insert = false,
 })
+vim.lsp.handlers["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = border})
+vim.lsp.handlers["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = border })
+
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp.update_capabilities(capabilities)
@@ -171,7 +155,10 @@ if not lspconfig.emmet_ls then
     };
   }
 end
-lspconfig.emmet_ls.setup{ capabilities = capabilities; }
+lspconfig.emmet_ls.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 
 
 lspconfig.rust_analyzer.setup {
@@ -190,7 +177,22 @@ lspconfig.denols.setup {
   capabilities = capabilities,
 }
 
+lspconfig.csharp_ls.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  cmd = {'csharp-ls'},
+  flags = {
+    debounce_text_changes = 250,
+  },
+}
 
--- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]]
+-- local pid = vim.fn.getpid()
+-- local omnisharp_bin = "/home/jannik/bin/omnisharp/run"
+--
+-- lspconfig.omnisharp.setup{
+--     cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) },
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+-- }
 
 

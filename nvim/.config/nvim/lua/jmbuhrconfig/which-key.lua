@@ -151,8 +151,8 @@ wk.register({
     },
     h = {
       name = 'hoogle',
-      h = { "<cmd>!hoogle <cword><cr>", "hoogle" },
-      o = { ":!xdg-open $(hoogle --count 1 --json <cword> | jq -r '.[0].url')<CR>", 'hoogle open' },
+      h = { "<cmd>Telescope hoogle<cr>", "hoogle" },
+      -- o = { ":!xdg-open $(hoogle --count 1 --json <cword> | jq -r '.[0].url')<CR>", 'hoogle open' },
     },
   },
   s = {

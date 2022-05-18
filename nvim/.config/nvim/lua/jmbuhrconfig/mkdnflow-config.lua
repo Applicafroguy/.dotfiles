@@ -6,12 +6,11 @@ require("mkdnflow").setup({
         fallback = 'current',
         root_tell = ".git"
     },
-    prefix = {
-        evaluate = false,
-        string = "./"
-    },
     wrap = false,
-    default_bib_path = '~/notes/references.bib',
+    bib = {
+        default_path = "references.bib",
+        find_in_root = true
+    },
     silent = true,
     use_mappings_table = true,
     mappings = {
@@ -34,13 +33,20 @@ require("mkdnflow").setup({
         style = 'wiki',
         implicit_extension = nil,
         -- transform = false
-        transform = function(input)
+        transform_implicit = function(input)
             if input:match('%d%d%d%d%-%d%d%-%d%d') then
                 return('journals/'..input:gsub("-","_"))
             else
                 return('pages/'..input)
             end
         end,
+        -- transform_explicit = false,
+        transform_explicit = function(text)
+            -- text = text:gsub(" ", "-")
+            -- text = text:lower()
+            -- text = os.date('%Y-%m-%d_')..text
+            return(text)
+        end
     },
     to_do = {
         symbols = {' ', '-', 'X'},

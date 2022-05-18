@@ -58,6 +58,6 @@ telescope.load_extension('neoclip')
 telescope.load_extension("git_worktree")
 telescope.load_extension('dap')
 telescope.load_extension("ui-select")
--- telescope.load_extension('hoogle')
+telescope.load_extension('hoogle')
 
 
