@@ -184,6 +184,12 @@ lspconfig.csharp_ls.setup{
   flags = {
     debounce_text_changes = 250,
   },
+  -- root_dir = function(fname)
+  --   vim.notify("searching root dir for"..fname)
+  --   -- return fname..'../'
+  --   -- return util.root_pattern(".sln", ".csproj")(fname) or
+  --   -- util.path.dirname(fname)
+  -- end
 }
 
 -- local pid = vim.fn.getpid()

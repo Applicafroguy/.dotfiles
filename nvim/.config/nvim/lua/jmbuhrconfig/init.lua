@@ -8,3 +8,9 @@ require('jmbuhrconfig.treesitter')
 require('jmbuhrconfig.mkdnflow-config')
 require('jmbuhrconfig.which-key')
 
+
+local ft = require('Comment.ft')
+ft.set('r', '# %s')
+
+
+

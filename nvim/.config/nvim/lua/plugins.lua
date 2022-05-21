@@ -1,8 +1,8 @@
 --  bootstrap packer
 local fn = vim.fn
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  Packer_bootstrap = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  Packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
 end
 
 vim.cmd [[packadd packer.nvim]]
@@ -15,13 +15,15 @@ vim.cmd [[
   augroup end
 ]]
 
-return require('packer').startup{
+
+
+return require('packer').startup {
   function(use)
     use 'wbthomason/packer.nvim'
     use { "folke/trouble.nvim",
-           config = function()
-             require("trouble").setup{}
-           end
+      config = function()
+        require("trouble").setup {}
+      end
     }
 
     -- actions and bindings
@@ -30,7 +32,7 @@ return require('packer').startup{
     use { 'lambdalisue/suda.vim' }
     use { 'numToStr/Comment.nvim',
       config = function()
-          require('Comment').setup {}
+        require('Comment').setup {}
       end
     }
 
@@ -41,35 +43,35 @@ return require('packer').startup{
     use { 'tpope/vim-fugitive' }
     use { 'folke/todo-comments.nvim',
       config = function()
-        require'todo-comments'.setup {}
+        require 'todo-comments'.setup {}
       end
     }
     use { 'sindrets/diffview.nvim',
       config = function()
-        require'diffview'.setup()
+        require 'diffview'.setup()
       end
     }
-    use {'kdheepak/lazygit.nvim'}
+    use { 'kdheepak/lazygit.nvim' }
     use { 'TimUntersberger/neogit',
       config = function()
         require('neogit').setup {
           disable_commit_confirmation = true,
           integrations = {
-              diffview = true
-            }
+            diffview = true
           }
+        }
       end
     }
     use { 'ThePrimeagen/git-worktree.nvim' }
     use { 'lewis6991/gitsigns.nvim',
-        config = function()
-          require('gitsigns').setup {}
-        end
+      config = function()
+        require('gitsigns').setup {}
+      end
     }
-    use {'pwntester/octo.nvim',
-        config = function()
-          require"octo".setup {}
-        end
+    use { 'pwntester/octo.nvim',
+      config = function()
+        require "octo".setup {}
+      end
     }
 
     -- markdown notes
@@ -85,32 +87,32 @@ return require('packer').startup{
 
     -- look and feel
     use { 'nvim-lualine/lualine.nvim' }
-    use { 'arkav/lualine-lsp-progress'}
+    use { 'arkav/lualine-lsp-progress' }
     use { 'dstein64/nvim-scrollview' }
     use { 'gcmt/taboo.vim' }
     -- use { 'norcalli/nvim-terminal.lua' }
-    use {"akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
-      require("toggleterm").setup{
-         open_mapping = [[<c-\>]],
-         shade_terminals = false,
-         direction = 'float',
+    use { "akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
+      require("toggleterm").setup {
+        open_mapping = [[<c-\>]],
+        shade_terminals = false,
+        direction = 'float',
       }
-    end}
+    end }
     use { 'kyazdani42/nvim-tree.lua' }
     use { 'junegunn/goyo.vim' } -- zen-mode
     use { 'tjdevries/colorbuddy.nvim' }
     use { 'norcalli/nvim-colorizer.lua',
-        config = function ()
-          require'colorizer'.setup {
-            css = {css_fn = true, css = true},
-            'javascript',
-            'html',
-            'r',
-            'rmd',
-            -- 'markdown',
-            'python'
+      config = function()
+        require 'colorizer'.setup {
+          css = { css_fn = true, css = true },
+          'javascript',
+          'html',
+          'r',
+          'rmd',
+          -- 'markdown',
+          'python'
         }
-        end
+      end
     }
     use { 'folke/tokyonight.nvim' }
     use 'EdenEast/nightfox.nvim'
@@ -124,7 +126,7 @@ return require('packer').startup{
         vim.g.nord_cursorline_transparent = true
         vim.g.nord_enable_sidebar_background = false
       end
-   }
+    }
     use { "catppuccin/nvim", as = "catppuccin",
       config = function()
         require('catppuccin').setup {}
@@ -133,24 +135,24 @@ return require('packer').startup{
 
     -- telescope
     use { 'nvim-telescope/telescope.nvim' }
-    use {'nvim-telescope/telescope-ui-select.nvim' }
+    use { 'nvim-telescope/telescope-ui-select.nvim' }
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use { 'camgraff/telescope-tmux.nvim' }
     use { 'nvim-telescope/telescope-dap.nvim' }
     use { 'nvim-telescope/telescope-packer.nvim' }
     use { 'dhruvmanila/telescope-bookmarks.nvim' }
-    use {'luc-tielen/telescope_hoogle'}
+    use { 'luc-tielen/telescope_hoogle' }
     use { 'ahmedkhalf/project.nvim',
       config = function()
-        require("project_nvim").setup{}
+        require("project_nvim").setup {}
       end
     }
     use { "AckslD/nvim-neoclip.lua",
-        config = function()
-          require('neoclip').setup {
-            default_register = {'"', '+', '*'}
-          }
-        end,
+      config = function()
+        require('neoclip').setup {
+          default_register = { '"', '+', '*' }
+        }
+      end,
     }
 
     -- run code
@@ -158,7 +160,7 @@ return require('packer').startup{
       config = function()
         vim.g.slime_target = "tmux"
         vim.g.slime_python_ipython = 1
-        vim.g.slime_default_config = {socket_name = "default", target_pane = ":.2"}
+        vim.g.slime_default_config = { socket_name = "default", target_pane = ":.2" }
         vim.b.slime_cell_delimiter = "#%%"
       end
     }
@@ -175,7 +177,7 @@ return require('packer').startup{
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use { 'nvim-treesitter/playground',
       config = function()
-        require "nvim-treesitter.configs".setup{}
+        require "nvim-treesitter.configs".setup {}
       end
     }
     use { 'nvim-treesitter/nvim-treesitter-textobjects' }
@@ -183,8 +185,8 @@ return require('packer').startup{
 
     -- language specific
     use { 'simrat39/rust-tools.nvim',
-      config = function ()
-        require('rust-tools').setup{}
+      config = function()
+        require('rust-tools').setup {}
       end
     }
 
@@ -208,15 +210,11 @@ return require('packer').startup{
     use { 'rafamadriz/friendly-snippets' }
     use { 'windwp/nvim-autopairs',
       config = function()
-        require('nvim-autopairs').setup{}
+        require('nvim-autopairs').setup {}
       end
     }
 
-    use { 'jmbuhr/quarto-nvim',
-      config = function()
-        require'quarto'.setup({})
-      end
-    }
+    use { 'jmbuhr/quarto-nvim' }
 
     -- sync after fresh install
     if Packer_bootstrap then
@@ -234,4 +232,3 @@ return require('packer').startup{
     }
   }
 }
-
