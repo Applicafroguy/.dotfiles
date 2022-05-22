@@ -8,6 +8,7 @@ local vmap = function(key, effect)
   vim.keymap.set('v', key, effect, {silent = true, noremap = true})
 end
 
+
 nmap('<c-b>', ':NvimTreeToggle<CR>')
 nmap('<c-f>', ':Telescope builtin<CR>')
 nmap('<m-=>', ':!echo hi<cr>')
