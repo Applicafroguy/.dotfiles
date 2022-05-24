@@ -44,6 +44,7 @@ alias rmback='rm \#*\#'
 alias lf='less +F'
 alias lg='lazygit'
 alias gpurun='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia'
+alias cab='conda activate base'
 
 # kittens
 alias icat="kitty +kitten icat"
