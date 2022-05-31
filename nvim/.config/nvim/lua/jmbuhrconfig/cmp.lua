@@ -83,7 +83,7 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'pandoc_references' },
     { name = 'path' },
-    -- { name = 'buffer', keyword_length = 3, max_item_count = 8 },
+    { name = 'buffer', keyword_length = 4, max_item_count = 8 },
     { name = "nvim_lua" },
     { name = 'spell' },
     { name = 'tags' },

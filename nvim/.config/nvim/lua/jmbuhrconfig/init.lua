@@ -7,4 +7,5 @@ require('jmbuhrconfig.nerdtree')
 require('jmbuhrconfig.treesitter')
 require('jmbuhrconfig.mkdnflow-config')
 require('jmbuhrconfig.which-key')
+require('jmbuhrconfig.utils')
 

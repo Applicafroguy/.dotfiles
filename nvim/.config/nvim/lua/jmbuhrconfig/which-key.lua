@@ -8,6 +8,10 @@ local vmap = function(key, effect)
   vim.keymap.set('v', key, effect, {silent = true, noremap = true})
 end
 
+local imap = function(key, effect)
+  vim.keymap.set('i', key, effect, {silent = true, noremap = true})
+end
+
 
 nmap('<c-b>', ':NvimTreeToggle<CR>')
 nmap('<c-f>', ':Telescope builtin<CR>')
@@ -22,6 +26,8 @@ nmap('Q', '<Nop>')
 
 nmap('<c-cr>', '<Plug>SlimeSendCell')
 nmap('<s-cr>', '<Plug>SlimeSendCell')
+imap('<c-cr>', '<esc><Plug>SlimeSendCell<cr>i')
+imap('<s-cr>', '<esc><Plug>SlimeSendCell<cr>i')
 -- needs kitty config:
 -- map shift+enter send_text all \x1b[13;2u
 -- map ctrl+enter send_text all \x1b[13;5u
@@ -49,6 +55,7 @@ vim.api.nvim_create_user_command('HoogleOpen', [[!xdg-open $(hoogle --count 1 --
 
 -- normal mode <leader>
 wk.register({
+  xx = { ":w<cr>:source %<CR>", "source %" },
   d = {
     name = "DAP",
     b = { ":lua require'dap'.toggle_breakpoint()<CR>", "breakpoint" },
@@ -190,6 +197,8 @@ wk.register({
 
 -- normal mode
 wk.register({
+  L = { ":tabnext<cr>", "next tab" },
+  H = { ":tabprevious<cr>", "previous tab" },
   ['gx'] = { ':!xdg-open <c-r><c-a><cr>', 'open file' },
   ["<c-q>"] = {'<cmd>q<cr>', 'close buffer'},
   ['<C-n>'] = { ':cnext<cr>', 'quickfix next' },

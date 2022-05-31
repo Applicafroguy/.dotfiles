@@ -214,7 +214,12 @@ return require('packer').startup {
       end
     }
 
-    use { 'jmbuhr/quarto-nvim' }
+    -- use { 'jmbuhr/quarto-nvim',
+    use { '~/sw/quarto-nvim',
+      config = function ()
+        require'quarto'.setup()
+      end
+    }
 
     -- sync after fresh install
     if Packer_bootstrap then
