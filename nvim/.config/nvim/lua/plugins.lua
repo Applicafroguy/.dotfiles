@@ -7,14 +7,10 @@ end
 
 vim.cmd [[packadd packer.nvim]]
 
-vim.cmd [[
-  augroup Packer
-    autocmd!
-    autocmd BufWritePost init.lua PackerCompile
-    autocmd BufWritePost plugins.lua PackerCompile
-  augroup end
-]]
-
+vim.api.nvim_create_autocmd({"BufWritePost"}, {
+  pattern = {"init.lua", "plugins.lua"},
+  command = "PackerCompile",
+})
 
 
 return require('packer').startup {

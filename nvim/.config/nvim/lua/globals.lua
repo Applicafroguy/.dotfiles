@@ -48,4 +48,3 @@ vim.opt.showtabline = 1
 vim.opt.path:append '**'
 vim.opt.laststatus = 3
 
-
