@@ -5,13 +5,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   Packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
 end
 
-vim.cmd [[packadd packer.nvim]]
-
-vim.api.nvim_create_autocmd({"BufWritePost"}, {
-  pattern = {"init.lua", "plugins.lua"},
-  command = "PackerCompile",
-})
-
 
 return require('packer').startup {
   function(use)
