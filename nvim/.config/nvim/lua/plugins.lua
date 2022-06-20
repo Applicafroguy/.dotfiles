@@ -30,17 +30,17 @@ return require('packer').startup {
 
     -- git and projects
     use { 'tpope/vim-fugitive' }
-    use { 'folke/todo-comments.nvim',
-      config = function()
-        require 'todo-comments'.setup {}
-      end
-    }
-    use { 'sindrets/diffview.nvim',
-      config = function()
-        require 'diffview'.setup()
-      end
-    }
-    use { 'kdheepak/lazygit.nvim' }
+    -- use { 'folke/todo-comments.nvim',
+    --   config = function()
+    --     require 'todo-comments'.setup {}
+    --   end
+    -- }
+    -- use { 'sindrets/diffview.nvim',
+    --   config = function()
+    --     require 'diffview'.setup()
+    --   end
+    -- }
+    -- use { 'kdheepak/lazygit.nvim' }
     use { 'TimUntersberger/neogit',
       config = function()
         require('neogit').setup {
@@ -51,17 +51,17 @@ return require('packer').startup {
         }
       end
     }
-    use { 'ThePrimeagen/git-worktree.nvim' }
+    -- use { 'ThePrimeagen/git-worktree.nvim' }
     use { 'lewis6991/gitsigns.nvim',
       config = function()
         require('gitsigns').setup {}
       end
     }
-    use { 'pwntester/octo.nvim',
-      config = function()
-        require "octo".setup {}
-      end
-    }
+    -- use { 'pwntester/octo.nvim',
+    --   config = function()
+    --     require "octo".setup {}
+    --   end
+    -- }
 
     -- markdown notes
     use { 'jakewvincent/mkdnflow.nvim', branch = 'dev' }
@@ -88,7 +88,7 @@ return require('packer').startup {
       }
     end }
     use { 'kyazdani42/nvim-tree.lua' }
-    use { 'junegunn/goyo.vim' } -- zen-mode
+    -- use { 'junegunn/goyo.vim' } -- zen-mode
     use { 'tjdevries/colorbuddy.nvim' }
     use { 'norcalli/nvim-colorizer.lua',
       config = function()
@@ -98,14 +98,15 @@ return require('packer').startup {
           'html',
           'r',
           'rmd',
-          -- 'markdown',
+          'qmd',
+          'markdown',
           'python'
         }
       end
     }
-    use { 'folke/tokyonight.nvim' }
-    use 'EdenEast/nightfox.nvim'
-    use { 'gruvbox-community/gruvbox' }
+    -- use { 'folke/tokyonight.nvim' }
+    -- use 'EdenEast/nightfox.nvim'
+    -- use { 'gruvbox-community/gruvbox' }
     use { 'shaunsingh/nord.nvim',
       config = function()
         vim.g.nord_contrast = true
@@ -116,11 +117,11 @@ return require('packer').startup {
         vim.g.nord_enable_sidebar_background = false
       end
     }
-    use { "catppuccin/nvim", as = "catppuccin",
-      config = function()
-        require('catppuccin').setup {}
-      end
-    }
+    -- use { "catppuccin/nvim", as = "catppuccin",
+    --   config = function()
+    --     require('catppuccin').setup {}
+    --   end
+    -- }
 
     -- telescope
     use { 'nvim-telescope/telescope.nvim' }
@@ -131,18 +132,18 @@ return require('packer').startup {
     use { 'nvim-telescope/telescope-packer.nvim' }
     use { 'dhruvmanila/telescope-bookmarks.nvim' }
     use { 'luc-tielen/telescope_hoogle' }
-    use { 'ahmedkhalf/project.nvim',
-      config = function()
-        require("project_nvim").setup {}
-      end
-    }
-    use { "AckslD/nvim-neoclip.lua",
-      config = function()
-        require('neoclip').setup {
-          default_register = { '"', '+', '*' }
-        }
-      end,
-    }
+    -- use { 'ahmedkhalf/project.nvim',
+    --   config = function()
+    --     require("project_nvim").setup {}
+    --   end
+    -- }
+    -- use { "AckslD/nvim-neoclip.lua",
+    --   config = function()
+    --     require('neoclip').setup {
+    --       default_register = { '"', '+', '*' }
+    --     }
+    --   end,
+    -- }
 
     -- run code
     use { 'jpalardy/vim-slime',
@@ -173,11 +174,11 @@ return require('packer').startup {
     use { 'aca/emmet-ls' }
 
     -- language specific
-    use { 'simrat39/rust-tools.nvim',
-      config = function()
-        require('rust-tools').setup {}
-      end
-    }
+    -- use { 'simrat39/rust-tools.nvim',
+    --   config = function()
+    --     require('rust-tools').setup {}
+    --   end
+    -- }
 
     -- completion
     use { 'hrsh7th/nvim-cmp' }

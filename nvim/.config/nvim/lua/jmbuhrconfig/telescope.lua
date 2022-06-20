@@ -51,11 +51,7 @@ telescope.setup{
 
 
 telescope.load_extension('fzf')
-telescope.load_extension('tmux')
-telescope.load_extension('projects')
 telescope.load_extension('bookmarks')
-telescope.load_extension('neoclip')
-telescope.load_extension("git_worktree")
 telescope.load_extension('dap')
 telescope.load_extension("ui-select")
 telescope.load_extension('hoogle')
