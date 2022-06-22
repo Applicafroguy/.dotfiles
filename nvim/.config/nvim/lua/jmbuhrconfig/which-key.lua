@@ -191,6 +191,7 @@ wk.register({
     W = {':SudaWrite<cr>', 'save file with sudo'},
     cc = { '<cmd>cd %:p:h<CR>', 'cd to current file' },
   },
+  m = {'<cmd>lua require("nabla").popup()<cr>', 'math popup'},
   -- misc
   [';'] = {':', 'command'},
 }, { prefix = "<leader>"})
@@ -208,8 +209,6 @@ wk.register({
   ['gN'] = {'Nzzzv', 'center search'},
   ['gl'] = {'<c-]>', 'open help link'},
   ['gf'] = { ':e <cfile><CR>', 'edit file' },
-  ['<M-j>'] = { 'mz:m+<cr>`z', 'move line down' },
-  ['<M-k>'] = { 'mz:m-2<cr>`z', 'move line up' },
   ['<C-j>']  = {'<C-W>j', 'move to window'},
   ['<C-k>']  = {'<C-W>k', 'move to window'},
   ['<C-h>']  = {'<C-W>h', 'move to window'},

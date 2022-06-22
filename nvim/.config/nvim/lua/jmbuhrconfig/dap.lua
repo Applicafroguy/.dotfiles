@@ -10,7 +10,7 @@ dap.adapters.python = {
 }
 
 
-vim.fn.sign_define('DapBreakpoint', {text='🦆', texthl='', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpoint', {text='🦦', texthl='', linehl='', numhl=''})
 
 -- vim.cmd [[
 -- au FileType dap-repl lua require('dap.ext.autocompl').attach()

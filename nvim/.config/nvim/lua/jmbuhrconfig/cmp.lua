@@ -81,7 +81,7 @@ cmp.setup({
   sources = {
     { name = 'luasnip' },
     { name = 'nvim_lsp' },
-    { name = 'pandoc_references' },
+    { name = 'cmp_pandoc' },
     { name = 'path' },
     { name = 'buffer', keyword_length = 4, max_item_count = 8 },
     { name = "nvim_lua" },

@@ -5,13 +5,6 @@ if fn.empty(fn.glob(install_path)) > 0 then
   Packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
 end
 
-vim.cmd [[packadd packer.nvim]]
-
-vim.api.nvim_create_autocmd({"BufWritePost"}, {
-  pattern = {"init.lua", "plugins.lua"},
-  command = "PackerCompile",
-})
-
 
 return require('packer').startup {
   function(use)
@@ -82,6 +75,7 @@ return require('packer').startup {
     use { 'godlygeek/tabular' }
 
     -- look and feel
+    use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
     use { 'nvim-lualine/lualine.nvim' }
     use { 'arkav/lualine-lsp-progress' }
     use { 'dstein64/nvim-scrollview' }
@@ -114,7 +108,7 @@ return require('packer').startup {
     -- use { 'folke/tokyonight.nvim' }
     -- use 'EdenEast/nightfox.nvim'
     -- use { 'gruvbox-community/gruvbox' }
-    use "rebelot/kanagawa.nvim"
+    -- use "rebelot/kanagawa.nvim"
     use { 'shaunsingh/nord.nvim',
       config = function()
         vim.g.nord_contrast = true
@@ -213,6 +207,7 @@ return require('packer').startup {
     }
 
     -- use { 'jmbuhr/quarto-nvim',
+    use 'jbyuki/nabla.nvim'
     use { '~/sw/quarto-nvim',
       config = function ()
         require'quarto'.setup()
