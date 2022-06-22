@@ -114,6 +114,7 @@ return require('packer').startup {
     -- use { 'folke/tokyonight.nvim' }
     -- use 'EdenEast/nightfox.nvim'
     -- use { 'gruvbox-community/gruvbox' }
+    use "rebelot/kanagawa.nvim"
     use { 'shaunsingh/nord.nvim',
       config = function()
         vim.g.nord_contrast = true
