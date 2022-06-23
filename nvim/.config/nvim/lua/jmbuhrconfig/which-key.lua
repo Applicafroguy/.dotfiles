@@ -191,6 +191,7 @@ wk.register({
     W = {':SudaWrite<cr>', 'save file with sudo'},
     cc = { '<cmd>cd %:p:h<CR>', 'cd to current file' },
   },
+  m = {'<cmd>lua require("nabla").popup()<cr>', 'math popup'},
   -- misc
   [';'] = {':', 'command'},
 }, { prefix = "<leader>"})

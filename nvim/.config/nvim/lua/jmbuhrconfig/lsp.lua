@@ -108,7 +108,7 @@ lspconfig.yamlls.setup {
   },
   settings = {
     yaml = {
-      format = {enable = true},
+      format = {enable = false},
     },
   },
 }
