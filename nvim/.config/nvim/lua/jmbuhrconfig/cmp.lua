@@ -73,8 +73,6 @@ cmp.setup({
         calc = "[calc]",
         latex_symbols = "[tex]",
         emoji = "[emoji]",
-        -- zsh = "[zsh]",
-        -- gh_issues = "[issues]",
       },
     },
   },
@@ -91,8 +89,6 @@ cmp.setup({
     { name = 'calc' },
     { name = 'latex_symbols' },
     { name = 'emoji' },
-    -- { name = 'tmux' },
-    -- { name = 'zsh' },
   },
   view = {
     entries = "native",
@@ -108,28 +104,6 @@ cmp.setup({
   },
 })
 
-local ls = require("luasnip")
-local s = ls.snippet
-local sn = ls.snippet_node
-local t = ls.text_node
-local i = ls.insert_node
-local f = ls.function_node
-local c = ls.choice_node
-local d = ls.dynamic_node
-local r = ls.restore_node
-
-ls.snippets = {
-  all = {
-    s("lorem ipsum", {
-      t("Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit"),
-    })
-  },
-  r = {
-    s("p", {
-      t("%>%")
-    })
-  }
-}
 require("luasnip.loaders.from_vscode").lazy_load() -- for friendly snippets
 require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snips" } })
 

@@ -1,1 +1,1 @@
-vim.bo.slime_cell_delimiter = "---"
+vim.b.slime_cell_delimiter = "---"
