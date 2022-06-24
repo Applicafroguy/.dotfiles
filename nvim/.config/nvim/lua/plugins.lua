@@ -9,11 +9,6 @@ end
 return require('packer').startup {
   function(use)
     use 'wbthomason/packer.nvim'
-    use { "folke/trouble.nvim",
-      config = function()
-        require("trouble").setup {}
-      end
-    }
 
     -- actions and bindings
     use { 'tpope/vim-repeat' }
@@ -30,17 +25,6 @@ return require('packer').startup {
 
     -- git and projects
     use { 'tpope/vim-fugitive' }
-    -- use { 'folke/todo-comments.nvim',
-    --   config = function()
-    --     require 'todo-comments'.setup {}
-    --   end
-    -- }
-    -- use { 'sindrets/diffview.nvim',
-    --   config = function()
-    --     require 'diffview'.setup()
-    --   end
-    -- }
-    -- use { 'kdheepak/lazygit.nvim' }
     use { 'TimUntersberger/neogit',
       config = function()
         require('neogit').setup {
@@ -51,21 +35,15 @@ return require('packer').startup {
         }
       end
     }
-    -- use { 'ThePrimeagen/git-worktree.nvim' }
     use { 'lewis6991/gitsigns.nvim',
       config = function()
         require('gitsigns').setup {}
       end
     }
-    -- use { 'pwntester/octo.nvim',
-    --   config = function()
-    --     require "octo".setup {}
-    --   end
-    -- }
 
     -- markdown notes
-    use { 'jakewvincent/mkdnflow.nvim', branch = 'dev' }
     -- use { '~/sw/mkdnflow.nvim/', }
+    use { 'jakewvincent/mkdnflow.nvim', branch = 'dev' }
     use 'ekickx/clipboard-image.nvim'
 
     -- common dependencies
@@ -80,7 +58,6 @@ return require('packer').startup {
     use { 'arkav/lualine-lsp-progress' }
     use { 'dstein64/nvim-scrollview' }
     use { 'gcmt/taboo.vim' }
-    -- use { 'norcalli/nvim-terminal.lua' }
     use { "akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
       require("toggleterm").setup {
         open_mapping = [[<c-\>]],
@@ -89,7 +66,6 @@ return require('packer').startup {
       }
     end }
     use { 'kyazdani42/nvim-tree.lua' }
-    -- use { 'junegunn/goyo.vim' } -- zen-mode
     use { 'tjdevries/colorbuddy.nvim' }
     use { 'norcalli/nvim-colorizer.lua',
       config = function()
@@ -105,10 +81,10 @@ return require('packer').startup {
         }
       end
     }
-    -- use { 'folke/tokyonight.nvim' }
-    -- use 'EdenEast/nightfox.nvim'
-    -- use { 'gruvbox-community/gruvbox' }
-    -- use "rebelot/kanagawa.nvim"
+    use { 'folke/tokyonight.nvim' }
+    use 'EdenEast/nightfox.nvim'
+    use { 'gruvbox-community/gruvbox' }
+    use "rebelot/kanagawa.nvim"
     use { 'shaunsingh/nord.nvim',
       config = function()
         vim.g.nord_contrast = true
@@ -119,11 +95,11 @@ return require('packer').startup {
         vim.g.nord_enable_sidebar_background = false
       end
     }
-    -- use { "catppuccin/nvim", as = "catppuccin",
-    --   config = function()
-    --     require('catppuccin').setup {}
-    --   end
-    -- }
+    use { "catppuccin/nvim", as = "catppuccin",
+      config = function()
+        require('catppuccin').setup {}
+      end
+    }
 
     -- telescope
     use { 'nvim-telescope/telescope.nvim' }
@@ -134,18 +110,6 @@ return require('packer').startup {
     use { 'nvim-telescope/telescope-packer.nvim' }
     use { 'dhruvmanila/telescope-bookmarks.nvim' }
     use { 'luc-tielen/telescope_hoogle' }
-    -- use { 'ahmedkhalf/project.nvim',
-    --   config = function()
-    --     require("project_nvim").setup {}
-    --   end
-    -- }
-    -- use { "AckslD/nvim-neoclip.lua",
-    --   config = function()
-    --     require('neoclip').setup {
-    --       default_register = { '"', '+', '*' }
-    --     }
-    --   end,
-    -- }
 
     -- run code
     use { 'jpalardy/vim-slime',
@@ -175,13 +139,6 @@ return require('packer').startup {
     use { 'nvim-treesitter/nvim-treesitter-textobjects' }
     use { 'aca/emmet-ls' }
 
-    -- language specific
-    -- use { 'simrat39/rust-tools.nvim',
-    --   config = function()
-    --     require('rust-tools').setup {}
-    --   end
-    -- }
-
     -- completion
     use { 'hrsh7th/nvim-cmp' }
     use { 'hrsh7th/cmp-nvim-lsp' }
@@ -206,6 +163,7 @@ return require('packer').startup {
       end
     }
 
+    -- language specific
     -- use { 'jmbuhr/quarto-nvim',
     use 'jbyuki/nabla.nvim'
     use { '~/sw/quarto-nvim',
@@ -222,7 +180,7 @@ return require('packer').startup {
   end,
   config = {
     profile = {
-      enable = false,
+      enable = true,
       threshold = 1
     },
     display = {
