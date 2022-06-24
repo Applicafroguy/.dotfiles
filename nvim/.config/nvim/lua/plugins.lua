@@ -2,13 +2,18 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  Packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+  is_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
 end
 
 
-return require('packer').startup {
+require('packer').startup {
   function(use)
     use 'wbthomason/packer.nvim'
+    use { "folke/trouble.nvim",
+      config = function()
+        require("trouble").setup {}
+      end
+    }
 
     -- actions and bindings
     use { 'tpope/vim-repeat' }
@@ -164,8 +169,7 @@ return require('packer').startup {
     }
 
     -- language specific
-    -- use { 'jmbuhr/quarto-nvim',
-    use 'jbyuki/nabla.nvim'
+    -- use { 'jmbuhr/quarto-nvim', use 'jbyuki/nabla.nvim'
     use { '~/sw/quarto-nvim',
       config = function ()
         require'quarto'.setup()
@@ -173,7 +177,7 @@ return require('packer').startup {
     }
 
     -- sync after fresh install
-    if Packer_bootstrap then
+    if is_bootstrap then
       require('packer').sync()
     end
 
@@ -188,3 +192,10 @@ return require('packer').startup {
     }
   }
 }
+
+M = {}
+M.is_bootstrap = function()
+  return is_bootstrap
+end
+return M
+
