@@ -9,11 +9,6 @@ end
 require('packer').startup {
   function(use)
     use 'wbthomason/packer.nvim'
-    use { "folke/trouble.nvim",
-      config = function()
-        require("trouble").setup {}
-      end
-    }
 
     -- actions and bindings
     use { 'tpope/vim-repeat' }
