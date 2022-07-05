@@ -19,6 +19,21 @@ require('packer').startup {
         require('Comment').setup {}
       end
     }
+    -- clipboard
+    use { 'roxma/vim-tmux-clipboard' }
+    -- use({ "aserowy/tmux.nvim",
+    --   config = function()
+    --       require("tmux").setup({
+    --         copy_sync = {
+    --           enable = true,
+    --           redirect_to_clipboard = false,
+    --           sync_clipboard = true,
+    --           sync_deletes = true,
+    --           sync_unnamed = true,
+    --       },
+    --     })
+    --   end
+    -- })
 
     -- keymaps
     use { 'folke/which-key.nvim' }
