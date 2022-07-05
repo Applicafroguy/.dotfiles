@@ -1,6 +1,6 @@
 require('globals')
 
-plugins = require('plugins')
+local plugins = require('plugins')
 if plugins.is_bootstrap() then
   print '=================================='
   print '    Plugins are being installed'

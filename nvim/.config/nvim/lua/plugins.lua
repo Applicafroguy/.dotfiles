@@ -162,9 +162,14 @@ require('packer').startup {
         require('nvim-autopairs').setup {}
       end
     }
-
+    -- spellchecker based on language
+    -- use { 'lewis6991/spellsitter.nvim',
+    --   config = function()
+    --     require('spellsitter').setup()
+    --   end
+    -- }
     -- language specific
-    -- use { 'jmbuhr/quarto-nvim', use 'jbyuki/nabla.nvim'
+    -- use { 'jmbuhr/quarto-nvim',
     use { '~/sw/quarto-nvim',
       config = function ()
         require'quarto'.setup()
