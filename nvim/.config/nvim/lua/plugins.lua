@@ -39,7 +39,8 @@ require('packer').startup {
     use { 'folke/which-key.nvim' }
 
     -- git and projects
-    use { 'tpope/vim-fugitive' }
+    -- use { 'tpope/vim-fugitive' }
+    use { 'sindrets/diffview.nvim' }
     use { 'TimUntersberger/neogit',
       config = function()
         require('neogit').setup {
