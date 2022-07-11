@@ -31,7 +31,8 @@ alias cascade='ssh cascade-login.h-its.org'
 alias buhrjkmods='module use /hits/fast/mbm/buhrjk/software/eb/modules/all'
 alias ta='tmux attach-session'
 alias tn='tmux new-session -s'
-alias td='export DISPLAY="`tmux show-env | sed -n '"'"'s/^DISPLAY=//p'"'"'`"'
+alias td='eval "$(tmux showenv -s DISPLAY)"'
+# alias td='export DISPLAY="`tmux show-env | sed -n '"'"'s/^DISPLAY=//p'"'"'`"'
 alias r="radian"
 alias wiki="cd /hits/fast/mbm/share/mbm-wiki"
 alias ansib="cd /hits/fast/mbm/share/buhrjk/ansible-playbook"
