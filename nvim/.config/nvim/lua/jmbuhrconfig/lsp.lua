@@ -192,6 +192,13 @@ lspconfig.csharp_ls.setup{
   -- end
 }
 
+lspconfig.clangd.setup{
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
+-- lspconfig.ccls.setup{}
+
 -- local pid = vim.fn.getpid()
 -- local omnisharp_bin = "/home/jannik/bin/omnisharp/run"
 --

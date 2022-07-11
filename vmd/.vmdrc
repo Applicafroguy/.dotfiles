@@ -157,10 +157,10 @@ after idle {
       color Display Foreground white
       color add item Display FPS white
       color Display FPS white
-      color add item Axes X red
-      color Axes X red
       color add item Axes Y green
       color Axes Y green
+      color add item Axes X red
+      color Axes X red
       color add item Axes Z blue
       color Axes Z blue
       color add item Axes Origin cyan
@@ -604,7 +604,7 @@ after idle {
       color change rgb cyan2 0.333 0.706 0.863
       color change rgb cyan3 0.000 0.760 1.000
       color change rgb blue2 0.000 0.310 0.624
-      color change rgb blue3 0.010 0.040 0.930
+      color change rgb blue3 0.071 0.259 0.518
       color change rgb violet 0.270 0.000 0.980
       color change rgb violet2 0.450 0.000 0.900
       color change rgb magenta 0.765 0.000 0.420
