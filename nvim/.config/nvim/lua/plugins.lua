@@ -2,25 +2,13 @@
 local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  Packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+  is_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
 end
 
-vim.cmd [[packadd packer.nvim]]
 
-vim.api.nvim_create_autocmd({"BufWritePost"}, {
-  pattern = {"init.lua", "plugins.lua"},
-  command = "PackerCompile",
-})
-
-
-return require('packer').startup {
+require('packer').startup {
   function(use)
     use 'wbthomason/packer.nvim'
-    use { "folke/trouble.nvim",
-      config = function()
-        require("trouble").setup {}
-      end
-    }
 
     -- actions and bindings
     use { 'tpope/vim-repeat' }
@@ -31,23 +19,28 @@ return require('packer').startup {
         require('Comment').setup {}
       end
     }
+    -- clipboard
+    use { 'roxma/vim-tmux-clipboard' }
+    -- use({ "aserowy/tmux.nvim",
+    --   config = function()
+    --       require("tmux").setup({
+    --         copy_sync = {
+    --           enable = true,
+    --           redirect_to_clipboard = false,
+    --           sync_clipboard = true,
+    --           sync_deletes = true,
+    --           sync_unnamed = true,
+    --       },
+    --     })
+    --   end
+    -- })
 
     -- keymaps
     use { 'folke/which-key.nvim' }
 
     -- git and projects
-    use { 'tpope/vim-fugitive' }
-    -- use { 'folke/todo-comments.nvim',
-    --   config = function()
-    --     require 'todo-comments'.setup {}
-    --   end
-    -- }
-    -- use { 'sindrets/diffview.nvim',
-    --   config = function()
-    --     require 'diffview'.setup()
-    --   end
-    -- }
-    -- use { 'kdheepak/lazygit.nvim' }
+    -- use { 'tpope/vim-fugitive' }
+    use { 'sindrets/diffview.nvim' }
     use { 'TimUntersberger/neogit',
       config = function()
         require('neogit').setup {
@@ -58,21 +51,15 @@ return require('packer').startup {
         }
       end
     }
-    -- use { 'ThePrimeagen/git-worktree.nvim' }
     use { 'lewis6991/gitsigns.nvim',
       config = function()
         require('gitsigns').setup {}
       end
     }
-    -- use { 'pwntester/octo.nvim',
-    --   config = function()
-    --     require "octo".setup {}
-    --   end
-    -- }
 
     -- markdown notes
-    use { 'jakewvincent/mkdnflow.nvim', branch = 'dev' }
     -- use { '~/sw/mkdnflow.nvim/', }
+    use { 'jakewvincent/mkdnflow.nvim', branch = 'dev' }
     use 'ekickx/clipboard-image.nvim'
 
     -- common dependencies
@@ -82,11 +69,11 @@ return require('packer').startup {
     use { 'godlygeek/tabular' }
 
     -- look and feel
+    use {'kevinhwang91/nvim-ufo', requires = 'kevinhwang91/promise-async'}
     use { 'nvim-lualine/lualine.nvim' }
     use { 'arkav/lualine-lsp-progress' }
     use { 'dstein64/nvim-scrollview' }
     use { 'gcmt/taboo.vim' }
-    -- use { 'norcalli/nvim-terminal.lua' }
     use { "akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
       require("toggleterm").setup {
         open_mapping = [[<c-\>]],
@@ -95,7 +82,6 @@ return require('packer').startup {
       }
     end }
     use { 'kyazdani42/nvim-tree.lua' }
-    -- use { 'junegunn/goyo.vim' } -- zen-mode
     use { 'tjdevries/colorbuddy.nvim' }
     use { 'norcalli/nvim-colorizer.lua',
       config = function()
@@ -111,9 +97,10 @@ return require('packer').startup {
         }
       end
     }
-    -- use { 'folke/tokyonight.nvim' }
-    -- use 'EdenEast/nightfox.nvim'
-    -- use { 'gruvbox-community/gruvbox' }
+    use { 'folke/tokyonight.nvim' }
+    use 'EdenEast/nightfox.nvim'
+    use { 'gruvbox-community/gruvbox' }
+    use "rebelot/kanagawa.nvim"
     use { 'shaunsingh/nord.nvim',
       config = function()
         vim.g.nord_contrast = true
@@ -124,11 +111,11 @@ return require('packer').startup {
         vim.g.nord_enable_sidebar_background = false
       end
     }
-    -- use { "catppuccin/nvim", as = "catppuccin",
-    --   config = function()
-    --     require('catppuccin').setup {}
-    --   end
-    -- }
+    use { "catppuccin/nvim", as = "catppuccin",
+      config = function()
+        require('catppuccin').setup {}
+      end
+    }
 
     -- telescope
     use { 'nvim-telescope/telescope.nvim' }
@@ -139,18 +126,6 @@ return require('packer').startup {
     use { 'nvim-telescope/telescope-packer.nvim' }
     use { 'dhruvmanila/telescope-bookmarks.nvim' }
     use { 'luc-tielen/telescope_hoogle' }
-    -- use { 'ahmedkhalf/project.nvim',
-    --   config = function()
-    --     require("project_nvim").setup {}
-    --   end
-    -- }
-    -- use { "AckslD/nvim-neoclip.lua",
-    --   config = function()
-    --     require('neoclip').setup {
-    --       default_register = { '"', '+', '*' }
-    --     }
-    --   end,
-    -- }
 
     -- run code
     use { 'jpalardy/vim-slime',
@@ -180,13 +155,6 @@ return require('packer').startup {
     use { 'nvim-treesitter/nvim-treesitter-textobjects' }
     use { 'aca/emmet-ls' }
 
-    -- language specific
-    -- use { 'simrat39/rust-tools.nvim',
-    --   config = function()
-    --     require('rust-tools').setup {}
-    --   end
-    -- }
-
     -- completion
     use { 'hrsh7th/nvim-cmp' }
     use { 'hrsh7th/cmp-nvim-lsp' }
@@ -210,7 +178,13 @@ return require('packer').startup {
         require('nvim-autopairs').setup {}
       end
     }
-
+    -- spellchecker based on language
+    -- use { 'lewis6991/spellsitter.nvim',
+    --   config = function()
+    --     require('spellsitter').setup()
+    --   end
+    -- }
+    -- language specific
     -- use { 'jmbuhr/quarto-nvim',
     use { '~/sw/quarto-nvim',
       config = function ()
@@ -219,14 +193,14 @@ return require('packer').startup {
     }
 
     -- sync after fresh install
-    if Packer_bootstrap then
+    if is_bootstrap then
       require('packer').sync()
     end
 
   end,
   config = {
     profile = {
-      enable = false,
+      enable = true,
       threshold = 1
     },
     display = {
@@ -234,3 +208,10 @@ return require('packer').startup {
     }
   }
 }
+
+M = {}
+M.is_bootstrap = function()
+  return is_bootstrap
+end
+return M
+

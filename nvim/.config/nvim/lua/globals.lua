@@ -1,6 +1,6 @@
 local tabsize = 2
 
-vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh', 'R=r' }
+vim.g.markdown_fenced_languages = { 'html', 'python', 'bash=sh', 'R=r', 'targets=r'}
 vim.g.vim_markdown_math = 1
 vim.g.vim_markdown_frontmatter = 1
 vim.g.netrw_browsex_viewer = 'brave-browser'

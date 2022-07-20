@@ -108,7 +108,7 @@ lspconfig.yamlls.setup {
   },
   settings = {
     yaml = {
-      format = {enable = true},
+      format = {enable = false},
     },
   },
 }
@@ -191,6 +191,13 @@ lspconfig.csharp_ls.setup{
   --   -- util.path.dirname(fname)
   -- end
 }
+
+lspconfig.clangd.setup{
+  on_attach = on_attach,
+  capabilities = capabilities
+}
+
+-- lspconfig.ccls.setup{}
 
 -- local pid = vim.fn.getpid()
 -- local omnisharp_bin = "/home/jannik/bin/omnisharp/run"
