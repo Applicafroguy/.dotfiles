@@ -116,6 +116,8 @@ require('packer').startup {
         require('catppuccin').setup {}
       end
     }
+    use 'Th3Whit3Wolf/space-nvim'
+    use 'lourenci/github-colors'
 
     -- telescope
     use { 'nvim-telescope/telescope.nvim' }

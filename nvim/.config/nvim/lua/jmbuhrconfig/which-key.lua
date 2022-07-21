@@ -12,7 +12,18 @@ local imap = function(key, effect)
   vim.keymap.set('i', key, effect, {silent = true, noremap = true})
 end
 
+local function switchTheme()
+  if vim.o.background == 'light' then
+    vim.o.background = 'dark'
+    vim.cmd[[colorscheme nord]]
+  else
+    vim.o.background = 'light'
+    vim.cmd[[colorscheme github-colors]]
+  end
+end
 
+
+nmap('<leader>vt', switchTheme)
 nmap('<c-b>', ':NvimTreeToggle<CR>')
 nmap('<c-f>', ':Telescope builtin<CR>')
 nmap('<m-=>', ':!echo hi<cr>')
