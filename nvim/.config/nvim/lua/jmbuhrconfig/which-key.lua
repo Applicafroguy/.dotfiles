@@ -1,15 +1,15 @@
 local wk = require("which-key")
 
-local nmap = function(key, effect)
-  vim.keymap.set('n', key, effect, {silent = true, noremap = true})
-end
-
 local vmap = function(key, effect)
   vim.keymap.set('v', key, effect, {silent = true, noremap = true})
 end
 
 local imap = function(key, effect)
   vim.keymap.set('i', key, effect, {silent = true, noremap = true})
+end
+
+local nmap = function(key, effect)
+  vim.keymap.set('n', key, effect, {silent = true, noremap = true})
 end
 
 local function switchTheme()
@@ -22,8 +22,8 @@ local function switchTheme()
   end
 end
 
-
 nmap('<leader>vt', switchTheme)
+
 nmap('<c-b>', ':NvimTreeToggle<CR>')
 nmap('<c-f>', ':Telescope builtin<CR>')
 nmap('<m-left>', '<c-o>')
