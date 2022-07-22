@@ -56,6 +56,13 @@ require('packer').startup {
         require('gitsigns').setup {}
       end
     }
+    use {'akinsho/git-conflict.nvim', config = function()
+      require('git-conflict').setup {
+        default_mappings = true,
+        disable_diagnostics = true,
+    }
+    end
+    }
 
     -- markdown notes
     -- use { '~/sw/mkdnflow.nvim/', }
