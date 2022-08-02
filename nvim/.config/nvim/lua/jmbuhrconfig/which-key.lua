@@ -1,9 +1,5 @@
 local wk = require("which-key")
 
-local nmap = function(key, effect)
-  vim.keymap.set('n', key, effect, {silent = true, noremap = true})
-end
-
 local vmap = function(key, effect)
   vim.keymap.set('v', key, effect, {silent = true, noremap = true})
 end
@@ -12,17 +8,37 @@ local imap = function(key, effect)
   vim.keymap.set('i', key, effect, {silent = true, noremap = true})
 end
 
+local nmap = function(key, effect)
+  vim.keymap.set('n', key, effect, {silent = true, noremap = true})
+end
+
+local function switchTheme()
+  if vim.o.background == 'light' then
+    vim.o.background = 'dark'
+    vim.cmd[[colorscheme nord]]
+  else
+    vim.o.background = 'light'
+    vim.cmd[[colorscheme github-colors]]
+  end
+end
+
+nmap('<leader>vt', switchTheme)
 
 nmap('<c-b>', ':NvimTreeToggle<CR>')
 nmap('<c-f>', ':Telescope builtin<CR>')
-nmap('<m-=>', ':!echo hi<cr>')
-nmap('<m-->', ':!echo hi<cr>')
+nmap('<m-left>', '<c-o>')
+nmap('<m-right>', '<c-i>')
+
 
 nmap('<F5>', require"dap".continue)
 nmap('<F10>', require"dap".step_over)
 nmap('<F11>', require"dap".step_into)
 nmap('<F12>', require"dap".step_out)
 nmap('Q', '<Nop>')
+
+imap('<m-->', ' <- ')
+imap('<c-m>', ' |> ')
+
 
 nmap('<c-cr>', '<Plug>SlimeSendCell')
 nmap('<s-cr>', '<Plug>SlimeSendCell')

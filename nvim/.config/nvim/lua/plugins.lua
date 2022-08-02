@@ -56,6 +56,13 @@ require('packer').startup {
         require('gitsigns').setup {}
       end
     }
+    use {'akinsho/git-conflict.nvim', config = function()
+      require('git-conflict').setup {
+        default_mappings = true,
+        disable_diagnostics = true,
+    }
+    end
+    }
 
     -- markdown notes
     -- use { '~/sw/mkdnflow.nvim/', }
@@ -105,10 +112,11 @@ require('packer').startup {
       config = function()
         vim.g.nord_contrast = true
         vim.g.nord_borders = true
-        vim.g.nord_disable_background = true
+        vim.g.nord_disable_background = false
         vim.g.nord_italic = true
         vim.g.nord_cursorline_transparent = true
         vim.g.nord_enable_sidebar_background = false
+        vim.g.nord_enable_uniform_diff_backround = true
       end
     }
     use { "catppuccin/nvim", as = "catppuccin",
@@ -116,6 +124,8 @@ require('packer').startup {
         require('catppuccin').setup {}
       end
     }
+    use 'Th3Whit3Wolf/space-nvim'
+    use 'lourenci/github-colors'
 
     -- telescope
     use { 'nvim-telescope/telescope.nvim' }
@@ -162,6 +172,7 @@ require('packer').startup {
     use { 'hrsh7th/cmp-path' }
     use { 'hrsh7th/cmp-calc' }
     use { 'hrsh7th/cmp-emoji' }
+    use { 'hrsh7th/cmp-nvim-lsp-signature-help' }
     use { 'saadparwaiz1/cmp_luasnip' }
     use { 'hrsh7th/cmp-nvim-lua' }
     use { 'f3fora/cmp-spell' }

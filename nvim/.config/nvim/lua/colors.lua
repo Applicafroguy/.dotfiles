@@ -3,9 +3,6 @@ local Color, colors, Group, groups, styles = require('colorbuddy').setup()
 
 vim.cmd[[colorscheme nord]]
 
-
-
-
 Color.new('background', "#2E3440")
 Color.new('fg', "#292929")
 Color.new('nord_0', "#2E3440")
@@ -26,24 +23,11 @@ Color.new('nord_13', "#EBCB8B")
 Color.new('nord_14', "#A3BE8C")
 Color.new('nord_15', "#B48EAD")
 
-Color.new('white',     '#D8DEE9')
-Color.new('red',       '#BF616A')
-Color.new('green',     '#A3BE8C')
-Color.new('yellow',    '#EBCB8B')
-Color.new('blue',      '#81A1C1')
-Color.new('aqua',      '#A3BE8C')
-Color.new('cyan',      '#8FBCBB')
-Color.new('purple',    '#B48EAD')
-Color.new('violet',    '#B48EAD')
-Color.new('orange',    '#D08770')
-
-
 
 Group.new("WhichKeyFloat",colors.fg, colors.nord_1)
-Group.new("WinSeparator", colors.nord_3, colors.none)
+Group.new("WinSeparator", colors.nord_3, colors.nord_3)
+Group.new('VertSplit', colors.nord_3, colors.nord_3)
 
-
--- Group.new('VertSplit', colors.nord_2, colors.nord_2)
 -- Group.new("Visual",colors.nord_4, colors.nord_9)
 -- Group.new("VisualNOS",colors.nord_2, colors.nord_1)
 -- Group.new('Conceal', colors.nord_3_light, colors.none)
@@ -68,5 +52,4 @@ Group.new("WinSeparator", colors.nord_3, colors.none)
 -- Group.new('TabLine', colors.fg, colors.nord_2)
 -- Group.new('TabLineSeparator', colors.nord_2, colors.fg)
 -- Group.new('TabLineFill', colors.none, colors.none)
-
 
