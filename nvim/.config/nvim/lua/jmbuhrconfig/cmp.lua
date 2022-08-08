@@ -86,7 +86,7 @@ cmp.setup({
     { name = "nvim_lua" },
     { name = 'spell' },
     { name = 'tags' },
-    { name = 'treesitter', keyword_length = 4, max_item_count = 3 },
+    -- { name = 'treesitter', keyword_length = 4, max_item_count = 3 },
     { name = 'calc' },
     { name = 'latex_symbols' },
     { name = 'emoji' },
