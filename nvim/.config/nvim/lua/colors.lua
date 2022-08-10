@@ -25,8 +25,8 @@ Color.new('nord_15', "#B48EAD")
 
 
 Group.new("WhichKeyFloat",colors.fg, colors.nord_1)
-Group.new("WinSeparator", colors.nord_3, colors.nord_3)
-Group.new('VertSplit', colors.nord_3, colors.nord_3)
+Group.new("WinSeparator", colors.nord_3, nil)
+Group.new('VertSplit', colors.nord_3, nil)
 
 -- Group.new("Visual",colors.nord_4, colors.nord_9)
 -- Group.new("VisualNOS",colors.nord_2, colors.nord_1)

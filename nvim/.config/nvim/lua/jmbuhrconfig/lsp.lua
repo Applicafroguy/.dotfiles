@@ -128,7 +128,7 @@ require('lspconfig').sumneko_lua.setup {
         path = runtime_path,
       },
       diagnostics = {
-        globals = { 'vim', 'table', 'string', 'R', 'P' },
+        globals = { 'vim', 'table', 'string', 'R', 'P', 'pairs', 'ipairs' },
       },
       workspace = {
         library = vim.api.nvim_get_runtime_file('', true),

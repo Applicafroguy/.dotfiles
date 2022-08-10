@@ -21,25 +21,11 @@ require('packer').startup {
     }
     -- clipboard
     use { 'roxma/vim-tmux-clipboard' }
-    -- use({ "aserowy/tmux.nvim",
-    --   config = function()
-    --       require("tmux").setup({
-    --         copy_sync = {
-    --           enable = true,
-    --           redirect_to_clipboard = false,
-    --           sync_clipboard = true,
-    --           sync_deletes = true,
-    --           sync_unnamed = true,
-    --       },
-    --     })
-    --   end
-    -- })
 
     -- keymaps
     use { 'folke/which-key.nvim' }
 
     -- git and projects
-    -- use { 'tpope/vim-fugitive' }
     use { 'sindrets/diffview.nvim' }
     use { 'TimUntersberger/neogit',
       config = function()
@@ -65,8 +51,6 @@ require('packer').startup {
     }
 
     -- markdown notes
-    -- use { '~/sw/mkdnflow.nvim/', }
-    -- use { 'jakewvincent/mkdnflow.nvim', branch = 'dev' }
     use 'ekickx/clipboard-image.nvim'
 
     -- common dependencies
@@ -151,9 +135,9 @@ require('packer').startup {
     use { 'neovim/nvim-lspconfig' }
     use { 'mfussenegger/nvim-dap' }
     use { 'rcarriga/nvim-dap-ui',
-      -- config = function()
-      --   require("dapui").setup()
-      -- end
+      config = function()
+        require("dapui").setup()
+      end
     }
     use { 'onsails/lspkind-nvim' }
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
@@ -196,8 +180,8 @@ require('packer').startup {
     --   end
     -- }
     -- language specific
-    -- use { 'quarto-dev/quarto-nvim',
-    use { '~/sw/quarto-nvim',
+    use { 'quarto-dev/quarto-nvim',
+    -- use { '~/sw/quarto-nvim',
       config = function ()
         require'quarto'.setup()
       end

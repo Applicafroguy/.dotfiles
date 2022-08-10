@@ -17,7 +17,7 @@ vim.opt.showmode = false
 vim.opt.listchars = 'tab:|·,trail:␠,nbsp:⎵'
 vim.opt.signcolumn = "yes:1"
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.clipboard:append 'unnamedplus'
 vim.opt.showcmd = true
 vim.opt.timeoutlen = 400 -- until which-key pops up

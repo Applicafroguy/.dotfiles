@@ -12,6 +12,7 @@ local nmap = function(key, effect)
   vim.keymap.set('n', key, effect, {silent = true, noremap = true})
 end
 
+
 local function switchTheme()
   if vim.o.background == 'light' then
     vim.o.background = 'dark'
@@ -147,7 +148,7 @@ wk.register({
     name = "quickfix",
     o = {':copen<cr>', 'open'},
     q = {':cclose<cr>', 'close'},
-    p = {'<cmd>lua require"quarto".quartoPreview()<cr>', 'quarto preview'},
+    p = {'<cmd>lua R"quarto".quartoPreview()<cr>', 'quarto preview'},
   },
   Q = {
     name = "loclist",
