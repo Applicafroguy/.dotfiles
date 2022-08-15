@@ -20,6 +20,7 @@ end
 
 telescope.setup{
   defaults = {
+    file_ignore_patterns = { "node_modules", "%_files", "%_cache", ".git/", "site_libs" },
     buffer_previewer_maker = new_maker,
     layout_strategy = "flex",
     sorting_strategy = "ascending",
@@ -31,19 +32,6 @@ telescope.setup{
         show_untracked = true,
         recurse_submodules = true,
       },
---      find_files = {
---        find_command = {"fd",
---          "--type", "f",
---          "--type", "l",
---          -- "--no-ignore",
---          -- "--hidden",
---          -- "--exclude", "*.trr",
---          -- "--exclude", "*.xtc",
---          "--exclude", "'*_files'",
---          "--exclude", "'*_cache'",
---          "--exclude", "'site_libs'",
---        }
---      },
     },
     vimgrep_arguments = {
       "rg",
@@ -73,10 +61,6 @@ telescope.setup{
       override_file_sorter = true,
       case_mode = "smart_case",
     },
-    bookmarks = {
-      selected_browser = 'brave-browser',
-      url_open_command = 'xdg-open',
-    },
     file_browser = {
       hijack_netrw = true,
     },
@@ -90,7 +74,6 @@ telescope.setup{
 
 
 telescope.load_extension('fzf')
-telescope.load_extension('bookmarks')
 telescope.load_extension('dap')
 telescope.load_extension('ui-select')
 telescope.load_extension('hoogle')

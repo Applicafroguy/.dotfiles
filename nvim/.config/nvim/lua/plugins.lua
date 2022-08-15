@@ -172,6 +172,8 @@ require('packer').startup {
     use { 'quangnguyen30192/cmp-nvim-tags' }
     use { 'kdheepak/cmp-latex-symbols' }
     use { 'jc-doyle/cmp-pandoc-references' }
+    use { 'petertriho/cmp-git' }
+
     use { 'L3MON4D3/LuaSnip' }
     use { 'rafamadriz/friendly-snippets' }
     use { 'windwp/nvim-autopairs',

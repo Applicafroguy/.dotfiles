@@ -82,6 +82,7 @@ cmp.setup({
     { name = 'luasnip' },
     { name = 'pandoc_references' },
     { name = 'path' },
+    { name = "git" },
     { name = 'buffer', keyword_length = 4, max_item_count = 3 },
     { name = "nvim_lua" },
     { name = 'spell' },
@@ -105,6 +106,7 @@ cmp.setup({
   },
 })
 
+require("cmp_git").setup()
 require("luasnip.loaders.from_vscode").lazy_load() -- for friendly snippets
 require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snips" } })
 

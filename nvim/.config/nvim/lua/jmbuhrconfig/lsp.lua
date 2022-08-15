@@ -21,6 +21,16 @@ local on_attach = function(client, bufnr)
   client.resolved_capabilities.document_formatting = true
 end
 
+local lsp_flags = {
+    allow_incremental_sync = true,
+    debounce_text_changes = 150,
+}
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities = cmp.update_capabilities(capabilities)
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+
 local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -33,41 +43,29 @@ vim.lsp.handlers["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {
 vim.lsp.handlers["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = border })
 
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = cmp.update_capabilities(capabilities)
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 lspconfig.vimls.setup{
   on_attach = on_attach,
   capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 250,
-  }
+  flags = lsp_flags,
 }
 
 lspconfig.r_language_server.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 250,
-  }
+  flags = lsp_flags,
 }
 
 lspconfig.bashls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 250,
-  }
+  flags = lsp_flags,
 }
 
 
 lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 250,
-  },
+  flags = lsp_flags,
   root_dir = function(fname)
     return util.root_pattern(".git", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
     util.path.dirname(fname)
@@ -77,9 +75,7 @@ lspconfig.pyright.setup {
 lspconfig.hls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 250,
-  }
+  flags = lsp_flags,
 }
 
 lspconfig.diagnosticls.setup {
@@ -103,9 +99,7 @@ lspconfig.diagnosticls.setup {
 lspconfig.yamlls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 250,
-  },
+  flags = lsp_flags,
   settings = {
     yaml = {
       format = {enable = false},
@@ -113,27 +107,23 @@ lspconfig.yamlls.setup {
   },
 }
 
--- Make runtime files discoverable to the server
-local runtime_path = vim.split(package.path, ';')
-table.insert(runtime_path, 'lua/?.lua')
-table.insert(runtime_path, 'lua/?/init.lua')
 
-require('lspconfig').sumneko_lua.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
+require'lspconfig'.sumneko_lua.setup {
   settings = {
     Lua = {
       runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
         version = 'LuaJIT',
-        path = runtime_path,
       },
       diagnostics = {
-        globals = { 'vim', 'table', 'string', 'R', 'P', 'pairs', 'ipairs' },
+        globals = {'vim', 'quarto', 'pandoc', 'io', 'string' },
       },
       workspace = {
-        library = vim.api.nvim_get_runtime_file('', true),
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
         checkThirdParty = false,
       },
+      -- Do not send telemetry data containing a randomized but unique identifier
       telemetry = {
         enable = false,
       },
@@ -181,9 +171,7 @@ lspconfig.csharp_ls.setup{
   on_attach = on_attach,
   capabilities = capabilities,
   cmd = {'csharp-ls'},
-  flags = {
-    debounce_text_changes = 250,
-  },
+  flags = lsp_flags,
   -- root_dir = function(fname)
   --   vim.notify("searching root dir for"..fname)
   --   -- return fname..'../'
