@@ -49,6 +49,10 @@ require('packer').startup {
     }
     end
     }
+    use { 'pwntester/octo.nvim', config = function ()
+        require"octo".setup()
+      end
+    }
 
     -- markdown notes
     use 'ekickx/clipboard-image.nvim'
@@ -120,6 +124,8 @@ require('packer').startup {
     use { 'nvim-telescope/telescope-packer.nvim' }
     use { 'dhruvmanila/telescope-bookmarks.nvim' }
     use { 'luc-tielen/telescope_hoogle' }
+    use { "nvim-telescope/telescope-file-browser.nvim" }
+    use { 'nvim-telescope/telescope-project.nvim' }
 
     -- run code
     use { 'jpalardy/vim-slime',

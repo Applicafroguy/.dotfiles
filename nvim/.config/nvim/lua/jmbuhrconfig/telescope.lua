@@ -1,9 +1,26 @@
 local telescope = require('telescope')
 local actions = require('telescope.actions')
 
+local previewers = require("telescope.previewers")
+
+local new_maker = function(filepath, bufnr, opts)
+  opts = opts or {}
+
+  filepath = vim.fn.expand(filepath)
+  vim.loop.fs_stat(filepath, function(_, stat)
+    if not stat then return end
+    if stat.size > 100000 then
+      return
+    else
+      previewers.buffer_previewer_maker(filepath, bufnr, opts)
+    end
+  end)
+end
+
 
 telescope.setup{
   defaults = {
+    buffer_previewer_maker = new_maker,
     layout_strategy = "flex",
     sorting_strategy = "ascending",
     layout_config = {
@@ -14,6 +31,19 @@ telescope.setup{
         show_untracked = true,
         recurse_submodules = true,
       },
+--      find_files = {
+--        find_command = {"fd",
+--          "--type", "f",
+--          "--type", "l",
+--          -- "--no-ignore",
+--          -- "--hidden",
+--          -- "--exclude", "*.trr",
+--          -- "--exclude", "*.xtc",
+--          "--exclude", "'*_files'",
+--          "--exclude", "'*_cache'",
+--          "--exclude", "'site_libs'",
+--        }
+--      },
     },
     vimgrep_arguments = {
       "rg",
@@ -47,6 +77,9 @@ telescope.setup{
       selected_browser = 'brave-browser',
       url_open_command = 'xdg-open',
     },
+    file_browser = {
+      hijack_netrw = true,
+    },
     ["ui-select"] = {
       require("telescope.themes").get_dropdown {
         -- even more opts
@@ -59,7 +92,8 @@ telescope.setup{
 telescope.load_extension('fzf')
 telescope.load_extension('bookmarks')
 telescope.load_extension('dap')
-telescope.load_extension("ui-select")
+telescope.load_extension('ui-select')
 telescope.load_extension('hoogle')
-
+telescope.load_extension('file_browser')
+telescope.load_extension('project')
 
