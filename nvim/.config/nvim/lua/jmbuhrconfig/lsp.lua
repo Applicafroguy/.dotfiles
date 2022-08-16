@@ -96,16 +96,16 @@ lspconfig.diagnosticls.setup {
   }
 }
 
-lspconfig.yamlls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  flags = lsp_flags,
-  settings = {
-    yaml = {
-      format = {enable = false},
-    },
-  },
-}
+-- lspconfig.yamlls.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   flags = lsp_flags,
+--   settings = {
+--     yaml = {
+--       format = {enable = false},
+--     },
+--   },
+-- }
 
 
 require'lspconfig'.sumneko_lua.setup {
