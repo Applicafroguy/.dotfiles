@@ -226,8 +226,8 @@ wk.register({
   ['<C-k>']  = {'<C-W>k', 'move to window'},
   ['<C-h>']  = {'<C-W>h', 'move to window'},
   ['<C-l>']  = {'<C-W>l', 'move to window'},
-  ['<tab>']  = {'<cmd>MkdnNextLink<cr>', 'next link'},
-  ['<c-tab>']  = {'<cmd>MkdnPrevLink<cr>', 'next link'},
+  ['<tab>']  = {'<cmd>cnext<cr>', 'next qf'},
+  ['<c-tab>']  = {'<cmd>cprev<cr>', 'previous qf'},
 }, { mode = 'n' })
 
 -- visual mode

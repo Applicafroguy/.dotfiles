@@ -109,21 +109,21 @@ lspconfig.yamlls.setup {
 
 
 require'lspconfig'.sumneko_lua.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = lsp_flags,
   settings = {
     Lua = {
       runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
         version = 'LuaJIT',
       },
       diagnostics = {
         globals = {'vim', 'quarto', 'pandoc', 'io', 'string' },
       },
       workspace = {
-        -- Make the server aware of Neovim runtime files
         library = vim.api.nvim_get_runtime_file("", true),
         checkThirdParty = false,
       },
-      -- Do not send telemetry data containing a randomized but unique identifier
       telemetry = {
         enable = false,
       },

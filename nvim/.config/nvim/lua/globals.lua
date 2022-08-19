@@ -49,3 +49,16 @@ vim.opt.showtabline = 1
 vim.opt.path:append '**'
 vim.opt.laststatus = 3
 
+--neovide gui
+vim.cmd[[
+if exists("g:neovide")
+let g:neovide_scroll_animation_length = 0
+let g:neovide_fullscreen=v:true
+let g:neovide_cursor_animation_length=0
+let g:neovide_cursor_trail_length=0
+let g:neovide_cursor_vfx_mode = ""
+endif
+]]
+
+
+
