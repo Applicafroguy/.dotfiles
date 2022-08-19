@@ -213,6 +213,7 @@ require('packer').startup {
   }
 }
 
+
 M = {}
 M.is_bootstrap = function()
   return is_bootstrap
