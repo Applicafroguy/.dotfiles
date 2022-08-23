@@ -1,6 +1,6 @@
 
 local dap = require('dap')
-
+local dapPython = require'dap-python'
 
 
 dap.adapters.python = {
@@ -44,4 +44,8 @@ dap.configurations.python = {
 }
 
 require('dap.ext.vscode').load_launchjs("launch.json")
+
+
+dapPython.setup()
+dapPython.test_runner = 'pytest'
 

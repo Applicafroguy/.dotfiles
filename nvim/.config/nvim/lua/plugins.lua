@@ -146,6 +146,7 @@ require('packer').startup {
         require("dapui").setup()
       end
     }
+    use {'mfussenegger/nvim-dap-python'}
     use { 'onsails/lspkind-nvim' }
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use { 'nvim-treesitter/playground',

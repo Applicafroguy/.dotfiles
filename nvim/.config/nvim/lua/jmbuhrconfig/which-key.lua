@@ -80,7 +80,11 @@ wk.register({
     l = { ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", "log point" },
     r = { ":lua require'dap'.repl.open()<cr>", "repl" },
     u = { ":lua require'dapui'.toggle()<cr>", "ui" },
-    n = { ":DailyNotes<cr>", "daily notes"},
+    c = { ":lua require'dap'.continue()<cr>", "continue" },
+    so = { ":lua require'dap'.step_over()<cr>", "step over" },
+    si = { ":lua require'dap'.step_into()<cr>", "step into" },
+    st = { ":lua require'dap'.step_out()<cr>", "step out" },
+    h = { ":lua require('dap-python').test_method()<cr>", "debug here" },
   },
   f = {
     name = "Telescope",
