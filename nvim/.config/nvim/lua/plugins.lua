@@ -49,9 +49,19 @@ require('packer').startup {
     }
     end
     }
+
+    if vim.fn.executable "gh" == 1 then
     use { 'pwntester/octo.nvim', config = function ()
         require"octo".setup()
       end
+    }
+    end
+
+    use {
+      "ThePrimeagen/git-worktree.nvim",
+      config = function()
+        require("git-worktree").setup {}
+      end,
     }
 
     -- markdown notes
