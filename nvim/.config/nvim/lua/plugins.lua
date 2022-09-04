@@ -26,7 +26,9 @@ require('packer').startup {
     use { 'folke/which-key.nvim' }
 
     -- git and projects
-    use { 'sindrets/diffview.nvim' }
+    use { 'sindrets/diffview.nvim',
+      branch = 'feat/merge-tool'
+    }
     use { 'TimUntersberger/neogit',
       config = function()
         require('neogit').setup {
@@ -201,10 +203,15 @@ require('packer').startup {
     --   end
     -- }
     -- language specific
-    use { 'quarto-dev/quarto-nvim',
-    -- use { '~/sw/quarto-nvim',
+   -- use { 'quarto-dev/quarto-nvim',
+    use { '~/phd/quarto-nvim',
       config = function ()
-        require'quarto'.setup()
+        require'quarto'.setup{
+          diagnostics = {
+            -- enabled = true,
+            languages = {'r', 'python'}
+          }
+        }
       end
     }
 

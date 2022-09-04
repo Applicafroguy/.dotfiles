@@ -150,7 +150,8 @@ wk.register({
     name = "quickfix",
     o = {':copen<cr>', 'open'},
     q = {':cclose<cr>', 'close'},
-    p = {'<cmd>lua R"quarto".quartoPreview()<cr>', 'quarto preview'},
+    p = {'<cmd>lua require"quarto".quartoPreview()<cr>', 'quarto preview'},
+    d = {'<cmd>lua R"quarto".debug()<cr>', 'quarto debug'},
   },
   Q = {
     name = "loclist",
