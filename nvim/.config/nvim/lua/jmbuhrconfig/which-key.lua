@@ -145,6 +145,11 @@ wk.register({
     pr = {":Octo review start<cr>", "gh pr review"},
     wc = {":lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>", "worktree create"},
     ws = {":lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", "worktree switch"},
+    d = {
+      name = 'diff',
+      o = {':DiffviewOpen<cr>', 'open'},
+      c = {':DiffviewClose<cr>', 'close'},
+    }
   },
   q = {
     name = "quickfix",
