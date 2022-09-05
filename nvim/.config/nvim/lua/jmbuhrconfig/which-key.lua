@@ -145,12 +145,18 @@ wk.register({
     pr = {":Octo review start<cr>", "gh pr review"},
     wc = {":lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>", "worktree create"},
     ws = {":lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", "worktree switch"},
+    d = {
+      name = 'diff',
+      o = {':DiffviewOpen<cr>', 'open'},
+      c = {':DiffviewClose<cr>', 'close'},
+    }
   },
   q = {
     name = "quickfix",
     o = {':copen<cr>', 'open'},
     q = {':cclose<cr>', 'close'},
-    p = {'<cmd>lua R"quarto".quartoPreview()<cr>', 'quarto preview'},
+    p = {'<cmd>lua require"quarto".quartoPreview()<cr>', 'quarto preview'},
+    d = {'<cmd>lua R"quarto".debug()<cr>', 'quarto debug'},
   },
   Q = {
     name = "loclist",
