@@ -49,19 +49,9 @@ require('packer').startup {
     }
     end
     }
-
-    if vim.fn.executable "gh" == 1 then
     use { 'pwntester/octo.nvim', config = function ()
         require"octo".setup()
       end
-    }
-    end
-
-    use {
-      "ThePrimeagen/git-worktree.nvim",
-      config = function()
-        require("git-worktree").setup {}
-      end,
     }
 
     -- markdown notes
@@ -183,8 +173,8 @@ require('packer').startup {
     use { 'andersevenrud/cmp-tmux' }
     use { 'quangnguyen30192/cmp-nvim-tags' }
     use { 'kdheepak/cmp-latex-symbols' }
-    use { 'jc-doyle/cmp-pandoc-references' }
-    -- use { '~/sw/cmp-pandoc-references' }
+    -- use { 'jc-doyle/cmp-pandoc-references' }
+    use { '~/sw/cmp-pandoc-references' }
     use { 'petertriho/cmp-git' }
 
     use { 'L3MON4D3/LuaSnip' }
