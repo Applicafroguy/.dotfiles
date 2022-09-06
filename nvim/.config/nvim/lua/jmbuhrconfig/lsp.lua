@@ -3,6 +3,13 @@ local cmp = require('cmp_nvim_lsp')
 local configs = require'lspconfig.configs'
 local util = require("lspconfig.util")
 
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = { "sumneko_lua", "pyright", "r_language_server", "emmet_ls",
+    "hls", "cssls", "diagnosticls", "svelte", "rust_analyzer", "denols", "clangd", "debugpy" }
+})
+
+
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
@@ -55,11 +62,11 @@ lspconfig.r_language_server.setup {
   flags = lsp_flags,
 }
 
-lspconfig.bashls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  flags = lsp_flags,
-}
+-- lspconfig.bashls.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   flags = lsp_flags,
+-- }
 
 
 lspconfig.pyright.setup {

@@ -140,6 +140,10 @@ require('packer').startup {
       end
     }
 
+    -- lsp installer
+    use { "williamboman/mason.nvim" }
+    use { "williamboman/mason-lspconfig.nvim" }
+
     -- lsp and other built-in anhancers
     use { 'neovim/nvim-lspconfig' }
     use { 'mfussenegger/nvim-dap' }
