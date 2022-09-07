@@ -26,6 +26,7 @@ require('packer').startup {
     use { 'folke/which-key.nvim' }
 
     -- git and projects
+    use { 'ThePrimeagen/git-worktree.nvim' }
     use { 'sindrets/diffview.nvim',
       branch = 'feat/merge-tool'
     }
