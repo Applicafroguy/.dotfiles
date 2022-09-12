@@ -1,4 +1,5 @@
 require('jmbuhrconfig.lualine')
+require('jmbuhrconfig.bufferline')
 require('jmbuhrconfig.cmp')
 require('jmbuhrconfig.dap')
 require('jmbuhrconfig.lsp')

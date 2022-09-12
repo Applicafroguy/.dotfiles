@@ -27,9 +27,7 @@ require('packer').startup {
 
     -- git and projects
     use { 'ThePrimeagen/git-worktree.nvim' }
-    use { 'sindrets/diffview.nvim',
-      branch = 'feat/merge-tool'
-    }
+    use { 'sindrets/diffview.nvim' }
     use { 'TimUntersberger/neogit',
       config = function()
         require('neogit').setup {
@@ -72,6 +70,7 @@ require('packer').startup {
     use { 'arkav/lualine-lsp-progress' }
     use { 'dstein64/nvim-scrollview' }
     use { 'gcmt/taboo.vim' }
+    -- use {'akinsho/bufferline.nvim' }
     use { "akinsho/toggleterm.nvim", tag = 'v1.*', config = function()
       require("toggleterm").setup {
         open_mapping = [[<c-\>]],
@@ -192,14 +191,14 @@ require('packer').startup {
       end
     }
     -- spellchecker based on language
-    -- use { 'lewis6991/spellsitter.nvim',
-    --   config = function()
-    --     require('spellsitter').setup()
-    --   end
-    -- }
+    use { 'lewis6991/spellsitter.nvim',
+      config = function()
+        require('spellsitter').setup()
+      end
+    }
     -- language specific
-   -- use { 'quarto-dev/quarto-nvim',
-    use { '~/phd/quarto-nvim',
+   use { 'quarto-dev/quarto-nvim',
+    -- use { '~/phd/quarto-nvim',
       config = function ()
         require'quarto'.setup{
           diagnostics = {

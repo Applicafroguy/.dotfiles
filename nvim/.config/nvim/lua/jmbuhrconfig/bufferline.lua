@@ -1,0 +1,14 @@
+-- require("bufferline").setup{
+--   options = {
+--     mode = 'tabs',
+--     right_mouse_command = "",
+--     offsets = {
+--         {
+--           filetype = "NvimTree",
+--           text = "File Explorer",
+--           text_align = "left",
+--           separator = true,
+--         }
+--     },
+--  },
+-- }

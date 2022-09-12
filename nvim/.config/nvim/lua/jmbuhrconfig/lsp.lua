@@ -157,7 +157,6 @@ lspconfig.emmet_ls.setup{
   capabilities = capabilities,
 }
 
-
 lspconfig.rust_analyzer.setup {
   on_attach = on_attach,
   capabilities = capabilities,
