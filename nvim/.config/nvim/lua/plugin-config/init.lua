@@ -1,0 +1,5 @@
+require'plugin-config.cmp'
+require'plugin-config.lsp'
+require'plugin-config.telescope'
+require'plugin-config.treesitter'
+require'plugin-config.autocommands'
