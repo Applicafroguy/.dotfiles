@@ -7,8 +7,7 @@ local util = require("lspconfig.util")
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "sumneko_lua", "pyright", "r_language_server", "emmet_ls",
-    "cssls", "diagnosticls", "debugpy" }
+    automatic_installation = true
 })
 
 local on_attach = function(client, bufnr)
@@ -59,17 +58,6 @@ lspconfig.r_language_server.setup {
   }
 }
 
-lspconfig.pyright.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 250,
-  },
-  root_dir = function(fname)
-    return util.root_pattern(".git", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
-        util.path.dirname(fname)
-  end
-}
 
 lspconfig.diagnosticls.setup {
   on_attach = on_attach,
@@ -113,7 +101,7 @@ lspconfig.cssls.setup {
   capabilities = capabilities,
 }
 
-require'lspconfig'.sumneko_lua.setup {
+lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   flags = lsp_flags,
@@ -135,4 +123,36 @@ require'lspconfig'.sumneko_lua.setup {
     },
   },
 }
+
+-- lspconfig.pyright.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   flags = {
+--     debounce_text_changes = 250,
+--   },
+--   root_dir = function(fname)
+--     return util.root_pattern(".git", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
+--         util.path.dirname(fname)
+--   end
+-- }
+
+require'lspconfig'.pylsp.setup{
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          ignore = {'W391', 'E265'},
+          maxLineLength = 100
+        }
+      }
+    }
+  }
+}
+
+-- require'lspconfig'.jedi_language_server.setup{
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+-- }
 
