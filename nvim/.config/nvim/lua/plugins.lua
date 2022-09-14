@@ -3,13 +3,13 @@ local fn = vim.fn
 
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
     vim.cmd [[packadd packer.nvim]]
     return true
   end
-    return false
+  return false
 end
 
 local packer_bootstrap = ensure_packer()
@@ -78,7 +78,7 @@ require('packer').startup {
     use { 'jpalardy/vim-slime',
       config = function()
         vim.g.slime_target = "tmux"
-        vim.g.slime_python_ipython = 1
+        vim.g.slime_bracketed_paste = 1
         vim.g.slime_default_config = { socket_name = "default", target_pane = ":.2" }
         vim.b.slime_cell_delimiter = "#%%"
       end
@@ -104,7 +104,7 @@ require('packer').startup {
         require("dapui").setup()
       end
     }
-    use {'mfussenegger/nvim-dap-python'}
+    use { 'mfussenegger/nvim-dap-python' }
 
     -- completion
     use { 'hrsh7th/nvim-cmp' }
@@ -143,6 +143,34 @@ require('packer').startup {
           'qmd',
           'markdown',
           'python'
+        }
+      end
+    }
+
+    --custom
+    -- git and projects
+    use { 'ThePrimeagen/git-worktree.nvim' }
+    use { 'sindrets/diffview.nvim' }
+    use { 'TimUntersberger/neogit',
+      config = function()
+        require('neogit').setup {
+          disable_commit_confirmation = true,
+          integrations = {
+            diffview = true
+          }
+        }
+      end
+    }
+    use { 'lewis6991/gitsigns.nvim',
+      config = function()
+        require('gitsigns').setup {}
+      end
+    }
+    use { 'akinsho/git-conflict.nvim',
+      config = function()
+        require('git-conflict').setup {
+          default_mappings = true,
+          disable_diagnostics = true,
         }
       end
     }
