@@ -203,6 +203,47 @@ require('packer').startup {
       end
     }
 
+    -- look and feel
+    use {'dstein64/nvim-scrollview',
+      config = function ()
+        require('scrollview').setup({
+          current_only = true,
+        })
+      end
+    }
+    use {
+      'nvim-lualine/lualine.nvim',
+      config = function ()
+        require('lualine').setup{
+          options = { section_separators = '', component_separators = '' },
+          tabline = {
+            lualine_a = {{'tabs', mode = 1}},
+            lualine_b = {},
+            lualine_c = {},
+            lualine_x = {},
+            lualine_y = {},
+            lualine_z = {{'tabs', mode = 0}}
+          },
+          -- winbar = {
+          --   lualine_a = {},
+          --   lualine_b = {},
+          --   lualine_c = {'filename'},
+          --   lualine_x = {},
+          --   lualine_y = {},
+          --   lualine_z = {}
+          -- },
+          -- inactive_winbar = {
+          --   lualine_a = {},
+          --   lualine_b = {},
+          --   lualine_c = {'filename'},
+          --   lualine_x = {},
+          --   lualine_y = {},
+          --   lualine_z = {}
+          -- }
+        }
+      end
+    }
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then

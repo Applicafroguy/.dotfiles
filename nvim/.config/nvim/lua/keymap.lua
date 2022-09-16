@@ -97,9 +97,11 @@ wk.register({
     M = { ":lua require('dap-python').test_class()<cr>", "debug here" },
     t = {
       name = "test",
-      t = {':lua require("neotest").run.run()', 'nearest test'},
-      c = {':lua require("neotest").run.run(vim.fn.expand("%"))', 'nearest current file'},
-      d = {':lua require("neotest").run.run({strategy = "dap"})', 'debug test'},
+      t = {':lua require("neotest").run.run()<cr>', 'nearest test'},
+      c = {':lua require("neotest").run.run(vim.fn.expand("%"))<cr>', 'current file'},
+      d = {':lua require("neotest").run.run({strategy = "dap"})<cr>', 'debug test'},
+      a = {':lua require("neotest").run.run({strategy = "dap"})<cr>', 'all'},
+      s = {':lua require("neotest").summary.open()<cr>', 'show summary'},
     }
   },
   q = {
@@ -157,8 +159,9 @@ wk.register({
   ['<C-k>']  = {'<C-W>k', 'move to window'},
   ['<C-h>']  = {'<C-W>h', 'move to window'},
   ['<C-l>']  = {'<C-W>l', 'move to window'},
-  ['<tab>']  = {'<cmd>cnext<cr>', 'next qf'},
-  ['<c-tab>']  = {'<cmd>cprev<cr>', 'previous qf'},
+  -- does not work, <tab> is the same as <c-i>
+  -- ['<c-tab>']  = {'<cmd>bnext<cr>', 'next buffer'},
+  -- ['<c-s-tab>']  = {'<cmd>bprev<cr>', 'previous buffer'},
 }, { mode = 'n' })
 
 -- visual mode
