@@ -1,4 +1,3 @@
-
 local telescope = require'telescope'
 local actions = require('telescope.actions')
 
@@ -23,6 +22,7 @@ telescope.setup{
   pickers = {
     find_files = {
       hidden = true,
+			find_command = { "rg", "--files", "--hidden", "--glob", "!.git/*" },
     }
   },
   extensions = {
@@ -33,3 +33,10 @@ telescope.setup{
 }
 
 telescope.load_extension('ui-select')
+telescope.load_extension('fzf')
+telescope.load_extension('dap')
+telescope.load_extension('ui-select')
+telescope.load_extension('file_browser')
+telescope.load_extension('project')
+telescope.load_extension("git_worktree")
+

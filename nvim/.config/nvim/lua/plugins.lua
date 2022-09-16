@@ -44,6 +44,10 @@ require('packer').startup {
     use { 'nvim-telescope/telescope-ui-select.nvim' }
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use { 'nvim-telescope/telescope-packer.nvim' }
+    use { 'nvim-telescope/telescope-dap.nvim' }
+    use { 'nvim-telescope/telescope-file-browser.nvim' }
+    use { 'nvim-telescope/telescope-project.nvim' }
+
 
     -- show keybinding help window
     use { 'folke/which-key.nvim' }
@@ -51,7 +55,21 @@ require('packer').startup {
     -- filetree
     use { 'kyazdani42/nvim-tree.lua',
       config = function()
-        require 'nvim-tree'.setup {}
+        require'nvim-tree'.setup {
+          disable_netrw       = true,
+          open_on_setup       = true,
+          update_focused_file = {
+            enable      = true,
+          },
+          git = {
+            enable = true,
+            ignore = false,
+            timeout = 500,
+          },
+          diagnostics = {
+            enable = true,
+          },
+        }
       end
     }
 
@@ -105,6 +123,16 @@ require('packer').startup {
       end
     }
     use { 'mfussenegger/nvim-dap-python' }
+
+    -- tests
+    use { "nvim-neotest/neotest",
+      requires = {
+        "nvim-lua/plenary.nvim",
+        "nvim-treesitter/nvim-treesitter",
+        "antoinemadec/FixCursorHold.nvim",
+        "nvim-neotest/neotest-python"
+      }
+    }
 
     -- completion
     use { 'hrsh7th/nvim-cmp' }

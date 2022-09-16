@@ -93,7 +93,14 @@ wk.register({
     so = { ":lua require'dap'.step_over()<cr>", "step over" },
     si = { ":lua require'dap'.step_into()<cr>", "step into" },
     st = { ":lua require'dap'.step_out()<cr>", "step out" },
-    h = { ":lua require('dap-python').test_method()<cr>", "debug here" },
+    m = { ":lua require('dap-python').test_method()<cr>", "debug here" },
+    M = { ":lua require('dap-python').test_class()<cr>", "debug here" },
+    t = {
+      name = "test",
+      t = {':lua require("neotest").run.run()', 'nearest test'},
+      c = {':lua require("neotest").run.run(vim.fn.expand("%"))', 'nearest current file'},
+      d = {':lua require("neotest").run.run({strategy = "dap"})', 'debug test'},
+    }
   },
   q = {
     name = 'quarto',
@@ -136,6 +143,7 @@ wk.register({
 
 -- normal mode
 wk.register({
+  ['<c-LeftMouse>'] = {'<cmd>lua vim.lsp.buf.definition()<CR>', 'go to definition'},
   L = { ":tabnext<cr>", "next tab" },
   H = { ":tabprevious<cr>", "previous tab" },
   ['gx'] = { ':!xdg-open <c-r><c-a><cr>', 'open file' },
@@ -168,5 +176,4 @@ wk.register({
   ['<cr>'] = {'<cmd>MkdnFollowLink<cr>', 'follow / create link'},
   ['p'] = {'"_dP', 'replace without overwriting reg'},
 } , { mode = 'v', prefix = "<leader>"})
-
 

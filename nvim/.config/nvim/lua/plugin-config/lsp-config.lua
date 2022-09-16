@@ -124,32 +124,32 @@ lspconfig.sumneko_lua.setup {
   },
 }
 
--- lspconfig.pyright.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   flags = {
---     debounce_text_changes = 250,
---   },
---   root_dir = function(fname)
---     return util.root_pattern(".git", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
---         util.path.dirname(fname)
---   end
--- }
-
-require'lspconfig'.pylsp.setup{
+lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  settings = {
-    pylsp = {
-      plugins = {
-        pycodestyle = {
-          ignore = {'W391', 'E265'},
-          maxLineLength = 100
-        }
-      }
-    }
-  }
+  flags = {
+    debounce_text_changes = 250,
+  },
+  root_dir = function(fname)
+    return util.root_pattern(".git", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
+        util.path.dirname(fname)
+  end
 }
+
+-- require'lspconfig'.pylsp.setup{
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   settings = {
+--     pylsp = {
+--       plugins = {
+--         pycodestyle = {
+--           ignore = {'W391', 'E265'},
+--           maxLineLength = 100
+--         }
+--       }
+--     }
+--   }
+-- }
 
 -- require'lspconfig'.jedi_language_server.setup{
 --   on_attach = on_attach,
