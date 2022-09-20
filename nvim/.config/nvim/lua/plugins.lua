@@ -55,18 +55,18 @@ require('packer').startup {
     -- filetree
     use { 'kyazdani42/nvim-tree.lua',
       config = function()
-        require'nvim-tree'.setup {
+        require 'nvim-tree'.setup {
           disable_netrw       = true,
           open_on_setup       = true,
           update_focused_file = {
-            enable      = true,
+            enable = true,
           },
-          git = {
+          git                 = {
             enable = true,
             ignore = false,
             timeout = 500,
           },
-          diagnostics = {
+          diagnostics         = {
             enable = true,
           },
         }
@@ -204,35 +204,52 @@ require('packer').startup {
     }
 
     -- look and feel
-    use {'dstein64/nvim-scrollview',
-      config = function ()
+    use { 'dstein64/nvim-scrollview',
+      config = function()
         require('scrollview').setup({
           current_only = true,
         })
       end
     }
-    use {'f-person/git-blame.nvim'}
+    use { 'f-person/git-blame.nvim' }
     use {
       'nvim-lualine/lualine.nvim',
-      config = function ()
-        vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
+      config = function()
+        vim.g.gitblame_display_virtual_text = 0
         local git_blame = require('gitblame')
 
-        require('lualine').setup{
-          options = { section_separators = '', component_separators = '' },
+        require'tabline'.setup {
+          options = {
+            max_bufferline_percent = 80,
+            show_tabs_always = true,
+            show_bufnr = true,
+            show_filename_only = true,
+            modified_icon = "+ ",
+            modified_italic = true,
+            show_tabs_only = true,
+          }
+        }
+
+        require('lualine').setup {
+          options = {
+            section_separators = '',
+            component_separators = '',
+            globalstatus = true
+          },
           tabline = {
-            lualine_a = {{'tabs', mode = 1}},
+            lualine_a = {},
             lualine_b = {},
-            lualine_c = {},
-            lualine_x = {},
+            lualine_c = { require'tabline'.tabline_buffers_tabs_only },
+            lualine_x = { },
             lualine_y = {},
-            lualine_z = {{'tabs', mode = 0}}
+            lualine_z = { { 'tabs', mode = 0 } }
           },
           sections = {
             lualine_c = {
-                { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }
+              { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }
             }
-          }
+          },
+          extensions = {'nvim-tree'},
           -- winbar = {
           --   lualine_a = {},
           --   lualine_b = {},
@@ -251,6 +268,12 @@ require('packer').startup {
           -- }
         }
       end
+    }
+    use {
+      'kdheepak/tabline.nvim',
+      config = function()
+        require'tabline'.setup {enable = false}
+      end,
     }
 
     -- Automatically set up your configuration after cloning packer.nvim
