@@ -101,6 +101,29 @@ lspconfig.cssls.setup {
   capabilities = capabilities,
 }
 
+
+
+local function strsplit(s, delimiter)
+  local result = {}
+  for match in (s .. delimiter):gmatch("(.-)" .. delimiter) do
+    table.insert(result, match)
+  end
+  return result
+end
+
+local function get_quarto_resource_path()
+  local f = assert(io.popen('quarto --paths', 'r'))
+  local s = assert(f:read('*a'))
+  f:close()
+  return strsplit(s, '\n')[2]
+end
+
+local lua_library_files = vim.api.nvim_get_runtime_file("", true)
+local resource_path = get_quarto_resource_path()
+table.insert(lua_library_files, resource_path..'/lua-types')
+local lua_plugin_paths = {}
+table.insert(lua_plugin_paths, resource_path..'/lua-plugin/plugin.lua')
+
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
   capabilities = capabilities,
@@ -109,12 +132,13 @@ lspconfig.sumneko_lua.setup {
     Lua = {
       runtime = {
         version = 'LuaJIT',
+        plugin = lua_plugin_paths[1],
       },
       diagnostics = {
         globals = {'vim', 'quarto', 'pandoc', 'io', 'string' },
       },
       workspace = {
-        library = vim.api.nvim_get_runtime_file("", true),
+        library = lua_library_files,
         checkThirdParty = false,
       },
       telemetry = {
