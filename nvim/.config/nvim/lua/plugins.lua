@@ -95,7 +95,7 @@ require('packer').startup {
     use { 'jpalardy/vim-slime',
       config = function()
         vim.g.slime_target = "neovim"
-        local wk = require'which-key'
+        local wk = require 'which-key'
 
         local function chooseTerminal()
           local current_terminal = vim.bo.channel
@@ -103,19 +103,19 @@ require('packer').startup {
         end
 
         local function setTerminal()
-          vim.b.slime_config = {jobid = vim.api.nvim_get_var('slimeTerminal')}
+          vim.b.slime_config = { jobid = vim.api.nvim_get_var('slimeTerminal') }
         end
 
         wk.register(
           {
-            ['ct'] = {chooseTerminal, 'choose terminal'},
-            ['cs'] = {setTerminal, 'set terminal'},
-            ['cr'] = {':split term://R<cr>', 'spawn R terminal'},
-            ['ci'] = {':split term://ipython<cr>', 'spawn ipython terminal'},
-            ['cp'] = {':split term://python<cr>', 'spawn python terminal'},
-            ['cj'] = {':split term://julia<cr>', 'spawn julia terminal'},
+            ['ct'] = { chooseTerminal, 'choose terminal' },
+            ['cs'] = { setTerminal, 'set terminal' },
+            ['cr'] = { ':split term://R<cr>', 'spawn R terminal' },
+            ['ci'] = { ':split term://ipython<cr>', 'spawn ipython terminal' },
+            ['cp'] = { ':split term://python<cr>', 'spawn python terminal' },
+            ['cj'] = { ':split term://julia<cr>', 'spawn julia terminal' },
           },
-          {prefix = '<leader>'}
+          { prefix = '<leader>' }
         )
         -- vim.g.slime_target = "tmux"
         -- vim.g.slime_bracketed_paste = 1
@@ -240,62 +240,35 @@ require('packer').startup {
         vim.g.gitblame_display_virtual_text = 0
         local git_blame = require('gitblame')
 
-        require'tabline'.setup {
-          options = {
-            max_bufferline_percent = 80,
-            show_tabs_always = true,
-            show_bufnr = true,
-            show_filename_only = true,
-            modified_icon = "+ ",
-            modified_italic = true,
-            show_tabs_only = true,
-          }
-        }
-
         require('lualine').setup {
           options = {
             section_separators = '',
             component_separators = '',
             globalstatus = true
           },
-          tabline = {
-            lualine_a = {},
-            lualine_b = {},
-            lualine_c = { require'tabline'.tabline_buffers_tabs_only },
-            lualine_x = { },
-            lualine_y = {},
-            lualine_z = { { 'tabs', mode = 0 } }
-          },
           sections = {
             lualine_c = {
               { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }
             }
           },
-          extensions = {'nvim-tree'},
-          -- winbar = {
-          --   lualine_a = {},
-          --   lualine_b = {},
-          --   lualine_c = {'filename'},
-          --   lualine_x = {},
-          --   lualine_y = {},
-          --   lualine_z = {}
-          -- },
-          -- inactive_winbar = {
-          --   lualine_a = {},
-          --   lualine_b = {},
-          --   lualine_c = {'filename'},
-          --   lualine_x = {},
-          --   lualine_y = {},
-          --   lualine_z = {}
-          -- }
+          extensions = { 'nvim-tree' },
         }
       end
     }
-    use {
-      'kdheepak/tabline.nvim',
+    use { 'nanozuki/tabby.nvim',
+      config = function ()
+        require'tabby.tabline'.use_preset('tab_only')
+      end
+    }
+
+    -- terminal
+    use { "akinsho/toggleterm.nvim", tag = '*',
       config = function()
-        require'tabline'.setup {enable = false}
-      end,
+        require("toggleterm").setup {
+          open_mapping = [[<c-\>]],
+          direction = 'float',
+        }
+      end
     }
 
     -- Automatically set up your configuration after cloning packer.nvim

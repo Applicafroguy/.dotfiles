@@ -50,3 +50,6 @@ vim.opt.laststatus = 3
 vim.opt.splitright = true
 vim.opt.splitbelow = true
 
+--tabline
+vim.opt.showtabline = 2
+
