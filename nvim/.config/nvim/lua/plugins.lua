@@ -18,7 +18,6 @@ local packer_bootstrap = ensure_packer()
 vim.cmd [[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerClean
     autocmd BufWritePost plugins.lua source <afile> | PackerInstall
     autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
@@ -57,7 +56,7 @@ require('packer').startup {
       config = function()
         require 'nvim-tree'.setup {
           disable_netrw       = true,
-          open_on_setup       = true,
+          open_on_setup       = false,
           update_focused_file = {
             enable = true,
           },
@@ -95,9 +94,32 @@ require('packer').startup {
     -- like ipython, R, bash
     use { 'jpalardy/vim-slime',
       config = function()
-        vim.g.slime_target = "tmux"
-        vim.g.slime_bracketed_paste = 1
-        vim.g.slime_default_config = { socket_name = "default", target_pane = ":.2" }
+        vim.g.slime_target = "neovim"
+        local wk = require'which-key'
+
+        local function chooseTerminal()
+          local current_terminal = vim.bo.channel
+          vim.api.nvim_set_var('slimeTerminal', current_terminal)
+        end
+
+        local function setTerminal()
+          vim.b.slime_config = {jobid = vim.api.nvim_get_var('slimeTerminal')}
+        end
+
+        wk.register(
+          {
+            ['ct'] = {chooseTerminal, 'choose terminal'},
+            ['cs'] = {setTerminal, 'set terminal'},
+            ['cr'] = {':split term://R<cr>', 'spawn R terminal'},
+            ['ci'] = {':split term://ipython<cr>', 'spawn ipython terminal'},
+            ['cp'] = {':split term://python<cr>', 'spawn python terminal'},
+            ['cj'] = {':split term://julia<cr>', 'spawn julia terminal'},
+          },
+          {prefix = '<leader>'}
+        )
+        -- vim.g.slime_target = "tmux"
+        -- vim.g.slime_bracketed_paste = 1
+        -- vim.g.slime_default_config = { socket_name = "default", target_pane = ":.2" }
         vim.b.slime_cell_delimiter = "#%%"
       end
     }
