@@ -47,6 +47,8 @@ nmap('<c-p>', "<cmd>Telescope find_files<cr>")
 -- paste and without overwriting register
 vmap("<leader>p", "\"_dP")
 
+-- delete and without overwriting register
+vmap("<leader>d", "\"_d")
 
 -- terminal mode
 -- get out ouf terminal insert mode with esc

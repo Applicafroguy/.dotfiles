@@ -87,6 +87,7 @@ require('packer').startup {
     -- colorschemes with TS support,
     -- so it highlights embedded languages in qmd files
     use { 'shaunsingh/nord.nvim' }
+    use { 'folke/tokyonight.nvim' }
     use { "catppuccin/nvim", as = "catppuccin" }
 
     -- send code from python/r/qmd docuemts to the terminal
