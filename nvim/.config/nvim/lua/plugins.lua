@@ -136,6 +136,12 @@ require('packer').startup {
     use { "williamboman/mason.nvim" }
     use { "williamboman/mason-lspconfig.nvim" }
 
+    use { 'simrat39/symbols-outline.nvim',
+      config = function ()
+        require("symbols-outline").setup()
+      end
+    }
+
 
     -- debug adapter protocol
     use { 'mfussenegger/nvim-dap' }
