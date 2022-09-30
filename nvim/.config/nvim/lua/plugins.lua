@@ -89,6 +89,7 @@ require('packer').startup {
     use { 'shaunsingh/nord.nvim' }
     use { 'folke/tokyonight.nvim' }
     use { "catppuccin/nvim", as = "catppuccin" }
+    use { 'EdenEast/nightfox.nvim'}
 
     -- send code from python/r/qmd docuemts to the terminal
     -- thanks to tmux can be used for any repl
@@ -133,6 +134,7 @@ require('packer').startup {
             ['ct'] = { chooseTerminal, 'choose terminal' },
             ['cs'] = { setTerminal, 'set terminal' },
             ['cr'] = { ':split term://R<cr>', 'spawn R terminal' },
+            ['cb'] = { ':split term://bash<cr>', 'spawn bash terminal' },
             ['ci'] = { ':split term://ipython<cr>', 'spawn ipython terminal' },
             ['cp'] = { ':split term://python<cr>', 'spawn python terminal' },
             ['cj'] = { ':split term://julia<cr>', 'spawn julia terminal' },
@@ -164,6 +166,18 @@ require('packer').startup {
       end
     }
 
+    -- show diagnostics list
+    use {
+      "folke/trouble.nvim",
+      requires = "kyazdani42/nvim-web-devicons",
+      config = function()
+        require("trouble").setup {
+          -- your configuration comes here
+          -- or leave it empty to use the default settings
+          -- refer to the configuration section below
+        }
+      end
+    }
 
     -- debug adapter protocol
     use { 'mfussenegger/nvim-dap' }
@@ -254,6 +268,11 @@ require('packer').startup {
     }
 
     -- look and feel
+    use { 'stevearc/aerial.nvim',
+      config = function()
+        require('aerial').setup()
+      end
+    }
     use { 'dstein64/nvim-scrollview',
       config = function()
         require('scrollview').setup({

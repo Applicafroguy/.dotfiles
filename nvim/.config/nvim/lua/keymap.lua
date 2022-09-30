@@ -12,6 +12,23 @@ local imap = function(key, effect)
   vim.keymap.set('i', key, effect, {silent = true, noremap = true})
 end
 
+local function switchTheme()
+  if vim.o.background == 'light' then
+    vim.o.background = 'dark'
+    vim.cmd[[colorscheme nightfox]]
+  else
+    vim.o.background = 'light'
+    vim.cmd[[colorscheme dawnfox]]
+  end
+end
+
+nmap('<leader>vt', switchTheme)
+nmap('<F5>', require"dap".continue)
+nmap('<F10>', require"dap".step_over)
+nmap('<F11>', require"dap".step_into)
+nmap('<F12>', require"dap".step_out)
+nmap('Q', '<Nop>')
+
 -- send code with ctrl+Enter
 -- just like in e.g. RStudio
 -- needs kitty (or other terminal) config:
@@ -137,6 +154,21 @@ wk.register({
     a = {'zg', 'accept'},
     b = {'zb', 'bad'},
     ['?'] = { '<cmd>Telescope spell_suggest<cr>', 'suggest' },
+  },
+  g = {
+    name = "git",
+    c = {":GitConflictRefresh<cr>", 'conflict'},
+    g = {":Neogit<cr>", "neogit"},
+    s = {":Gitsigns<cr>", "gitsigns"},
+    pl = {":Octo pr list<cr>", "gh pr list"},
+    pr = {":Octo review start<cr>", "gh pr review"},
+    wc = {":lua require('telescope').extensions.git_worktree.create_git_worktree()<cr>", "worktree create"},
+    ws = {":lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", "worktree switch"},
+    d = {
+      name = 'diff',
+      o = {':DiffviewOpen<cr>', 'open'},
+      c = {':DiffviewClose<cr>', 'close'},
+    }
   },
   },
   {mode = 'n', prefix = '<leader>'}
