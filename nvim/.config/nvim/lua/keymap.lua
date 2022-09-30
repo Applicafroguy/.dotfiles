@@ -26,10 +26,6 @@ imap('<s-cr>', '<esc><Plug>SlimeSendCell<cr>i')
 vmap('<cr>', '<Plug>SlimeRegionSend')
 nmap('<leader><cr>', '<Plug>SlimeSendCell')
 
--- configure code sending, change where to send
--- speak: leader-code-configure
-nmap('<leader>cc', '<Plug>SlimeConfig')
-
 
 -- source entire file
 nmap('<leader>xx', ':w<cr>:source %<cr>')

@@ -16,7 +16,7 @@ end
 require 'keymap'
 require 'plugin-config'
 
-vim.cmd 'colorscheme tokyonight'
+vim.cmd 'colorscheme nord'
 
 
 
@@ -64,6 +64,7 @@ nmap('Q', '<Nop>')
 wk.register({
   g = {
     name = "git",
+    c = {":GitConflictRefresh<cr>", 'conflict'},
     g = {":Neogit<cr>", "neogit"},
     s = {":Gitsigns<cr>", "gitsigns"},
     pl = {":Octo pr list<cr>", "gh pr list"},

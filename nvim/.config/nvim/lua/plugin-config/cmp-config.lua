@@ -82,7 +82,7 @@ cmp.setup({
   sources = {
     { name = 'path' },
     { name = 'nvim_lsp' },
-    { name = 'luasnip' },
+    { name = 'luasnip', keyword_length = 3, max_item_count = 3 },
     { name = 'pandoc_references' },
     { name = 'buffer', keyword_length = 4, max_item_count = 8 },
     { name = 'spell' },

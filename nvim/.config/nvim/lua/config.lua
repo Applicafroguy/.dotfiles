@@ -53,3 +53,7 @@ vim.opt.splitbelow = true
 --tabline
 vim.opt.showtabline = 2
 
+--don't continue comments automagically
+vim.opt.formatoptions:remove({'c', 'r', 'o'})
+
+

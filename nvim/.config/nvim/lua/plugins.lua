@@ -107,8 +107,29 @@ require('packer').startup {
           vim.b.slime_config = { jobid = vim.api.nvim_get_var('slimeTerminal') }
         end
 
+        local function toggleTarget()
+          if not vim.g.slimeTerminal then
+            vim.api.nvim_set_var('slimeTerminal', 0)
+          end
+          if vim.g.slime_target == "neovim" then
+            P('switch to tmux')
+            vim.g.slime_bracketed_paste = 1
+            vim.g.slime_default_config = {socket_name =  "default", target_pane = "{last}"}
+            vim.b.slime_config = {socket_name =  "default", target_pane = ".2"}
+            vim.g.slime_target = 'tmux'
+          else
+            P('switch to neovim')
+            vim.g.slime_default_config = { jobid = 0 }
+            vim.b.slime_config = { jobid = vim.api.nvim_get_var('slimeTerminal') }
+            vim.g.slime_target = 'neovim'
+          end
+        end
+
+
         wk.register(
           {
+            ['cc'] = { ':SlimeConfig<cr>', 'slime config' },
+            ['cn'] = { toggleTarget, 'next code target' },
             ['ct'] = { chooseTerminal, 'choose terminal' },
             ['cs'] = { setTerminal, 'set terminal' },
             ['cr'] = { ':split term://R<cr>', 'spawn R terminal' },
