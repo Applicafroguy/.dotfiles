@@ -114,9 +114,9 @@ wk.register({
     t = {
       name = "test",
       t = {':lua require("neotest").run.run()<cr>', 'nearest test'},
+      o = {':lua require("neotest").output.open({ enter = true })<cr>', 'output test'},
       c = {':lua require("neotest").run.run(vim.fn.expand("%"))<cr>', 'current file'},
       d = {':lua require("neotest").run.run({strategy = "dap"})<cr>', 'debug test'},
-      a = {':lua require("neotest").run.run({strategy = "dap"})<cr>', 'all'},
       s = {':lua require("neotest").summary.open()<cr>', 'show summary'},
     }
   },
@@ -170,6 +170,10 @@ wk.register({
       c = {':DiffviewClose<cr>', 'close'},
     }
   },
+  t = {
+    name = 'treesitter',
+    h = {":TSNodeUnderCursor<cr>", "hover"},
+  },
   },
   {mode = 'n', prefix = '<leader>'}
 )
@@ -210,4 +214,7 @@ wk.register({
   ['<cr>'] = {'<cmd>MkdnFollowLink<cr>', 'follow / create link'},
   ['p'] = {'"_dP', 'replace without overwriting reg'},
 } , { mode = 'v', prefix = "<leader>"})
+
+
+
 

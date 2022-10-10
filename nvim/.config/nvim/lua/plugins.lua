@@ -268,11 +268,6 @@ require('packer').startup {
     }
 
     -- look and feel
-    use { 'stevearc/aerial.nvim',
-      config = function()
-        require('aerial').setup()
-      end
-    }
     use { 'dstein64/nvim-scrollview',
       config = function()
         require('scrollview').setup({
