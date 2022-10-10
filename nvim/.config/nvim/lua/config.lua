@@ -56,4 +56,6 @@ vim.opt.showtabline = 2
 --don't continue comments automagically
 vim.opt.formatoptions:remove({'c', 'r', 'o'})
 
+-- hide cmdline when not used
+vim.opt.cmdheight = 0
 
