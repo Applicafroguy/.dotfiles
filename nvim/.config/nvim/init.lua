@@ -34,3 +34,7 @@ R = function(name)
   return require(name)
 end
 
+--overwrite tokyonight colors
+local colors = require("tokyonight.colors").setup()
+vim.cmd.highlight {'Tabline', 'guifg='..colors.fg_dark, 'guibg='..colors.bg_dark}
+
