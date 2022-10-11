@@ -16,7 +16,7 @@ end
 require 'keymap'
 require 'plugin-config'
 
-vim.cmd 'colorscheme nord'
+vim.cmd.colorscheme 'tokyonight'
 
 
 -- custom

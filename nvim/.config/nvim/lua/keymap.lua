@@ -15,10 +15,10 @@ end
 local function switchTheme()
   if vim.o.background == 'light' then
     vim.o.background = 'dark'
-    vim.cmd[[colorscheme nightfox]]
+    vim.cmd[[colorscheme tokyonight]]
   else
     vim.o.background = 'light'
-    vim.cmd[[colorscheme dawnfox]]
+    vim.cmd[[colorscheme tokyonight-day]]
   end
 end
 
@@ -214,7 +214,4 @@ wk.register({
   ['<cr>'] = {'<cmd>MkdnFollowLink<cr>', 'follow / create link'},
   ['p'] = {'"_dP', 'replace without overwriting reg'},
 } , { mode = 'v', prefix = "<leader>"})
-
-
-
 
