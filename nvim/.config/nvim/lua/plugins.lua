@@ -88,7 +88,23 @@ require('packer').startup {
     -- so it highlights embedded languages in qmd files
     use { 'shaunsingh/nord.nvim' }
     use { 'folke/tokyonight.nvim' }
-    use { "catppuccin/nvim", as = "catppuccin" }
+    use { "catppuccin/nvim", as = "catppuccin",
+      config = function()
+        vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
+        require("catppuccin").setup{
+          term_colors = true,
+          integrations = {
+            lualine = true,
+            nvimtree = true,
+            cmp = true,
+            gitsigns = true,
+            telescope = true,
+            treesitter = true
+          }
+        }
+      vim.cmd.colorscheme 'catppuccin'
+      end
+    }
     use { 'EdenEast/nightfox.nvim'}
 
     -- send code from python/r/qmd docuemts to the terminal
@@ -286,7 +302,8 @@ require('packer').startup {
           options = {
             section_separators = '',
             component_separators = '',
-            globalstatus = true
+            globalstatus = true,
+            theme = "catppuccin",
           },
           sections = {
             lualine_c = {

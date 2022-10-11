@@ -16,7 +16,6 @@ end
 require 'keymap'
 require 'plugin-config'
 
-vim.cmd.colorscheme 'tokyonight'
 
 
 -- custom
@@ -35,6 +34,6 @@ R = function(name)
 end
 
 --overwrite tokyonight colors
-local colors = require("tokyonight.colors").setup()
-vim.cmd.highlight {'Tabline', 'guifg='..colors.fg_dark, 'guibg='..colors.bg_dark}
+-- local colors = require("tokyonight.colors").setup()
+-- vim.cmd.highlight {'Tabline', 'guifg='..colors.fg_dark, 'guibg='..colors.bg_dark}
 
