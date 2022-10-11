@@ -66,6 +66,10 @@ vmap("<leader>d", "\"_d")
 -- terminal mode
 -- get out ouf terminal insert mode with esc
 vim.keymap.set('t', '<esc>', [[<c-\><c-n>]], {silent = true, noremap = true})
+--move to other window
+vim.keymap.set('t', '<c-j>', [[<c-\><c-n><c-w>w]], {silent = true, noremap = true})
+vim.keymap.set('n', '<leader>j', [[<c-w>wi]], {silent = true, noremap = true})
+
 
 -- open filetree
 nmap('<c-b>', '<cmd>NvimTreeToggle<cr>')
