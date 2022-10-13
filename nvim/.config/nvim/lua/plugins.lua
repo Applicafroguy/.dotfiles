@@ -197,11 +197,7 @@ require('packer').startup {
 
     -- debug adapter protocol
     use { 'mfussenegger/nvim-dap' }
-    use { 'rcarriga/nvim-dap-ui',
-      config = function()
-        require("dapui").setup()
-      end
-    }
+    use { 'rcarriga/nvim-dap-ui' }
     use { 'mfussenegger/nvim-dap-python' }
 
     -- tests
