@@ -1,6 +1,4 @@
 --  bootstrap packer
-local fn = vim.fn
-
 local ensure_packer = function()
   local fn = vim.fn
   local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
@@ -31,6 +29,22 @@ require('packer').startup {
 
     -- quarto
     use 'quarto-dev/quarto-nvim'
+
+    -- obsidian
+    use {'epwalsh/obsidian.nvim',
+    -- use {'~/sw/obsidian.nvim/',
+    config = function ()
+      require("obsidian").setup({
+        dir = "~/obsidian",
+        daily_notes = {
+          folder = "journal",
+        },
+        completion = {
+          nvim_cmp = true,
+        }
+      })
+    end
+  }
 
     -- common dependencies
     use { 'ryanoasis/vim-devicons' }
