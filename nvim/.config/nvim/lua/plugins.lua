@@ -30,6 +30,11 @@ require('packer').startup {
     -- quarto
     use 'quarto-dev/quarto-nvim'
 
+    use {
+      'AckslD/nvim-FeMaco.lua',
+      config = 'require("femaco").setup()',
+    }
+
     -- obsidian
     use {'epwalsh/obsidian.nvim',
     -- use {'~/sw/obsidian.nvim/',

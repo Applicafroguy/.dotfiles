@@ -186,6 +186,7 @@ wk.register({
 -- normal mode
 wk.register({
   ['<c-LeftMouse>'] = {'<cmd>lua vim.lsp.buf.definition()<CR>', 'go to definition'},
+  ['<c-e>'] = { ":FeMaco<cr>", "edit code" },
   L = { ":tabnext<cr>", "next tab" },
   H = { ":tabprevious<cr>", "previous tab" },
   ['gx'] = { ':!xdg-open <c-r><c-a><cr>', 'open file' },
@@ -219,4 +220,8 @@ wk.register({
   ['<cr>'] = {'<cmd>MkdnFollowLink<cr>', 'follow / create link'},
   ['p'] = {'"_dP', 'replace without overwriting reg'},
 } , { mode = 'v', prefix = "<leader>"})
+
+wk.register({
+  ['<c-e>'] = { "<esc>:FeMaco<cr>i", "edit code" },
+}, {mode = 'i'})
 
