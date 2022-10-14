@@ -56,6 +56,7 @@ require("neotest").setup({
 })
 
 
+require("dapui").setup()
 
 
 

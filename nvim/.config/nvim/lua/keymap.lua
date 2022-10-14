@@ -104,6 +104,7 @@ wk.register({
   },
   d = {
     name = "debug",
+    e = {":lua require'dapui'.eval()<cr>", 'eval'},
     b = { ":lua require'dap'.toggle_breakpoint()<CR>", "breakpoint" },
     B = { ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>", "breakpoint condition" },
     l = { ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>", "log point" },
