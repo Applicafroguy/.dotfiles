@@ -12,13 +12,15 @@ local imap = function(key, effect)
   vim.keymap.set('i', key, effect, {silent = true, noremap = true})
 end
 
+local cat = require'catppuccin'
+
 local function switchTheme()
   if vim.o.background == 'light' then
     vim.o.background = 'dark'
-    vim.cmd[[colorscheme tokyonight]]
+    vim.cmd[[Catppuccin mocha]]
   else
     vim.o.background = 'light'
-    vim.cmd[[colorscheme tokyonight-day]]
+    vim.cmd[[Catppuccin latte]]
   end
 end
 
