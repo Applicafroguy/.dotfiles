@@ -7,7 +7,7 @@ local util = require("lspconfig.util")
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-    automatic_installation = true
+  automatic_installation = true
 })
 
 local on_attach = function(client, bufnr)
@@ -32,8 +32,8 @@ end
 local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
 
 local lsp_flags = {
-    allow_incremental_sync = true,
-    debounce_text_changes = 150,
+  allow_incremental_sync = true,
+  debounce_text_changes = 150,
 }
 
 vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -47,7 +47,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = cmp.update_capabilities(capabilities)
+capabilities = cmp.default_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lspconfig.r_language_server.setup {
@@ -135,7 +135,7 @@ lspconfig.sumneko_lua.setup {
         plugin = lua_plugin_paths[1],
       },
       diagnostics = {
-        globals = {'vim', 'quarto', 'pandoc', 'io', 'string' },
+        globals = {'vim', 'quarto', 'pandoc', 'io', 'string', 'print', 'require', 'table' },
       },
       workspace = {
         library = lua_library_files,
@@ -156,27 +156,27 @@ lspconfig.pyright.setup {
   },
   root_dir = function(fname)
     return util.root_pattern(".git", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
-        util.path.dirname(fname)
+    util.path.dirname(fname)
   end
 }
 
 -- require'lspconfig'.pylsp.setup{
---   on_attach = on_attach,
---   capabilities = capabilities,
---   settings = {
---     pylsp = {
---       plugins = {
---         pycodestyle = {
---           ignore = {'W391', 'E265'},
---           maxLineLength = 100
---         }
---       }
---     }
---   }
--- }
+  --   on_attach = on_attach,
+  --   capabilities = capabilities,
+  --   settings = {
+    --     pylsp = {
+      --       plugins = {
+        --         pycodestyle = {
+          --           ignore = {'W391', 'E265'},
+          --           maxLineLength = 100
+          --         }
+          --       }
+          --     }
+          --   }
+          -- }
 
--- require'lspconfig'.jedi_language_server.setup{
---   on_attach = on_attach,
---   capabilities = capabilities,
--- }
+          -- require'lspconfig'.jedi_language_server.setup{
+            --   on_attach = on_attach,
+            --   capabilities = capabilities,
+            -- }
 
