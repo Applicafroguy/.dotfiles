@@ -181,6 +181,10 @@ wk.register({
     name = 'treesitter',
     h = {":TSNodeUnderCursor<cr>", "hover"},
   },
+  w = {
+    name = 'write',
+    w = {":w<cr>", "write"},
+  },
   },
   {mode = 'n', prefix = '<leader>'}
 )
@@ -202,6 +206,7 @@ wk.register({
   ['<C-k>']  = {'<C-W>k', 'move to window'},
   ['<C-h>']  = {'<C-W>h', 'move to window'},
   ['<C-l>']  = {'<C-W>l', 'move to window'},
+  ['<C-s>']  = {':w<cr>', 'write'},
   -- does not work, <tab> is the same as <c-i>
   -- ['<c-tab>']  = {'<cmd>bnext<cr>', 'next buffer'},
   -- ['<c-s-tab>']  = {'<cmd>bprev<cr>', 'previous buffer'},
