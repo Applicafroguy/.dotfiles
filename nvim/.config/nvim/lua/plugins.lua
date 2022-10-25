@@ -31,6 +31,9 @@ require('packer').startup {
     -- use 'quarto-dev/quarto-nvim'
     use '~/phd/quarto-nvim/'
 
+    -- for my logseq notes
+    use { 'jakewvincent/mkdnflow.nvim' }
+
     use {
       -- 'AckslD/nvim-FeMaco.lua',
       '~/sw/nvim-FeMaco.lua/',

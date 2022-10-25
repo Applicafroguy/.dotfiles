@@ -47,6 +47,8 @@ alias gpurun='__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia'
 alias cab='conda activate base'
 alias sp='spotify_player'
 alias sshk='kitty +kitten ssh'
+alias notes='cd ~/notes/'
+alias nn='cd ~/notes/;nvim'
 
 # kittens
 alias icat="kitty +kitten icat"
