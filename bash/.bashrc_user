@@ -4,6 +4,10 @@
 
 HOST="`uname -n`"
 
+if [[ "$(hostname)" == "haswell-"* ]]; then
+  return
+fi
+
 test -e ~/.env && source ~/.env
 test -e ~/.alias && source ~/.alias
 
