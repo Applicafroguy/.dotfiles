@@ -28,33 +28,33 @@ require('packer').startup {
     use 'wbthomason/packer.nvim'
 
     -- quarto
-    -- use 'quarto-dev/quarto-nvim'
-    use '~/phd/quarto-nvim/'
+    use 'quarto-dev/quarto-nvim'
+    -- use '~/phd/quarto-nvim/'
 
     -- for my logseq notes
     use { 'jakewvincent/mkdnflow.nvim' }
 
     use {
-      -- 'AckslD/nvim-FeMaco.lua',
-      '~/sw/nvim-FeMaco.lua/',
+      'AckslD/nvim-FeMaco.lua',
+      -- '~/sw/nvim-FeMaco.lua/',
       config = 'require("femaco").setup()',
     }
 
     -- obsidian
-    use {'epwalsh/obsidian.nvim',
-    -- use {'~/sw/obsidian.nvim/',
-    config = function ()
-      require("obsidian").setup({
-        dir = "~/obsidian",
-        daily_notes = {
-          folder = "journal",
-        },
-        completion = {
-          nvim_cmp = true,
-        }
-      })
-    end
-  }
+    use { 'epwalsh/obsidian.nvim',
+      -- use {'~/sw/obsidian.nvim/',
+      config = function()
+        require("obsidian").setup({
+          dir = "~/obsidian",
+          daily_notes = {
+            folder = "journal",
+          },
+          completion = {
+            nvim_cmp = true,
+          }
+        })
+      end
+    }
 
     -- common dependencies
     use { 'ryanoasis/vim-devicons' }
@@ -113,23 +113,22 @@ require('packer').startup {
     use { 'shaunsingh/nord.nvim' }
     use { 'folke/tokyonight.nvim' }
     use { "catppuccin/nvim", as = "catppuccin",
-      config = function()
-        vim.g.catppuccin_flavour = "mocha" -- latte, frappe, macchiato, mocha
-        require("catppuccin").setup{
-          term_colors = true,
-          integrations = {
-            lualine = true,
-            nvimtree = true,
-            cmp = true,
-            gitsigns = true,
-            telescope = true,
-            treesitter = true
+        config = function()
+          require("catppuccin").setup {
+              flavour = "mocha", -- mocha, macchiato, frappe, latte
+              term_colors = true,
+              integrations = {
+                nvimtree = true,
+                cmp = true,
+                gitsigns = true,
+                telescope = true,
+                treesitter = true
+              }
           }
-        }
-      vim.cmd.colorscheme 'catppuccin'
-      end
+          vim.cmd "colorscheme catppuccin"
+        end
     }
-    use { 'EdenEast/nightfox.nvim'}
+    use { 'EdenEast/nightfox.nvim' }
 
     -- send code from python/r/qmd docuemts to the terminal
     -- thanks to tmux can be used for any repl
@@ -139,7 +138,7 @@ require('packer').startup {
         -- vim.g.slime_target = "neovim"
         vim.g.slime_target = 'tmux'
         vim.g.slime_bracketed_paste = 1
-        vim.g.slime_default_config = {socket_name = "default", target_pane = "{last}"}
+        vim.g.slime_default_config = { socket_name = "default", target_pane = ".2" }
         local wk = require 'which-key'
 
         local function chooseTerminal()
@@ -158,8 +157,8 @@ require('packer').startup {
           if vim.g.slime_target == "neovim" then
             P('switch to tmux')
             vim.g.slime_bracketed_paste = 1
-            vim.g.slime_default_config = {socket_name =  "default", target_pane = "{last}"}
-            vim.b.slime_config = {socket_name =  "default", target_pane = ".2"}
+            vim.g.slime_default_config = { socket_name = "default", target_pane = "{last}" }
+            vim.b.slime_config = { socket_name = "default", target_pane = ".2" }
             vim.g.slime_target = 'tmux'
           else
             P('switch to neovim')
@@ -168,7 +167,6 @@ require('packer').startup {
             vim.g.slime_target = 'neovim'
           end
         end
-
 
         wk.register(
           {
@@ -204,7 +202,7 @@ require('packer').startup {
     use { "williamboman/mason-lspconfig.nvim" }
 
     use { 'simrat39/symbols-outline.nvim',
-      config = function ()
+      config = function()
         require("symbols-outline").setup()
       end
     }
@@ -305,6 +303,18 @@ require('packer').startup {
         }
       end
     }
+    -- github PRs and the like with gh-cli
+    use {
+      'pwntester/octo.nvim',
+      requires = {
+        'nvim-lua/plenary.nvim',
+        'nvim-telescope/telescope.nvim',
+        'kyazdani42/nvim-web-devicons',
+      },
+      config = function()
+        require "octo".setup()
+      end
+    }
 
     -- look and feel
     use { 'dstein64/nvim-scrollview',
@@ -338,8 +348,8 @@ require('packer').startup {
       end
     }
     use { 'nanozuki/tabby.nvim',
-      config = function ()
-        require'tabby.tabline'.use_preset('tab_only')
+      config = function()
+        require 'tabby.tabline'.use_preset('tab_only')
       end
     }
 
