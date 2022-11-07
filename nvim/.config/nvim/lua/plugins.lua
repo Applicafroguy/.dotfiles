@@ -28,8 +28,8 @@ require('packer').startup {
     use 'wbthomason/packer.nvim'
 
     -- quarto
-    -- use 'quarto-dev/quarto-nvim'
-    use '~/phd/quarto-nvim/'
+    use 'quarto-dev/quarto-nvim'
+    -- use '~/phd/quarto-nvim/'
 
     -- for my logseq notes
     use { 'jakewvincent/mkdnflow.nvim' }
