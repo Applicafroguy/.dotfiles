@@ -22,6 +22,13 @@ end
 
 vim.api.nvim_create_user_command('SpotifyToggle', open_spotify, {})
 
+local search_quarto = function(input)
+  local query = input.args
+  vim.cmd('!xdg-open ' .. 'https://quarto.org/' .. query)
+end
+
+vim.api.nvim_create_user_command('QuartoHelp', search_quarto, {nargs=1})
+
 local nmap = function(key, effect)
   vim.keymap.set('n', key, effect, {silent = true, noremap = true})
 end

@@ -160,6 +160,8 @@ lspconfig.pyright.setup {
   end
 }
 
+require'lspconfig'.grammarly.setup{}
+
 -- require'lspconfig'.pylsp.setup{
   --   on_attach = on_attach,
   --   capabilities = capabilities,
