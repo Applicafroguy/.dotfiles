@@ -35,8 +35,8 @@ require('packer').startup {
     use { 'jakewvincent/mkdnflow.nvim' }
 
     use {
-      'AckslD/nvim-FeMaco.lua',
-      -- '~/sw/nvim-FeMaco.lua/',
+      -- 'AckslD/nvim-FeMaco.lua',
+      '~/sw/nvim-FeMaco.lua/',
       config = 'require("femaco").setup()',
     }
 

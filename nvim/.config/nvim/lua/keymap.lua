@@ -219,7 +219,7 @@ wk.register({
 -- normal mode
 wk.register({
   ['<c-LeftMouse>'] = {'<cmd>lua vim.lsp.buf.definition()<CR>', 'go to definition'},
-  ['<c-e>'] = { ":FeMaco<cr>", "edit code" },
+  ['<leader>e'] = { ":FeMacoDebug<cr>", "edit code" },
   L = { ":tabnext<cr>", "next tab" },
   H = { ":tabprevious<cr>", "previous tab" },
   ['gx'] = { ':!xdg-open <c-r><c-a><cr>', 'open file' },
