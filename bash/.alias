@@ -49,6 +49,7 @@ alias sp='spotify_player'
 alias sshk='kitty +kitten ssh'
 alias notes='cd ~/notes/'
 alias nn='cd ~/notes/;nvim'
+alias R='R --vanilla'
 
 # kittens
 alias icat="kitty +kitten icat"
