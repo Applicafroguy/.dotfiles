@@ -212,6 +212,10 @@ wk.register({
     name = 'write',
     w = {":w<cr>", "write"},
   },
+  a = {
+    name = 'ansible',
+    r = {":w<cr> :lua require'ansible'.run()<cr>", "run"},
+  },
   },
   {mode = 'n', prefix = '<leader>'}
 )

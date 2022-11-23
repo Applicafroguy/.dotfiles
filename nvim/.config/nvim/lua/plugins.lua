@@ -39,23 +39,7 @@ require('packer').startup {
       '~/sw/nvim-FeMaco.lua/',
       config = 'require("femaco").setup()',
     }
-
-    -- obsidian
-    use { 'epwalsh/obsidian.nvim',
-      -- use {'~/sw/obsidian.nvim/',
-      config = function()
-        require("obsidian").setup({
-          dir = "~/obsidian",
-          daily_notes = {
-            folder = "journal",
-          },
-          completion = {
-            nvim_cmp = true,
-          }
-        })
-      end
-    }
-
+    
     -- common dependencies
     use { 'ryanoasis/vim-devicons' }
     use { 'kyazdani42/nvim-web-devicons' }
@@ -315,6 +299,9 @@ require('packer').startup {
         require "octo".setup()
       end
     }
+
+    -- sysadmin
+    use { 'mfussenegger/nvim-ansible' }
 
     -- look and feel
     use { 'dstein64/nvim-scrollview',
