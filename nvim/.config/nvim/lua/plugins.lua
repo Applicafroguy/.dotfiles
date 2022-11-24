@@ -39,7 +39,7 @@ require('packer').startup {
       '~/sw/nvim-FeMaco.lua/',
       config = 'require("femaco").setup()',
     }
-    
+
     -- common dependencies
     use { 'ryanoasis/vim-devicons' }
     use { 'kyazdani42/nvim-web-devicons' }
