@@ -101,6 +101,10 @@ lspconfig.cssls.setup {
   capabilities = capabilities,
 }
 
+lspconfig.hls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+}
 
 
 local function strsplit(s, delimiter)
