@@ -13,8 +13,8 @@ if packer_bootstrap then
   return
 end
 
-require 'keymap'
 require 'plugin-config'
+require 'keymap'
 
 
 

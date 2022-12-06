@@ -112,10 +112,21 @@ nmap('H', '<cmd>tabprevious<cr>')
 nmap('L', '<cmd>tabnext<cr>')
 
 
+local ht = require('haskell-tools')
+
+local haskellReplFile = function()
+  ht.repl.toggle(vim.api.nvim_buf_get_name(0))
+  ht.repl.reload()
+end
+
 --show kepbindings with whichkey
 --add your own here if you want them to
 --show up in the popup as well
 wk.register({
+  h = {
+    name = 'repl',
+    h = {haskellReplFile, 'toggle'},
+  },
   l = {
     name = 'language/lsp',
     r = {'<cmd>Telescope lsp_references<cr>', 'references'},
@@ -219,6 +230,10 @@ wk.register({
   },
   {mode = 'n', prefix = '<leader>'}
 )
+
+
+
+
 
 -- normal mode
 wk.register({

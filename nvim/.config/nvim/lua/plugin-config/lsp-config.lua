@@ -26,6 +26,8 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gr', '<cmd>Telescope lsp_references<CR>', opts)
   buf_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
+
+  buf_set_keymap('n', '<leader>ll', '<cmd>lua vim.lsp.codelens.run()<cr>', opts)
   client.server_capabilities.document_formatting = true
 end
 
@@ -101,10 +103,18 @@ lspconfig.cssls.setup {
   capabilities = capabilities,
 }
 
-lspconfig.hls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
+-- lspconfig.hls.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+-- }
+
+local ht = require('haskell-tools')
+ht.setup {
+  hls = {
+    on_attach = on_attach
+  },
 }
+
 
 
 local function strsplit(s, delimiter)

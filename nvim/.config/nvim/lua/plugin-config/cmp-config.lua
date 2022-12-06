@@ -74,12 +74,14 @@ cmp.setup({
         calc = "[calc]",
         latex_symbols = "[tex]",
         emoji = "[emoji]",
+        Copilot = "[cop]"
         -- zsh = "[zsh]",
         -- gh_issues = "[issues]",
       },
     },
   },
   sources = {
+    { name = "copilot", group_index = 2 },
     { name = 'path' },
     { name = 'nvim_lsp' },
     { name = 'luasnip', keyword_length = 3, max_item_count = 3 },
@@ -101,7 +103,7 @@ cmp.setup({
   },
 })
 
-
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", {fg ="#6CC644"})
 
 -- for friendly snippets
 require("luasnip.loaders.from_vscode").lazy_load()
