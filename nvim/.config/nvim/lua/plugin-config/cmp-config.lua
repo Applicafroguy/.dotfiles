@@ -3,6 +3,7 @@
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 local lspkind = require "lspkind"
+require("copilot_cmp").setup()
 
 lspkind.init()
 

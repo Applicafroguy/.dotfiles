@@ -5,4 +5,5 @@ require'plugin-config.treesitter-config'
 -- require'plugin-config.mkdnflow-config'
 require'plugin-config.dap-config'
 require'plugin-config.autocommands'
+require'plugin-config.misc'
 

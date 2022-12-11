@@ -60,25 +60,7 @@ require('packer').startup {
     use { 'folke/which-key.nvim' }
 
     -- filetree
-    use { 'kyazdani42/nvim-tree.lua',
-      config = function()
-        require 'nvim-tree'.setup {
-          disable_netrw       = true,
-          open_on_setup       = false,
-          update_focused_file = {
-            enable = true,
-          },
-          git                 = {
-            enable = true,
-            ignore = false,
-            timeout = 500,
-          },
-          diagnostics         = {
-            enable = true,
-          },
-        }
-      end
-    }
+    use { 'kyazdani42/nvim-tree.lua' }
 
     -- paste an image to markdown from the clipboard
     -- use :PasteImg
@@ -86,93 +68,19 @@ require('packer').startup {
 
     -- commenting with e.g. `gcc` or `gcip`
     -- respects TS, so it works in quarto documents
-    use { 'numToStr/Comment.nvim',
-      config = function()
-        require('Comment').setup {}
-      end
-    }
+    use { 'numToStr/Comment.nvim' }
 
     -- colorschemes with TS support,
     -- so it highlights embedded languages in qmd files
     use { 'shaunsingh/nord.nvim' }
     use { 'folke/tokyonight.nvim' }
-    use { "catppuccin/nvim", as = "catppuccin",
-        config = function()
-          require("catppuccin").setup {
-              flavour = "mocha", -- mocha, macchiato, frappe, latte
-              term_colors = true,
-              integrations = {
-                nvimtree = true,
-                cmp = true,
-                gitsigns = true,
-                telescope = true,
-                treesitter = true
-              }
-          }
-          vim.cmd "colorscheme catppuccin"
-        end
-    }
+    use { "catppuccin/nvim", as = "catppuccin" }
     use { 'EdenEast/nightfox.nvim' }
 
     -- send code from python/r/qmd docuemts to the terminal
     -- thanks to tmux can be used for any repl
     -- like ipython, R, bash
-    use { 'jpalardy/vim-slime',
-      config = function()
-        -- vim.g.slime_target = "neovim"
-        vim.g.slime_target = 'tmux'
-        vim.g.slime_bracketed_paste = 1
-        vim.g.slime_default_config = { socket_name = "default", target_pane = ".2" }
-        local wk = require 'which-key'
-
-        local function chooseTerminal()
-          local current_terminal = vim.bo.channel
-          vim.api.nvim_set_var('slimeTerminal', current_terminal)
-        end
-
-        local function setTerminal()
-          vim.b.slime_config = { jobid = vim.api.nvim_get_var('slimeTerminal') }
-        end
-
-        local function toggleTarget()
-          if not vim.g.slimeTerminal then
-            vim.api.nvim_set_var('slimeTerminal', 0)
-          end
-          if vim.g.slime_target == "neovim" then
-            P('switch to tmux')
-            vim.g.slime_bracketed_paste = 1
-            vim.g.slime_default_config = { socket_name = "default", target_pane = "{last}" }
-            vim.b.slime_config = { socket_name = "default", target_pane = ".2" }
-            vim.g.slime_target = 'tmux'
-          else
-            P('switch to neovim')
-            vim.g.slime_default_config = { jobid = 0 }
-            vim.b.slime_config = { jobid = vim.api.nvim_get_var('slimeTerminal') }
-            vim.g.slime_target = 'neovim'
-          end
-        end
-
-        wk.register(
-          {
-            ['cc'] = { ':SlimeConfig<cr>', 'slime config' },
-            ['cn'] = { toggleTarget, 'next code target' },
-            ['ct'] = { chooseTerminal, 'choose terminal' },
-            ['cs'] = { setTerminal, 'set terminal' },
-            ['cr'] = { ':split term://R<cr>', 'spawn R terminal' },
-            ['cb'] = { ':split term://bash<cr>', 'spawn bash terminal' },
-            ['ci'] = { ':split term://ipython<cr>', 'spawn ipython terminal' },
-            ['cp'] = { ':split term://python<cr>', 'spawn python terminal' },
-            ['cj'] = { ':split term://julia<cr>', 'spawn julia terminal' },
-          },
-          { prefix = '<leader>' }
-        )
-        -- vim.g.slime_target = "tmux"
-        -- vim.g.slime_bracketed_paste = 1
-        -- vim.g.slime_default_config = { socket_name = "default", target_pane = ":.2" }
-        vim.b.slime_cell_delimiter = "#%%"
-      end
-    }
-
+    use { 'jpalardy/vim-slime' }
 
     -- lsp and treesitter
     use 'neovim/nvim-lspconfig'
@@ -185,75 +93,55 @@ require('packer').startup {
     use { "williamboman/mason.nvim" }
     use { "williamboman/mason-lspconfig.nvim" }
 
-    use { 'simrat39/symbols-outline.nvim',
-      config = function()
-        require("symbols-outline").setup()
-      end
-    }
+    use { 'simrat39/symbols-outline.nvim' }
 
     use { 'MrcJkb/haskell-tools.nvim' }
     use { "zbirenbaum/copilot.lua",
       event = "VimEnter",
       config = function()
         vim.defer_fn(function()
-          require("copilot").setup{
-          panel = {
-            keymap = {
-              jump_prev = "[[",
-              jump_next = "]]",
-              accept = "<CR>",
-              refresh = "gr",
-              open = "<M-CR>"
+          require("copilot").setup {
+            panel = {
+              keymap = {
+                jump_prev = "[[",
+                jump_next = "]]",
+                accept = "<CR>",
+                refresh = "gr",
+                open = "<M-CR>"
+              },
             },
-          },
-          suggestion = {
-            enabled = true,
-            auto_trigger = false,
-            debounce = 75,
-            keymap = {
-             accept = "<M-a>",
-             next = "<M-]>",
-             prev = "<M-[>",
-             dismiss = "<C-]>",
+            suggestion = {
+              enabled = true,
+              auto_trigger = false,
+              debounce = 75,
+              keymap = {
+                accept = "<M-a>",
+                next = "<M-]>",
+                prev = "<M-[>",
+                dismiss = "<C-]>",
+              },
             },
-          },
-          filetypes = {
-            yaml = false,
-            markdown = false,
-            help = false,
-            gitcommit = false,
-            gitrebase = false,
-            hgcommit = false,
-            svn = false,
-            cvs = false,
-            ["."] = false,
-          },
-          copilot_node_command = 'node', -- Node version must be < 18
-          server_opts_overrides = {},
-        }
+            filetypes = {
+              yaml = false,
+              markdown = false,
+              help = false,
+              gitcommit = false,
+              gitrebase = false,
+              hgcommit = false,
+              svn = false,
+              cvs = false,
+              ["."] = false,
+            },
+            copilot_node_command = 'node', -- Node version must be < 18
+            server_opts_overrides = {},
+          }
         end, 100)
       end,
     }
-    use {
-      "zbirenbaum/copilot-cmp",
-      after = { "copilot.lua" },
-      config = function ()
-        require("copilot_cmp").setup()
-      end
-    }
+    use { "zbirenbaum/copilot-cmp" }
 
     -- show diagnostics list
-    use {
-      "folke/trouble.nvim",
-      requires = "kyazdani42/nvim-web-devicons",
-      config = function()
-        require("trouble").setup {
-          -- your configuration comes here
-          -- or leave it empty to use the default settings
-          -- refer to the configuration section below
-        }
-      end
-    }
+    use { "folke/trouble.nvim" }
 
     -- debug adapter protocol
     use { 'mfussenegger/nvim-dap' }
@@ -261,14 +149,9 @@ require('packer').startup {
     use { 'mfussenegger/nvim-dap-python' }
 
     -- tests
-    use { "nvim-neotest/neotest",
-      requires = {
-        "nvim-lua/plenary.nvim",
-        "nvim-treesitter/nvim-treesitter",
-        "antoinemadec/FixCursorHold.nvim",
-        "nvim-neotest/neotest-python"
-      }
-    }
+    use { "antoinemadec/FixCursorHold.nvim" }
+    use { "nvim-neotest/neotest" }
+    use { "nvim-neotest/neotest-python" }
 
     -- completion
     use { 'hrsh7th/nvim-cmp' }
@@ -285,121 +168,36 @@ require('packer').startup {
     use { 'jc-doyle/cmp-pandoc-references' }
     use { 'L3MON4D3/LuaSnip' }
     use { 'rafamadriz/friendly-snippets' }
-    use { 'windwp/nvim-autopairs', -- complete parentheses etc.
-      config = function()
-        require('nvim-autopairs').setup {}
-      end
-    }
+    use { 'windwp/nvim-autopairs' }
 
     -- editing tools
     use { 'tpope/vim-repeat' }
     use { 'tpope/vim-surround' }
 
     -- color html colors
-    use { 'norcalli/nvim-colorizer.lua',
-      config = function()
-        require 'colorizer'.setup {
-          css = { css_fn = true, css = true },
-          'javascript',
-          'html',
-          'r',
-          'rmd',
-          'qmd',
-          'markdown',
-          'python'
-        }
-      end
-    }
+    use { 'norcalli/nvim-colorizer.lua' }
 
     --custom
     -- git and projects
     use { 'ThePrimeagen/git-worktree.nvim' }
     use { 'sindrets/diffview.nvim' }
-    use { 'TimUntersberger/neogit',
-      config = function()
-        require('neogit').setup {
-          disable_commit_confirmation = true,
-          integrations = {
-            diffview = true
-          }
-        }
-      end
-    }
-    use { 'lewis6991/gitsigns.nvim',
-      config = function()
-        require('gitsigns').setup {}
-      end
-    }
-    use { 'akinsho/git-conflict.nvim',
-      config = function()
-        require('git-conflict').setup {
-          default_mappings = true,
-          disable_diagnostics = true,
-        }
-      end
-    }
+    use { 'TimUntersberger/neogit' }
+    use { 'lewis6991/gitsigns.nvim' }
+    use { 'akinsho/git-conflict.nvim' }
     -- github PRs and the like with gh-cli
-    use {
-      'pwntester/octo.nvim',
-      requires = {
-        'nvim-lua/plenary.nvim',
-        'nvim-telescope/telescope.nvim',
-        'kyazdani42/nvim-web-devicons',
-      },
-      config = function()
-        require "octo".setup()
-      end
-    }
+    use { 'pwntester/octo.nvim' }
 
     -- sysadmin
     use { 'mfussenegger/nvim-ansible' }
 
     -- look and feel
-    use { 'dstein64/nvim-scrollview',
-      config = function()
-        require('scrollview').setup({
-          current_only = true,
-        })
-      end
-    }
+    use { 'dstein64/nvim-scrollview' }
     use { 'f-person/git-blame.nvim' }
-    use {
-      'nvim-lualine/lualine.nvim',
-      config = function()
-        vim.g.gitblame_display_virtual_text = 0
-        local git_blame = require('gitblame')
-
-        require('lualine').setup {
-          options = {
-            section_separators = '',
-            component_separators = '',
-            globalstatus = true,
-            theme = "catppuccin",
-          },
-          sections = {
-            lualine_c = {
-              { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }
-            }
-          },
-          extensions = { 'nvim-tree' },
-        }
-      end
-    }
-    use { 'nanozuki/tabby.nvim',
-      config = function()
-        require 'tabby.tabline'.use_preset('tab_only')
-      end
-    }
+    use { 'nvim-lualine/lualine.nvim' }
+    use { 'nanozuki/tabby.nvim' }
 
     -- terminal
-    use { "akinsho/toggleterm.nvim", tag = '*',
-      config = function()
-        require("toggleterm").setup {
-          open_mapping = [[<c-\>]],
-          direction = 'float',
-        }
-      end
-    }
+    use { "akinsho/toggleterm.nvim", tag = '*' }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
