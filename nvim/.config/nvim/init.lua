@@ -15,25 +15,11 @@ end
 
 require 'plugin-config'
 require 'keymap'
-
-
-
--- custom
-P = function(x)
-  print(vim.inspect(x))
-  return(x)
-end
-
-RELOAD = function(...)
-  return require'plenary.reload'.reload_module(...)
-end
-
-R = function(name)
-  RELOAD(name)
-  return require(name)
-end
+require 'custom'
 
 -- colorscheme
 vim.cmd "colorscheme catppuccin"
 local colors = require('catppuccin.palettes.mocha')
 vim.cmd.highlight {'Tabline', 'guifg='..colors.green, 'guibg='..colors.mantle}
+
+

@@ -14,7 +14,6 @@ require 'nvim-tree'.setup {
   },
 }
 
-
 require('Comment').setup {}
 require("catppuccin").setup {
   flavour = "mocha", -- mocha, macchiato, frappe, latte
@@ -82,8 +81,6 @@ vim.b.slime_cell_delimiter = "#%%"
 
 
 require("symbols-outline").setup()
-
-
 require("trouble").setup {}
 require('nvim-autopairs').setup {}
 
@@ -136,9 +133,7 @@ require('lualine').setup {
   extensions = { 'nvim-tree' },
 }
 
-
 require 'tabby.tabline'.use_preset('tab_only')
-
 
 require("toggleterm").setup {
   open_mapping = [[<c-\>]],

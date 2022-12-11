@@ -92,6 +92,12 @@ vmap("<leader>p", "\"_dP")
 -- delete and without overwriting register
 vmap("<leader>d", "\"_d")
 
+-- center after search and jumps
+nmap('n', "nzz")
+nmap('<c-d>', '<c-d>zz')
+nmap('<c-u>', '<c-u>zz')
+
+
 -- terminal mode
 -- get out ouf terminal insert mode with esc
 vim.keymap.set('t', '<esc>', [[<c-\><c-n>]], {silent = true, noremap = true})
