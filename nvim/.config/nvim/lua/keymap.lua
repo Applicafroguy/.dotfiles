@@ -80,6 +80,9 @@ imap('<s-cr>', '<esc><Plug>SlimeSendCell<cr>i')
 vmap('<cr>', '<Plug>SlimeRegionSend')
 nmap('<leader><cr>', '<Plug>SlimeSendCell')
 
+-- list hidden buffers
+nmap('<leader>ls', ':ls!<cr>')
+nmap('<leader>vh', ':execute "h " . expand("<cword>")<cr>')
 
 -- source entire file
 nmap('<leader>xx', ':w<cr>:source %<cr>')
