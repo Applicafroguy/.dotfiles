@@ -59,7 +59,18 @@ vim.opt.winbar = '%t'
 --don't continue comments automagically
 vim.opt.formatoptions:remove({'c', 'r', 'o'})
 
+
 -- hide cmdline when not used
 vim.opt.cmdheight = 0
 vim.opt.conceallevel = 0
 
+
+-- plugins
+-- slime
+vim.b.slime_cell_delimiter = "#%%"
+vim.g.slime_target = 'tmux'
+vim.g.slime_bracketed_paste = 1
+vim.g.slime_default_config = { socket_name = "default", target_pane = ".2" }
+
+-- git blame, lualine
+vim.g.gitblame_display_virtual_text = 0

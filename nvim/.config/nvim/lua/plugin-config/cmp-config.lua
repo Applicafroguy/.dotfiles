@@ -3,7 +3,8 @@
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'
 local lspkind = require "lspkind"
-require("copilot_cmp").setup()
+require("copilot_cmp").setup{ }
+
 
 lspkind.init()
 
@@ -60,9 +61,6 @@ cmp.setup({
     end, { "i", "s" }),
   },
   autocomplete = false,
-  -- formatters = {
-  --   insert_text = require("copilot_cmp.format").remove_existing
-  -- },
   formatting = {
     format = lspkind.cmp_format {
       with_text = true,

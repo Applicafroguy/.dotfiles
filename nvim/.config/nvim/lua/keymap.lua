@@ -51,7 +51,6 @@ local function switchTheme()
   end
 end
 
-nmap('<leader>vt', switchTheme)
 nmap('<F5>', require"dap".continue)
 nmap('<F10>', require"dap".step_over)
 nmap('<F11>', require"dap".step_into)
@@ -125,10 +124,51 @@ local haskellReplFile = function()
   ht.repl.reload()
 end
 
+
+local function chooseTerminal()
+  local current_terminal = vim.bo.channel
+  vim.api.nvim_set_var('slimeTerminal', current_terminal)
+end
+
+local function setTerminal()
+  vim.b.slime_config = { jobid = vim.api.nvim_get_var('slimeTerminal') }
+end
+
+local function toggleTarget()
+  if not vim.g.slimeTerminal then
+    vim.api.nvim_set_var('slimeTerminal', 0)
+  end
+  if vim.g.slime_target == "neovim" then
+    P('switch to tmux')
+    vim.g.slime_bracketed_paste = 1
+    vim.g.slime_default_config = { socket_name = "default", target_pane = "{last}" }
+    vim.b.slime_config = { socket_name = "default", target_pane = ".2" }
+    vim.g.slime_target = 'tmux'
+  else
+    P('switch to neovim')
+    vim.g.slime_default_config = { jobid = 0 }
+    vim.b.slime_config = { jobid = vim.api.nvim_get_var('slimeTerminal') }
+    vim.g.slime_target = 'neovim'
+  end
+end
+
 --show kepbindings with whichkey
 --add your own here if you want them to
 --show up in the popup as well
 wk.register({
+  ['cc'] = { ':SlimeConfig<cr>', 'slime config' },
+  ['cn'] = { toggleTarget, 'next code target' },
+  ['ct'] = { chooseTerminal, 'choose terminal' },
+  ['cs'] = { setTerminal, 'set terminal' },
+  ['cr'] = { ':split term://R<cr>', 'spawn R terminal' },
+  ['cb'] = { ':split term://bash<cr>', 'spawn bash terminal' },
+  ['ci'] = { ':split term://ipython<cr>', 'spawn ipython terminal' },
+  ['cp'] = { ':split term://python<cr>', 'spawn python terminal' },
+  ['cj'] = { ':split term://julia<cr>', 'spawn julia terminal' },
+  v = {
+    name = 'vim',
+    t = {switchTheme, 'switch theme'},
+ },
   h = {
     name = 'repl',
     h = {haskellReplFile, 'toggle'},
@@ -187,8 +227,6 @@ wk.register({
     M = { "<cmd>Telescope man_pages<cr>", "man pages" },
     c = { "<cmd>Telescope git_commits<cr>", "git commits" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "symbols" },
-    t = { "<cmd>Telescope tmux sessions<cr>", "tmux session" },
-    w = { "<cmd>Telescope tmux windows<cr>", "tmux window" },
     d = { "<cmd>Telescope buffers<cr>", "buffers" },
     q = { "<cmd>Telescope quickfix<cr>", "quickfix" },
     l = { "<cmd>Telescope loclist<cr>", "loclist" },
@@ -237,10 +275,6 @@ wk.register({
   {mode = 'n', prefix = '<leader>'}
 )
 
-
-
-
-
 -- normal mode
 wk.register({
   ['<c-LeftMouse>'] = {'<cmd>lua vim.lsp.buf.definition()<CR>', 'go to definition'},
@@ -259,9 +293,8 @@ wk.register({
   ['<C-h>']  = {'<C-W>h', 'move to window'},
   ['<C-l>']  = {'<C-W>l', 'move to window'},
   ['<C-s>']  = {':w<cr>', 'write'},
-  -- does not work, <tab> is the same as <c-i>
-  -- ['<c-tab>']  = {'<cmd>bnext<cr>', 'next buffer'},
-  -- ['<c-s-tab>']  = {'<cmd>bprev<cr>', 'previous buffer'},
+  ['co']  = {'o#%%<cr>', 'new code chunk below'},
+  ['cO']  = {'O#%%<cr>', 'new code chunk above'},
 }, { mode = 'n' })
 
 -- visual mode

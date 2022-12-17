@@ -1,4 +1,3 @@
-require 'config'
 
 local packer_bootstrap= require('plugins')
 if packer_bootstrap then
@@ -13,6 +12,7 @@ if packer_bootstrap then
   return
 end
 
+require 'global-config'
 require 'plugin-config'
 require 'keymap'
 require 'custom'

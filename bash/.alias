@@ -50,6 +50,8 @@ alias sshk='kitty +kitten ssh'
 alias notes='cd ~/notes/'
 alias nn='cd ~/notes/;nvim'
 alias R='R --vanilla'
+alias ip='ipython'
+alias ca='conda activate'
 
 # kittens
 alias icat="kitty +kitten icat"
