@@ -1,5 +1,21 @@
 local wk = require("which-key")
 
+P = function(x)
+  print(vim.inspect(x))
+  return(x)
+end
+
+RELOAD = function(...)
+  return require'plenary.reload'.reload_module(...)
+end
+
+R = function(name)
+  RELOAD(name)
+  return require(name)
+end
+
+vim.api.nvim_set_keymap('n', '<leader>r', ":lua R'quarto'.debug()<cr>", {})
+
 function _G.set_terminal_keymaps()
   local opts = {buffer = 0}
   vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
@@ -21,13 +37,6 @@ local open_spotify = function()
 end
 
 vim.api.nvim_create_user_command('SpotifyToggle', open_spotify, {})
-
-local search_quarto = function(input)
-  local query = input.args
-  vim.cmd('!xdg-open ' .. 'https://quarto.org/' .. query)
-end
-
-vim.api.nvim_create_user_command('QuartoHelp', search_quarto, {nargs=1})
 
 local nmap = function(key, effect)
   vim.keymap.set('n', key, effect, {silent = true, noremap = true})
@@ -213,7 +222,8 @@ wk.register({
   },
   q = {
     name = 'quarto',
-    p = {require'quarto'.quartoPreview, 'preview'}
+    p = {require'quarto'.quartoPreview, 'preview'},
+    q = {require'quarto'.quartoClosePreview, 'close'},
   },
   f = {
     name = 'find (telescope)',

@@ -15,7 +15,6 @@ end
 require 'global-config'
 require 'plugin-config'
 require 'keymap'
-require 'custom'
 
 -- colorscheme
 vim.cmd "colorscheme catppuccin"
