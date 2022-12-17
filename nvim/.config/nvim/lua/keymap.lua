@@ -222,8 +222,8 @@ wk.register({
   },
   q = {
     name = 'quarto',
-    p = {require'quarto'.quartoPreview, 'preview'},
-    q = {require'quarto'.quartoClosePreview, 'close'},
+    p = {":lua require'quarto'.quartoPreview()<cr>", 'preview'},
+    q = {":lua require'quarto'.quartoClosePreview()<cr>", 'close'},
   },
   f = {
     name = 'find (telescope)',
