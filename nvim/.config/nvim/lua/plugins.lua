@@ -28,7 +28,7 @@ require('packer').startup {
     use 'wbthomason/packer.nvim'
 
     -- quarto
-    -- use 'quarto-dev/quarto-nvim'
+    use 'quarto-dev/quarto-nvim'
     -- use '~/phd/quarto-nvim/'
     use 'jose-elias-alvarez/null-ls.nvim'
 

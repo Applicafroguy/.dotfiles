@@ -81,3 +81,10 @@ require("toggleterm").setup {
   open_mapping = [[<c-\>]],
   direction = 'float',
 }
+
+require'quarto'.setup{
+  lspFeatures = {
+    enabled = true
+  }
+}
+

@@ -174,6 +174,14 @@ lspconfig.pyright.setup {
   end
 }
 
+lspconfig.julials.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  flags = {
+    debounce_text_changes = 250,
+  },
+}
+
 -- require'lspconfig'.grammarly.setup{}
 
 -- require'lspconfig'.pylsp.setup{

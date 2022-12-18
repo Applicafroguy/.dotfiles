@@ -14,7 +14,7 @@ R = function(name)
   return require(name)
 end
 
-vim.api.nvim_set_keymap('n', '<leader>r', ":lua R'quarto'.debug()<cr>", {})
+vim.api.nvim_set_keymap('n', '<leader>r', ":lua R'quarto'.debug()<cr>", {silent = false})
 
 function _G.set_terminal_keymaps()
   local opts = {buffer = 0}
