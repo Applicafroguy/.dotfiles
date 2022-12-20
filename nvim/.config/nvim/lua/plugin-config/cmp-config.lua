@@ -76,7 +76,8 @@ cmp.setup({
         calc = "[calc]",
         latex_symbols = "[tex]",
         emoji = "[emoji]",
-        Copilot = "[cop]"
+        Copilot = "[cop]",
+        quarto = "[qmd]"
         -- zsh = "[zsh]",
         -- gh_issues = "[issues]",
       },
@@ -94,6 +95,7 @@ cmp.setup({
     { name = 'calc' },
     { name = 'latex_symbols' },
     { name = 'emoji' },
+    { name = 'quarto' },
   },
   view = {
     entries = "native",

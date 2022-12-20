@@ -84,7 +84,15 @@ require("toggleterm").setup {
 
 require'quarto'.setup{
   lspFeatures = {
-    enabled = true
+    enabled = true,
+    languages = {'r', 'python'},
+    diagnostics = {
+      enabled = true
+    },
+    cmpSource = {
+      enabled = true
+    }
   }
 }
+
 
