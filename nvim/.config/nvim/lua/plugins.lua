@@ -35,11 +35,11 @@ require('packer').startup {
     -- for my logseq notes
     use { 'jakewvincent/mkdnflow.nvim' }
 
-    -- 'AckslD/nvim-FeMaco.lua',
-    use {
-      '~/sw/nvim-FeMaco.lua/',
-      config = 'require("femaco").setup()',
-    }
+    -- -- 'AckslD/nvim-FeMaco.lua',
+    -- use {
+    --   '~/sw/nvim-FeMaco.lua/',
+    --   config = 'require("femaco").setup()',
+    -- }
 
     -- common dependencies
     use { 'ryanoasis/vim-devicons' }
