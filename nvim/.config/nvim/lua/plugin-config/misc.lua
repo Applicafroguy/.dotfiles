@@ -87,7 +87,7 @@ require'quarto'.setup{
     enabled = true,
     languages = {'r', 'python'},
     diagnostics = {
-      enabled = true
+      enabled = false
     },
     cmpSource = {
       enabled = true
