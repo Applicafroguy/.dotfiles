@@ -29,15 +29,6 @@ end
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd('autocmd! TermOpen term://* lua set_terminal_keymaps()')
 
-local Terminal  = require('toggleterm.terminal').Terminal
-local spotify = Terminal:new({ cmd = "spotify_player", hidden = true })
-
-local open_spotify = function()
-  spotify:toggle()
-end
-
-vim.api.nvim_create_user_command('SpotifyToggle', open_spotify, {})
-
 local nmap = function(key, effect)
   vim.keymap.set('n', key, effect, {silent = true, noremap = true})
 end
@@ -137,41 +128,11 @@ local haskellReplFile = function()
 end
 
 
-local function chooseTerminal()
-  local current_terminal = vim.bo.channel
-  vim.api.nvim_set_var('slimeTerminal', current_terminal)
-end
-
-local function setTerminal()
-  vim.b.slime_config = { jobid = vim.api.nvim_get_var('slimeTerminal') }
-end
-
-local function toggleTarget()
-  if not vim.g.slimeTerminal then
-    vim.api.nvim_set_var('slimeTerminal', 0)
-  end
-  if vim.g.slime_target == "neovim" then
-    P('switch to tmux')
-    vim.g.slime_bracketed_paste = 1
-    vim.g.slime_default_config = { socket_name = "default", target_pane = "{last}" }
-    vim.b.slime_config = { socket_name = "default", target_pane = ".2" }
-    vim.g.slime_target = 'tmux'
-  else
-    P('switch to neovim')
-    vim.g.slime_default_config = { jobid = 0 }
-    vim.b.slime_config = { jobid = vim.api.nvim_get_var('slimeTerminal') }
-    vim.g.slime_target = 'neovim'
-  end
-end
-
 --show kepbindings with whichkey
 --add your own here if you want them to
 --show up in the popup as well
 wk.register({
   ['cc'] = { ':SlimeConfig<cr>', 'slime config' },
-  ['cn'] = { toggleTarget, 'next code target' },
-  ['ct'] = { chooseTerminal, 'choose terminal' },
-  ['cs'] = { setTerminal, 'set terminal' },
   ['cr'] = { ':split term://R<cr>', 'spawn R terminal' },
   ['cb'] = { ':split term://bash<cr>', 'spawn bash terminal' },
   ['ci'] = { ':split term://ipython<cr>', 'spawn ipython terminal' },

@@ -1,4 +1,8 @@
 return {
+
+  -- dev
+  "folke/neodev.nvim",
+
   -- quarto
   'jmbuhr/otter.nvim',
 
@@ -20,7 +24,7 @@ return {
     end
   },
 
-  'jose-elias-alvarez/null-ls.nvim',
+  -- 'jose-elias-alvarez/null-ls.nvim',
 
   -- for my logseq notes
   { 'jakewvincent/mkdnflow.nvim' },
