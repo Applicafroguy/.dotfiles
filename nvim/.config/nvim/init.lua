@@ -1,24 +1,9 @@
-
-local packer_bootstrap= require('plugins')
-if packer_bootstrap then
-  print '=================================='
-  print '    Plugins are being installed'
-  print '    Wait until Packer completes,'
-  print '       then restart nvim'
-  print '         '
-  print '       To later upadate plugins'
-  print '       Type :PackerSync'
-  print '=================================='
-  return
-end
-
-require 'global-config'
-require 'plugin-config'
+require 'global'
+require 'load-plugins'
+require 'config.lsp'
+require 'config.autocommands'
 require 'keymap'
 
--- colorscheme
-vim.cmd "colorscheme catppuccin"
+vim.cmd.colorscheme 'catppuccin'
 local colors = require('catppuccin.palettes.mocha')
-vim.cmd.highlight {'Tabline', 'guifg='..colors.green, 'guibg='..colors.mantle}
-
-
+vim.cmd.highlight { 'Tabline', 'guifg=' .. colors.green, 'guibg=' .. colors.mantle }

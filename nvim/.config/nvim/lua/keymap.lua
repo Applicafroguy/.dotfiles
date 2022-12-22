@@ -180,6 +180,8 @@ wk.register({
   v = {
     name = 'vim',
     t = {switchTheme, 'switch theme'},
+    l = {':Lazy<cr>', 'Lazy'},
+    m = {':Mason<cr>', 'Mason'},
  },
   h = {
     name = 'repl',
@@ -227,6 +229,7 @@ wk.register({
     name = 'quarto',
     p = {":lua require'quarto'.quartoPreview()<cr>", 'preview'},
     q = {":lua require'quarto'.quartoClosePreview()<cr>", 'close'},
+    h = {":QuartoHelp ", 'help'},
   },
   f = {
     name = 'find (telescope)',
