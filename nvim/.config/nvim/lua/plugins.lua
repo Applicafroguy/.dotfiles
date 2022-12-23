@@ -4,7 +4,12 @@ return {
   "folke/neodev.nvim",
 
   -- quarto
-  'jmbuhr/otter.nvim',
+  {'jmbuhr/otter.nvim',
+    dev = false,
+    config = function ()
+    local otter = require'otter'
+    otter.dev_setup()
+  end},
 
   { 'quarto-dev/quarto-nvim',
     -- dependencies = 'jmbuhr/otter.nvim',
