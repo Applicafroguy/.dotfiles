@@ -3,25 +3,22 @@ return {
   -- dev
   "folke/neodev.nvim",
 
-  -- quarto
-  {'jmbuhr/otter.nvim',
-    dev = false,
-    config = function ()
-    local otter = require'otter'
-    otter.dev_setup()
-  end},
-
   { 'quarto-dev/quarto-nvim',
-    -- dependencies = 'jmbuhr/otter.nvim',
+    dev = true,
+    dependencies = {
+      {'jmbuhr/otter.nvim', dev = true },
+      'neovim/nvim-lspconfig'
+    },
     config = function()
       require 'quarto'.setup {
         lspFeatures = {
           enabled = true,
-          languages = { 'r', 'python', 'julia', 'haskell' },
+          languages = { 'r', 'python', 'julia', 'haskell', 'lua' },
           diagnostics = {
-            enabled = false
+            enabled = true,
+            triggers = { "BufWrite" }
           },
-          cmpSource = {
+          completion = {
             enabled = true
           }
         }

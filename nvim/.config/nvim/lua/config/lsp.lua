@@ -59,7 +59,7 @@ require 'nvim-treesitter.configs'.setup {
 
 -- LSP
 local lspconfig = require('lspconfig')
-local cmp = require('cmp_nvim_lsp')
+local cmp_nvim_lsp = require('cmp_nvim_lsp')
 local configs = require 'lspconfig.configs'
 local util = require("lspconfig.util")
 
@@ -106,7 +106,7 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = cmp.default_capabilities(capabilities)
+capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lspconfig.r_language_server.setup {
@@ -118,23 +118,23 @@ lspconfig.r_language_server.setup {
 }
 
 
-lspconfig.diagnosticls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = { "python" },
-  init_options = {
-    formatters = {
-      black = {
-        command = "black",
-        args = { "--quiet", "-" },
-        rootPatterns = { ".git", "pyproject.toml", "setup.py", "tox." },
-      },
-      formatFiletypes = {
-        python = { "black" }
-      }
-    }
-  }
-}
+-- lspconfig.diagnosticls.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   filetypes = { "python" },
+--   init_options = {
+--     formatters = {
+--       black = {
+--         command = "black",
+--         args = { "--quiet", "-" },
+--         rootPatterns = { ".git", "pyproject.toml", "setup.py", "tox." },
+--       },
+--       formatFiletypes = {
+--         python = { "black" }
+--       }
+--     }
+--   }
+-- }
 
 
 if not lspconfig.emmet_ls then
@@ -160,18 +160,17 @@ lspconfig.cssls.setup {
   capabilities = capabilities,
 }
 
--- lspconfig.hls.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
--- }
-
-local ht = require('haskell-tools')
-ht.setup {
-  hls = {
-    on_attach = on_attach
-  },
+lspconfig.hls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
 }
 
+-- local ht = require('haskell-tools')
+-- ht.setup {
+--   hls = {
+--     on_attach = on_attach
+--   },
+-- }
 
 
 local function strsplit(s, delimiter)
@@ -336,8 +335,6 @@ require("copilot_cmp").setup{ }
 lspkind.init()
 
 
-local border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
-
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
@@ -420,9 +417,9 @@ cmp.setup({
     { name = 'spell' },
     { name = 'treesitter', keyword_length = 5, max_item_count = 3 },
     { name = 'calc' },
-    { name = 'latex_symbols' },
+   { name = 'latex_symbols' },
     { name = 'emoji' },
-    { name = 'quarto' },
+    { name = 'otter' },
   },
   view = {
     entries = "native",

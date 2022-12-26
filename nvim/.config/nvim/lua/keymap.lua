@@ -272,6 +272,9 @@ wk.register({
   ['<C-s>']  = {':w<cr>', 'write'},
   ['co']  = {'o#%%<cr>', 'new code chunk below'},
   ['cO']  = {'O#%%<cr>', 'new code chunk above'},
+  ['<m-i>'] = {'o```{r}<cr>```<esc>O', "r code chunk"},
+  ['<cm-i>'] = {'o```{python}<cr>```<esc>O', "r code chunk"},
+  ['<m-I>'] = {'o```{python}<cr>```<esc>O', "r code chunk"},
 }, { mode = 'n' })
 
 -- visual mode
@@ -292,5 +295,10 @@ wk.register({
 
 wk.register({
   -- ['<c-e>'] = { "<esc>:FeMaco<cr>i", "edit code" },
+  ['<m-->'] = {' <- ', "assign"},
+  ['<m-m>'] = {' |> ', "pipe"},
+  ['<m-i>'] = {'```{r}<cr>```<esc>O', "r code chunk"},
+  ['<cm-i>'] = {'<esc>o```{python}<cr>```<esc>O', "r code chunk"},
+  ['<m-I>'] = {'<esc>o```{python}<cr>```<esc>O', "r code chunk"},
 }, {mode = 'i'})
 
