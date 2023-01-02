@@ -1,8 +1,8 @@
-require 'global'
-require 'load-plugins'
-require 'config.lsp'
-require 'config.autocommands'
-require 'keymap'
+
+require("config.options")
+require("config.lazy")
+require("config.autocmds")
+require("config.keymaps")
 
 vim.cmd.colorscheme 'catppuccin'
 local colors = require('catppuccin.palettes.mocha')

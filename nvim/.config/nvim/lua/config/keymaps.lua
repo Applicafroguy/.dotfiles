@@ -78,10 +78,6 @@ nmap('<leader>vh', ':execute "h " . expand("<cword>")<cr>')
 -- source entire file
 nmap('<leader>xx', ':w<cr>:source %<cr>')
 
--- keep selection after indent/dedent
-vmap('>', '>gv')
-vmap('<', '<gv')
-
 -- remove search highlight on esc
 nmap('<esc>','<cmd>noh<cr>')
 
@@ -126,6 +122,56 @@ local haskellReplFile = function()
   ht.repl.toggle(vim.api.nvim_buf_get_name(0))
   ht.repl.reload()
 end
+
+
+-- Resize window using <shift> arrow keys
+vim.keymap.set("n", "<S-Up>", "<cmd>resize +2<CR>")
+vim.keymap.set("n", "<S-Down>", "<cmd>resize -2<CR>")
+vim.keymap.set("n", "<S-Left>", "<cmd>vertical resize -2<CR>")
+vim.keymap.set("n", "<S-Right>", "<cmd>vertical resize +2<CR>")
+
+-- Move Lines
+vim.keymap.set("n", "<A-j>", ":m .+1<CR>==")
+vim.keymap.set("v", "<A-j>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("i", "<A-j>", "<Esc>:m .+1<CR>==gi")
+vim.keymap.set("n", "<A-k>", ":m .-2<CR>==")
+vim.keymap.set("v", "<A-k>", ":m '<-2<CR>gv=gv")
+vim.keymap.set("i", "<A-k>", "<Esc>:m .-2<CR>==gi")
+
+-- Switch buffers with <ctrl>
+vim.keymap.set("n", "<C-Left>", "<cmd>bprevious<cr>")
+vim.keymap.set("n", "<C-Right>", "<cmd>bnext<cr>")
+
+-- Easier pasting
+vim.keymap.set("n", "[p", ":pu!<cr>")
+vim.keymap.set("n", "]p", ":pu<cr>")
+
+-- Clear search with <esc>
+vim.keymap.set({ "i", "n" }, "<esc>", "<cmd>noh<cr><esc>")
+vim.keymap.set("n", "gw", "*N")
+vim.keymap.set("x", "gw", "*N")
+
+
+-- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
+vim.keymap.set("n", "n", "'Nn'[v:searchforward]", { expr = true })
+vim.keymap.set("x", "n", "'Nn'[v:searchforward]", { expr = true })
+vim.keymap.set("o", "n", "'Nn'[v:searchforward]", { expr = true })
+vim.keymap.set("n", "N", "'nN'[v:searchforward]", { expr = true })
+vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true })
+vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true })
+
+-- Add undo break-points
+vim.keymap.set("i", ",", ",<c-g>u")
+vim.keymap.set("i", ".", ".<c-g>u")
+vim.keymap.set("i", ";", ";<c-g>u")
+
+-- save in insert mode
+vim.keymap.set("i", "<C-s>", "<cmd>:w<cr><esc>")
+vim.keymap.set("n", "<C-s>", "<cmd>:w<cr><esc>")
+
+-- better indenting
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
 
 
 --show kepbindings with whichkey
@@ -260,7 +306,6 @@ wk.register({
   H = { ":tabprevious<cr>", "previous tab" },
   ['gx'] = { ':!xdg-open <c-r><c-a><cr>', 'open file' },
   ["<c-q>"] = {'<cmd>q<cr>', 'close buffer'},
-  ['<esc>'] = { '<cmd>noh<cr>', 'remove search highlight' },
   ['n'] = {'nzzzv', 'center search'},
   ['gN'] = {'Nzzzv', 'center search'},
   ['gl'] = {'<c-]>', 'open help link'},

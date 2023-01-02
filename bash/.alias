@@ -28,6 +28,7 @@ alias fast='cd /hits/fast/mbm/buhrjk/'
 alias phd='cd /hits/fast/mbm/buhrjk/phd'
 alias playg="$HOME/playground/"
 alias dot="cd $HOME/.dotfiles"
+alias ndot="cd $HOME/.config/nvim"
 alias cascade='ssh cascade-login.h-its.org'
 alias buhrjkmods='module use /hits/fast/mbm/buhrjk/software/eb/modules/all'
 alias ta='tmux attach-session'
