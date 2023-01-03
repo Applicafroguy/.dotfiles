@@ -364,7 +364,7 @@ return {
         },
         window = {
           documentation = {
-            border = require 'style'.border,
+            border = require 'misc.style'.border,
           },
         },
       })
