@@ -16,6 +16,7 @@ end
 
 vim.api.nvim_set_keymap('n', '<leader>r', ":lua R'quarto'.debug()<cr>", {silent = false})
 
+
 function _G.set_terminal_keymaps()
   local opts = {buffer = 0}
   vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
@@ -126,6 +127,25 @@ local haskellReplFile = function()
   ht.repl.toggle(vim.api.nvim_buf_get_name(0))
   ht.repl.reload()
 end
+
+local function open_plugin()
+  local word = vim.fn.expand('<cWORD>')
+  -- url = string.match(url, '".+"')
+  local url = string.match(word, '%b""')
+  if url ~= nil then
+    url = string.gsub(url, '["\']', '')
+  else
+    url = string.match(word, "%b''")
+    if url ~= nil then
+      url = string.gsub(url, '["\']', '')
+    end
+  end
+  url = 'https://github.com/' .. url
+  local cmd = "!brave-browser " .. url
+  vim.cmd(cmd)
+end
+
+vim.keymap.set('n', '<leader>hp', open_plugin)
 
 
 --show kepbindings with whichkey
@@ -255,7 +275,6 @@ wk.register({
 -- normal mode
 wk.register({
   ['<c-LeftMouse>'] = {'<cmd>lua vim.lsp.buf.definition()<CR>', 'go to definition'},
-  -- ['<leader>e'] = { ":FeMacoDebug<cr>", "edit code" },
   L = { ":tabnext<cr>", "next tab" },
   H = { ":tabprevious<cr>", "previous tab" },
   ['gx'] = { ':!xdg-open <c-r><c-a><cr>', 'open file' },

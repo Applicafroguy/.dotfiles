@@ -6,7 +6,9 @@ return {
   { 'quarto-dev/quarto-nvim',
     dev = true,
     dependencies = {
-      {'jmbuhr/otter.nvim', dev = true },
+      { 'jmbuhr/otter.nvim',
+        dev = true,
+      },
       'neovim/nvim-lspconfig'
     },
     config = function()
@@ -170,10 +172,17 @@ return {
 
   -- lsp and treesitter
   'neovim/nvim-lspconfig',
-  'onsails/lspkind-nvim',
   { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
   'nvim-treesitter/nvim-treesitter-textobjects',
   'nvim-treesitter/playground',
+
+  { 'folke/neoconf.nvim',
+    dependencies = { 'neovim/nvim-lspconfig' },
+    config = function()
+      require("neoconf").setup({
+      })
+    end
+  },
 
   -- lsp installer
   { "williamboman/mason.nvim" },
@@ -187,11 +196,9 @@ return {
   { 'MrcJkb/haskell-tools.nvim' },
   { "zbirenbaum/copilot.lua",
     event = "VimEnter",
-    config = function()
-      -- vim.defer_fn(function()
-      --   require("copilot").setup()
-      -- end, 100)
-    end
+    -- config = function()
+      -- require("copilot").setup()
+    -- end
   },
   { "zbirenbaum/copilot-cmp" },
 
@@ -212,20 +219,146 @@ return {
   { "nvim-neotest/neotest-python" },
 
   -- completion
-  { 'hrsh7th/nvim-cmp' },
-  { 'hrsh7th/cmp-nvim-lsp' },
-  { 'hrsh7th/cmp-nvim-lsp-signature-help' },
-  { 'hrsh7th/cmp-buffer' },
-  { 'hrsh7th/cmp-path' },
-  { 'hrsh7th/cmp-calc' },
-  { 'hrsh7th/cmp-emoji' },
-  { 'saadparwaiz1/cmp_luasnip' },
-  { 'f3fora/cmp-spell' },
-  { 'ray-x/cmp-treesitter' },
-  { 'kdheepak/cmp-latex-symbols' },
-  { 'jc-doyle/cmp-pandoc-references' },
-  { 'L3MON4D3/LuaSnip' },
-  { 'rafamadriz/friendly-snippets' },
+  { 'hrsh7th/nvim-cmp',
+    dependencies = {
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-nvim-lsp-signature-help' },
+      { 'hrsh7th/cmp-buffer' },
+      { 'hrsh7th/cmp-path' },
+      { 'hrsh7th/cmp-calc' },
+      { 'hrsh7th/cmp-emoji' },
+      { 'saadparwaiz1/cmp_luasnip' },
+      { 'f3fora/cmp-spell' },
+      { 'ray-x/cmp-treesitter' },
+      { 'kdheepak/cmp-latex-symbols' },
+      { 'jc-doyle/cmp-pandoc-references' },
+      { 'L3MON4D3/LuaSnip' },
+      { 'rafamadriz/friendly-snippets' },
+      { 'onsails/lspkind-nvim' },
+      { "KadoBOT/cmp-plugins",
+        config = function()
+          require("cmp-plugins").setup({
+            files = { "plugins.lua" } -- Recommended: use static filenames or partial paths
+          })
+        end,
+      },
+    },
+    config = function()
+      local cmp = require 'cmp'
+      local luasnip = require 'luasnip'
+      local lspkind = require "lspkind"
+      require("copilot_cmp").setup {}
+
+
+      lspkind.init()
+
+
+      local has_words_before = function()
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+      end
+
+      cmp.setup({
+        snippet = {
+          expand = function(args)
+            luasnip.lsp_expand(args.body)
+          end,
+        },
+        mapping = {
+          ['<C-f>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-d>'] = cmp.mapping.scroll_docs(4),
+          ['<C-n>'] = cmp.mapping(function(fallback)
+            if luasnip.expand_or_jumpable() then
+              luasnip.expand_or_jump()
+              fallback()
+            end
+          end, { "i", "s" }),
+          ['<C-p>'] = cmp.mapping(function(fallback)
+            if luasnip.jumpable(-1) then
+              luasnip.jump(-1)
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+          ['<c-a>'] = cmp.mapping.complete(),
+          ['<C-e>'] = cmp.mapping.abort(),
+          ['<CR>'] = cmp.mapping.confirm({
+            select = true,
+          }),
+          ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif has_words_before() then
+              cmp.complete()
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+          ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+        },
+        autocomplete = false,
+        formatting = {
+          format = lspkind.cmp_format {
+            with_text = true,
+            menu = {
+              luasnip = "[snip]",
+              nvim_lsp = "[LSP]",
+              buffer = "[buf]",
+              path = "[path]",
+              spell = "[spell]",
+              pandoc_references = "[ref]",
+              tags = "[tag]",
+              treesitter = "[TS]",
+              calc = "[calc]",
+              latex_symbols = "[tex]",
+              emoji = "[emoji]",
+              Copilot = "[cop]",
+              otter = "[🦦]",
+              -- zsh = "[zsh]",
+              -- gh_issues = "[issues]",
+            },
+          },
+        },
+        sources = {
+          { name = "copilot", group_index = 2 },
+          { name = 'path' },
+          { name = 'plugins' },
+          { name = 'nvim_lsp' },
+          { name = 'luasnip', keyword_length = 3, max_item_count = 3 },
+          { name = 'pandoc_references' },
+          { name = 'buffer', keyword_length = 5, max_item_count = 3 },
+          { name = 'spell' },
+          { name = 'treesitter', keyword_length = 5, max_item_count = 3 },
+          { name = 'calc' },
+          { name = 'latex_symbols' },
+          { name = 'emoji' },
+          { name = 'otter' },
+        },
+        view = {
+          entries = "native",
+        },
+        window = {
+          documentation = {
+            border = require'style'.border,
+          },
+        },
+      })
+
+      vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+
+      -- for friendly snippets
+      require("luasnip.loaders.from_vscode").lazy_load()
+      -- for custom snippets
+      require("luasnip.loaders.from_vscode").lazy_load({ paths = { "~/.config/nvim/snips" } })
+
+    end
+  },
   { 'windwp/nvim-autopairs', config = function()
     require('nvim-autopairs').setup {}
   end
@@ -234,6 +367,28 @@ return {
   -- editing tools
   { 'tpope/vim-repeat' },
   { 'tpope/vim-surround' },
+
+  { 'lukas-reineke/indent-blankline.nvim', config = function()
+    require("indent_blankline").setup {
+      show_current_context = true,
+      show_current_context_start = false,
+    }
+  end
+  },
+
+  -- enhanced f t motions
+  { 'ggandor/flit.nvim',
+    dependencies = { 'ggandor/leap.nvim' },
+    config = function()
+      require('flit').setup {
+        keys = { f = 'f', F = 'F', t = 't', T = 'T' },
+        labeled_modes = "v",
+        multiline = true,
+        opts = {}
+      }
+    end
+  },
+
 
   -- color html colors
   { 'norcalli/nvim-colorizer.lua', config = function()
@@ -284,6 +439,7 @@ return {
   { 'mfussenegger/nvim-ansible' },
 
   -- look and feel
+  { 'RRethy/vim-illuminate' }, -- highlight current word
   { 'dstein64/nvim-scrollview', config = function()
     require('scrollview').setup({
       current_only = true,
