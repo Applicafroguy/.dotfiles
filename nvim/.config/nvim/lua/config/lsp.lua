@@ -1,6 +1,6 @@
 -- treesitter
 require 'nvim-treesitter.configs'.setup {
-  ensure_installed = {'r', 'python', 'markdown', 'markdown_inline', 'julia', 'yaml', 'lua', 'vim', 'query' }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = { 'r', 'python', 'markdown', 'markdown_inline', 'julia', 'yaml', 'lua', 'vim', 'query', 'help' },
   highlight = {
     enable = true,
     additional_vim_regex_highlighting = false,
@@ -34,8 +34,8 @@ require 'nvim-treesitter.configs'.setup {
       set_jumps = true, -- whether to set jumps in the jumplist
       goto_next_start = {
         [']m'] = '@function.outer',
-        -- [']]'] = '@class.outer',
-        [']]'] = '@codechunk',
+        [']c'] = '@codechunk',
+        [']]'] = '@class.outer',
       },
       goto_next_end = {
         [']M'] = '@function.outer',
@@ -43,8 +43,8 @@ require 'nvim-treesitter.configs'.setup {
       },
       goto_previous_start = {
         ['[m'] = '@function.outer',
+        ['[c'] = '@codechunk',
         -- ['[['] = '@class.outer',
-        ['[['] = '@codechunk',
       },
       goto_previous_end = {
         ['[M'] = '@function.outer',
@@ -53,8 +53,6 @@ require 'nvim-treesitter.configs'.setup {
     },
   },
 }
-
-
 
 
 -- LSP
@@ -100,9 +98,9 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagn
   underline = true,
   update_in_insert = false,
 })
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = require'style'.border })
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = require'style'.border })
-
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = require 'misc.style'.border })
+vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help,
+  { border = require 'misc.style'.border })
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = cmp_nvim_lsp.default_capabilities(capabilities)
@@ -111,30 +109,8 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 lspconfig.r_language_server.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 250,
-  }
+  flags = lsp_flags
 }
-
-
--- lspconfig.diagnosticls.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   filetypes = { "python" },
---   init_options = {
---     formatters = {
---       black = {
---         command = "black",
---         args = { "--quiet", "-" },
---         rootPatterns = { ".git", "pyproject.toml", "setup.py", "tox." },
---       },
---       formatFiletypes = {
---         python = { "black" }
---       }
---     }
---   }
--- }
-
 
 if not lspconfig.emmet_ls then
   configs.emmet_ls = {
@@ -148,29 +124,19 @@ if not lspconfig.emmet_ls then
     };
   }
 end
+
 lspconfig.emmet_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+  flags = lsp_flags
 }
 
 
 lspconfig.cssls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
+  flags = lsp_flags
 }
-
-lspconfig.hls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-}
-
--- local ht = require('haskell-tools')
--- ht.setup {
---   hls = {
---     on_attach = on_attach
---   },
--- }
-
 
 local function strsplit(s, delimiter)
   local result = {}
@@ -189,9 +155,9 @@ end
 
 local lua_library_files = vim.api.nvim_get_runtime_file("", true)
 local resource_path = get_quarto_resource_path()
-table.insert(lua_library_files, resource_path..'/lua-types')
+table.insert(lua_library_files, resource_path .. '/lua-types')
 local lua_plugin_paths = {}
-table.insert(lua_plugin_paths, resource_path..'/lua-plugin/plugin.lua')
+table.insert(lua_plugin_paths, resource_path .. '/lua-plugin/plugin.lua')
 
 lspconfig.sumneko_lua.setup {
   on_attach = on_attach,
@@ -204,7 +170,7 @@ lspconfig.sumneko_lua.setup {
         plugin = lua_plugin_paths[1],
       },
       diagnostics = {
-        globals = {'vim', 'quarto', 'pandoc', 'io', 'string', 'print', 'require', 'table' },
+        globals = { 'vim', 'quarto', 'pandoc', 'io', 'string', 'print', 'require', 'table' },
       },
       workspace = {
         library = lua_library_files,
@@ -220,106 +186,15 @@ lspconfig.sumneko_lua.setup {
 lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 250,
-  },
+  flags = lsp_flags,
   root_dir = function(fname)
     return util.root_pattern(".git", "setup.py", "setup.cfg", "pyproject.toml", "requirements.txt")(fname) or
-    util.path.dirname(fname)
+        util.path.dirname(fname)
   end
 }
 
 lspconfig.julials.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  flags = {
-    debounce_text_changes = 250,
-  },
+  flags = lsp_flags,
 }
-
--- require'lspconfig'.grammarly.setup{}
-
--- require'lspconfig'.pylsp.setup{
-  --   on_attach = on_attach,
-  --   capabilities = capabilities,
-  --   settings = {
-    --     pylsp = {
-      --       plugins = {
-        --         pycodestyle = {
-          --           ignore = {'W391', 'E265'},
-          --           maxLineLength = 100
-          --         }
-          --       }
-          --     }
-          --   }
-          -- }
-
-          -- require'lspconfig'.jedi_language_server.setup{
-            --   on_attach = on_attach,
-            --   capabilities = capabilities,
-            -- }
-
-
-
-
-local dap = require('dap')
-local dapPython = require'dap-python'
-
-
-dap.adapters.python = {
-  type = 'executable';
-  command = 'python';
-  args = { '-m', 'debugpy.adapter' };
-}
-
-
-vim.fn.sign_define('DapBreakpoint', {text='🦦', texthl='', linehl='', numhl=''})
-
--- vim.cmd [[
--- au FileType dap-repl lua require('dap.ext.autocompl').attach()
--- ]]
-
-dap.configurations.python = {
-  {
-    -- The first three options are required by nvim-dap
-    type = 'python'; -- the type here established the link to the adapter definition: `dap.adapters.python`
-    request = 'launch';
-    name = "Launch file";
-
-    -- Options below are for debugpy, see https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings for supported options
-
-    program = "${file}"; -- This configuration will launch the current file if used.
-    pythonPath = function()
-      -- debugpy supports launching an application with a different interpreter then the one used to launch debugpy itself.
-      -- The code below looks for a `venv` or `.venv` folder in the current directly and uses the python within.
-      -- You could adapt this - to for example use the `VIRTUAL_ENV` environment variable.
-      local cwd = vim.fn.getcwd()
-      if vim.fn.executable(cwd .. '/venv/bin/python') == 1 then
-        return cwd .. '/venv/bin/python'
-      elseif vim.fn.executable(cwd .. '/.venv/bin/python') == 1 then
-        return cwd .. '/.venv/bin/python'
-      else
-        -- return '/usr/bin/python'
-        return 'python'
-      end
-    end;
-  },
-}
-
-require('dap.ext.vscode').load_launchjs("launch.json")
-
-dapPython.setup()
-dapPython.test_runner = 'pytest'
-
-
---neotest
-require("neotest").setup({
-  adapters = {
-    require("neotest-python")
-  }
-})
-
-
-require("dapui").setup()
-
-

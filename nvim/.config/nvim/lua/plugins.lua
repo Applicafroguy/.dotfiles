@@ -194,13 +194,6 @@ return {
   end },
 
   { 'MrcJkb/haskell-tools.nvim' },
-  { "zbirenbaum/copilot.lua",
-    event = "VimEnter",
-    -- config = function()
-      -- require("copilot").setup()
-    -- end
-  },
-  { "zbirenbaum/copilot-cmp" },
 
   -- show diagnostics list
   { "folke/trouble.nvim", config = function()
@@ -242,14 +235,40 @@ return {
           })
         end,
       },
+      -- { "zbirenbaum/copilot-cmp" },
+      { "zbirenbaum/copilot.lua",
+        -- dependencies = { 'github/copilot.vim' },
+        event = "InsertEnter",
+        -- name = 'copilot',
+        init = function()
+          require("copilot").setup({
+            panel = {
+              auto_refresh = false,
+              keymap = {
+                accept = "<CR>",
+                jump_prev = "[[",
+                jump_next = "]]",
+                refresh = "gr",
+                open = "<M-CR>",
+              },
+            },
+            suggestion = {
+              auto_trigger = true,
+              keymap = {
+                accept = "<M-a>",
+                prev = "<M-[>",
+                next = "<M-]>",
+                dismiss = "<C-]>",
+              },
+            },
+          })
+        end,
+      },
     },
     config = function()
       local cmp = require 'cmp'
       local luasnip = require 'luasnip'
       local lspkind = require "lspkind"
-      require("copilot_cmp").setup {}
-
-
       lspkind.init()
 
 
@@ -318,7 +337,7 @@ return {
               calc = "[calc]",
               latex_symbols = "[tex]",
               emoji = "[emoji]",
-              Copilot = "[cop]",
+              -- Copilot = "[cop]",
               otter = "[🦦]",
               -- zsh = "[zsh]",
               -- gh_issues = "[issues]",
@@ -326,7 +345,7 @@ return {
           },
         },
         sources = {
-          { name = "copilot", group_index = 2 },
+          -- { name = "copilot", group_index = 2 },
           { name = 'path' },
           { name = 'plugins' },
           { name = 'nvim_lsp' },
@@ -345,12 +364,10 @@ return {
         },
         window = {
           documentation = {
-            border = require'style'.border,
+            border = require 'style'.border,
           },
         },
       })
-
-      vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 
       -- for friendly snippets
       require("luasnip.loaders.from_vscode").lazy_load()

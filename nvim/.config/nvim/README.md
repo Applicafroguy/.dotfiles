@@ -1,4 +1,6 @@
-# Neovim config
+# Quarto Nvim Kickstarter
+
+Companion to <https://github.com/quarto-dev/quarto-nvim>.
 
 ## Setup
 
