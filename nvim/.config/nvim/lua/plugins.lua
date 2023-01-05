@@ -1,5 +1,33 @@
 return {
 
+  -- dev
+  "folke/neodev.nvim",
+
+  { 'quarto-dev/quarto-nvim',
+    dev = true,
+    dependencies = {
+      { 'jmbuhr/otter.nvim',
+        dev = true,
+      },
+      'neovim/nvim-lspconfig'
+    },
+    config = function()
+      require 'quarto'.setup {
+        lspFeatures = {
+          enabled = true,
+          languages = { 'r', 'python', 'julia', 'haskell', 'lua' },
+          diagnostics = {
+            enabled = true,
+            triggers = { "BufWrite" }
+          },
+          completion = {
+            enabled = true
+          }
+        }
+      }
+    end
+  },
+
   -- dashboard to greet
   { 'goolord/alpha-nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' },
@@ -40,34 +68,6 @@ return {
 
       -- Send config to alpha
       alpha.setup(dashboard.opts)
-    end
-  },
-
-  -- dev
-  "folke/neodev.nvim",
-
-  { 'quarto-dev/quarto-nvim',
-    dev = true,
-    dependencies = {
-      { 'jmbuhr/otter.nvim',
-        dev = true,
-      },
-      'neovim/nvim-lspconfig'
-    },
-    config = function()
-      require 'quarto'.setup {
-        lspFeatures = {
-          enabled = true,
-          languages = { 'r', 'python', 'julia', 'haskell', 'lua' },
-          diagnostics = {
-            enabled = true,
-            triggers = { "BufWrite" }
-          },
-          completion = {
-            enabled = true
-          }
-        }
-      }
     end
   },
 
@@ -369,6 +369,7 @@ return {
           format = lspkind.cmp_format {
             with_text = true,
             menu = {
+              otter = "[🦦]",
               luasnip = "[snip]",
               nvim_lsp = "[LSP]",
               buffer = "[buf]",
@@ -380,15 +381,13 @@ return {
               calc = "[calc]",
               latex_symbols = "[tex]",
               emoji = "[emoji]",
-              -- Copilot = "[cop]",
-              otter = "[🦦]",
               -- zsh = "[zsh]",
               -- gh_issues = "[issues]",
             },
           },
         },
         sources = {
-          -- { name = "copilot", group_index = 2 },
+          { name = 'otter' },
           { name = 'path' },
           { name = 'plugins' },
           { name = 'nvim_lsp' },
@@ -400,7 +399,6 @@ return {
           { name = 'calc' },
           { name = 'latex_symbols' },
           { name = 'emoji' },
-          { name = 'otter' },
         },
         view = {
           entries = "native",
