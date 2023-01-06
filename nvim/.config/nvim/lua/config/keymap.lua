@@ -159,7 +159,16 @@ vim.keymap.set('n', '<leader>vp', open_plugin)
 --show up in the popup as well
 wk.register(
   {
-    ['cc'] = { ':SlimeConfig<cr>', 'slime config' },
+    c = {
+      name = 'code',
+      c = { ':SlimeConfig<cr>', 'slime config' },
+      n = {  ':split term://$SHELL<cr>', 'new terminal' },
+      r = {  ':split term://R<cr>', 'new R terminal' },
+      p = {  ':split term://python<cr>', 'new python terminal' },
+      i = {  ':split term://ipython<cr>', 'new ipython terminal' },
+      j = {  ':split term://julia<cr>', 'new julia terminal' },
+      s = {  ':echo b:terminal_job_id<cr>', 'show terminal id' },
+    },
     v = {
       name = 'vim',
       t = { switchTheme, 'switch theme' },
