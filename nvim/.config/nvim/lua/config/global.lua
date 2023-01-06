@@ -62,7 +62,8 @@ vim.opt.formatoptions:remove({'c', 'r', 'o'})
 
 -- hide cmdline when not used
 vim.opt.cmdheight = 0
-vim.opt.conceallevel = 0
+
+-- vim.opt.conceallevel = 0
 
 
 -- plugins
