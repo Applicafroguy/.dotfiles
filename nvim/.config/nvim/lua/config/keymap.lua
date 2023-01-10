@@ -175,6 +175,7 @@ wk.register(
       l = { ':Lazy<cr>', 'Lazy' },
       m = { ':Mason<cr>', 'Mason' },
       s = { ':e $MYVIMRC | :cd %:p:h | split . | wincmd k<CR>', 'Settings' },
+      c = { '<cmd>Telescope colorscheme<cr>', 'colors' },
     },
     l = {
       name = 'language/lsp',

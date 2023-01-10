@@ -23,35 +23,6 @@ return {
           })
         end,
       },
-      -- { "zbirenbaum/copilot-cmp" },
-      { "zbirenbaum/copilot.lua",
-        -- dependencies = { 'github/copilot.vim' },
-        event = "InsertEnter",
-        -- name = 'copilot',
-        init = function()
-          require("copilot").setup({
-            panel = {
-              auto_refresh = false,
-              keymap = {
-                accept = "<CR>",
-                jump_prev = "[[",
-                jump_next = "]]",
-                refresh = "gr",
-                open = "<M-CR>",
-              },
-            },
-            suggestion = {
-              auto_trigger = true,
-              keymap = {
-                accept = "<M-a>",
-                prev = "<M-[>",
-                next = "<M-]>",
-                dismiss = "<C-]>",
-              },
-            },
-          })
-        end,
-      },
     },
     config = function()
       local cmp = require 'cmp'
