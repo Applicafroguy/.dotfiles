@@ -92,7 +92,7 @@ return {
     })
   end
   },
-  { 'RRethy/vim-illuminate' }, -- highlight current word
+  -- { 'RRethy/vim-illuminate' }, -- highlight current word
   -- filetree
   { 'kyazdani42/nvim-tree.lua',
     config = function()
