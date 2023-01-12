@@ -1,5 +1,7 @@
 # Configuration file for ipython.
 
+# import IPython, os
+# print(os.path.join(os.path.dirname(IPython.__file__), 'core/ultratb.py'))
 
 #------------------------------------------------------------------------------
 # InteractiveShellApp(Configurable) configuration
