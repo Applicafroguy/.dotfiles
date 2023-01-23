@@ -1,10 +1,7 @@
 return {
   { 'quarto-dev/quarto-nvim',
-    dev = true,
     dependencies = {
-      { 'jmbuhr/otter.nvim',
-        dev = true,
-      },
+      { 'jmbuhr/otter.nvim', },
       'neovim/nvim-lspconfig'
     },
     config = function()
