@@ -1,0 +1,7 @@
+[
+  "{"
+] @indent
+
+[
+  "}"
+] @indent_end
