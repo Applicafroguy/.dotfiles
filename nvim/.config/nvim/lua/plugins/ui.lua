@@ -64,23 +64,35 @@ return {
   { 'nvim-telescope/telescope-dap.nvim' },
   { 'nvim-telescope/telescope-file-browser.nvim' },
   { 'nvim-telescope/telescope-project.nvim' },
-  { 'nvim-lualine/lualine.nvim', config = function()
-    local git_blame = require('gitblame')
-    require('lualine').setup {
-      options = {
-        section_separators = '',
-        component_separators = '',
-        globalstatus = true,
-        theme = "catppuccin",
-      },
-      sections = {
-        lualine_c = {
-          { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }
+  { 'nvim-lualine/lualine.nvim',
+    dependencies = {
+      { 'nvim-tree/nvim-web-devicons' }
+    },
+    config = function()
+      local git_blame = require('gitblame')
+      require("nvim-web-devicons").set_icon {
+        qmd = {
+          icon = "",
+          color = "#6caad9",
+          cterm_color = "34",
+          name = "quarto"
         }
-      },
-      extensions = { 'nvim-tree' },
-    }
-  end
+      }
+      require('lualine').setup {
+        options = {
+          section_separators = '',
+          component_separators = '',
+          globalstatus = true,
+          theme = "catppuccin",
+        },
+        sections = {
+          lualine_c = {
+            { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available }
+          }
+        },
+        extensions = { 'nvim-tree' },
+      }
+    end
   },
   { 'nanozuki/tabby.nvim', config = function()
     require 'tabby.tabline'.use_preset('tab_only')

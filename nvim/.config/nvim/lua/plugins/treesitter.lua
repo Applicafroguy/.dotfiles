@@ -1,5 +1,9 @@
 return {
-  { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function()
+  { 'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    version = nil,
+    branch = 'master',
+    config = function()
     require 'nvim-treesitter.configs'.setup {
       ensure_installed = { 'r', 'python', 'markdown', 'markdown_inline', 'julia', 'yaml', 'lua', 'vim', 'query', 'help' },
       highlight = {
@@ -60,5 +64,4 @@ return {
   end },
   'nvim-treesitter/nvim-treesitter-textobjects',
   'nvim-treesitter/playground',
-
 }
