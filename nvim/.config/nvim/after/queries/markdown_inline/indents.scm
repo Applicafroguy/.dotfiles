@@ -1,7 +1,0 @@
-[
-  "{"
-] @indent
-
-[
-  "}"
-] @indent_end

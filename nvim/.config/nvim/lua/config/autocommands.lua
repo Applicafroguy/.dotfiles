@@ -10,3 +10,10 @@ vim.api.nvim_create_autocmd({ "TermOpen" }, {
 }
 )
 
+vim.api.nvim_create_autocmd({'BufNewFile', 'BufRead'}, {
+  group = 'filetypedetect',
+  pattern = { "*.inp" },
+  command = "setf cp2k"
+}
+)
+
