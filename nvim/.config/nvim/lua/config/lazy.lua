@@ -14,14 +14,27 @@ end
 vim.opt.runtimepath:prepend(lazypath)
 
 
+local function hostname()
+    local f = io.popen ("/bin/hostname")
+    local hostname = f:read("*a") or ""
+    f:close()
+    hostname =string.gsub(hostname, "\n$", "")
+    return hostname
+end
+
+local dev_settings = nil
+if hostname() == 'pop-desktop' then
+  dev_settings = {
+    path = "~/projects",
+    patterns = { "jmbuhr", "quarto-dev" },
+  }
+end
+
 require("lazy").setup("plugins", {
   defaults = {
     version = "*",
   },
-  dev = {
-    path = "~/projects",
-    patterns = { "jmbuhr", "quarto-dev" },
-  },
+  dev = dev_settings,
   install = { colorscheme = { "catppuccin", "habamax" } },
   -- checker = { enabled = true },
   rtp = {
