@@ -269,7 +269,7 @@ wk.register({
   ['co']            = { 'o#%%<cr>', 'new code chunk below' },
   ['cO']            = { 'O#%%<cr>', 'new code chunk above' },
   ['<m-i>']         = { 'o```{r}<cr>```<esc>O', "r code chunk" },
-  ['<cm-i>']        = { 'o```bash<cr>```<esc>O', "bash code chunk" },
+  ['<m-b>']        = { 'o```bash<cr>```<esc>O', "bash code chunk" },
   ['<m-I>']         = { 'o```{python}<cr>```<esc>O', "python code chunk" },
 }, { mode = 'n' })
 
