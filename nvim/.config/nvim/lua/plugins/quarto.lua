@@ -2,9 +2,18 @@ return {
   { 'quarto-dev/quarto-nvim',
     dependencies = {
       { 'jmbuhr/otter.nvim', },
+      { 'quarto-dev/quarto-vim',
+        dev = false,
+        dependencies = {'vim-pandoc/vim-pandoc-syntax' },
+      },
       'neovim/nvim-lspconfig'
     },
     config = function()
+      vim.cmd[[
+        let g:pandoc#syntax#conceal#use=0 
+        let g:pandoc#syntax#codeblocks#embeds#use=0
+        let g:pandoc#syntax#use_definition_lists=0
+      ]]
       require 'quarto'.setup {
         lspFeatures = {
           enabled = true,

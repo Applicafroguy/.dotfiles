@@ -1,2 +1,5 @@
 set guioptions sv
+set selection-clipboard clipboard
+set selection-notification false
+
 include catppuccin-mocha
